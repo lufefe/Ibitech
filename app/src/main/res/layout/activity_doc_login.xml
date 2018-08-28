@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context="com.divide.ibitech.divide_ibitech.DocLogin">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ibitech_logo_no_slogan"
+        android:textColor="#ffff"
+        android:contentDescription="@string/imgContentDescription" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="28dp"
+        android:text="@string/txtLogin"
+        android:textColor="#000"
+        android:textSize="20sp" />
+
+    <View
+        android:layout_width="88dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="9dp"
+        android:background="#000" />
+
+    <EditText
+        android:id="@+id/etMedReg"
+        android:layout_width="341dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:drawablePadding="9dp"
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        android:ems="10"
+        android:textSize="18sp"
+        android:hint="Medical Reg No."
+        android:inputType="text"
+        android:text="" />
+
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="346dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp">
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="342dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="35dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:drawableLeft="@drawable/ic_lock_black_24dp"
+            android:drawablePadding="9dp"
+            android:drawableStart="@drawable/ic_lock_black_24dp"
+            android:ems="10"
+            android:fontFamily="@font/raleway"
+            android:hint="@string/hint_password"
+            android:inputType="textPassword"
+            android:textSize="18sp"
+            tools:ignore="UnusedAttribute" />
+
+
+        <TextView
+            android:id="@+id/tvTogglePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/txtToggleSHOW"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/etPassword"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/etPassword"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:targetApi="jelly_bean" />
+    </android.support.constraint.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center">
+
+        <ProgressBar
+            android:id="@+id/pbLoading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:background="@drawable/buttonstyle"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/txtLoginBtn"
+            android:textColor="@color/White" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvForgotPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/txtForgot_password"
+        android:textSize="17sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvNewUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:textAlignment="textEnd"
+            android:layout_weight="2"
+            android:text="@string/txtNew_user"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tvNewRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_weight="2"
+            android:text="@string/txtNewRegister"
+            android:paddingLeft="7dp"
+            android:textSize="17sp"
+            android:paddingStart="7dp"
+            tools:ignore="RtlSymmetry"
+            android:clickable="true"
+            android:focusable="true"
+            android:textColorLink="#0000FF"
+            android:textColor="#0000FF"/>
+    </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp">
+
+        <TextView
+            android:id="@+id/tvTerms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="bottom"
+            android:text="@string/txtTermsandConds"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="MissingConstraints" />
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

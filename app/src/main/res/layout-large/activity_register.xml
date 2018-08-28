@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.divide.ibitech.divide_ibitech.Register">
+
+
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:src="@drawable/ibitech_mini_logo"
+        android:scaleType="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="100dp"
+        android:textColor="#ffff"
+        android:layout_marginTop="20dp"
+         />
+
+    <TextView
+        android:id="@+id/slogan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="17dp"
+        android:text="Register"
+        android:textColor="#000"
+        android:textSize="20sp" />
+
+    <View android:background="#000"
+        android:layout_marginTop="9dp"
+        android:layout_width = "88dp"
+        android:layout_gravity="center"
+        android:layout_height="1dp"/>
+
+</LinearLayout>
+    <EditText
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:drawablePadding="9dp"
+        android:id="@+id/ID_Num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="14"
+        android:hint="ID Number"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:inputType="number"
+         />
+    <EditText
+        android:drawableStart="@drawable/ic_phone_black_24dp"
+        android:drawableLeft="@drawable/ic_phone_black_24dp"
+        android:drawablePadding="9dp"
+        android:id="@+id/Contact_Number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="14"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Contact Number"
+        android:inputType="number"
+        android:text="" />
+
+    <EditText
+        android:drawableStart="@drawable/ic_email_black_24dp"
+        android:drawableLeft="@drawable/ic_email_black_24dp"
+        android:drawablePadding="9dp"
+        android:id="@+id/Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="14"
+        android:hint="E-mail Address"
+        android:inputType="textEmailAddress"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="8dp"
+        android:text="" />
+
+    <EditText
+
+        android:drawableStart="@drawable/ic_lock_black_24dp"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:drawablePadding="9dp"
+        android:id="@+id/Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="14"
+        android:hint="Create Password"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="8dp"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:drawableStart="@drawable/ic_lock_black_24dp"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:drawablePadding="9dp"
+        android:id="@+id/confirm_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="14"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:layout_marginLeft="20dp" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp">
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="By registering, you agree to our Terms and Conditions and Privacy Policy."
+            android:textSize="12sp"/>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button_Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginStart="0dp"
+        android:background="@drawable/buttonstyle"
+        android:layout_marginTop="15dp"
+        android:text="Register" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="Already a User? Login"
+            android:textSize="14dp" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

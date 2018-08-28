@@ -1,0 +1,364 @@
+<resources>
+    <string name="app_name">Ibitech</string>
+
+    <string-array name="marital_status">
+        <item>Single</item>
+        <item>Married</item>
+        <item>Divorced</item>
+    </string-array>
+
+    <string-array name="list_blood">
+        <item>A</item>
+        <item>O</item>
+        <item>AB</item>
+        <item>B</item>
+    </string-array>
+
+    <string-array name="severity_level">
+        <item>Urgent</item>
+        <item>High</item>
+        <item>Normal</item>
+        <item>Low</item>
+    </string-array>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+    <string name="terms">Terms and Conditions</string>
+    <string name="welcomeLogin_text">Login</string>
+    <string name="welcomeRegister_text">Register</string>
+    <string name="welcome_main_text">Welcome to Ibitech</string>
+    <string name="welcome_ibitech_logo">Ibitech logo</string>
+    <string name="imgContentDescription">Ibitech logo</string>
+    <string name="txtLogin">Login</string>
+    <string name="hint_idNumber">ID Number</string>
+    <string name="hint_CellphoneNum">Cellphone Number</string>
+    <string name="hint_password">Enter Password</string>
+    <string name="txtLoginBtn">Login</string>
+    <string name="txtForgot_password">Forgot password</string>
+    <string name="txtNewRegister"><u>Register</u></string>
+    <string name="txtNew_user">New User?</string>
+    <string name="txtTermsandConds">By signing in you agree to our <u>privacy policy</u> and <u>terms and conditions</u>.</string>
+    <string name="txtToggleSHOW">SHOW</string>
+    <string name="txtUserProfilePic">User profile picture</string>
+    <string name="txtUserFullName">- -</string>
+    <string name="txtAge">Age:</string>
+    <string name="userAge">-</string>
+    <string name="txtGender">Gender:</string>
+    <string name="userGender">-</string>
+    <string name="txtBloodType">Blood Type:</string>
+    <string name="userBType">-</string>
+    <string name="txtStatus">Status:</string>
+    <string name="userStatus">-</string>
+    <string name="userAddress">-</string>
+    <string name="logout">Log Out</string>
+    <string name="txtManage_medical_aid">Manage Medical Aid</string>
+    <string name="txtMedical_aid">Medical Aid</string>
+    <string name="txtManage_next_of_kin">Manage Next Of Kin</string>
+    <string name="txtNext_of_kin">Next Of Kin</string>
+    <string name="txtMedical_aid_icon">Medical aid icon</string>
+    <string name="txtNext_of_kin_icon">Next of kin icon</string>
+    <string name="txtManage_allergies">Manage Allergies</string>
+    <string name="txtAllergies">Allergies</string>
+    <string name="txtDevices_icon">Devices icon</string>
+    <string name="txtDevices">Devices</string>
+    <string name="txtRequest_device">Request Device</string>
+    <string name="txtManage_allergies_icon">Manage Allergies icon</string>
+    <string name="txtManage_symptoms">Manage symptoms</string>
+    <string name="txtManage_symptoms_icon">Manage symptoms icon</string>
+    <string name="txtSymptoms">Symptoms</string>
+    <string name="txtCondition_icon">Condition icon</string>
+    <string name="txtManage_conditions">Manage conditions</string>
+    <string name="txtConditions">Conditions</string>
+    <string name="txtHint_Email_address">E-mail Address</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="start">Done</string>
+    <string name="welcome_to_ibitech">Welcome to Ibitech</string>
+    <string name="be_your_own_patient">Be your own patient</string>
+    <string name="already_a_user">Already a User?</string>
+    <string name="by_registering_you_agree_to_our_terms_and_conditions_and_privacy_policy">By registering, you agree to our Terms and Conditions and Privacy Policy.</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="weak">Weak</string>
+    <string name="create_password">Create Password</string>
+    <string name="register">Register</string>
+    <string name="cancel"><u>Cancel</u></string>
+    <string name="weight_kg">Weight (kg)</string>
+    <string name="height_cm">Height (cm)</string>
+    <string name="back">Back</string>
+    <string name="status">Status</string>
+    <string name="profile">Profile</string>
+    <string name="reports">Reports</string>
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+    //drawerLayout
+    <string name="navdemo">Navigation Drawer Full Demo</string>
+    <string name="gallery">This is GALLERY Activity</string>
+    <string name="fileimport">This is FILE IMPORT Activity</string>
+    <string name="slideshow">This is SLIDE SHOW Activity</string>
+
+    <string name="action_settings">settings</string>
+    <string name="appmenuname">appmenuname</string>
+    <string name="appmenuname1">Gallery Mall Online</string>
+
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+    <string name="help">Help</string>
+
+    <string-array name="conditions">
+        <item>	Acid Ingestion	</item>
+        <item>	Acne	</item>
+        <item>	Actinic Keratoses	</item>
+        <item>	Acute Myocardial Infarction	</item>
+        <item>	Addison's Disease	</item>
+        <item>	Aging	</item>
+        <item>	Alcohol Withdrawal	</item>
+        <item>	Alopecia	</item>
+        <item>	Altitube Illness	</item>
+        <item>	Alzheimer's Disease	</item>
+        <item>	Amebiasis	</item>
+        <item>	Amenorrhea	</item>
+        <item>	Amyotrophic Lateral Sclerosis (ALS)	</item>
+        <item>	Anemia	</item>
+        <item>	Angina	</item>
+        <item>	Anorexia	</item>
+        <item>	Anxiety	</item>
+        <item>	Appetite Stimulant	</item>
+        <item>	Arthritis	</item>
+        <item>	Asthma	</item>
+        <item>	Athlete's Foot	</item>
+        <item>	Attention Deficit Hyperactivity Disorder (ADHD)	</item>
+        <item>	Autism	</item>
+        <item>	Bacterial Infections	</item>
+        <item>	Benign Prostate Hyperplasia (BPH)	</item>
+        <item>	Bilharzia	</item>
+        <item>	Bipolar Disorder	</item>
+        <item>	Bladder Inflammation	</item>
+        <item>	Bladder Spasms	</item>
+        <item>	Bleeding	</item>
+        <item>	Blood Circulation	</item>
+        <item>	Blood Clots	</item>
+        <item>	Bronchial Spasms	</item>
+        <item>	Bronchitis	</item>
+        <item>	Bulimia	</item>
+        <item>	Bursitis	</item>
+        <item>	Cancer - Breast	</item>
+        <item>	Cancer - Colon	</item>
+        <item>	Cancer - Gynaecologic	</item>
+        <item>	Cancer - Haematological	</item>
+        <item>	Cancer - Lung	</item>
+        <item>	Cancer - Prostate	</item>
+        <item>	Cancer - Skin	</item>
+        <item>	Canker Sores (Aphthous Ulcers)	</item>
+        <item>	Cerebral palsy	</item>
+        <item>	Chickenpox	</item>
+        <item>	Cholera	</item>
+        <item>	Chronic Obstructive Pulmonary Disease (COPD)	</item>
+        <item>	Cirrhosis	</item>
+        <item>	Congestive Heart Failure	</item>
+        <item>	Conjunctivitis (Pink Eye)	</item>
+        <item>	Constipation	</item>
+        <item>	Epilepsy	</item>
+        <item>	Corneal Ulcers	</item>
+        <item>	Cushing's Disease	</item>
+        <item>	Cystitis	</item>
+        <item>	Dandruff	</item>
+        <item>	Dementia	</item>
+        <item>	Depression	</item>
+        <item>	Depressive disorder	</item>
+        <item>	Dermatitis	</item>
+        <item>	Dermatomyositis	</item>
+        <item>	Diabetes - Type 1	</item>
+        <item>	Diabetes - Type 2	</item>
+        <item>	Diarrhea	</item>
+        <item>	Digestive Spasms	</item>
+        <item>	Diphtheria	</item>
+        <item>	Diverticulitis	</item>
+        <item>	Dry Eyes	</item>
+        <item>	Ear Infections (Otitis Media)	</item>
+        <item>	Ear Wax	</item>
+        <item>	Ebola	</item>
+        <item>	Eczema	</item>
+        <item>	Emphysema	</item>
+        <item>	Endometriosis	</item>
+        <item>	Erectile Dysfunction (Impotence)	</item>
+        <item>	Esophagitis	</item>
+        <item>	Estrogen Deficiency	</item>
+        <item>	Chronic Fatigue Syndrome (CFS)	</item>
+        <item>	Fibrocystic Breast Disease	</item>
+        <item>	Fluid Retention (Edema, Swelling)	</item>
+        <item>	Foetal alcohol syndrome (FAS)	</item>
+        <item>	Fungal Infections (Ringworm)	</item>
+        <item>	Gallstones	</item>
+        <item>	Gastroesophageal Reflux	</item>
+        <item>	Generalised anxiety disorder	</item>
+        <item>	Genital Warts (Condyloma Acuminatum)	</item>
+        <item>	Giardiasis	</item>
+        <item>	Gingivitis and Gum Disease	</item>
+        <item>	Glaucoma	</item>
+        <item>	Gonorrhea	</item>
+        <item>	Gout	</item>
+        <item>	H1N1 Influenza (Swine Flu)	</item>
+        <item>	Haemophilia	</item>
+        <item>	Hair Loss (Baldness)	</item>
+        <item>	Hay Fever	</item>
+        <item>	Headache (Cluster, Migraine, Sinus, Tension, Vascular)	</item>
+        <item>	Heart disease	</item>
+        <item>	Heart Rhythm Disorders (Irregular Heartbeat)	</item>
+        <item>	Heartburn (Indigestion)	</item>
+        <item>	Hemorrhoids	</item>
+        <item>	Hepatitis A	</item>
+        <item>	Hepatitis B	</item>
+        <item>	Herpes	</item>
+        <item>	High Cholesterol	</item>
+        <item>	HIV/AIDS (AIDS)	</item>
+        <item>	Hives (Urticaria)	</item>
+        <item>	Huntington's	</item>
+        <item>	Hypercalcemia	</item>
+        <item>	Hyperglycemia	</item>
+        <item>	Hypertension (High Blood Pressure)	</item>
+        <item>	Hyperthyroidism	</item>
+        <item>	Hypertriglyceridemia	</item>
+        <item>	Hypoglycemia	</item>
+        <item>	Hypothyroidism	</item>
+        <item>	Incontinence	</item>
+        <item>	Infertility	</item>
+        <item>	Inflammation	</item>
+        <item>	Inflammatory Bowel Disease (Colitis, Crohn's Disease)	</item>
+        <item>	Influenza (Flu)	</item>
+        <item>	Insomnia	</item>
+        <item>	Intermittent Claudication	</item>
+        <item>	Irritable Bowel Syndrome	</item>
+        <item>	Jaundice	</item>
+        <item>	Jet Lag	</item>
+        <item>	Jock Itch	</item>
+        <item>	Kidney Stones	</item>
+        <item>	Labyrinthitis	</item>
+        <item>	Leprosy (Hansen's disease)	</item>
+        <item>	Leukemia	</item>
+        <item>	Lice	</item>
+        <item>	Lupus (Skin and Systemic)	</item>
+        <item>	Lyme Disease	</item>
+        <item>	Malabsorption	</item>
+        <item>	Malaria	</item>
+        <item>	Male Hormone Deficiency	</item>
+        <item>	Measles (Rubeola)	</item>
+        <item>	Melanoma	</item>
+        <item>	Meniere's Disease	</item>
+        <item>	Meningitis	</item>
+        <item>	Menopause	</item>
+        <item>	Dysmenorrhea (Menstrual Cramps)	</item>
+        <item>	Menorrhagia (Excessive Menstruation)	</item>
+        <item>	Motion Sickness	</item>
+        <item>	Multiple Sclerosis	</item>
+        <item>	Muscle Cramp, Spasm, Strain	</item>
+        <item>	Myasthenia Gravis	</item>
+        <item>	Narcolepsy	</item>
+        <item>	Narcotic Withdrawal	</item>
+        <item>	Nasal Allergy	</item>
+        <item>	Nausea and Vomiting	</item>
+        <item>	Neural Tube Defects (prevention)	</item>
+        <item>	Night Blindness	</item>
+        <item>	Obesity	</item>
+        <item>	Obsessive Compulsive Disorder	</item>
+        <item>	Ocular Hypertension	</item>
+        <item>	Osteoporosis	</item>
+        <item>	Overactive Bladder	</item>
+        <item>	Paget's Disease	</item>
+        <item>	Panic Disorder	</item>
+        <item>	Parasites	</item>
+        <item>	Parkinson's Disease	</item>
+        <item>	Parkinson's Tremors	</item>
+        <item>	Pertussis (Whooping cough) (Whooping cough (Pertussis))	</item>
+        <item>	Peyronie's Disease	</item>
+        <item>	Phobias	</item>
+        <item>	Plague	</item>
+        <item>	Poisoning	</item>
+        <item>	Polio	</item>
+        <item>	Post traumatic stress disorder	</item>
+        <item>	Potassium Deficiency	</item>
+        <item>	Premature Labor	</item>
+        <item>	Premenstrual Syndrome (PMS)	</item>
+        <item>	Pressure Sores	</item>
+        <item>	Psoriasis	</item>
+        <item>	Psychosis	</item>
+        <item>	Psychotic Disorders	</item>
+        <item>	Rabies	</item>
+        <item>	Rectal Fissures	</item>
+        <item>	Respiratory Syncytial Virus (RSV)	</item>
+        <item>	Rickets	</item>
+        <item>	Rift valley fever	</item>
+        <item>	Rosacea	</item>
+        <item>	Scabies	</item>
+        <item>	Schizophrenia	</item>
+        <item>	Scleroderma	</item>
+        <item>	Shingles	</item>
+        <item>	Sickle Cell Disease	</item>
+        <item>	Sinusitis	</item>
+        <item>	Skin Disorders (Rashes)	</item>
+        <item>	Skin Lines and Wrinkles	</item>
+        <item>	Sleep Apnea	</item>
+        <item>	Smoking Cessation	</item>
+        <item>	Sore Throat	</item>
+        <item>	Stress	</item>
+        <item>	Stroke	</item>
+        <item>	Stroke Prevention	</item>
+        <item>	Sunburn	</item>
+        <item>	Syphilis	</item>
+        <item>	Tetanus	</item>
+        <item>	Tonsillitis	</item>
+        <item>	Tourette's Syndrome	</item>
+        <item>	Toxoplasmosis	</item>
+        <item>	Transplantation, Organ (Antirejection)	</item>
+        <item>	Tremors	</item>
+        <item>	Trigeminal Neuralgia	</item>
+        <item>	Tuberculosis	</item>
+        <item>	Typhoid fever	</item>
+        <item>	Ulcerative Colitis	</item>
+        <item>	Ulcers	</item>
+        <item>	Urethra Spasms	</item>
+        <item>	Urethritis	</item>
+        <item>	Urinary Frequency	</item>
+        <item>	Urinary Retention	</item>
+        <item>	Urinary Tract Infection	</item>
+        <item>	Urine Acidity	</item>
+        <item>	Uveitis	</item>
+        <item>	Vaginal Infections or Irritation	</item>
+        <item>	Vaginal Yeast Infections	</item>
+        <item>	Vertigo	</item>
+        <item>	Vitamin Deficiency	</item>
+        <item>	Vitiligo	</item>
+        <item>	Warts	</item>
+        <item>	Wilson's Disease	</item>
+        <item>	Worms	</item>
+        <item>	Yellow Fever	</item>
+        <item>	Zika virus	</item>
+        <item>	Zinc Deficiency	</item>
+
+    </string-array>
+
+    <string-array name="devices">
+        <item>Respirator circuit</item>
+        <item>High-concentration oxygen mask</item>
+        <item>Insulin pen</item>
+        <item>Insulin pump</item>
+        <item>Nebulizer</item>
+        <item>Oxygen concentrator</item>
+        <item>Wheelchair</item>
+        <item>Traction splint</item>
+        <item>Nasal cannula</item>
+        <item>Oxygen cylinder</item>
+        <item>Pulse oximeter</item>
+        <item>Walker</item>
+        <item>Glucose meter</item>
+        <item>Hearing aid</item>
+        <item>Apnea monitor</item>
+    </string-array>
+    <string name="title_activity_help">Help</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+
+</resources>
