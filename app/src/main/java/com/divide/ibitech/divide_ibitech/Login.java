@@ -47,7 +47,7 @@ public class Login extends AppCompatActivity {
         ProgressBar pb_loading;
 
         //Login URL
-        String URL_LOGIN = "http://sict-iis.nmmu.ac.za/ibitech/app/login.php";
+        String URL_LOGIN = "http://sict-iis.nmmu.ac.za/ibitech/app-test/login.php";
 
         SessionManager sessionManager;
 

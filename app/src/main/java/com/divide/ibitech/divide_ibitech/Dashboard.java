@@ -17,7 +17,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
@@ -34,7 +33,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.github.clans.fab.FloatingActionButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,11 +47,10 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
     TextView tv_FullName, tv_Age, tv_BloodType, tv_Address,tv_Gender,tv_MaritalStatus;
     ImageView img_ProfilePic;
-    private FloatingActionButton fab_Symptoms, fab_Allergy, fabRequestDevice;
+    //Button btn_Logout,btn_photo_upload;
     private Bitmap bitmap;
     String getId;
     LinearLayout bt,device;
-    CardView btnManageAllergies, btnManageDevices, btnManageSymptoms, btnManageConditions;
     private static final String TAG = Dashboard.class.getSimpleName(); //getting the info
 
     private static String URL_UPLOAD = "http://sict-iis.nmmu.ac.za/ibitech/app/upload.php";
@@ -79,12 +76,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }else if(id == R.id.reports){
-            Intent searchIntent = new Intent(Dashboard.this, DoctorGraphReports.class);
-            startActivity(searchIntent);
-            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
-        }
-        else if (id == R.id.tutorial){
-            Intent searchIntent = new Intent(Dashboard.this, Tutorial.class);
+            Intent searchIntent = new Intent(Dashboard.this, Reports.class);
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }
@@ -93,8 +85,10 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }
-        else if (id == R.id.logout){
-            sessionManager.logout();
+        else if (id == R.id.help){
+            Intent searchIntent = new Intent(Dashboard.this, com.divide.ibitech.divide_ibitech.Help.class);
+            startActivity(searchIntent);
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -154,9 +148,8 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         img_ProfilePic = findViewById(R.id.imgProfilePic);
         //btn_photo_upload = findViewById(R.id.btnPhoto);
 
-        fab_Symptoms = findViewById(R.id.fabSymptoms);
-        fabRequestDevice = findViewById(R.id.fabRequest);
-        fab_Allergy = findViewById(R.id.fabAllergy);
+        bt = findViewById(R.id.manageCondition);
+        device = findViewById(R.id.manageDevice);
 
         //For Dashboard display
 
@@ -187,8 +180,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         editor.putString("pID",sID);
         editor.putString("pName",sName + " " + sSurname);
-        editor.putString("pFirstName",sName);
-        editor.putString("pSurname", sSurname);
         editor.putString("pStatus",sStatus);
         editor.putString("pCell",sCell);
         editor.putString("pEmail",sEmail);
@@ -198,56 +189,34 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         editor.putString("pMedicalAid", sMedicaAid);
         editor.apply();
 
+
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.profilepic);
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(),bitmap);
         roundedBitmapDrawable.setCircular(true);
         img_ProfilePic.setImageDrawable(roundedBitmapDrawable);
 
-
-        fab_Symptoms.setOnClickListener(new View.OnClickListener() {
+     /*   btn_Logout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this, AddSymptom.class));
+            public void onClick(View v) {
+                sessionManager.logout();
+            }
+        });*/
+ /*       btn_photo_upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseFile();
+            }
+        });*/
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Dashboard.this,AddCondition.class));
             }
         });
-
-
-        fab_Allergy.setOnClickListener(new View.OnClickListener() {
+        device.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this, AddAllergy.class));
-            }
-        });
-
-        fabRequestDevice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 startActivity(new Intent(Dashboard.this, RequestDevice.class));
-            }
-        });
-
-        btnManageAllergies = findViewById(R.id.cvAllergies);
-        btnManageSymptoms = findViewById(R.id.cvSymptoms);
-        btnManageConditions = findViewById(R.id.cvConditions);
-
-        btnManageConditions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this, ViewCondition.class));
-            }
-        });
-
-        btnManageAllergies.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this, ViewAllergy.class));
-            }
-        });
-
-        btnManageSymptoms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this, ViewSymptom.class));
             }
         });
 

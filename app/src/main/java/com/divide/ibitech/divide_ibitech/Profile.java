@@ -1,56 +1,26 @@
 package com.divide.ibitech.divide_ibitech;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Profile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
 
-    String id ="", name="",surname="", status="", cell="", email="",weight="",height="",medicalAid="",profilePic="";
+    String id, name, status, cell, email,weight,height,medicalAid,profilePic;
 
-    EditText etName, etSurname, etAdrress, etEmail, etCellphone, etMarital, etWeight, etHeight;
-
-    ImageView img_ProfilePic;
-
-    Button btnSave;
-
-    SessionManager sessionManager;
-
-    private static String URL_UPDATE = "http://sict-iis.nmmu.ac.za/ibitech/app/updateprofile.php";
+    EditText tvName, tvAdrress, tvEmail, tvCellphone, tvMarital, tvWeight,tvHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,21 +40,17 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        etName = findViewById(R.id.editName);
-        etSurname = findViewById(R.id.editSurname);
+        tvName = findViewById(R.id.editName);
         //tvAdrress = findViewById(R.id.tv_address);
         //tvMedicalAid = findViewById(R.id.tv_medicalAid);
-        etEmail = findViewById(R.id.editEmail);
-        etCellphone = findViewById(R.id.editCell);
+        tvEmail = findViewById(R.id.editEmail);
+        tvCellphone = findViewById(R.id.editCell);
         //tvMarital = findViewById(R.id.tv_marital);
-        etWeight = findViewById(R.id.editWeight);
-        etHeight = findViewById(R.id.editHeight);
-
-        img_ProfilePic = findViewById(R.id.imgProfilePicInProfile);
+        tvWeight = findViewById(R.id.editWeight);
+        tvHeight = findViewById(R.id.editHeight);
 
         id = prefs.getString("pID","");
-        name = prefs.getString("pFirstName","");
-        surname = prefs.getString("pSurname","");
+        name = prefs.getString("pName","");
         status = prefs.getString("pStatus","");
         cell = prefs.getString("pCell","");
         email = prefs.getString("pEmail","");
@@ -94,82 +60,16 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         medicalAid = prefs.getString("pMedicalAid","");
 
 
-        etName.setText(name);
-        etSurname.setText(surname);
-        //tvMedicalAid.setText(medicalAid);
-        etEmail.setText(email);
-        etCellphone.setText(cell);
+        tvName.setText(name);
+//        tvMedicalAid.setText(medicalAid);
+        tvEmail.setText(email);
+        tvCellphone.setText(cell);
         //tvMarital.setText(status);
-        etWeight.setText(weight);
-        etHeight.setText(height);
-
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.profilepic);
-        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(),bitmap);
-        roundedBitmapDrawable.setCircular(true);
-        img_ProfilePic.setImageDrawable(roundedBitmapDrawable);
-
-        btnSave = findViewById(R.id.btnSave);
-
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = "", surname = "", cell = "", email = "", weight = "", height = "";
-                name = etName.getText().toString();
-                surname = etSurname.getText().toString();
-                cell = etCellphone.getText().toString();
-                email = etEmail.getText().toString();
-                weight = etWeight.getText().toString();
-                height = etHeight.getText().toString();
-                updateProfile(id,name,surname,cell,email,weight,height);
-            }
-        });
+        tvWeight.setText(weight);
+        tvHeight.setText(height);
 
 
-    }
 
-    private void updateProfile(final String id ,final String name,final String surname,final String cell,final String email,final String weight,final String height) {
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_UPDATE,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
-
-                            if(success.equals("1")){
-                                Toast.makeText(Profile.this,"Profile updated successfully.",Toast.LENGTH_SHORT).show();
-                                //CHANGE ALL SHARED PREFERENCES TO NEW DATA OR ASK USER TO LOGOUT
-                                startActivity(new Intent(Profile.this,Dashboard.class));
-                                finish();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(Profile.this,"There was a problem updating your profile, try again later." + e.toString(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Profile.this,"There was an internal error, please try again later." + error.toString(),Toast.LENGTH_SHORT).show();
-                    }
-                })
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("id",id);
-                params.put("name",name);
-                params.put("surname",surname);
-                params.put("cell",cell);
-                params.put("email",email);
-                params.put("weight",weight);
-                params.put("height",height);
-                return params;
-            }
-        };
-        Singleton.getInstance(Profile.this).addToRequestQue(stringRequest);
 
     }
 
@@ -196,18 +96,15 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }
-        else if (id == R.id.tutorial){
-            Intent searchIntent = new Intent(Profile.this, Tutorial.class);
-            startActivity(searchIntent);
-            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
-        }
         else if (id == R.id.settings){
             Intent searchIntent = new Intent(Profile.this, com.divide.ibitech.divide_ibitech.Settings.class);
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }
-       else if (id == R.id.logout){
-            sessionManager.logout();
+        else if (id == R.id.help){
+            Intent searchIntent = new Intent(Profile.this, com.divide.ibitech.divide_ibitech.Help.class);
+            startActivity(searchIntent);
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

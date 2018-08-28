@@ -48,7 +48,7 @@ public class SlideTwo extends AppCompatActivity {
     ProgressBar pb_loading;
     SessionManager sessionManager;
 
-    String URL_REGISTCONT = "http://sict-iis.nmmu.ac.za/ibitech/app/registercont.php";
+    String URL_REGISTCONT = "http://sict-iis.nmmu.ac.za/ibitech/app-test/registercont.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
