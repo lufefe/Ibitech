@@ -56,7 +56,8 @@
             android:label="@string/title_activity_help"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".ManageSymptoms" />
-        <activity android:name=".ViewAppointments"></activity>
+        <activity android:name=".ViewAppointments" />
+        <activity android:name=".ManageAllergies"></activity>
     </application>
 
 </manifest>

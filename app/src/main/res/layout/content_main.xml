@@ -469,7 +469,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="@string/txtRequest_device"
+                        android:text="Manage Devices"
                         android:textColor="@color/cardview_dark_background" />
 
 
@@ -698,11 +698,11 @@
             app:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fabCondition"
+            android:id="@+id/fabMedicalDevice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/add"
-            app:fab_label="Condition"
+            app:fab_label="Request A Device"
             app:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton

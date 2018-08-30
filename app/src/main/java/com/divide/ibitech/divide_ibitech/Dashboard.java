@@ -50,11 +50,11 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     TextView tv_FullName, tv_Age, tv_BloodType, tv_Address,tv_Gender,tv_MaritalStatus;
     ImageView img_ProfilePic;
     //Button btn_Logout,btn_photo_upload;
-    private FloatingActionButton fab_Symptoms, fab_Condition, fab_Allergy;
+    private FloatingActionButton fab_Symptoms, fab_MedDevice, fab_Allergy;
     private Bitmap bitmap;
     String getId;
     LinearLayout bt,device;
-    CardView btnManageAllergies;
+    CardView btnManageAllergies, btnManageDevices, btnManageSymptoms;
     private static final String TAG = Dashboard.class.getSimpleName(); //getting the info
 
     private static String URL_UPLOAD = "http://sict-iis.nmmu.ac.za/ibitech/app/upload.php";
@@ -153,7 +153,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         //btn_photo_upload = findViewById(R.id.btnPhoto);
 
         fab_Symptoms = findViewById(R.id.fabSymptoms);
-        fab_Condition = findViewById(R.id.fabCondition);
+        fab_MedDevice = findViewById(R.id.fabMedicalDevice);
         fab_Allergy = findViewById(R.id.fabAllergy);
 
         //For Dashboard display
@@ -220,7 +220,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             }
         });
 
-        fab_Condition.setOnClickListener(new View.OnClickListener() {
+        fab_MedDevice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Dashboard.this, AddCondition.class));
@@ -235,8 +235,16 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         });
 
         btnManageAllergies = findViewById(R.id.cvAllergies);
+        btnManageSymptoms = findViewById(R.id.cvSymptoms);
 
         btnManageAllergies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Dashboard.this, ManageAllergies.class));
+            }
+        });
+
+        btnManageSymptoms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Dashboard.this, ManageSymptoms.class));
