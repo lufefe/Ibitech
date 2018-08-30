@@ -1,4 +1,4 @@
-package com.divide.ibitech.divide_ibitech.Model;
+package com.divide.ibitech.divide_ibitech.Models;
 
 public class PhoneCategory {
 

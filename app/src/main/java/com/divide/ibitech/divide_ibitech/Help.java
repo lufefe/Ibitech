@@ -20,8 +20,8 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-import com.divide.ibitech.divide_ibitech.Model.Phone;
-import com.divide.ibitech.divide_ibitech.Model.PhoneCategory;
+import com.divide.ibitech.divide_ibitech.Models.Phone;
+import com.divide.ibitech.divide_ibitech.Models.PhoneCategory;
 
 import java.util.ArrayList;
 import java.util.List;

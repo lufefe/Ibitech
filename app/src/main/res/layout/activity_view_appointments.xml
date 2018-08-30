@@ -6,12 +6,4 @@
     android:layout_height="match_parent"
     tools:context=".ViewAppointments">
 
-    <ListView
-        android:id="@+id/lv_ViewAppointments"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-    </ListView>
-
 </android.support.constraint.ConstraintLayout>

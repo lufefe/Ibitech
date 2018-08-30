@@ -17,6 +17,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
@@ -33,6 +34,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.github.clans.fab.FloatingActionButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,9 +50,11 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     TextView tv_FullName, tv_Age, tv_BloodType, tv_Address,tv_Gender,tv_MaritalStatus;
     ImageView img_ProfilePic;
     //Button btn_Logout,btn_photo_upload;
+    private FloatingActionButton fab_Symptoms, fab_Condition, fab_Allergy;
     private Bitmap bitmap;
     String getId;
     LinearLayout bt,device;
+    CardView btnManageAllergies;
     private static final String TAG = Dashboard.class.getSimpleName(); //getting the info
 
     private static String URL_UPLOAD = "http://sict-iis.nmmu.ac.za/ibitech/app/upload.php";
@@ -148,8 +152,9 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         img_ProfilePic = findViewById(R.id.imgProfilePic);
         //btn_photo_upload = findViewById(R.id.btnPhoto);
 
-        bt = findViewById(R.id.manageCondition);
-        device = findViewById(R.id.manageDevice);
+        fab_Symptoms = findViewById(R.id.fabSymptoms);
+        fab_Condition = findViewById(R.id.fabCondition);
+        fab_Allergy = findViewById(R.id.fabAllergy);
 
         //For Dashboard display
 
@@ -207,16 +212,34 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                 chooseFile();
             }
         });*/
-        bt.setOnClickListener(new View.OnClickListener() {
+
+        fab_Symptoms.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Dashboard.this,AddCondition.class));
+            public void onClick(View view) {
+                startActivity(new Intent(Dashboard.this, AddSymptom.class));
             }
         });
-        device.setOnClickListener(new View.OnClickListener() {
+
+        fab_Condition.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Dashboard.this, RequestDevice.class));
+            public void onClick(View view) {
+                startActivity(new Intent(Dashboard.this, AddCondition.class));
+            }
+        });
+
+        fab_Allergy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Dashboard.this, AddAllergy.class));
+            }
+        });
+
+        btnManageAllergies = findViewById(R.id.cvAllergies);
+
+        btnManageAllergies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Dashboard.this, ManageSymptoms.class));
             }
         });
 

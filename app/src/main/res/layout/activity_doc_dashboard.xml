@@ -65,7 +65,7 @@
         app:layout_constraintVertical_bias="0.338" />
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/cvAppointments"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:layout_margin="10dp"
@@ -121,6 +121,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
+        android:id="@+id/cvAllPatients"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:layout_margin="10dp"
@@ -134,7 +135,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/cvAppointments"
         app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
@@ -168,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="View patients"
+                android:text="View all patients"
                 android:textColor="@color/darkgrey" />
 
         </LinearLayout>
