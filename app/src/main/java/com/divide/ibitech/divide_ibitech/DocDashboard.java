@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class DocDashboard extends AppCompatActivity {
     TextView tv_DocName;
     ImageView imgProfilePic;
     CardView cv_Appointments;
+    Button btn_Logout;
 
     private Bitmap bitmap;
     String getId;
@@ -37,6 +39,7 @@ public class DocDashboard extends AppCompatActivity {
 
         tv_DocName = findViewById(R.id.tvDocName);
         cv_Appointments = findViewById(R.id.cvAppointments);
+        btn_Logout = findViewById(R.id.btnLogout);
 
         HashMap<String,String> doc = sessionManager.getDocDetails();
         String sName = doc.get(sessionManager.NAME);
@@ -44,12 +47,20 @@ public class DocDashboard extends AppCompatActivity {
 
         tv_DocName.setText("Dr " + sName + " " + sSurname);
 
+        btn_Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sessionManager.doclogout();
+            }
+        });
+
        cv_Appointments.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
                startActivity(new Intent(DocDashboard.this, ViewAppointments.class));
            }
        });
+
 
     }
 }

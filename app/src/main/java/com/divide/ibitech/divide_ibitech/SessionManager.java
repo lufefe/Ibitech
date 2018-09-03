@@ -132,4 +132,11 @@ public class SessionManager {
         context.startActivity(i);
         ((Dashboard) context).finish();
     }
+    public void doclogout(){
+        editor.clear();
+        editor.commit();
+        Intent i = new Intent(context,DocLogin.class);
+        context.startActivity(i);
+        ((Dashboard) context).finish();
+    }
 }

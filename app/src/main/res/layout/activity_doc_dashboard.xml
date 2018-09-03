@@ -4,7 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/White"
     tools:context=".DocDashboard">
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Logout"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.013" />
 
     <View
         android:id="@+id/view"
@@ -93,7 +115,7 @@
                 android:layout_height="64dp"
                 android:background="@drawable/circlesymptoms"
                 android:padding="10dp"
-                android:src="@drawable/hearing_aid_devices" />
+                android:src="@drawable/ic_appointment" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -147,9 +169,9 @@
             <ImageView
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:background="@drawable/circlesymptoms"
+                android:background="@drawable/circlecondition"
                 android:padding="10dp"
-                android:src="@drawable/hearing_aid_devices" />
+                android:src="@drawable/ic_patients" />
 
             <TextView
                 android:layout_width="wrap_content"
