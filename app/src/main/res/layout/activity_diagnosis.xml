@@ -19,7 +19,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:padding="5dp"
-        android:text="Gill Oved"
+        android:text="Patient Name"
         android:textAlignment="center"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -47,7 +47,7 @@
         app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.467" />
+        app:layout_constraintVertical_bias="0.544" />
 
     <TextView
         android:id="@+id/textView8"
@@ -66,7 +66,7 @@
         app:layout_constraintHorizontal_bias="0.028"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.348" />
+        app:layout_constraintVertical_bias="0.333" />
 
     <TextView
         android:id="@+id/textView7"
@@ -89,7 +89,7 @@
 
     <TextView
         android:id="@+id/txtSymptoms"
-        android:layout_width="8dp"
+        android:layout_width="wrap_content"
         android:layout_height="29dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -108,39 +108,39 @@
 
     <AutoCompleteTextView
         android:id="@+id/actx_Medication"
-        android:layout_width="228dp"
-        android:layout_height="39dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="AutoCompleteTextView"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.461" />
+        app:layout_constraintVertical_bias="0.639" />
 
     <AutoCompleteTextView
-        android:id="@+id/actx_Diagnosis2"
-        android:layout_width="228dp"
-        android:layout_height="40dp"
+        android:id="@+id/actx_Diagnosis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="AutoCompleteTextView"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.952"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.341" />
+        app:layout_constraintVertical_bias="0.427" />
 
     <TextView
         android:id="@+id/txtDate"
@@ -183,7 +183,7 @@
         app:layout_constraintVertical_bias="0.986" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

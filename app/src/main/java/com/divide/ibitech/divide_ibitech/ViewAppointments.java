@@ -1,6 +1,7 @@
 package com.divide.ibitech.divide_ibitech;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,15 +38,6 @@ public class ViewAppointments extends AppCompatActivity {
 
         GetAppts();
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String appt = String.valueOf(parent.getPositionForView(view));
-                Toast.makeText(ViewAppointments.this, appt, Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent(ViewAppointments.this, Diagnosis.class));
-            }
-        });
-
     }
 
     private void GetAppts() {
@@ -57,15 +49,51 @@ public class ViewAppointments extends AppCompatActivity {
 
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("server_response");
+
+                    //Parallel arrays
+                    final String [] patientID = new String[jsonArray.length()];
+                    final String [] patientName = new String[jsonArray.length()];
+                    final String [] patientSurname = new String[jsonArray.length()];
+                    String [] patientCell = new String[jsonArray.length()];
+
                     for (int i = 0; i < jsonArray.length(); i++) {
 
                         JSONObject object = jsonArray.getJSONObject(i);
+
+                         patientID[i] = object.getString("patient_id");
+                         patientName[i] = object.getString("first_name");
+                         patientSurname[i] = object.getString("surname");
+                         patientCell[i] = object.getString("cellphone_number");
+
                         ApptsList appts = new ApptsList(object.getString("first_name"),object.getString("surname"), object.getString("cellphone_number"));
                         apptsLists.add(appts);
                     }
 
                         DocAppointmentsAdapter adapter = new DocAppointmentsAdapter(getApplication(),apptsLists);
                         listView.setAdapter(adapter);
+
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            //String appt = String.valueOf(parent.getItemIdAtPosition(position));
+
+                            for (int i =0; i < patientID.length; i++){
+                                if (parent.getItemIdAtPosition(position) == i)
+                                {
+                                    Toast.makeText(ViewAppointments.this, patientName[i], Toast.LENGTH_SHORT).show();
+                                    SharedPreferences preferences = getSharedPreferences("DIAGNOSIS",MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = preferences.edit();
+
+                                    editor.putString("pID", patientID[i]);
+                                    editor.putString("pName", patientName[i] + " " + patientSurname[i]);
+                                    editor.apply();
+                                    startActivity(new Intent(ViewAppointments.this, Diagnosis.class));
+                                    finish();
+                                }
+
+                            }
+                        }
+                    });
 
                 } catch (JSONException e) {
                     e.printStackTrace();

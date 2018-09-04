@@ -360,5 +360,1070 @@
     <string name="tab_text_3">Tab 3</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
+    <string-array name="medication">
+        <item>	Abacavir 20mg/1mL 240 mL 	</item>
+        <item>	Abacavir 300mg 56 Tablet 	</item>
+        <item>	Abacavir 60mg 56 Tablet 	</item>
+        <item>	Abacavir and Lamivudine 600mg/ 300mg 28 Tablet 	</item>
+        <item>	Acetazolamide 250mg 100 Tablet 	</item>
+        <item>	Acetazolamide 250mg 30 Tablet 	</item>
+        <item>	Acetic Acid BP 500 mL 	</item>
+        <item>	Acetone BP 500 mL 	</item>
+        <item>	Acetylcholine 20mg/2ml, ophthalmic solution, 2ml	</item>
+        <item>	Acetylcysteine 200mg 25 Tablet 	</item>
+        <item>	Acetylcysteine 200mg granules, 20 sachets  	</item>
+        <item>	Acetylcysteine 200mg/mL  10mL 10 Ampoule 	</item>
+        <item>	Acetylcysteine 400mg granules, 30 sachets  	</item>
+        <item>	Aciclovir 200mg 25 Tablet 	</item>
+        <item>	Aciclovir 200mg/5mL 125ml    	</item>
+        <item>	Aciclovir 400mg 60 Tablet 	</item>
+        <item>	Acitretin 10mg 30 Capsule 	</item>
+        <item>	Acitretin 25mg 30 Capsule 	</item>
+        <item>	Acriflavine/proflavine 0.1% 100 mL 	</item>
+        <item>	Adenosine 3mg/ml 2ml Ampoule 	</item>
+        <item>	Adrenaline 1mg/mL 1:1000 1 Ampoule 	</item>
+        <item>	Albendazole 100mg/5mL 20 mL 	</item>
+        <item>	Albendazole 400mg 1 Tablet 	</item>
+        <item>	Albendazole 400mg 500 Tablet 	</item>
+        <item>	Alendronate Na 10mg 28 Tablet 	</item>
+        <item>	Alfacalcidol 0.25mcg 30 Capsule 	</item>
+        <item>	Alfacalcidol 1mcg 30 Capsule 	</item>
+        <item>	Alfentanil 0.5mg/mL 2 mL 	</item>
+        <item>	Allopurinol 100mg 100 Tablet 	</item>
+        <item>	Allopurinol 100mg 28 Tablet 	</item>
+        <item>	Allopurinol 100mg 500 Tablet 	</item>
+        <item>	Allopurinol 100mg 56 Tablet 	</item>
+        <item>	Allopurinol 300mg 30 Tablet 	</item>
+        <item>	Alprostadil 0.5mg/1mL   	</item>
+        <item>	Amantadine 100mg 20 Capsule 	</item>
+        <item>	Amikacin 100mg 2 mL 	</item>
+        <item>	Amikacin 250mg 2ml    	</item>
+        <item>	Amikacin 500mg 2ml  	</item>
+        <item>	Aminophylline 25mg/mL 10ml Ampoule 	</item>
+        <item>	Amiodarone 200mg 30 Tablet 	</item>
+        <item>	Amiodarone 50mg/mL 3ml Ampoule 	</item>
+        <item>	Amisulpride 200mg 30 Tablet 	</item>
+        <item>	Amisulpride 50mg 30 Tablet 	</item>
+        <item>	Amitriptyline 10mg 100 Tablet 	</item>
+        <item>	Amitriptyline 10mg 28 Tablet 	</item>
+        <item>	Amitriptyline 25mg 100 Tablet 	</item>
+        <item>	Amitriptyline 25mg 168 Tablet 	</item>
+        <item>	Amitriptyline 25mg 28 Tablet 	</item>
+        <item>	Amitriptyline 25mg 500 Tablet 	</item>
+        <item>	Amitriptyline 25mg 56 Tablet 	</item>
+        <item>	Amitriptyline 25mg 84 Tablet 	</item>
+        <item>	Amlodipine 10mg 28 Tablet 	</item>
+        <item>	Amlodipine 5mg 28 Tablet 	</item>
+        <item>	Amoxicillin and Clavulanid acid 400mg/57mg/5ml suspension 70ml 400mg/57mg/5ml (Suspension) [70 ml]	</item>
+        <item>	Amoxycillin 125mg/5mL 100 mL 	</item>
+        <item>	Amoxycillin 250mg 100 Capsule 	</item>
+        <item>	Amoxycillin 250mg 15 Capsule 	</item>
+        <item>	Amoxycillin 250mg/5mL 100 mL 	</item>
+        <item>	Amoxycillin 500mg 100 Capsule 	</item>
+        <item>	Amoxycillin 500mg 15 Capsule 	</item>
+        <item>	Amoxycillin,Clavulanic Acid 1000/200mg 1 Vial 	</item>
+        <item>	Amoxycillin,clavulanic Acid 125/31.25mg/5ml 100ml suspension 	</item>
+        <item>	Amoxycillin,clavulanic Acid 250/125mg 15 Tablet 	</item>
+        <item>	Amoxycillin,clavulanic Acid 250/62.5mg/5ml 100ml suspension 	</item>
+        <item>	Amoxycillin,clavulanic Acid 500/100mg 1 Injection 	</item>
+        <item>	Amoxycillin,clavulanic Acid 875/125mg 10 Tablet 	</item>
+        <item>	Ampicillin 250mg injection 	</item>
+        <item>	Ampicillin 500mg/Vial 1 Vial 	</item>
+        <item>	Anastrozole 1mg 28 Tablets	</item>
+        <item>	Antithymocyte Immunoglobulin (Rabbit) 100MG Injection	</item>
+        <item>	Aqueous BP 100g Gram 	</item>
+        <item>	Aqueous BP 500 Gram 	</item>
+        <item>	Aripiprazole 10mg tablet, 30 tablets	</item>
+        <item>	Aripiprazole 15mg tablet, 30 tablets	</item>
+        <item>	Aripiprazole 5mg tablet, 30 tablets	</item>
+        <item>	Artemether,lumefantrine 20/120mg 24 Tablet 	</item>
+        <item>	Aspirin 100mg 28 Tablet 	</item>
+        <item>	Aspirin Soluble 300mg 14 Tablet 	</item>
+        <item>	Aspirin Soluble 300mg 96 Tablet 	</item>
+        <item>	Atazanavir 150mg 56 Capsule 	</item>
+        <item>	Atenolol 100mg 28 Tablet 	</item>
+        <item>	Atenolol 25mg 28 Tablet 	</item>
+        <item>	Atenolol 50mg 28 Tablet 	</item>
+        <item>	Atorvastatin 10mg 28 Tablet 	</item>
+        <item>	Atorvastatin 20mg 30 Tablet 	</item>
+        <item>	Atorvastatin 40mg 30 Tablet 	</item>
+        <item>	Atropine Sulphate 0.5mg/mL 1ml Vial 	</item>
+        <item>	Atropine Sulphate 1% 5ml eye drops 	</item>
+        <item>	Atropine Sulphate 1mg/ml 1ml Ampoule 	</item>
+        <item>	Azathioprine 50mg, 100 Tablets	</item>
+        <item>	azithromycin 200mg/5ml (Suspension) [30 ml]	</item>
+        <item>	Azithromycin 200mg/5ml 15 mL 	</item>
+        <item>	Azithromycin 250mg 3 Tablet 	</item>
+        <item>	Azithromycin 500mg 1 Vial 	</item>
+        <item>	Azithromycin 500mg 2 Tablet 	</item>
+        <item>	Azithromycin 500mg 3 Tablet 	</item>
+        <item>	Baclofen 10mg 30 Tablet 	</item>
+        <item>	Baclofen 25mg 30 Tablet 	</item>
+        <item>	Barium sulfate 2% m/v suspension for cat scanning examinations, for oral or rectal use. 450ml.	</item>
+        <item>	Barium sulfate 4.6% m/m suspension for cat scanning examinations. with graduated mixing measure jug. 225ml.	</item>
+        <item>	Barium sulphate 98g/100g m/m powder for suspension for oral use, 340g  	</item>
+        <item>	Beclometasone  metered dose inhaler, complete, 100mcg per actuation, 200 doses	</item>
+        <item>	Beclomethasone Diproprionate 200mcg 200Dose Inhaler 	</item>
+        <item>	Beclomethasone Diproprionate 50mcg 150 Spray 	</item>
+        <item>	Beclomethasone Diproprionate 50mcg 200Dose Inhaler 	</item>
+        <item>	Bedaquiline 100mg (Tablet) [188 tablets]	</item>
+        <item>	Benzoin Tincture Co BP 100 mL 	</item>
+        <item>	Benzoin Tincture Co BP 20 mL 	</item>
+        <item>	Benzydamine Hcl, Chlorhexidine 22.5mg/18ml 200ml    	</item>
+        <item>	Benzyl Benzoate 25% 100 mL 	</item>
+        <item>	Betamethasone 0.1% 15g cream 	</item>
+        <item>	Betamethasone 0.1% 50g cream 	</item>
+        <item>	Betamethasone -17- Valerate 0.1% ointment, 15g	</item>
+        <item>	Betamethasone 4mg/ml 1ml Ampoule 	</item>
+        <item>	Betamethasone Disodium phosphate and betamethasone acetate 3/3mg/ml, injection 1ml	</item>
+        <item>	Betamethasone Disodium phosphate and betamethasone acetate 3/3mg/ml, injection 5ml	</item>
+        <item>	Betaxolol 2.5mg/ml 5ml eye drops 	</item>
+        <item>	Betaxolol 5mg/ml 5ml eye drops 	</item>
+        <item>	Bevacizumab 100Mg injection	</item>
+        <item>	Bezafibrate 400mg 30 Tablet 	</item>
+        <item>	BICALUTAMIDE 150MG TABLET, 28 TABLETS	</item>
+        <item>	BICALUTAMIDE 50MG TABLET, 28 TABLETS	</item>
+        <item>	Bimatoprost 0.3mg/ml 3ml eye drops 	</item>
+        <item>	Bimatoprost, Timolol 0.3/5mg/ml 3ml  	</item>
+        <item>	Biperiden 2mg 28 Tablet 	</item>
+        <item>	Biperiden 2mg 56 Tablet 	</item>
+        <item>	Biperiden 2mg 84 Tablet 	</item>
+        <item>	Biperiden 5mg injection, 1ml	</item>
+        <item>	Bleomycin 15IU injection	</item>
+        <item>	Brimonidine 2mg/ml,  ophthalmic drops, 5ml	</item>
+        <item>	Brimonidine Tartrate 1.5mg/ml 5ml  	</item>
+        <item>	Brimonidine, Timolol 2/5mg/ml 5ml  	</item>
+        <item>	Budesonide 100mcg 300 Dose 	</item>
+        <item>	Budesonide 200mcg. 300 Dose 	</item>
+        <item>	Buffered Base BP 500g cream 	</item>
+        <item>	Bupivacaine 5mg/ml 10ml Vial 	</item>
+        <item>	Bupivacaine 5mg/ml 4ml 1 Amp 	</item>
+        <item>	Bupivacaine, Adrenalin 5mg/5mcg/mL 20ml Amp 	</item>
+        <item>	Bupivacaine, Dextrose 5mg/72.7mg 4ml Amp 	</item>
+        <item>	Buspirone 10mg 60 Tablet 	</item>
+        <item>	BUSULPHAN 2mg 100 Tablets	</item>
+        <item>	Cabergoline 0.5mg 4 Tablet 	</item>
+        <item>	Caffeine 20mg/ml injection, 1ml	</item>
+        <item>	Calamine BP 100 mL 	</item>
+        <item>	Calcipotriol 0.05/0.5mg 30g Gram 	</item>
+        <item>	Calcitriol 0.25mcg 30 Tablet 	</item>
+        <item>	Calcium Carbonate equ. elem.Ca 500mg 10 Tablet 	</item>
+        <item>	Calcium Carbonate equ. elem.Ca 500mg 30 Tablet 	</item>
+        <item>	Calcium Carbonate, Glycine 420mg/180mg 168 Tablet 	</item>
+        <item>	Calcium Chloride 10% 10ml Ampoule 	</item>
+        <item>	Calcium Folinate equivalent to Folinic Acid 15Mg 15 Tablet, 10 tablets	</item>
+        <item>	Calcium Gluconate 10% 10ml Ampoule 	</item>
+        <item>	Capecitabine 150mg 60 Tablet  Items 51112001-00000 and 51112001-00001 will be considered as a series	</item>
+        <item>	Capecitabine 500mg 120 Tablets Items 51112001-00000 and 51112001-00001 will be considered as a series	</item>
+        <item>	Capreomycin 1g 10 mL 	</item>
+        <item>	Captopril 25mg 60 Tablet 	</item>
+        <item>	Carbamazepine 100mg/5mL 250 mL 	</item>
+        <item>	Carbamazepine 200mg 100 Tablet 	</item>
+        <item>	Carbamazepine 200mg 28 Tablet 	</item>
+        <item>	Carbamazepine 200mg 56 Tablet 	</item>
+        <item>	Carbamazepine 200mg 84  	</item>
+        <item>	Carbidopa, Levodopa 25/100mg 100 Tablet 	</item>
+        <item>	Carbidopa, Levodopa 25/250mg 100 Tablet 	</item>
+        <item>	Carboplatin 150mg injection Items 51112701-00000 and 51112701-00001 will be considered as a series	</item>
+        <item>	Carboplatin 450mg injection Items 51112701-00000 and 51112701-00001 will be considered as a series	</item>
+        <item>	CARDIOPLEGIC CaCl2 0.175g, NaCl 6.42g, KCl  1000 mL 	</item>
+        <item>	Carvedilol 12.5mg 30 Tablet 	</item>
+        <item>	Carvedilol 25mg 30 Tablet 	</item>
+        <item>	Carvedilol 6.25mg 30 Tablet 	</item>
+        <item>	Cefazolin 1g/vial 1 Vial 	</item>
+        <item>	Cefazolin 500mg 1 Vial 	</item>
+        <item>	Cefepime 1g 1 Vial 	</item>
+        <item>	Cefepime 2g 1 Vial 	</item>
+        <item>	Cefotaxime 1g 1 Vial 	</item>
+        <item>	Cefotaxime 500mg 1 Vial 	</item>
+        <item>	Ceftazidime 1g 1 Vial 	</item>
+        <item>	Ceftazidime 2g 1 Vial 	</item>
+        <item>	Ceftriaxone 1g 1 Vial 	</item>
+        <item>	Ceftriaxone 250mg 1 Vial 	</item>
+        <item>	Ceftriaxone 500mg 1 Vial 	</item>
+        <item>	Cephalexin 125mg/5mL 100 mL 	</item>
+        <item>	Cetirizine 10mg 30 Tablet 	</item>
+        <item>	Cetirizine 1mg/ml 150 mL 	</item>
+        <item>	Cetomacrogol 10% 500g cream 	</item>
+        <item>	Cetrimide, Chlorhexidine 15%/1.5% 5000 mL 	</item>
+        <item>	Chlorambucil 2mg 25 Tablets	</item>
+        <item>	Chloramphenicol 1% 3.5g eye ointment 	</item>
+        <item>	Chloramphenicol and Dexamethasone Disodium Phosphate 0.5/0.1% 5ml eye drops 	</item>
+        <item>	Chlorhexidine 0.2% 200ml Mouthwash 	</item>
+        <item>	Chlorhexidine 1% 50G Gram 	</item>
+        <item>	Chlorhexidine 4% 5000ml solution 	</item>
+        <item>	Chlorhexidine 5% 5000ml solution 	</item>
+        <item>	Chlorhexidine Gluconate 1% Obstetric cream, 250ml 	</item>
+        <item>	Chlorhexidine Scrub (Hibiscrub) 4%,500mL 500 mL 	</item>
+        <item>	Chlorhexidine, Alcohol 0.5%/70% 500ml sol without emolient 	</item>
+        <item>	Chlorhexidine, Alcohol 0.5%/70% 500ml solution 	</item>
+        <item>	Chlorhexidine, Alcohol 0.5%/70% 50ml solution 	</item>
+        <item>	Chloroquine 150mg 100 Tablet 	</item>
+        <item>	Chloroquine 68mg/ml 100 mL 	</item>
+        <item>	Chlorpheniramine 4mg 1000 Tablet 	</item>
+        <item>	Chlorpheniramine Maleate 2mg/5mL 50 mL 	</item>
+        <item>	Chlorpheniramine Maleate 4mg 10 Tablet 	</item>
+        <item>	Chlorpheniramine Maleate 4mg 30 Tablet 	</item>
+        <item>	Chlorpromazine 100mg 28 Tablet 	</item>
+        <item>	Chlorpromazine 100mg 56 Tablet 	</item>
+        <item>	Chlorpromazine 100mg 84 Tablet 	</item>
+        <item>	Chlorpromazine 25mg 28 Tablet 	</item>
+        <item>	Chlorpromazine 25mg 56 Tablet 	</item>
+        <item>	Chlorpromazine 50mg 56 Tablet 	</item>
+        <item>	Ciclosporin 100mg  capsule, 50 Capsules Items 51203101-00001 and 51203101-00002 will be considered as a series	</item>
+        <item>	Ciclosporin 100mg/ml  Oral Solution, 50ml	</item>
+        <item>	Ciclosporin 25Mg capsule, 50 Capsules  Items 51203101-00001 and 51203101-00002 will be considered as a series	</item>
+        <item>	Ciprofloxacin 250mg 10 Tablet 	</item>
+        <item>	Ciprofloxacin 250mg/5ml 100ml  	</item>
+        <item>	Ciprofloxacin 2mg/mL 200ml Injection 	</item>
+        <item>	Ciprofloxacin 2mg/mL 50ml Injection 	</item>
+        <item>	Ciprofloxacin 3mg/ml 5ml eye drops 	</item>
+        <item>	Ciprofloxacin 500mg 10 Tablet 	</item>
+        <item>	Cisplatin 10mg Injection  Items 51112702-00100 and 51112702-00000 will be considered as a series	</item>
+        <item>	Cisplatin 50Mg Injection Items 51112702-00100 and 51112702-00000 will be considered as a series	</item>
+        <item>	Citalopram 20mg 30 Tablet 	</item>
+        <item>	Citric Acid BP 500g    	</item>
+        <item>	clarithromycin 125mg/5ml (Suspension) [50/60 ml]	</item>
+        <item>	clarithromycin 250mg/5ml (Suspension) [50/60 ml]	</item>
+        <item>	clarithromycin 500mg (Tablet) [10 tablets]	</item>
+        <item>	Clarithromycin 500mg 14 Tablet 	</item>
+        <item>	Clindamycin 150mg 100 Capsule 	</item>
+        <item>	Clindamycin 150mg 20 Capsule 	</item>
+        <item>	Clindamycin 600mg 1 Injection 	</item>
+        <item>	Clip, Tubal Occlusion With Mechanical Locking Device, Xray Detectable, Sterile, Supplied In Pairs  1 Pair . 1 Pair 	</item>
+        <item>	Clobetasol Proprionate 0.05% 25g cream 	</item>
+        <item>	Clobetasol Proprionate 0.05% 25g Ointment 	</item>
+        <item>	Clomiphene 50mg 10 Tablet 	</item>
+        <item>	Clomipramine 25mg 50 Tablet 	</item>
+        <item>	Clonazepam 0.5mg 100 Tablet 	</item>
+        <item>	Clonazepam 1mg/mL 1 mL 	</item>
+        <item>	Clonazepam 2.5mg/mL 10 mL 	</item>
+        <item>	Clonazepam 2mg 100 Tablet 	</item>
+        <item>	Clopidogrel 75mg 28 Tablet 	</item>
+        <item>	Clothiapine 10mg/mL 4ml Ampoule 	</item>
+        <item>	Clotrimazole 1% 20gm cream 	</item>
+        <item>	Clotrimazole 500mg 1 Vaginal Tablet 	</item>
+        <item>	clotrimazole 500mg/50g (Vaginal Cream) [50 g]	</item>
+        <item>	Clozapine 100mg 84 Tablet 	</item>
+        <item>	Clozapine 25mg 84 Tablet 	</item>
+        <item>	Coal Tar BP 500 mL 	</item>
+        <item>	Cocaine Hydrochloride BP 25g    	</item>
+        <item>	Codeine Phosphate 30mg 100 Tablet 	</item>
+        <item>	Colchicine 0,5mg tablet, 12 tablets	</item>
+        <item>	Collagenase, Proteases BP 30g Ointment 	</item>
+        <item>	Co-trimoxazole 240mg/5mL 100 mL 	</item>
+        <item>	Co-trimoxazole 240mg/5mL 50 mL 	</item>
+        <item>	Co-trimoxazole 480mg 100 Tablet 	</item>
+        <item>	Co-trimoxazole 480mg 28 Tablet 	</item>
+        <item>	Co-trimoxazole 480mg 56 Tablet 	</item>
+        <item>	Co-trimoxazole 480mg/5ml 5ml Injection 	</item>
+        <item>	Cyclizine 50mg 10 Tablet 	</item>
+        <item>	Cyclopentolate HCl 1% 15ml eye drops 	</item>
+        <item>	Cyclopentolate Hcl 1%. 0.5mlx20  	</item>
+        <item>	Cyclopentolate HCl, Phenylephrine 0.2%/1%. 5. mL 	</item>
+        <item>	Cyclophosphamide 1g Injection  Items 51112507-00005 and 51112507-00006 will be considered as a series	</item>
+        <item>	Cyclophosphamide 500mg Injection  Items 51112507-00005 and 51112507-00006 will be considered as a series	</item>
+        <item>	Cyclophosphamide 50Mg tablet, 50 Tablets	</item>
+        <item>	Cyproterone Ac, Ethinyl Estradiol 1mg/2mg 28 Tablet 	</item>
+        <item>	Cyproterone Ac, Ethinyl Estradiol 2mg/0.035mg 28 Tablet 	</item>
+        <item>	Cyproterone Acetate 100mg/mL 3 mL 	</item>
+        <item>	Cyproterone Acetate 10mg 15 Tablet 	</item>
+        <item>	Cyproterone Acetate 50mg 20 Tablet 	</item>
+        <item>	Danazol 100mg 60 Capsule 	</item>
+        <item>	Dapsone 100mg 100 Tablet 	</item>
+        <item>	Darunavir 150mg tablets 240 tablets	</item>
+        <item>	Darunavir 600mg 56 Tablet 	</item>
+        <item>	Darunavir 75mg tablets 480 tablets	</item>
+        <item>	Daunorubicin 20mg injection 	</item>
+        <item>	Deferasirox 250mg 28 Tablet 	</item>
+        <item>	Deferasirox 500mg 28 Tablet 	</item>
+        <item>	Desferrioxamine 500mg 1 Vial 	</item>
+        <item>	Desmopressin 0.1mg 30 Tablet 	</item>
+        <item>	Desmopressin 0.2mg 30 Tablet 	</item>
+        <item>	Desmopressin 100mcg/ml 5ml  	</item>
+        <item>	Desmopressin 4mcg/ml 1 Vial 	</item>
+        <item>	Device: Reusable pen for 3ml insulin catridges . 1 Device 	</item>
+        <item>	Dexamethasone 0.1% 5ml eye drops 	</item>
+        <item>	Dexamethasone 4mg/ml 1 Ampoule 	</item>
+        <item>	Dexmedetomidine 100 mcg/ml	</item>
+        <item>	Dextrose 10% 1000 mL 	</item>
+        <item>	Dextrose 5% 100 mL 	</item>
+        <item>	Dextrose 5% 1000 mL 	</item>
+        <item>	Dextrose 5% 200 mL 	</item>
+        <item>	Dextrose 5% 50 mL 	</item>
+        <item>	Dextrose 50% 500 mL 	</item>
+        <item>	Dextrose In Water 50% 20ml 10 Vial 	</item>
+        <item>	Dextrose In Water 50% 50ml 1 Vial 	</item>
+        <item>	Dextrose Monohydrate BP 500g Container 	</item>
+        <item>	Dextrose Monohydrate BP 75g  	</item>
+        <item>	Diazepam 5mg 100 Tablet 	</item>
+        <item>	Diazepam 5mg/mL 2ml Ampoule 	</item>
+        <item>	Diclofenac Na 25mg/mL 3ml Vial 	</item>
+        <item>	Digoxin 0.25mg 14 Tablet 	</item>
+        <item>	Digoxin 0.25mg 28 Tablet 	</item>
+        <item>	Dinoprostone 0.5mg 10 Tablet 	</item>
+        <item>	Dinoprostone 1mg/3g 3g  Prefilled Syringe 	</item>
+        <item>	Dobutamine 12.5mg/mL 20 mL 	</item>
+        <item>	Docetaxel 20mg injection Items 51101929-00000 and 51101929-00001 will be considered as a series	</item>
+        <item>	Docetaxel 80mg injection Items 51101929-00000 and 51101929-00001 will be considered as a series	</item>
+        <item>	Dolutegravir 50mg tablets 30 tablets	</item>
+        <item>	Domperidone 10mg 100 Tablet 	</item>
+        <item>	Dopamine 40mg/ml 5ml Ampoule 	</item>
+        <item>	Dorzolamide and Timolol, 20mg and 5mg/ml, ophthalmic drops, 5ml	</item>
+        <item>	Doxazosin 1mg 30 Tablet 	</item>
+        <item>	Doxazosin 4mg 30 Tablet 	</item>
+        <item>	Doxorubicin 10mg injection Items 51281806-00000 and 51281806-00001 will be considered as a series	</item>
+        <item>	Doxorubicin 50mg injection Items 51281806-00000 and 51281806-00001 will be considered as a series	</item>
+        <item>	Doxycycline 100mg 100 Capsule 	</item>
+        <item>	Doxycycline 100mg 14 Capsule 	</item>
+        <item>	Doxycycline 100mg 28 Capsule 	</item>
+        <item>	Efavirenz 200mg 84 Capsule 	</item>
+        <item>	Efavirenz 50mg 28/30 Capsule 	</item>
+        <item>	Efavirenz 600mg 28 Tablet 	</item>
+        <item>	Electrode gel (for ECG) Chloride free BP 250 mL 	</item>
+        <item>	Electrolyte Solution: Na, K, Cl, Dextrose 103/15/117/50g 1000 mL 	</item>
+        <item>	Electrolyte Solution: Na, K, Cl, Mg, Dextrose(post Surgisol) 10% 1000 mL 	</item>
+        <item>	Electrolyte Solution: Na, K, Cl, Mg, HPO4, Dextrose 61/25/50/3/7mmol/100g 1000ml    	</item>
+        <item>	Emulsifying BP 500g Ointment 	</item>
+        <item>	Enalapril 10mg 28 Tablet 	</item>
+        <item>	Enalapril 20mg 28 Tablet 	</item>
+        <item>	Enalapril 5mg 28 Tablet 	</item>
+        <item>	Enoxaparin 40mg/0.4mL 1 Prefilled Syringe 	</item>
+        <item>	Enoxaparin 60mg 0.6ml Prefilled Syringe 	</item>
+        <item>	Enoxaparin 80mg/ml 0.8ml Prefilled Syringe 	</item>
+        <item>	Ephedrine 50mg 1ml Ampoule 	</item>
+        <item>	Epirubicin 10mg injection Items 51281803-00000 and 51281803-00001 will be considered as a series 	</item>
+        <item>	Epirubicin 50mg injection Items 51281803-00000 and 51281803-00001 will be considered as a series 	</item>
+        <item>	Ertapenem Sodium 1g 20 mL 	</item>
+        <item>	Erythropoietin 10000 IU/ml  1ml Prefilled Syringe 	</item>
+        <item>	Erythropoietin 2000 IU/0.5ml 0.5ml Prefilled Syringe 	</item>
+        <item>	Erythropoietin 300 000U/ml 1ml Prefilled Syringe 	</item>
+        <item>	Erythropoietin 4000 IU/ml 0.4ml Prefilled Syringe 	</item>
+        <item>	Esomeprazole injection, 40mg	</item>
+        <item>	Estradiol 1mg 28 Tablet 	</item>
+        <item>	Estradiol 2mg 28 Tablet 	</item>
+        <item>	Estradiol, Norethisterone Acetate 1mg/0.5mg 28 Tablet 	</item>
+        <item>	Estradiol, Norethisterone Acetate 2mg/1mg 28 Tablet 	</item>
+        <item>	Estrogens, Conjugated 0.3mg 28 Tablet 	</item>
+        <item>	Estrogens, Conjugated 0.625mg 28 Tablet 	</item>
+        <item>	Ethambutol HCl 400mg 100 Tablet 	</item>
+        <item>	Ethambutol HCl 400mg 56 Tablet 	</item>
+        <item>	Ethambutol HCl 400mg 84 Tablet 	</item>
+        <item>	Ethionamide 250mg 250 Tablet 	</item>
+        <item>	Ethionamide 250mg 28 Tablet 	</item>
+        <item>	Ethionamide 250mg 56 Tablet 	</item>
+        <item>	Ethionamide 250mg 84 Tablet 	</item>
+        <item>	ethyl chloride 100ml (Liquid) [100 ml]	</item>
+        <item>	Etomidate 2mg/mL 10ml Ampoule 	</item>
+        <item>	Etravirine 100mg 112 Tablet 	</item>
+        <item>	Everolimus 0.25mg tablet, 60 tablets Items 51202603-00000 and 51202603-00001 will be considered as a series	</item>
+        <item>	Everolimus 0.75mg tablet, 60 tablets Items 51202603-00000 and 51202603-00001 will be considered as a series	</item>
+        <item>	Exemestane 25mg tablet, 28 tablets 	</item>
+        <item>	Ezetimibe 10mg tablet, 30 tablets	</item>
+        <item>	Factor Ix Complex 500IU Unit    	</item>
+        <item>	Factor Vii 100000IU/vial 1 Unit 	</item>
+        <item>	Factor Vii 250000IU 1 Unit 	</item>
+        <item>	Factor Vii 50000IU/vial 1 Unit 	</item>
+        <item>	Factor Viii 300IU/vial 1 Unit 	</item>
+        <item>	Factor Viii 500IU/vial 1 Unit 	</item>
+        <item>	Factor Viii 500IU:1000IU 2 Vial 	</item>
+        <item>	Fenoterol 1.25mg/2mL 60x2ml UDV 	</item>
+        <item>	Fentanyl 0.05mg/ml 10ml Ampoule 	</item>
+        <item>	Fentanyl 0.05mg/ml 2ml Ampoule 	</item>
+        <item>	Ferrous Gluconate 350mg/5mL 100 mL 	</item>
+        <item>	Ferrous Sulphate Co 170mg 100 Tablet 	</item>
+        <item>	Ferrous Sulphate Co 170mg 28 Tablet 	</item>
+        <item>	Ferrous Sulphate Co 170mg 500 Tablet 	</item>
+        <item>	Ferrous Sulphate Co 170mg 56 Tablet 	</item>
+        <item>	Ferrous Sulphate Co 170mg 84 Tablet 	</item>
+        <item>	Filgrastim 30MU prefilled syringe 	</item>
+        <item>	Filgrastim 48MU prefilled syringe	</item>
+        <item>	Flucloxacillin 250mg 100 Capsule 	</item>
+        <item>	Flucloxacillin 250mg 20 Capsule 	</item>
+        <item>	Flucloxacillin 250mg 40 Capsule 	</item>
+        <item>	Fluconazole 200mg 28 Capsule 	</item>
+        <item>	Fluconazole 2mg/mL 100ml Injection 	</item>
+        <item>	Fluconazole 50mg 14 Capsule 	</item>
+        <item>	Flumazenil 0.1mg/mL 10ml Ampoule 	</item>
+        <item>	Flumazenil 0.1mg/mL 5ml Ampoule 	</item>
+        <item>	Fluocinolone 0.025% 15g Ointment 	</item>
+        <item>	Fluocinolone 0.025% 30g Gel 	</item>
+        <item>	Fluocinolone Acetonide 0.025% cream, 15g	</item>
+        <item>	Fluorescein 2%/0.5ml 20  	</item>
+        <item>	Fluorouracil 5% ointment, 20g 	</item>
+        <item>	Fluorouracil 500mg injection	</item>
+        <item>	Fluoxetine 20mg 100 Capsule 	</item>
+        <item>	Fluoxetine 20mg 28 Capsule 	</item>
+        <item>	Flupenthixol 20mg/ml 1 ml Ampoule 	</item>
+        <item>	Fluticasone 250mcg/dose 120 Dose 	</item>
+        <item>	Fluticasone and Salmeterol, 250mcg and 50mcg per actuation, actuated inhaler, complete, 60 doses	</item>
+        <item>	Folic 5mg 1000 Tablet 	</item>
+        <item>	Folic Acid 5mg 100 Tablet 	</item>
+        <item>	Folic Acid 5mg 28 Tablet 	</item>
+        <item>	Fosfomycin 3g (Sachet) [1 sachet]	</item>
+        <item>	Furosemide 10mg/2mL 2ml Ampoule 	</item>
+        <item>	Furosemide 10mg/mL 100 mL 	</item>
+        <item>	Furosemide 10mg/mL 25ml Ampoule 	</item>
+        <item>	Furosemide 10mg/ml 5ml Ampoule 	</item>
+        <item>	Furosemide 40mg 1000 Tablet 	</item>
+        <item>	Furosemide 40mg 112 Tablet 	</item>
+        <item>	Furosemide 40mg 250 Tablet 	</item>
+        <item>	Furosemide 40mg 28 Tablet 	</item>
+        <item>	Furosemide 40mg 5000 Tablet 	</item>
+        <item>	Furosemide 40mg 56 Tablet 	</item>
+        <item>	Furosemide 40mg 84 Tablet 	</item>
+        <item>	Furosemide 500mg 100 Tablet 	</item>
+        <item>	Gabapentin 100mg 100 Capsule 	</item>
+        <item>	Gadopentetic acid 469.1mg/ml injection, 10ml.	</item>
+        <item>	Gadopentetic Acid 469.1mg/ml injection, 20ml 	</item>
+        <item>	Ganciclovir 500mg 1 Vial 	</item>
+        <item>	Gemcitabine 1g injection Items 51111617-00000 and 51111617-00001 will be considered as a series	</item>
+        <item>	Gemcitabine 200mg injection Items 51111617-00000 and 51111617-00001 will be considered as a series	</item>
+        <item>	Gentamicin 20mg/2ml 2ml Injection 	</item>
+        <item>	Gentamicin 40mg/ml 1ml Injection 	</item>
+        <item>	Gentamicin 80mg/2ml 2ml Ampoule 	</item>
+        <item>	Glibenclamide 5mg 100 Tablet 	</item>
+        <item>	Glibenclamide 5mg 28 Tablet 	</item>
+        <item>	Glibenclamide 5mg 56 Tablet 	</item>
+        <item>	Glibenclamide 5mg 84 Tablet 	</item>
+        <item>	Gliclazide 80mg 112 Tablet 	</item>
+        <item>	Gliclazide 80mg 28 Tablet 	</item>
+        <item>	Gliclazide 80mg 504 Tablet 	</item>
+        <item>	Gliclazide 80mg 56 Tablet 	</item>
+        <item>	Glimepiride 1mg 30 Tablet 	</item>
+        <item>	Glimepiride 2mg 30 Tablet 	</item>
+        <item>	Glimepiride 4mg 30 Tablet 	</item>
+        <item>	Glycerine 0.891ml 12 Supp 	</item>
+        <item>	Glycerine BP 500 mL 	</item>
+        <item>	Glyceryl trinitrate 1mg/ml, injection, 10ml	</item>
+        <item>	Glycopyrrolate 0.2mg/mL 2 mL 	</item>
+        <item>	Goserelin 10.8mg injection	</item>
+        <item>	Goserelin 3.6mg injection	</item>
+        <item>	Granisetron 1mg tablet, 10 tablets	</item>
+        <item>	Granisetron 3mg injection	</item>
+        <item>	Half Darrow With Glucose 5%   200 mL 	</item>
+        <item>	Half Darrow With Glucose 5%   500 mL 	</item>
+        <item>	Haloperidol 0.5mg 56 Capsule 	</item>
+        <item>	Haloperidol 1.5mg 100 Tablet 	</item>
+        <item>	Haloperidol 10mg/ml injection, 2ml	</item>
+        <item>	Haloperidol 5mg 100 Tablet 	</item>
+        <item>	Haloperidol 5mg 14 Tablet 	</item>
+        <item>	Haloperidol 5mg 28 Tablet 	</item>
+        <item>	Haloperidol 5mg 56 Tablet 	</item>
+        <item>	Haloperidol 5mg/ml injection, 1ml	</item>
+        <item>	Halothane 250 mL .    	</item>
+        <item>	Heparin Sodium 1000IU/mL 5ml Vial 	</item>
+        <item>	Heparin Sodium 5000IU/mL 5ml Vial 	</item>
+        <item>	Human Coagulation Factor Concentrate: Activated Prothrombin Complex Concentrate 1000IU/vial 1 Unit 	</item>
+        <item>	Human Coagulation Factor Concentrate: Activated Prothrombin Complex Concentrate 500IU/vial 1 Unit 	</item>
+        <item>	Hyaluronic Acid 10mg/mL 0.4ml  	</item>
+        <item>	Hyaluronic Acid 10mg/mL 0.55ml    	</item>
+        <item>	Hyaluronic Acid 12mg/ml 0.8ml  	</item>
+        <item>	Hyaluronic Acid/chondroitin 30/40mg/ML 0.5ml  	</item>
+        <item>	Hyaluronidase 1500iu 1 Ampoule 	</item>
+        <item>	Hydralazine 25mg 56 Tablet 	</item>
+        <item>	Hydralazine 25mg 84 Tablet 	</item>
+        <item>	Hydrochlorothiazide 12.5mg 28 Tablet 	</item>
+        <item>	Hydrochlorothiazide 25mg 28 Tablet 	</item>
+        <item>	Hydrochlorothiazide 25mg 500 Tablet 	</item>
+        <item>	Hydrocortisone 1% 20g cream 	</item>
+        <item>	Hydrocortisone 1% 25g Ointment 	</item>
+        <item>	Hydrocortisone 10mg 100 Tablet 	</item>
+        <item>	Hydrocortisone Sod Succinate 100mg/2mL 1 Vial 	</item>
+        <item>	Hydroxyethyl Starch 130/0.4 500 mL 	</item>
+        <item>	Hyoscine Butyl Bromide 10mg 10 Tablet 	</item>
+        <item>	Hyoscine Butyl Bromide 10mg 100 Tablet 	</item>
+        <item>	Hyoscine Butyl Bromide 20mg/mL 1 ml Ampoule 	</item>
+        <item>	Hyoscine Butyl Bromide 5mg/5ml 100ml    	</item>
+        <item>	Ibuprofen 100mg/5mL 100 mL 	</item>
+        <item>	Ibuprofen 200mg 1000 Tablet 	</item>
+        <item>	Ibuprofen 200mg 15 Tablet 	</item>
+        <item>	Ibuprofen 200mg 42 Tablet 	</item>
+        <item>	Ibuprofen 200mg 84 Tablet 	</item>
+        <item>	Ibuprofen 400mg 100 Tablet 	</item>
+        <item>	Ibuprofen 400mg 15  	</item>
+        <item>	Ibuprofen 400mg 30 Tablet 	</item>
+        <item>	Ibuprofen 400mg 84 Tablet 	</item>
+        <item>	Ichthammol BP 500 Gram 	</item>
+        <item>	Idarubicin 10mg injection	</item>
+        <item>	Ifosfamide 1g injection Items 51112510-00000, 51112510-00001 and 51112510-00002 will be considered as a series	</item>
+        <item>	Ifosfamide 2g injection Items 51112510-00000, 51112510-00001 and 51112510-00002 will be considered as a series	</item>
+        <item>	Ifosfamide 500mg injection Items 51112510-00000, 51112510-00001 and 51112510-00002 will be considered as a series	</item>
+        <item>	Imatinib 100mg tablet/capsule, 60 tablets/capsules	</item>
+        <item>	Imatinib 400mg tablet/capsule, 30 tablets/capsules	</item>
+        <item>	Imipenem, Cilastatin 500/500mg 1 Vial 	</item>
+        <item>	Imiquimod 5% 12 Sachet 	</item>
+        <item>	Immunoglobulin: Hepatitis B 100IU/2mL 2ml Ampoule 	</item>
+        <item>	Immunoglobulin: Human, Tetanus  250IU/2ml 1 Ampoule 	</item>
+        <item>	Indomethacin 25mg 100 Capsule 	</item>
+        <item>	Inhaler Device (spacer) with mask, for children 250ml to 500ml 1 Device 	</item>
+        <item>	Inhaler Device (spacer) with mask, for infants 150ml to 250ml 1 Device 	</item>
+        <item>	Insulin, Biosynthetic, Human, Biphasic 100U/ml 3ml disposable pen 	</item>
+        <item>	Insulin, Isophane (intermediate Acting) 100IU/ml 10ml Vial 	</item>
+        <item>	Insulin, Isophane (intermediate Acting) 100IU/ml 3ml disposable pen 	</item>
+        <item>	Insulin, Soluble (fast Acting) 100IU/ml 10 mL 	</item>
+        <item>	Insulin, Soluble (fast Acting) 100IU/ml 3ml Prefilled Syringe 	</item>
+        <item>	Insulin, Soluble And Isophane 30/70% 100IU/ml 10ml Vial 	</item>
+        <item>	Insulin, Soluble And Isophane 30/70% 100U/ml 3ml Cartridge 	</item>
+        <item>	Interferon Beta-1a  Injection containing 6M IU per ml after reconstitution	</item>
+        <item>	Interferon Beta-1b, 8M IU per ml after reconstitution, vial	</item>
+        <item>	Intra-Uterine Contraceptive Device (IUCD), Copper Cu380 1    	</item>
+        <item>	Intra-uterine Device, Levonorgestrel  52mg Device 	</item>
+        <item>	iodine and pottassium iodide aqueous oral solution 0.05g/0.1g/ml (Liquid) [100 ml]	</item>
+        <item>	Iohexol 300mg iodine/ml injection, 100ml	</item>
+        <item>	Iohexol 300mg iodine/ml injection, 20ml	</item>
+        <item>	Iohexol 300mg iodine/ml injection, 50ml	</item>
+        <item>	Iohexol 350mg iodine/ml injection, 100ml. 	</item>
+        <item>	Iohexol 350mg iodine/ml injection, 50ml.	</item>
+        <item>	Iomeprol 400, iodine content 400mg/ml, 100ml.	</item>
+        <item>	Iopamidol 300mg iodine/ml injection, 100ml.	</item>
+        <item>	Iopamidol 300mg iodine/ml injection, 50ml.	</item>
+        <item>	Iopamidol 370mg iodine/ml injection, 100ml.	</item>
+        <item>	Iopamidol 370mg iodine/ml injection, 50ml.	</item>
+        <item>	Iopromide 300mg iodine/ml injection, 100ml. 	</item>
+        <item>	Iopromide 300mg iodine/ml injection, 50ml. 	</item>
+        <item>	Iopromide 370mg iodine/ml injection, 100ml. 	</item>
+        <item>	Ipratropium Bromide 0.25mg/2mL 60x2ml UDV 	</item>
+        <item>	Ipratropium Bromide 0.5mg/2ml 60x2ml UDV 	</item>
+        <item>	Ipratropium Bromide, Salbutamol 0.5;2.5mg/2.5mL 60 UDV 	</item>
+        <item>	Ipratropium metered dose inhaler, 40mcg per actuation, complete, 200 metered doses	</item>
+        <item>	Irinotecan 100mg injection	</item>
+        <item>	Irinotecan 40mg injection	</item>
+        <item>	Iron Polyisomaltose 500mg 10ml Ampoule 	</item>
+        <item>	Iron Polyisomaltose 50mg/ml 2ml Ampoule 	</item>
+        <item>	Iron Sucrose Complex 100mg/5mL 5ml Ampoule 	</item>
+        <item>	Isoflurane USP 100 mL 	</item>
+        <item>	Isoflurane USP 250 mL 	</item>
+        <item>	Isoniazid 100mg 28 Tablet 	</item>
+        <item>	Isoniazid 300mg 28 Tablet 	</item>
+        <item>	Isosorbide Dinitrate 10mg 50 Tablet 	</item>
+        <item>	Isosorbide Dinitrate 10mg 84 Tablet 	</item>
+        <item>	Isosorbide Dinitrate 5mg 50 Tablet 	</item>
+        <item>	Isotretinoin 10mg 60 Capsule 	</item>
+        <item>	Isotretinoin 20mg 60 Capsule 	</item>
+        <item>	Itraconazole 100mg capsule, 14 capsules 	</item>
+        <item>	Kanamycin Sulphate 1g 3 mL 	</item>
+        <item>	Ketamine 100mg/ml 10ml Vial 	</item>
+        <item>	Ketamine 10mg/mL 20ml Vial 	</item>
+        <item>	Ketamine 50mg/mL 10ml Vial 	</item>
+        <item>	Ketorolac 5mg/ml 5 mL 	</item>
+        <item>	Lactulose 3.35g/5ml 150 mL 	</item>
+        <item>	Lactulose 3.35g/5ml 500 mL 	</item>
+        <item>	Lamivudine 10mg/mL 240 mL 	</item>
+        <item>	Lamivudine 150mg 56 Tablet 	</item>
+        <item>	Lamivudine 300mg 28 Tablet 	</item>
+        <item>	Lamotrigine 100mg 56 Tablet 	</item>
+        <item>	Lamotrigine 200mg 56 Tablet 	</item>
+        <item>	Lamotrigine 25mg 56 Tablet 	</item>
+        <item>	Lamotrigine 50mg 56 Tablet 	</item>
+        <item>	Lanolin Anhydrous 3% 3.5g Ointment 	</item>
+        <item>	Lansoprazole 30mg 14 Tablet 	</item>
+        <item>	Lansoprazole 30mg 28 Tablet 	</item>
+        <item>	Leflunomide 10mg 30 Tablet 	</item>
+        <item>	Leflunomide 20mg 30 Tablet 	</item>
+        <item>	Letrozole 2.5mg tablet, 28 tablets	</item>
+        <item>	Levetiracetam 250mg 30 Tablet 	</item>
+        <item>	Levetiracetam 250mg tablet, 60 tablets 	</item>
+        <item>	Levetiracetam 750mg 30 Tablet 	</item>
+        <item>	Levobunolol 0.5% 5 mL 	</item>
+        <item>	Levofloxacin 250mg 28 Tablet 	</item>
+        <item>	Levofloxacin 500mg 10 Tablet 	</item>
+        <item>	Levofloxacin 500mg 28 Tablet 	</item>
+        <item>	Levonorgestrel ,  Ethinyl Estradiol, Triphasic 0.05/0.03,0.075/0.04,0.125/0.0 28 Tablet 	</item>
+        <item>	Levonorgestrel 0.03mg 28 Tablet 	</item>
+        <item>	Levonorgestrel 1.5mg 1 Tablet 	</item>
+        <item>	Levonorgestrel,  Ethinyl Estradiol, Monophasic 0.15mg/0.03mg 28 Tablet 	</item>
+        <item>	Lignocaine 1%. 20ml Vial 	</item>
+        <item>	Lignocaine 10% 5ml Ampoule 	</item>
+        <item>	Lignocaine 2% 1.8ml Cartridge, Dental  	</item>
+        <item>	Lignocaine 2% 20ml Vial 	</item>
+        <item>	Lignocaine 2% 5ml Ampoule 	</item>
+        <item>	Lignocaine, Adrenaline 2% 2ml Vial 	</item>
+        <item>	Linezolid  600mg 10 Tablet 	</item>
+        <item>	linezolid 100mg/5ml (Suspension) [150 ml]	</item>
+        <item>	Linezolid 600mg 300ml Infusion 	</item>
+        <item>	Liquid Paraffin BP 200 mL 	</item>
+        <item>	Lithium Carbonate 250mg 100 Tablet 	</item>
+        <item>	Lithium Carbonate 400mg 100 Tablet 	</item>
+        <item>	Loperamide 2mg 300 Tablet 	</item>
+        <item>	Loperamide 2mg 6 Tablet 	</item>
+        <item>	Lopinavir, Ritonavir 100mg/25mg 60 Tablet 	</item>
+        <item>	Lopinavir, Ritonavir 200/50mg 112 Tablet 	</item>
+        <item>	Lopinavir, Ritonavir 80/20mg/mL 60 mL 	</item>
+        <item>	Lorazepam 1mg 100 Tablet 	</item>
+        <item>	Lorazepam 2.5mg 100 Tablet 	</item>
+        <item>	Lorazepam 4mg injection, 1ml	</item>
+        <item>	Losartan 100mg 28 Tablet 	</item>
+        <item>	Losartan 50mg 28 Tablet 	</item>
+        <item>	Lubricating Jelly, Glycerine And Preservatives BP 50G Tube 	</item>
+        <item>	Lubricating jelly, Glycerine and preservatives. sterile, non-greasy, transparent, water-soluble and of a suitable viscosiy. Approx 2.5g sachet	</item>
+        <item>	Lyophilised Plasma . 200 mL 	</item>
+        <item>	Lyophilised Plasma . 50 mL 	</item>
+        <item>	Magnesium 660mg 60 Tablet 	</item>
+        <item>	Magnesium Sulphate 50% 2ml Ampoule 	</item>
+        <item>	Magnesium Sulphate BP 500g    	</item>
+        <item>	Maintelyte With Dextrose 5%(sustenance) 35/25/65/2.5mmol/5% 1000 mL 	</item>
+        <item>	Mannitol 20% 500 mL 	</item>
+        <item>	Mannitol 5% 3000 mL 	</item>
+        <item>	Mebendazole 100mg 6 Tablet 	</item>
+        <item>	Mebendazole 500mg 1 Tablet 	</item>
+        <item>	Medroxyprogesterone 10mg 30 Tablet 	</item>
+        <item>	Medroxyprogesterone 5mg 30 Tablet 	</item>
+        <item>	Medroxyprogesterone Acetate 100mg tablet, 100 tablets	</item>
+        <item>	Meglumine amidotrizoate 66g and sodium amidotrizoate 10g solution, 100ml	</item>
+        <item>	Meglumine diatrizoate 26.1% and sodium diatrizoate 3.9% injection, 250ml	</item>
+        <item>	Meglumine diatrizoate 52.1% and sodium diatrizoate 7.9% injection, 20ml	</item>
+        <item>	Meglumine diatrizoate 66% and sodium diatrizoate 10% injection, 20ml	</item>
+        <item>	Melphalan 2mg  tablet, 25 tablets	</item>
+        <item>	Mercaptopurine 50mg tablet,  25 tablets	</item>
+        <item>	Meropenem 1g 30ml Vial 	</item>
+        <item>	Meropenem 500mg 20 mL 	</item>
+        <item>	Mesalazine 400mg 90 Tablet 	</item>
+        <item>	Mesna 400mg injection 	</item>
+        <item>	Metformin 500mg 500 Tablet 	</item>
+        <item>	Metformin 500mg 56 Tablet 	</item>
+        <item>	Metformin 500mg 84 Tablet 	</item>
+        <item>	Metformin 850mg 28 Tablet 	</item>
+        <item>	Metformin 850mg 300 Tablet 	</item>
+        <item>	Metformin 850mg 56 Tablet 	</item>
+        <item>	Metformin 850mg 84 Tablet 	</item>
+        <item>	Methotrexate 1g injection	</item>
+        <item>	Methotrexate 2.5mg tablet, 100 tablets	</item>
+        <item>	Methotrexate 50mg injection	</item>
+        <item>	Methotrexate 5g injection	</item>
+        <item>	Methyl Salicylate 10% 25g Ointment 	</item>
+        <item>	Methyldopa 250mg 112 Tablet 	</item>
+        <item>	Methyldopa 250mg 56 Tablet 	</item>
+        <item>	Methyldopa 250mg 84 Tablet 	</item>
+        <item>	Methylphenidate 10mg 30 Tablet 	</item>
+        <item>	Methylphenidate 20mg 30 Capsule 	</item>
+        <item>	Methylphenidate 30mg 30 Tablet 	</item>
+        <item>	Methylprednisolone 40mg (as Sodium succinate), injection , 1ml	</item>
+        <item>	Methylprednisolone Aceponate 1mg/g 20g Cream 	</item>
+        <item>	Methylprednisolone Aceponate 1mg/g 20g Ointment 	</item>
+        <item>	Methylprednisolone Aceponate 1mg/g 50g Cream	</item>
+        <item>	Methylprednisolone Aceponate 1mg/g 50g Ointment 	</item>
+        <item>	Methylprednisolone Acetate 40mg/ml 2ml Vial 	</item>
+        <item>	Methylprednisolone Acetate 40mg/ml 5ml Vial 	</item>
+        <item>	Methylprednisolone Sodium Succinate 125mg/2mL 2 mL 	</item>
+        <item>	Methylprednisolone Sodium Succinate 500mg 1 Vial 	</item>
+        <item>	Metoclopramide 10mg 10 Tablet 	</item>
+        <item>	Metoclopramide 10mg 100 Tablet 	</item>
+        <item>	Metoclopramide 10mg 500 Tablet 	</item>
+        <item>	Metoclopramide 5mg/mL 2 mL 	</item>
+        <item>	Metronidazole 200mg 21 Tablet 	</item>
+        <item>	Metronidazole 200mg 250 Tablet 	</item>
+        <item>	Metronidazole 200mg 28 Tablet 	</item>
+        <item>	Metronidazole 200mg/5mL 100 mL 	</item>
+        <item>	Metronidazole 400mg 100 Tablet 	</item>
+        <item>	Metronidazole 400mg 14 Tablet 	</item>
+        <item>	Metronidazole 400mg 21 Tablet 	</item>
+        <item>	Metronidazole 400mg 5 Tablet 	</item>
+        <item>	Metronidazole 500mg/ml 100ml Infusion 	</item>
+        <item>	Mianserin 10mg 30 Tablet 	</item>
+        <item>	Miconazole Nitrate 2% 30g Oral, Gel 	</item>
+        <item>	Midazolam 15mg 20 Tablet 	</item>
+        <item>	Midazolam 1mg/ml 5ml Ampoule 	</item>
+        <item>	Midazolam 5mg/ml 10ml Vial 	</item>
+        <item>	Midazolam 5mg/mL 3 mL 	</item>
+        <item>	Midazolam 7.5 20 Tablet 	</item>
+        <item>	Mifepristone 200mg 3 Tablet 	</item>
+        <item>	Minoxidil 10mg 100  	</item>
+        <item>	Minoxidil 5mg 100 Tablet 	</item>
+        <item>	Misoprostol 200mcg 60 Tablet 	</item>
+        <item>	Montelukast 10mg 28 Tablet 	</item>
+        <item>	Montelukast 4mg 28 Tablet 	</item>
+        <item>	Montelukast 5mg 28 Tablet 	</item>
+        <item>	Morphine Hcl BP 10g Powder 	</item>
+        <item>	Morphine Sulphate 10mg 60 Tablet 	</item>
+        <item>	Morphine Sulphate 10mg/1ml 1ml Ampoule 	</item>
+        <item>	Morphine Sulphate 15mg/mL 1 Ampoule 	</item>
+        <item>	Morphine Sulphate 30mg 60 Tablet 	</item>
+        <item>	Moxifloxacin 400mg 10 Tablet 	</item>
+        <item>	Moxifloxacin 400mg 28 Tablet 	</item>
+        <item>	Moxifloxacin 400mg 5 Tablet 	</item>
+        <item>	Moxifloxacin 400mg/250ml 250ml Vial 	</item>
+        <item>	Moxifloxacin 5mg/ml 5ml Dropper 	</item>
+        <item>	Mycophenolate mofetil 200mg/ml suspension, 175ml	</item>
+        <item>	Mycophenolate mofetil 250mg capsule, 100 capsules Items 51203203-00003 and 51203203-00004 will be considered as a series	</item>
+        <item>	Mycophenolate mofetil 500mg tablet, 50 tablets Items 51203203-00003 and 51203203-00004 will be considered as a series	</item>
+        <item>	Mycophenolic Acid 180mg  tablets, 120 tablets Items 51203203-00000 and 51203203-00001 will be considered as a series	</item>
+        <item>	Mycophenolic Acid 360mg tables, 120 tablets Items 51203203-00000 and 51203203-00001 will be considered as a series 	</item>
+        <item>	Na, K, Ca, Lactate 131mmol,5mmol,108mmol,29mmol/L 1000 mL 	</item>
+        <item>	Na, K, Ca, Lactate 35mmol,12mmol,47mmol,50g/L 200 mL 	</item>
+        <item>	Na, K, Ca, Lactate 35mmol,12mmol,47mmol,50g/L 500ml  	</item>
+        <item>	Naloxone 0.02mg/mL 2ml Ampoule 	</item>
+        <item>	Naloxone 0.4mg/mL 1ml Ampoule 	</item>
+        <item>	Natamycin 50mg/ml 15ml eye drops 	</item>
+        <item>	Needle, Insulin 31G x 5mm 100  	</item>
+        <item>	Needle, Insulin 31G x 8mm 100  	</item>
+        <item>	Neomycin, Polymixin B, Dexamethasone 3.5mg/6000U/1mg/mL. 5ml eye drops 	</item>
+        <item>	Neomycin, Polymixin B, Dexamethasone 6000U 3.5 eye ointment 	</item>
+        <item>	Neonatal Maintenance &amp; Dextrose (potassium Free) 33/5/33mmol/100g 200 mL 	</item>
+        <item>	Neonatal Maintenance &amp; Dextrose 10% 20/15/2.5/0.5/21/20 200 mL 	</item>
+        <item>	Neostigmine 0.5mg/mL 1ml    	</item>
+        <item>	Neostigmine 2.5mg/mL 1ml    	</item>
+        <item>	Nevirapine 200mg 56 Tablet 	</item>
+        <item>	Nevirapine 50mg/5mL 100 mL 	</item>
+        <item>	Nicotinamide 100mg 28 Tablet 	</item>
+        <item>	Nicotinamide 100mg 84 Tablet 	</item>
+        <item>	Nifedipine 10mg 100 Capsule 	</item>
+        <item>	Nifedipine 30mg 28 Tablet 	</item>
+        <item>	Nifedipine 5mg 100 Capsule 	</item>
+        <item>	Nifedipine 60mg 28 Tablet 	</item>
+        <item>	Nilotinib 200mg capsules, 112 capsules	</item>
+        <item>	Nimodipine 30mg 100 Tablet 	</item>
+        <item>	Nitrofurantoin 100mg 50 Capsule 	</item>
+        <item>	Norethisterone 5mg 30 Tablet 	</item>
+        <item>	Norethisterone enanthate 200 mg injection 1 ml	</item>
+        <item>	Norgestrel, Ethinyl Estradiol 0.5/0.05mg 28 Tablet 	</item>
+        <item>	Octreotide 0.05mg/ml 1ml/g Ampoule 	</item>
+        <item>	Octreotide 0.1mg/1mL 1 mL 	</item>
+        <item>	Oestrogen Conjugated 1.25mg 28 Tablet 	</item>
+        <item>	Ofloxacin 3mg/mL. 5ml. eye drops 	</item>
+        <item>	Olanzapine 10mg 28 Tablet 	</item>
+        <item>	Olanzapine 2.5mg 28 Tablet 	</item>
+        <item>	Olanzapine 5mg 28 Tablet 	</item>
+        <item>	Omeprazole 10mg 28 Tablet 	</item>
+        <item>	Omeprazole 10mg 30 Tablet 	</item>
+        <item>	Omeprazole 20mg 28 Tablet 	</item>
+        <item>	Ondansetron 4mg dispersible tablet, 10 tablets	</item>
+        <item>	Ondansetron 4mg injection	</item>
+        <item>	Ondansetron 8mg injection	</item>
+        <item>	Opthalmic Irrigation Soln Balanced Salts 15 mL 	</item>
+        <item>	Opthalmic Irrigation Soln Balanced Salts 500 mL 	</item>
+        <item>	Organic N-Chloro Comp 30g 50 Sachet 	</item>
+        <item>	Organic N-Chloro Comp 3g 50 Sachet 	</item>
+        <item>	Organic N-Chloro Comp 6g 100 Sachet 	</item>
+        <item>	Orphenadrine 50mg 28 Tablet 	</item>
+        <item>	Orphenadrine 50mg 56 Tablet 	</item>
+        <item>	Orphenadrine 50mg 84 Tablet 	</item>
+        <item>	Oxazepam 10mg 100 Tablet 	</item>
+        <item>	Oxazepam 30mg 100 Tablet 	</item>
+        <item>	Oxybuprocaine Hcl 0.4%. 3ml eye drops 	</item>
+        <item>	Oxybuprocaine Hcl 0.4%/0.5ml 20 Applicator 	</item>
+        <item>	Oxybutynin 5mg 100 Tablet 	</item>
+        <item>	Oxymetazoline 0.025%. 10ml Nasal Drops 	</item>
+        <item>	Oxymetazoline 0.025%. 15ml eye drops 	</item>
+        <item>	Oxymetazoline 0.05%. 10ml Nasal Drops 	</item>
+        <item>	Oxymetazoline 0.05%. 15ml Nasal Spray 	</item>
+        <item>	Oxytocin 10 IU injection, 1ml	</item>
+        <item>	Oxytocin 5 IU injection, 1ml	</item>
+        <item>	Oxytocin 5 IU, Ergometrine 0.5mg injection, 1ml 	</item>
+        <item>	Paclitaxel 100mg injection Items 51111904-00000 and 51111904-00001 will be considered as a series	</item>
+        <item>	Paclitaxel 30mg injection Items 51111904-00000 and 51111904-00001 will be considered as a series	</item>
+        <item>	Pancreatin: Lipase/Amylase/Protease 150mg 100 Capsule 	</item>
+        <item>	Pancreatin: Lipase/Amylase/Protease 300mg 100 Capsule 	</item>
+        <item>	Pantoprazole 40mg 10ml Vial 	</item>
+        <item>	Para-aminosalicyclic Acid 4g 30 Sachet 	</item>
+        <item>	Paracetamol 10mg/ml injection for IV infusion 100ml	</item>
+        <item>	Paracetamol 120mg/5mL 100 mL 	</item>
+        <item>	Paracetamol 120mg/5ml 50 mL 	</item>
+        <item>	Paracetamol 120mg/5mL 500 mL 	</item>
+        <item>	Paracetamol 500mg 100 Tablet 	</item>
+        <item>	Paracetamol 500mg 20 Tablet 	</item>
+        <item>	Paracetamol 500mg 500 Tablet 	</item>
+        <item>	Paracetamol 500mg tablet, 5000 tablets	</item>
+        <item>	Perindopril 4mg 28 Tablet 	</item>
+        <item>	Pethidine 25mg/1ml 1 ml Ampoule 	</item>
+        <item>	Pethidine 50mg/1ml 2ml Ampoule 	</item>
+        <item>	Pethidine 50mg/mL 1 Ampoule 	</item>
+        <item>	Phenobarbitone 30mg 1000 Tablet 	</item>
+        <item>	Phenobarbitone 30mg 28 Tablet 	</item>
+        <item>	Phenobarbitone 30mg 56 Tablet 	</item>
+        <item>	Phenobarbitone 30mg 84 Tablet 	</item>
+        <item>	Phenobarbitone, Vit B Co 16mg/5mL 100 mL 	</item>
+        <item>	Phenoxymethylpenicillin 125mg/5mL 100 mL 	</item>
+        <item>	phenoxymethylpenicillin 250mg (Tablet) [100 tablets]	</item>
+        <item>	Phenoxymethylpenicillin 250mg 40 Tablet 	</item>
+        <item>	Phenoxymethylpenicillin 250mg/5mL 100 mL 	</item>
+        <item>	Phenylephrine 10mg injection, 1ml	</item>
+        <item>	Phenytoin 100mg 100 Capsule 	</item>
+        <item>	Phenytoin 100mg 84 Capsule 	</item>
+        <item>	Phenytoin 125mg/5mL 237 mL 	</item>
+        <item>	Phenytoin Sodium 50mg/mL 5ml Injection 	</item>
+        <item>	Pholcodine 15mg/5ml 100ml Bottle 	</item>
+        <item>	Phospholipids, Total (Beractant) 100mg/4mL 1 Vial 	</item>
+        <item>	Phospholipids, Total (Beractant) 200mg/8mL 1 Vial 	</item>
+        <item>	Pilocarpine HCl 1%. 15ml eye drops 	</item>
+        <item>	Piperacillin, Tazobactam 4g/500mg 50ml Vial 	</item>
+        <item>	Plasmalyte B (balsol) 130/4/110/1.5/27mmol 1000 mL 	</item>
+        <item>	Potassium Chloride 15% 10ml Ampoule 	</item>
+        <item>	Potassium Chloride 600mg 100 Tablet 	</item>
+        <item>	Potassium Chloride BP 500g Powder 	</item>
+        <item>	Potassium Citrate BP 200ml Bottle 	</item>
+        <item>	Potassium Phosphate Monobasic Anhydrous, Potassium Phosphate Dibasic Anhydrous 1.09g/1.05g 10ml Injection 	</item>
+        <item>	Povidone Iodine 0.75% 1000ml solution, Scrub 	</item>
+        <item>	Povidone Iodine 10% 25g Ointment 	</item>
+        <item>	Povidone Iodine 10% 500g Ointment 	</item>
+        <item>	Povidone Iodine 100mg/ml 1 Litre 	</item>
+        <item>	Povidone Iodine 10mg/mL 100 mL 	</item>
+        <item>	Povidone Iodine 5% 25g cream 	</item>
+        <item>	Povidone Iodine 5% 500g cream 	</item>
+        <item>	Pramipexole 025mg 100 Tablet 	</item>
+        <item>	Pravastatin 20mg 30 Tablet 	</item>
+        <item>	Praziquantel 600mg 10 Tablet 	</item>
+        <item>	Prednisolone 1% 5ml. eye drops 	</item>
+        <item>	Prednisolone 15mg/5mL 50 mL 	</item>
+        <item>	Prednisone 5mg 100 Tablet 	</item>
+        <item>	Prednisone 5mg 28 Tablet 	</item>
+        <item>	Prednisone 5mg 56 Tablet 	</item>
+        <item>	Prednisone 5mg tablet, 1000 tablets	</item>
+        <item>	Prednisone 5mg tablet, 500 tablets	</item>
+        <item>	Pregabalin 25mg 56 Capsule 	</item>
+        <item>	Pregabalin 75mg 56 Capsule 	</item>
+        <item>	Promethazine Hcl 10mg 100 Tablet 	</item>
+        <item>	Promethazine Hcl 25mg 100  	</item>
+        <item>	Promethazine Hcl 25mg/2ml 2ml Ampoule 	</item>
+        <item>	Promethazine Hcl 25mg/mL 1ml Ampoule 	</item>
+        <item>	Promethazine Hcl 5mg/5mL 100 mL 	</item>
+        <item>	Propofol 10mg/mL 20ml Injection 	</item>
+        <item>	Propofol 10mg/mL 50ml Injection 	</item>
+        <item>	Propranolol 10mg 250 Tablet 	</item>
+        <item>	Propranolol 10mg 28 Tablet 	</item>
+        <item>	Propranolol 10mg 50 Tablet 	</item>
+        <item>	Propranolol 10mg 84 Tablet 	</item>
+        <item>	Propranolol 40mg 250 Tablet 	</item>
+        <item>	Propranolol 40mg 56 Tablet 	</item>
+        <item>	Propranolol 40mg tablet, 50 tablets	</item>
+        <item>	Propylene Glycol BP 2,5L    	</item>
+        <item>	Protamine Sulphate 10mg/mL 5 mL 	</item>
+        <item>	Pyrazinamide 500mg 28 Tablet 	</item>
+        <item>	Pyrazinamide 500mg 56 Tablet 	</item>
+        <item>	Pyrazinamide 500mg 84 Tablet 	</item>
+        <item>	Pyridostigmine 10mg 50 Tablet 	</item>
+        <item>	Pyridostigmine 60mg 150 Tablet 	</item>
+        <item>	Pyridoxine 25mg 100 Tablet 	</item>
+        <item>	Quetiapine 100mg 90 Tablet 	</item>
+        <item>	Quetiapine 200mg 60 Tablet 	</item>
+        <item>	Quetiapine 25mg 100 Tablet 	</item>
+        <item>	Quetiapine 300mg 60 Tablet 	</item>
+        <item>	Quetiapine 400mg 60 Tablet 	</item>
+        <item>	Quetiapine 50mg 60 Tablet 	</item>
+        <item>	Quinine 300mg/mL 1 mL 	</item>
+        <item>	Raltegravir 100mg 56 Tablet 	</item>
+        <item>	Raltegravir 25mg 56 Tablet 	</item>
+        <item>	Raltegravir 400mg 56 Tablet 	</item>
+        <item>	Ranitidine 150mg 60 Tablet 	</item>
+        <item>	Remifentanil, 2mg injection, 5ml	</item>
+        <item>	Rifampicin 150mg 100 Capsule 	</item>
+        <item>	Rifampicin, INH 300/150mg 56 Tablet 	</item>
+        <item>	Rifampicin, Inh, Pza, Eth 150/75/400/275mg 112 Tablet 	</item>
+        <item>	Rifampicin, Inh, Pza, Eth 150/75/400/275mg 28 Tablet 	</item>
+        <item>	Rifampicin, Inh, Pza, Eth 150/75/400/275mg 56 Tablet 	</item>
+        <item>	Rifampicin, INH, PZA, Eth 150/75/400/275mg 84 Tablet 	</item>
+        <item>	Rifampicin, Isoniazid 150/75mg 56 Tablet 	</item>
+        <item>	Rifampicin, Isoniazid 150/75mg 84 Tablet 	</item>
+        <item>	Rifampicin, Isoniazid 60/60mg 28 Tablet 	</item>
+        <item>	Rifampicin, Isoniazid 60/60mg 56 Tablet 	</item>
+        <item>	Ringer Lactate  1000ml IV Solution 	</item>
+        <item>	Ringer Lactate  200ml IV Solution 	</item>
+        <item>	Risperidone 0.5mg 30 Tablet 	</item>
+        <item>	Risperidone 1mg 30 Tablet 	</item>
+        <item>	Risperidone 1mg/ml 30ml Bottle 	</item>
+        <item>	Risperidone 2mg 30 Tablet 	</item>
+        <item>	Risperidone 3mg 30 Tablet 	</item>
+        <item>	Ritonavir 100mg tablet, 60 tablets	</item>
+        <item>	Ritonavir 80mg/mL 90 mL 	</item>
+        <item>	Rituximab 100mg injection Items 51111716-000000 and 51111716-00001 will be considered as a series	</item>
+        <item>	Rituximab 500mg injection Items 51111716-000000 and 51111716-00001 will be considered as a series	</item>
+        <item>	Rocuronium Bromide 50mg/5ml 5ml Vial 	</item>
+        <item>	Salbutamol 0.5% 20ml solution 	</item>
+        <item>	Salbutamol 0.5mg/1mL 1ml Ampoule 	</item>
+        <item>	Salbutamol metered dose inhaler, complete, 100mcg per actuation, 200 metered doses	</item>
+        <item>	Salmeterol/fluticasone 25/125 mcg/dose 120dose Inhaler 	</item>
+        <item>	Sennosides A &amp; B 13.5mg 20 Tablet 	</item>
+        <item>	Sevelamer 800mg 180 Tablet 	</item>
+        <item>	Sevoflurane BP 250 mL 	</item>
+        <item>	Sildenafil 100mg 4 Tablet 	</item>
+        <item>	Sildenafil 20mg 90 Tablet 	</item>
+        <item>	Sildenafil 50mg 4 Tablet 	</item>
+        <item>	Silver Sulphadiazine 1% 250g cream 	</item>
+        <item>	Silver Sulphadiazine 1% 500g cream 	</item>
+        <item>	Silver Sulphadiazine 1% 50g cream 	</item>
+        <item>	Simvastatin 10mg 28 Tablet 	</item>
+        <item>	Simvastatin 20mg 28 Tablet 	</item>
+        <item>	Sirolimus 1mg tablet, 30 tablets	</item>
+        <item>	Sod Polystyrene Sulphonate (kexelate) USP 454g    	</item>
+        <item>	Sodium Bicarbonate 4.2% 200 mL 	</item>
+        <item>	Sodium Bicarbonate BP 500g    	</item>
+        <item>	Sodium Carboxymethyl Cellulose  15g Gel 	</item>
+        <item>	Sodium Carboxymethyl Cellulose  25g Gel 	</item>
+        <item>	Sodium Chloride 0.45% 1000 mL 	</item>
+        <item>	Sodium Chloride 0.9% 1000 mL 	</item>
+        <item>	Sodium Chloride 0.9% 1000ml irrigation sol,bottle	</item>
+        <item>	Sodium Chloride 0.9% 1000ml IV Solution 	</item>
+        <item>	Sodium Chloride 0.9% 100ml IV Solution 	</item>
+        <item>	Sodium Chloride 0.9% 10ml Injection 	</item>
+        <item>	Sodium Chloride 0.9% 200 mL 	</item>
+        <item>	Sodium Chloride 0.9% 200ml Injection 	</item>
+        <item>	Sodium Chloride 0.9% 3000ml irrigation sol, bag 	</item>
+        <item>	Sodium Chloride 0.9% 30ml sol for irrigation 	</item>
+        <item>	Sodium Chloride 0.9% 50ml IV Solution 	</item>
+        <item>	Sodium Chloride 5% 200ml Bottle 	</item>
+        <item>	Sodium Chloride BP 500 Gram 	</item>
+        <item>	Sodium Chloride, Dextrose 0.2%/5% 200ml IV Solution 	</item>
+        <item>	Sodium Chloride, Dextrose 0.45%/5% 1000ml IV Solution 	</item>
+        <item>	Sodium Chloride, Dextrose 0.9%/5% 1000ml IV Solution 	</item>
+        <item>	Sodium Chloride, Dextrose 0.9%/5% 200ml IV Solution 	</item>
+        <item>	Sodium Citrate powder BP 500g	</item>
+        <item>	Sodium Citro-Tartrate  60g granules 	</item>
+        <item>	Sodium Phosphate, Sod Ac Phos . 135 mL 	</item>
+        <item>	Sodium Valproate 100mg 100 Tablet 	</item>
+        <item>	Sodium Valproate 400mg 4ml Vial 	</item>
+        <item>	Soft Paraffin White BP 500g Each 	</item>
+        <item>	Somatropin 15IU . Injection 	</item>
+        <item>	Somatropin 30UI . Injection 	</item>
+        <item>	Spironolactone 100mg 60 Tablet 	</item>
+        <item>	Spironolactone 25mg 200 Tablet 	</item>
+        <item>	Spironolactone 25mg 28 Tablet 	</item>
+        <item>	Spironolactone 25mg 56 Tablet 	</item>
+        <item>	Spironolactone 25mg 84 Tablet 	</item>
+        <item>	Stavudine 15mg 56 Capsule 	</item>
+        <item>	Stavudine 20mg 56 Capsule 	</item>
+        <item>	Stavudine 30mg 56 Capsule 	</item>
+        <item>	Subdermal Implant Containing  Etonogestrel 68 Mg + Ready For Use . 1 Applicator 	</item>
+        <item>	Sufentanil 5mcg/mL 10ml  	</item>
+        <item>	Sufentanil 5mcg/mL 2ml Amp 	</item>
+        <item>	Sulphasalazine 500mg 100 Tablet 	</item>
+        <item>	Sunscreen Spf 30 ; 150 ml 30 spf 	</item>
+        <item>	Syrup Simplex BP (Syrup) [2.5 litre]	</item>
+        <item>	Tacrolimus 0.5mg capsules, 30 capsules, 30 capsules Items 51202804-00000, 51202804-00001 and 51202804-00002	</item>
+        <item>	Tacrolimus 1mg capsule , 30 capsules Items 51202804-00000, 51202804-00001 and 51202804-00002	</item>
+        <item>	Tacrolimus 5mg capsule, 30 capsules Items 51202804-00000, 51202804-00001 and 51202804-00002	</item>
+        <item>	Tamoxifen 20mg tablet, 28 tablets	</item>
+        <item>	Tamsulosin 0.4mg 30 Tablet 	</item>
+        <item>	Tenofovir &amp; Emtricitabine 300/200mg 28 Tablet 	</item>
+        <item>	Tenofovir 300mg 28 Tablet 	</item>
+        <item>	Tenofovir, Emtricitabine &amp;  Efavirenz 300/200/600mg 28 Tablet 	</item>
+        <item>	Terizidone 250mg 100 Capsule 	</item>
+        <item>	Testosterone Cypionate 100mg/mL 10ml  	</item>
+        <item>	Tetracaine 1% 0.5ml x 20 units eye drops 	</item>
+        <item>	Tetracaine/arnica/salvia/aluminium 0.5/10% 10g Tube 	</item>
+        <item>	Theophylline 300mg 60 Tablet 	</item>
+        <item>	Theophylline Anhydrous 200mg 60 Tablet 	</item>
+        <item>	Thioguanine 40mg tablet,  25 tablets	</item>
+        <item>	Thiopentone 0.5g/20mL . Vial 	</item>
+        <item>	Thymol Glyc Compound BP 100 mL 	</item>
+        <item>	Thyroxine 0.025mg 28 Tablet 	</item>
+        <item>	Thyroxine 100mcg 100 Tablet 	</item>
+        <item>	Thyroxine 100mcg 28 Tablet 	</item>
+        <item>	Thyroxine 50mcg 100 Tablet 	</item>
+        <item>	Thyroxine 50mcg 28 Tablet 	</item>
+        <item>	Tilidine 100mg/mL 10ml Oral Drops 	</item>
+        <item>	Timolol Maleate 0.25% 5ml eye drops 	</item>
+        <item>	Timolol Maleate 0.5%. 5ml eye drops 	</item>
+        <item>	Tiotropium Bromide 18mcg 30 Doses Inhaler 	</item>
+        <item>	Tobramycin 3mg/g 3.5g eye ointment 	</item>
+        <item>	Tobramycin 3mg/mL. 5ml eye drops 	</item>
+        <item>	Topiramate 100mg 60 Tablet 	</item>
+        <item>	Topiramate 15mg Sprinkle Cap, 60 Sprinkle Caps 	</item>
+        <item>	Topiramate 25mg 60 Tablet 	</item>
+        <item>	Topiramate 50mg 60 Tablet 	</item>
+        <item>	TOTAL PARENTERAL NUTRITION FOR ADULTS:  standard bag with electolytes: Protein 100-140g, Nitrogen 15-22.4g Fat 60-100g, 2500ml TPN 2500ml Bag 	</item>
+        <item>	TOTAL PARENTERAL NUTRITION FOR ADULTS:  Standard bag with electrolytes:  Protein 40-65g or Nitrogen 6.4-10.4g, Fat 50-100g TPN 1 Bag 	</item>
+        <item>	TOTAL PARENTERAL NUTRITION FOR ADULTS:  Standard Bag with electrolytes:  Protein 50-80g or Nitrogen 8-12.8g, Fat 40-100g TPN 1 Bag 	</item>
+        <item>	TOTAL PARENTERAL NUTRITION FOR ADULTS:  Standard bag with electrolytes:  Protein 80-100g or Nitrogen 12.8g-16g, Fat 60-100g, 2500ml 2500 1 bag 	</item>
+        <item>	TOTAL PARENTERAL NUTRITION FOR ADULTS:  Standard bag without electolytes:  Protein: 100-140g, or Nitrogen 11.5-22.4g, Fat 60-100g, 2500ml 2500 1 Bag 	</item>
+        <item>	TOTAL PARENTERAL NUTRITION FOR ADULTS:  Standard bag without electrolytes:  Protein 40-65g or Nitrogen 6.4-10.4g, Fat 50-100g TPN 1 Bag 	</item>
+        <item>	TOTAL PARENTERAL NUTRITION FOR ADULTS: Standard bag with electrolytes:  Protein 65-80g, Nitrogen 10.4  2000 mL 	</item>
+        <item>	TOTAL PARENTERAL NUTRITION FOR ADULTS: Weaning bag with electrolytes: Protein  40g, Nitrogen  6.4g 1500 mL 	</item>
+        <item>	Total Protein:   90-120g OR Total Nitrogen: 14.4g-19g, Total Fat: 60 – 100g, Total Energy:  >1900kcal, Total Carbohydrate: >240g, Unit = Bag With Vol	</item>
+        <item>	Trace elements:  suitable for admixture 10ml 1 Ampoule 	</item>
+        <item>	Tramadol 100mg 60 Tablet 	</item>
+        <item>	Tramadol 200mg 60 Tablet 	</item>
+        <item>	Tramadol 50mg 100 Capsule 	</item>
+        <item>	Tramadol 50mg 20 Tablet 	</item>
+        <item>	Tramadol 50mg/ml 2 mL 	</item>
+        <item>	Tranexamic Acid 100mg/mL 5 Vial 	</item>
+        <item>	Tranexamic Acid 500mg 100 Tablet 	</item>
+        <item>	Trastuzumab 440mg Injection 	</item>
+        <item>	Travaprost 40mcg/ml, ophthalmic drops, 2.5ml	</item>
+        <item>	Travoprost, Timolol maleate 40mcg/5mg 2.5ml eye drops 	</item>
+        <item>	Tretinoin 0.025% 20g Gel 	</item>
+        <item>	Tretinoin 0.05% 20g cream 	</item>
+        <item>	Tropicamide 1% 0.5ml x 20 units eye drops 	</item>
+        <item>	Tropicamide 1% 15ml eye drops 	</item>
+        <item>	Ultrasound Gel, High Viscosity BP 250 mL 	</item>
+        <item>	Ultrasound Gel, Medium Viscosity BP 250 mL 	</item>
+        <item>	Ursodeoxycholic 100mg 180 Tablet 	</item>
+        <item>	Vaccine Hepatitis B Adult 20mcg/ml Vial 	</item>
+        <item>	Vaccine Hepatitis B Paediatric 10mcg/0.5ml 	</item>
+        <item>	Vaccine Rotavirus . 1 Dose 	</item>
+        <item>	Vaccine:  Varicella-Zoster . 1 Vial 	</item>
+        <item>	Vaccine: BCG  Intradermal  20 Dose 	</item>
+        <item>	Vaccine: Diphtheria Tetanus 2IU/20IU . Dose 	</item>
+        <item>	Vaccine: Dipth,Pert,Tet, Polio, HIB, HepB . 1 Vial 	</item>
+        <item>	Vaccine: Human Papilloma BP 1 Vial 	</item>
+        <item>	Vaccine: Immunoglobulin Varicella Zoster   1 Ampoule 	</item>
+        <item>	Vaccine: Influenza BP 1 Dose 	</item>
+        <item>	Vaccine: Measles BP 10 Vial 	</item>
+        <item>	Vaccine: Meningococcal Meningitis (Polysaccharide) . 1 Vial 10 	</item>
+        <item>	Vaccine: Pneumococcal . 1 Dose 	</item>
+        <item>	Vaccine: Pneumococcal, Polyvalent  1 Dose 	</item>
+        <item>	Vaccine: Polio Oral Bivalent 3ml 20 Dropper 	</item>
+        <item>	Vaccine: Rabies (cultured on vero cells) 2.5iu 1 Dose 	</item>
+        <item>	Vaccine: Tetanus Toxoid  10dose Vial 	</item>
+        <item>	Vaccine: Yellow Fever BP 1 Dose 	</item>
+        <item>	Valganciclovir 450mg 60 Tablet 	</item>
+        <item>	Valganciclovir 50mg/ml (Suspension) [100 ml]	</item>
+        <item>	Valproate Sodium and Valproic Acid  133.2/58mg 100 Tablet 	</item>
+        <item>	Valproate Sodium and Valproic Acid  133.2/58mg 56 Tablet 	</item>
+        <item>	Valproate Sodium and Valproic Acid  199.8/87mg 100 Tablet 	</item>
+        <item>	Valproate Sodium and Valproic Acid  199.8/87mg 56 Tablet 	</item>
+        <item>	Valproate Sodium and Valproic Acid  333/145mg 100  	</item>
+        <item>	Valproate Sodium and Valproic Acid  333/145mg 56 Tablet 	</item>
+        <item>	valproic acid 200mg/5ml (Liquid) [300 ml]	</item>
+        <item>	valproic acid 250mg/5ml (Liquid) [100 ml]	</item>
+        <item>	Venlafaxine 150mg 30 Tablet 	</item>
+        <item>	Venlafaxine 37.5mg 30 Tablet 	</item>
+        <item>	Venlafaxine 75mg 30 Tablet 	</item>
+        <item>	Verapamil 2.5mg/mL 2ml Vial 	</item>
+        <item>	Verapamil 240mg 30 Tablet 	</item>
+        <item>	Verapamil 40mg 84 Tablet 	</item>
+        <item>	Vigabatrin 500mg 100 Tablet 	</item>
+        <item>	Vinblastine 10mg injection	</item>
+        <item>	Vincristine 1mg injection Items 51111767–00000 and 51111767-00001 will be considered as a series	</item>
+        <item>	Vincristine 2mg injection Items 51111767-00000 and 51111767-00001 will be considered as a series	</item>
+        <item>	Vitamin A (retinol) 100.000IU 50 Capsule 	</item>
+        <item>	Vitamin A (retinol) 200.000IU 50 Capsule 	</item>
+        <item>	Vitamin A (retinol) 50.000IU 50 Capsule 	</item>
+        <item>	Vitamin B Complex  10 mL 	</item>
+        <item>	Vitamin B Complex BP 28 Tablet 	</item>
+        <item>	Vitamin B1 (thiamine Hcl) 100mg 28 Tablet 	</item>
+        <item>	Vitamin B1 (thiamine Hcl) 100mg 84 Tablet 	</item>
+        <item>	Vitamin B1 (thiamine Hcl) 100mg/mL 10 Ampoule 	</item>
+        <item>	Vitamin B12 (cyanocobalamin) 1mg/mL 1 Ampoule 	</item>
+        <item>	Vitamin B12 (cyanocobalamin) 1mg/mL 10ml Injection 	</item>
+        <item>	Vitamin B6 (pyridoxine) 25mg 28 Tablet 	</item>
+        <item>	Vitamin B6 (pyridoxine) 25mg 500 Tablet 	</item>
+        <item>	Vitamin C (ascorbic Acid) 100mg/mL 5ml Vial 	</item>
+        <item>	Vitamin D (calciferol) 50 000IU 100 Tablet 	</item>
+        <item>	Vitamin D (calciferol) 5000U/mL 15ml Oral Drops 	</item>
+        <item>	Vitamin K1 (Phytomenadione) 10mg/1mL 10 Ampoule 	</item>
+        <item>	Vitamin K1 (Phytomenadione) 2mg/0.2mL 5 Amp 	</item>
+        <item>	Vitamins, Fat Soluble with Vitamin E, IV for TPN Adult 10 mL 	</item>
+        <item>	Vitamins, Multi  100 mL 	</item>
+        <item>	Vitamins, Multi BP 25ml Oral Drops 	</item>
+        <item>	Vitamins, Multi, for intravenous use adults 10ml (Injection, Sol) [1 Vial]	</item>
+        <item>	Vitamins, water soluble for intravenous use in adults 10ml 1 Vial 	</item>
+        <item>	Warfarin 5mg 100 Tablet 	</item>
+        <item>	Water For Injection (in Bag) . 1000ml Bag 	</item>
+        <item>	Water For Injection BP 10ml Ampoule 	</item>
+        <item>	Water For Injection BP 20ml Ampoule 	</item>
+        <item>	Water For Injection BP 3000 mL 	</item>
+        <item>	Water For Irrigation (pour Water) BP 1000ml Bottle 	</item>
+        <item>	Zidovudine &amp; Lamivudine 300/150mg 56 Tablet 	</item>
+        <item>	Zidovudine 100mg 100 Capsule 	</item>
+        <item>	Zidovudine 300mg 56 Tablet 	</item>
+        <item>	Zidovudine 50mg/5mL 200 mL 	</item>
+        <item>	Zinc 10mg/5ml 150ml Bottle 	</item>
+        <item>	Zinc 20mg 10 Tablet 	</item>
+        <item>	Zinc 20mg 100 Tablet 	</item>
+        <item>	Zinc And Castor Oil BP 25g Ointment 	</item>
+        <item>	Zuclopenthixol Acetate 50mg/mL 1 mL 	</item>
+        <item>	Zuclopenthixol Decanoate 200mg/mL 1 Ampoule 	</item>
+    </string-array>
+
 
 </resources>

@@ -1,6 +1,7 @@
 package com.divide.ibitech.divide_ibitech;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -165,6 +166,7 @@ public class DocLogin extends AppCompatActivity {
                         Toast.makeText(DocLogin.this, "Login Successful", Toast.LENGTH_LONG).show();
                         pb_loading.setVisibility(View.GONE);
                         btn_Login.setVisibility(View.VISIBLE);
+                        saveDocPreferences(id,regNo,cell, name,surname, email, occupation);
                         //sessionManager
                         sessionManager.createDocSession(id, regNo, cell,name,surname,email,occupation);
                         startActivity(new Intent(DocLogin.this,DocDashboard.class));
@@ -205,6 +207,19 @@ public class DocLogin extends AppCompatActivity {
         };
         Singleton.getInstance(DocLogin.this).addToRequestQue(stringRequest);
 
+    }
+
+    private void saveDocPreferences(String id, String regNo, String cell, String name, String surname, String email, String occupation) {
+        SharedPreferences preferences = getSharedPreferences("DOCPREFS", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("pID",id);
+        editor.putString("pRegNo",regNo);
+        editor.putString("pCell", cell);
+        editor.putString("pName",name);
+        editor.putString("pSurname",surname);
+        editor.putString("pEmail",email);
+        editor.putString("pOccupation",occupation);
+        editor.apply();
     }
 
     private Boolean RegNoValidate() {
