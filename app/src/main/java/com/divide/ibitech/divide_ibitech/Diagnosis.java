@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -71,6 +72,7 @@ public class Diagnosis extends AppCompatActivity {
 
         doctorID = preferences.getString("pID","");
         medRegNo = preferences.getString("pRegNo","");
+        //Log.i("tagconvertstr", "["+medRegNo+"]");
 
         GetPatientSymptoms(patientID);
 
@@ -86,17 +88,19 @@ public class Diagnosis extends AppCompatActivity {
                 finish();
             }
         });
-        final String diagnosis = act_Diagnosis.getText().toString();
-        final String medication = act_Medication.getText().toString();
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final String diagnosis = act_Diagnosis.getText().toString();
+                final String medication = act_Medication.getText().toString();
+
+                final String date = tvDate.getText().toString();
                 if(diagnosis.isEmpty() || medication.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Please ensure all fields are entered.",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    addVisit(date.toString(), doctorID, medRegNo, symptomID, patientID);
+                    addVisit(date, doctorID, medRegNo, symptomID, patientID, diagnosis);
                 }
             }
         });
@@ -120,7 +124,7 @@ public class Diagnosis extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(Diagnosis.this, "1Register Error" + e.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(Diagnosis.this, "Note: This patient has no symptoms inserted.", Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -144,14 +148,14 @@ public class Diagnosis extends AppCompatActivity {
         Singleton.getInstance(Diagnosis.this).addToRequestQue(stringRequest);
     }
 
-    public void addVisit(final String date, final String docID, final String medRegNo, final String symptomID, final String patientID){
+    public void addVisit(final String date, final String docID, final String medRegNo, final String symptomID, final String patientID,  final String condition){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ADDVISIT, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
-
+                    //Log.i("tagconvertstr", "["+response+"]");
                     if (success.equals("1")) {
                         Toast.makeText(Diagnosis.this, "Diagnosis added successfully.", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(Diagnosis.this, ViewAppointments.class));
@@ -162,13 +166,13 @@ public class Diagnosis extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(Diagnosis.this, "Error : There was an internal error in adding the diagnosis.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Diagnosis.this, "Error : There was an internal error in adding the diagnosis, try again later", Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Diagnosis.this,"Error : There was an internal error in adding the diagnosis.",Toast.LENGTH_LONG).show();
+                Toast.makeText(Diagnosis.this,"Error : There was an internal error with the response from our server, try again later.",Toast.LENGTH_LONG).show();
 
             }
         })
@@ -177,11 +181,14 @@ public class Diagnosis extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
 
+
                 params.put("date",date);
                 params.put("docID",docID);
                 params.put("medRegNo",medRegNo);
                 params.put("symptomID",symptomID);
                 params.put("patID",patientID);
+
+                params.put("condition", condition);
                 return params;
             }
         };

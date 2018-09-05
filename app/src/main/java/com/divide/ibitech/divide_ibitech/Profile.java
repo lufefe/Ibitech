@@ -2,9 +2,13 @@ package com.divide.ibitech.divide_ibitech;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Profile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -21,6 +26,10 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
     String id, name, status, cell, email,weight,height,medicalAid,profilePic;
 
     EditText tvName, tvAdrress, tvEmail, tvCellphone, tvMarital, tvWeight,tvHeight;
+
+    ImageView img_ProfilePic;
+
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +58,8 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         tvWeight = findViewById(R.id.editWeight);
         tvHeight = findViewById(R.id.editHeight);
 
+        img_ProfilePic = findViewById(R.id.imgProfilePicInProfile);
+
         id = prefs.getString("pID","");
         name = prefs.getString("pName","");
         status = prefs.getString("pStatus","");
@@ -61,14 +72,17 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
 
         tvName.setText(name);
-//        tvMedicalAid.setText(medicalAid);
+        //tvMedicalAid.setText(medicalAid);
         tvEmail.setText(email);
         tvCellphone.setText(cell);
         //tvMarital.setText(status);
         tvWeight.setText(weight);
         tvHeight.setText(height);
 
-
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.profilepic);
+        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(),bitmap);
+        roundedBitmapDrawable.setCircular(true);
+        img_ProfilePic.setImageDrawable(roundedBitmapDrawable);
 
 
     }
@@ -101,10 +115,8 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }
-        else if (id == R.id.help){
-            Intent searchIntent = new Intent(Profile.this, com.divide.ibitech.divide_ibitech.Help.class);
-            startActivity(searchIntent);
-            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+       else if (id == R.id.logout){
+            sessionManager.logout();
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -11,12 +11,19 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:icon="@drawable/ibitech_mini_logo"
+        android:icon="@drawable/ibitech_logo_no_slogan"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ibitech_mini_logo"
+        android:roundIcon="@drawable/ibitech_logo_no_slogan"
         android:supportsRtl="true"
         android:theme="@style/NoActionBarTheme">
         <activity android:name=".Welcome">
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".SlideOne" />
@@ -30,7 +37,6 @@
         <activity
             android:name=".Dashboard"
             android:screenOrientation="locked"></activity>
-        <activity android:name=".AddCondition" />
         <activity android:name=".RequestDevice" />
         <activity android:name=".AddSymptom" />
         <activity android:name=".AddAllergy" />
@@ -46,18 +52,7 @@
         <activity android:name=".DocLogin" />
         <activity android:name=".DocRegister" />
         <activity android:name=".DocDashboard">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".NavHeader" />
-        <activity
-            android:name=".Help"
-            android:label="@string/title_activity_help"
-            android:theme="@style/NoActionBarTheme" />
         <activity android:name=".ManageSymptoms" />
         <activity android:name=".ViewAppointments" />
         <activity android:name=".ManageAllergies" />

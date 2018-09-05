@@ -49,7 +49,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
     TextView tv_FullName, tv_Age, tv_BloodType, tv_Address,tv_Gender,tv_MaritalStatus;
     ImageView img_ProfilePic;
-    //Button btn_Logout,btn_photo_upload;
     private FloatingActionButton fab_Symptoms, fab_MedDevice, fab_Allergy;
     private Bitmap bitmap;
     String getId;
@@ -89,10 +88,8 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }
-        else if (id == R.id.help){
-            Intent searchIntent = new Intent(Dashboard.this, com.divide.ibitech.divide_ibitech.Help.class);
-            startActivity(searchIntent);
-            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+        else if (id == R.id.logout){
+            sessionManager.logout();
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -153,7 +150,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         //btn_photo_upload = findViewById(R.id.btnPhoto);
 
         fab_Symptoms = findViewById(R.id.fabSymptoms);
-        fab_MedDevice = findViewById(R.id.fabMedicalDevice);
+        //fab_MedDevice = findViewById(R.id.fabMedicalDevice);
         fab_Allergy = findViewById(R.id.fabAllergy);
 
         //For Dashboard display
@@ -194,24 +191,11 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         editor.putString("pMedicalAid", sMedicaAid);
         editor.apply();
 
-
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.profilepic);
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(),bitmap);
         roundedBitmapDrawable.setCircular(true);
         img_ProfilePic.setImageDrawable(roundedBitmapDrawable);
 
-     /*   btn_Logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sessionManager.logout();
-            }
-        });*/
- /*       btn_photo_upload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                chooseFile();
-            }
-        });*/
 
         fab_Symptoms.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -220,12 +204,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             }
         });
 
-        fab_MedDevice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this, AddCondition.class));
-            }
-        });
 
         fab_Allergy.setOnClickListener(new View.OnClickListener() {
             @Override

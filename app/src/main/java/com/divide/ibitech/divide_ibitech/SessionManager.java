@@ -137,6 +137,6 @@ public class SessionManager {
         editor.commit();
         Intent i = new Intent(context,DocLogin.class);
         context.startActivity(i);
-        ((Dashboard) context).finish();
+        ((DocDashboard) context).finish();
     }
 }

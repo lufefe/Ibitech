@@ -85,7 +85,7 @@ public class AddAllergy extends AppCompatActivity {
                 final String allergy = et_Allergy.getText().toString();
                 final String date = tv_Date.getText().toString();
                 if(allergy.isEmpty()){
-                    et_Allergy.setError("Please enter a valid symptom(s).");
+                    et_Allergy.setError("Please enter a valid allergy");
                 }
                 else {
                     addAllergy(allergy,date,idNo);
