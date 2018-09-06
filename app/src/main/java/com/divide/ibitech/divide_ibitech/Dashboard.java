@@ -182,6 +182,8 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         editor.putString("pID",sID);
         editor.putString("pName",sName + " " + sSurname);
+        editor.putString("pFirstName",sName);
+        editor.putString("pSurname", sSurname);
         editor.putString("pStatus",sStatus);
         editor.putString("pCell",sCell);
         editor.putString("pEmail",sEmail);
@@ -222,12 +224,12 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             }
         });
 
-        btnManageSymptoms.setOnClickListener(new View.OnClickListener() {
+       /* btnManageSymptoms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Dashboard.this, ManageSymptoms.class));
             }
-        });
+        });*/
 
     }
 

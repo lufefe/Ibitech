@@ -53,7 +53,6 @@
         <activity android:name=".DocRegister" />
         <activity android:name=".DocDashboard">
         </activity>
-        <activity android:name=".ManageSymptoms" />
         <activity android:name=".ViewAppointments" />
         <activity android:name=".ManageAllergies" />
         <activity android:name=".Diagnosis"></activity>
