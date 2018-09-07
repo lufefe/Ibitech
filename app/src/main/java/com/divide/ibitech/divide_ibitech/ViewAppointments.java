@@ -14,7 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.divide.ibitech.divide_ibitech.Adapter.DocAppointmentsAdapter;
-import com.divide.ibitech.divide_ibitech.Models.ApptsList;
+import com.divide.ibitech.divide_ibitech.Models.AppointmentsList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +26,7 @@ import java.util.List;
 public class ViewAppointments extends AppCompatActivity {
 
     ListView listView;
-    List<ApptsList> apptsLists;
+    List<AppointmentsList> apptsLists;
     String URL_GETAPPTS = "http://sict-iis.nmmu.ac.za/ibitech/app-test/getappointments.php";
 
     @Override
@@ -65,7 +65,7 @@ public class ViewAppointments extends AppCompatActivity {
                          patientSurname[i] = object.getString("surname");
                          patientCell[i] = object.getString("cellphone_number");
 
-                        ApptsList appts = new ApptsList(object.getString("first_name"),object.getString("surname"), object.getString("cellphone_number"));
+                        AppointmentsList appts = new AppointmentsList(object.getString("first_name"),object.getString("surname"), object.getString("cellphone_number"));
                         apptsLists.add(appts);
                     }
 

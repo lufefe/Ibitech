@@ -10,16 +10,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.divide.ibitech.divide_ibitech.Models.ApptsList;
+import com.divide.ibitech.divide_ibitech.Models.AppointmentsList;
 import com.divide.ibitech.divide_ibitech.R;
 
 import java.util.List;
 
-public class DocAppointmentsAdapter extends ArrayAdapter<ApptsList>{
+public class DocAppointmentsAdapter extends ArrayAdapter<AppointmentsList>{
 
-    private List<ApptsList> apptsLists;
+    private List<AppointmentsList> apptsLists;
 
-    public DocAppointmentsAdapter(@NonNull Context context, List<ApptsList> apptsLists) {
+    public DocAppointmentsAdapter(@NonNull Context context, List<AppointmentsList> apptsLists) {
         super(context, R.layout.custom_docappointments_row,apptsLists);
         this.apptsLists = apptsLists;
     }
@@ -31,7 +31,7 @@ public class DocAppointmentsAdapter extends ArrayAdapter<ApptsList>{
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View customView = inflater.inflate(R.layout.custom_docappointments_row, parent, false);
 
-        ApptsList apptsList = apptsLists.get(position);
+        AppointmentsList apptsList = apptsLists.get(position);
         TextView name = customView.findViewById(R.id.txtName);
         TextView cellNo = customView.findViewById(R.id.txtCellNo);
         ImageView image = customView.findViewById(R.id.imgProfilePic);
