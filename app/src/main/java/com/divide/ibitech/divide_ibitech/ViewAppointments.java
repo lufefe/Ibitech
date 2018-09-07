@@ -80,7 +80,7 @@ public class ViewAppointments extends AppCompatActivity {
                             for (int i =0; i < patientID.length; i++){
                                 if (parent.getItemIdAtPosition(position) == i)
                                 {
-                                    Toast.makeText(ViewAppointments.this, patientName[i], Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(ViewAppointments.this, patientName[i], Toast.LENGTH_SHORT).show();
                                     SharedPreferences preferences = getSharedPreferences("DIAGNOSIS",MODE_PRIVATE);
                                     SharedPreferences.Editor editor = preferences.edit();
 

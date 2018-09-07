@@ -19,7 +19,7 @@ public class DocDashboard extends AppCompatActivity {
 
     TextView tv_DocName;
     ImageView imgProfilePic;
-    CardView cv_Appointments;
+    CardView cv_Appointments, cv_Patients;
     Button btn_Logout;
 
     private Bitmap bitmap;
@@ -39,6 +39,7 @@ public class DocDashboard extends AppCompatActivity {
 
         tv_DocName = findViewById(R.id.tvDocName);
         cv_Appointments = findViewById(R.id.cvAppointments);
+        cv_Patients = findViewById(R.id.cvAllPatients);
         btn_Logout = findViewById(R.id.btnLogout);
 
         HashMap<String,String> doc = sessionManager.getDocDetails();
@@ -58,6 +59,13 @@ public class DocDashboard extends AppCompatActivity {
            @Override
            public void onClick(View view) {
                startActivity(new Intent(DocDashboard.this, ViewAppointments.class));
+           }
+       });
+
+       cv_Patients.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               startActivity(new Intent(DocDashboard.this, ViewPatients.class));
            }
        });
 

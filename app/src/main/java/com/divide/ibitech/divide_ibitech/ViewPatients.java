@@ -13,7 +13,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.divide.ibitech.divide_ibitech.Adapter.DocAppointmentsAdapter;
 import com.divide.ibitech.divide_ibitech.Adapter.DocPatientsAdapter;
+import com.divide.ibitech.divide_ibitech.Models.ApptsList;
 import com.divide.ibitech.divide_ibitech.Models.PatientsList;
 
 import org.json.JSONArray;
@@ -27,7 +29,7 @@ public class ViewPatients extends AppCompatActivity {
 
     ListView listView;
     List<PatientsList> patientsList;
-    String URL_GETPATIENTS = "http://sict-iis.nmmu.ac.za/ibitech/app/getpatients.php";
+    String URL_GETPATIENTS = "http://sict-iis.nmmu.ac.za/ibitech/app-test/getpatients.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

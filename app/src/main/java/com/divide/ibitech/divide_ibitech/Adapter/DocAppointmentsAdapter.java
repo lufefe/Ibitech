@@ -33,12 +33,10 @@ public class DocAppointmentsAdapter extends ArrayAdapter<ApptsList>{
 
         ApptsList apptsList = apptsLists.get(position);
         TextView name = customView.findViewById(R.id.txtName);
-        TextView surname = customView.findViewById(R.id.txtsurname);
         TextView cellNo = customView.findViewById(R.id.txtCellNo);
         ImageView image = customView.findViewById(R.id.imgProfilePic);
 
-        name.setText(apptsList.getName());
-        surname.setText(apptsList.getSurname());
+        name.setText(String.format("%s %s", apptsList.getName(), apptsList.getSurname()));
         cellNo.setText(apptsList.getCellNo());
         image.setImageResource(R.drawable.profilepic);
         return customView;
