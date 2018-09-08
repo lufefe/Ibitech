@@ -49,7 +49,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
     TextView tv_FullName, tv_Age, tv_BloodType, tv_Address,tv_Gender,tv_MaritalStatus;
     ImageView img_ProfilePic;
-    private FloatingActionButton fab_Symptoms, fab_MedDevice, fab_Allergy;
+    private FloatingActionButton fab_Symptoms, fab_Allergy, fabRequestDevice;
     private Bitmap bitmap;
     String getId;
     LinearLayout bt,device;
@@ -155,7 +155,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         //btn_photo_upload = findViewById(R.id.btnPhoto);
 
         fab_Symptoms = findViewById(R.id.fabSymptoms);
-        //fab_MedDevice = findViewById(R.id.fabMedicalDevice);
+        fabRequestDevice = findViewById(R.id.fabRequest);
         fab_Allergy = findViewById(R.id.fabAllergy);
 
         //For Dashboard display
@@ -216,6 +216,13 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Dashboard.this, AddAllergy.class));
+            }
+        });
+
+        fabRequestDevice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Dashboard.this, RequestDevice.class));
             }
         });
 

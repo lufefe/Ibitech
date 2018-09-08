@@ -707,11 +707,11 @@
             app:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fabVisit"
+            android:id="@+id/fabRequest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/add"
-            app:fab_label="Visit"
+            app:fab_label="Request A Device"
             app:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>
