@@ -27,7 +27,7 @@ public class ViewAppointments extends AppCompatActivity {
 
     ListView listView;
     List<AppointmentsList> apptsLists;
-    String URL_GETAPPTS = "http://sict-iis.nmmu.ac.za/ibitech/app-test/getappointments.php";
+    String URL_GETAPPTS = "http://sict-iis.nmmu.ac.za/ibitech/app/getappointments.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

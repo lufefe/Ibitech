@@ -37,7 +37,7 @@ public class AddAllergy extends AppCompatActivity {
     TextView tv_Date;
     ImageView img_Info;
     String idNo = "";
-    String URL_ADD = "http://sict-iis.nmmu.ac.za/ibitech/app-test/addallergy.php";
+    String URL_ADD = "http://sict-iis.nmmu.ac.za/ibitech/app/addallergy.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

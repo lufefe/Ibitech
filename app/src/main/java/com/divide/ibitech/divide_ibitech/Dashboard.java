@@ -79,7 +79,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }else if(id == R.id.reports){
-            Intent searchIntent = new Intent(Dashboard.this, Reports.class);
+            Intent searchIntent = new Intent(Dashboard.this, Barchart.class);
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }

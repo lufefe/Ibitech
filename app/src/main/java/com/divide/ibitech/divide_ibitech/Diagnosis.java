@@ -37,8 +37,8 @@ public class Diagnosis extends AppCompatActivity {
     Button btnCancel, btnSave;
     String patientID = "", patientName = "", symptomID = "", doctorID = "", medRegNo =  "", date = "";
 
-    String URL_GETSYMPTMS = "http://sict-iis.nmmu.ac.za/ibitech/app-test/getpatientsymptomsfordiagnosis.php";
-    String URL_ADDVISIT = "http://sict-iis.nmmu.ac.za/ibitech/app-test/insertvisit.php";
+    String URL_GETSYMPTMS = "http://sict-iis.nmmu.ac.za/ibitech/app/getpatientsymptomsfordiagnosis.php";
+    String URL_ADDVISIT = "http://sict-iis.nmmu.ac.za/ibitech/app/insertvisit.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -27,8 +27,8 @@ import java.util.Map;
 
 public class ViewAllergy extends AppCompatActivity {
     ListView listView;
-    String URLAllergy = "http://sict-iis.nmmu.ac.za/ibitech/app-test/getallergy.php";
-    String URLAllergyfilter = "http://sict-iis.nmmu.ac.za/ibitech/app-test/search.php";
+    String URLAllergy = "http://sict-iis.nmmu.ac.za/ibitech/app/getallergy.php";
+    String URLAllergyfilter = "http://sict-iis.nmmu.ac.za/ibitech/app/search.php";
     String id = "";
     TextView input_search;
     List<AllergyList> alleList;

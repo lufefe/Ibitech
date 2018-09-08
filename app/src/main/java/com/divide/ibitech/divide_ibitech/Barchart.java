@@ -36,7 +36,7 @@ public class Barchart extends AppCompatActivity {
     }
     public void load_data_from_server() {
         pd.show();
-        String URL = "http://sict-iis.nmmu.ac.za/ibitech/app/GRAPHs.php";
+        String URL = "http://sict-iis.nmmu.ac.za/ibitech/app/GRAPH.php";
 
         final BarChart barChart =  findViewById(R.id.barchart);
         final ArrayList<BarEntry> entries = new ArrayList<>();
@@ -66,7 +66,7 @@ public class Barchart extends AppCompatActivity {
 
                 }
                 BarDataSet barDataSet = new BarDataSet(entries, "Allergies");
-                barDataSet.setColor(Color.rgb(0, 82, 19));
+                barDataSet.setColor(Color.rgb(0, 82, 159));
 
                 BarData data = new BarData(barDataSet);
 

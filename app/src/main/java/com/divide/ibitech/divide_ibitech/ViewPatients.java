@@ -27,7 +27,7 @@ public class ViewPatients extends AppCompatActivity {
 
     ListView listView;
     List<PatientsList> patientsList;
-    String URL_GETPATIENTS = "http://sict-iis.nmmu.ac.za/ibitech/app-test/getpatients.php";
+    String URL_GETPATIENTS = "http://sict-iis.nmmu.ac.za/ibitech/app/getpatients.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

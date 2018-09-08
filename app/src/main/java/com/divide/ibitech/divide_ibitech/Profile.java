@@ -50,7 +50,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
     SessionManager sessionManager;
 
-    private static String URL_UPDATE = "http://sict-iis.nmmu.ac.za/ibitech/app-test/updateprofile.php";
+    private static String URL_UPDATE = "http://sict-iis.nmmu.ac.za/ibitech/app/updateprofile.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -25,7 +25,7 @@ public class DocRegister extends AppCompatActivity implements TextWatcher {
     ProgressBar progressBar,pb_loading;
     Boolean validRegNo = false, validEmail = false, validNewPass = false, validCPass = false;
 
-    String URL_REGIST = "http://sict-iis.nmmu.ac.za/ibitech/app-test/docregister.php";
+    String URL_REGIST = "http://sict-iis.nmmu.ac.za/ibitech/app/docregister.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

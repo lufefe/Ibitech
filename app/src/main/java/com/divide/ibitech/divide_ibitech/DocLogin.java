@@ -37,7 +37,7 @@ public class DocLogin extends AppCompatActivity {
     TextView tv_NewDocRegister, tv_ForgotPass, tv_PasswordToggle;
     ProgressBar pb_loading;
 
-    String URL_LOGIN = "http://sict-iis.nmmu.ac.za/ibitech/app-test/doclogin.php";
+    String URL_LOGIN = "http://sict-iis.nmmu.ac.za/ibitech/app/doclogin.php";
 
     SessionManager sessionManager;
 

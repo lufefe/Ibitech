@@ -37,7 +37,7 @@ public class AddSymptom extends AppCompatActivity {
     TextView tv_Date;
     ImageView img_Info;
     String idNo = "";
-    String URL_ADD = "http://sict-iis.nmmu.ac.za/ibitech/app-test/addsymptom.php";
+    String URL_ADD = "http://sict-iis.nmmu.ac.za/ibitech/app/addsymptom.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

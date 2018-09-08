@@ -25,7 +25,7 @@ import java.util.List;
 
 public class ViewSymptom extends AppCompatActivity {
     ListView listView;
-    String URLgetSymptoms = "http://sict-iis.nmmu.ac.za/ibitech/app-test/getSymptoms.php";
+    String URLgetSymptoms = "http://sict-iis.nmmu.ac.za/ibitech/app/getSymptoms.php";
 
     List <SymptomList> sympLists;
     @Override

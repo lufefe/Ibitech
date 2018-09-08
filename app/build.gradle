@@ -43,5 +43,6 @@ dependencies {
     implementation 'com.github.clans:fab:1.6.4'
     implementation 'com.github.vihtarb:tooltip:0.1.9'
     implementation 'com.bignerdranch.android:expandablerecyclerview:1.0.3'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
 
 }

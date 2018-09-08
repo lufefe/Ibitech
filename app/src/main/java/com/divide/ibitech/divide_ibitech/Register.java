@@ -40,7 +40,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
     public Boolean validID = false,validCell = false,validEmail = false,validNewPass = false,validCpass = false,checked = false;
     CheckBox policyCheck;
 
-    String URL_REGIST = "http://sict-iis.nmmu.ac.za/ibitech/app-test/register.php";
+    String URL_REGIST = "http://sict-iis.nmmu.ac.za/ibitech/app/register.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
