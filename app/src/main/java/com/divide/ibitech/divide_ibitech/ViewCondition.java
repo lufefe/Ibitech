@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ViewCondition extends AppCompatActivity {
     ListView listView;
-    String URLgetSymptoms = "http://sict-iis.nmmu.ac.za/ibitech/app/getSymptoms.php";
+    String URLgetSymptoms = "http://sict-iis.nmmu.ac.za/ibitech/app-test/getSymptoms.php";
 
     List<ConditionList> condList;
     @Override

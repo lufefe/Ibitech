@@ -57,6 +57,11 @@ public class Reports extends AppCompatActivity implements NavigationView.OnNavig
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }
+        else if (id == R.id.tutorial){
+            Intent searchIntent = new Intent(Reports.this, Tutorial.class);
+            startActivity(searchIntent);
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+        }
         else if (id == R.id.settings){
             Intent searchIntent = new Intent(Reports.this, com.divide.ibitech.divide_ibitech.Settings.class);
             startActivity(searchIntent);

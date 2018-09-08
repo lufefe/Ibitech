@@ -196,6 +196,11 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }
+        else if (id == R.id.tutorial){
+            Intent searchIntent = new Intent(Profile.this, Tutorial.class);
+            startActivity(searchIntent);
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+        }
         else if (id == R.id.settings){
             Intent searchIntent = new Intent(Profile.this, com.divide.ibitech.divide_ibitech.Settings.class);
             startActivity(searchIntent);

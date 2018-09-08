@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewSymptom"
-  >
+    tools:context=".ViewSymptom">
 
     <TextView
         android:id="@+id/patSy"
@@ -45,47 +44,6 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp">
+        android:layout_margin="20dp"></ListView>
 
-    </ListView>
-
-    <com.github.clans.fab.FloatingActionMenu
-        android:layout_width="wrap_content"
-        android:id="@+id/fabmenu"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/listSymp"
-        android:layout_alignEnd="@+id/listSymp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.269"
-        android:layout_alignRight="@+id/listSymp">
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fabToday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/add"
-            app:fab_label="Today"
-            app:fab_size="mini" />
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fabWeek"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/add"
-            app:fab_label="Week"
-            app:fab_size="mini" />
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fabMonth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/add"
-            app:fab_label="Month"
-            app:fab_size="mini" />
-
-    </com.github.clans.fab.FloatingActionMenu>
 </RelativeLayout>

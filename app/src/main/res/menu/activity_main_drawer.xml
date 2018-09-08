@@ -13,6 +13,11 @@
             android:title="@string/reports" />
 
         <item
+            android:id="@+id/tutorial"
+            android:icon="@drawable/ic_info_black_24dp"
+            android:title="Tutorial" />
+
+        <item
             android:id="@+id/settings"
             android:icon="@drawable/ic_settings_black_24dp"
             android:title="@string/settings" />

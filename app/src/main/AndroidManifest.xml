@@ -16,13 +16,7 @@
         android:roundIcon="@drawable/ibitech_logo_no_slogan"
         android:supportsRtl="true"
         android:theme="@style/NoActionBarTheme">
-        <activity android:name=".Welcome">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Welcome" />
         <activity android:name=".SlideOne" />
         <activity android:name=".SlideTwo" />
         <activity
@@ -33,7 +27,13 @@
             android:screenOrientation="locked" />
         <activity
             android:name=".Dashboard"
-            android:screenOrientation="locked" />
+            android:screenOrientation="locked">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".RequestDevice" />
         <activity android:name=".AddSymptom" />
         <activity android:name=".AddAllergy" />
@@ -48,12 +48,18 @@
             android:label="Setting" />
         <activity android:name=".DocLogin" />
         <activity android:name=".DocRegister" />
-        <activity android:name=".DocDashboard" />
+        <activity android:name=".DocDashboard">
+
+        </activity>
         <activity android:name=".ViewAppointments" />
-        <activity android:name=".ManageAllergies" />
         <activity android:name=".Diagnosis" />
         <activity android:name=".ViewPatients" />
-        <activity android:name=".PatientMedicalRecord"></activity>
+        <activity android:name=".PatientMedicalRecord" />
+        <activity android:name=".ViewAllergy" />
+        <activity android:name=".ViewCondition" />
+        <activity android:name=".ViewSymptom" />
+        <activity android:name=".Tutorial" />
+        <activity android:name=".DoctorTutorial"></activity>
     </application>
 
 </manifest>

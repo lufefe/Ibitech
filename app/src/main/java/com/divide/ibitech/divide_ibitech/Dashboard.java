@@ -53,7 +53,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     private Bitmap bitmap;
     String getId;
     LinearLayout bt,device;
-    CardView btnManageAllergies, btnManageDevices, btnManageSymptoms;
+    CardView btnManageAllergies, btnManageDevices, btnManageSymptoms, btnManageConditions;
     private static final String TAG = Dashboard.class.getSimpleName(); //getting the info
 
     private static String URL_UPLOAD = "http://sict-iis.nmmu.ac.za/ibitech/app/upload.php";
@@ -80,6 +80,11 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }else if(id == R.id.reports){
             Intent searchIntent = new Intent(Dashboard.this, Reports.class);
+            startActivity(searchIntent);
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+        }
+        else if (id == R.id.tutorial){
+            Intent searchIntent = new Intent(Dashboard.this, Tutorial.class);
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }
@@ -216,20 +221,28 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         btnManageAllergies = findViewById(R.id.cvAllergies);
         btnManageSymptoms = findViewById(R.id.cvSymptoms);
+        btnManageConditions = findViewById(R.id.cvConditions);
+
+        btnManageConditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Dashboard.this, ViewCondition.class));
+            }
+        });
 
         btnManageAllergies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this, ManageAllergies.class));
+                startActivity(new Intent(Dashboard.this, ViewAllergy.class));
             }
         });
 
-       /* btnManageSymptoms.setOnClickListener(new View.OnClickListener() {
+        btnManageSymptoms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this, ManageSymptoms.class));
+                startActivity(new Intent(Dashboard.this, ViewSymptom.class));
             }
-        });*/
+        });
 
     }
 

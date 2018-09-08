@@ -19,7 +19,6 @@ import java.util.List;
 public class SymptomListAdapter extends ArrayAdapter<SymptomList> {
 
     private List<SymptomList> symptomsList;
-    private List<SymptomList> symptomsListDoday;
     private Context mCtx;
 
     public SymptomListAdapter(List<SymptomList> S,Context c){
