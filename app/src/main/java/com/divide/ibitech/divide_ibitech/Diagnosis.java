@@ -38,6 +38,8 @@ public class Diagnosis extends AppCompatActivity {
     String patientID = "", patientName = "", symptomID = "", doctorID = "", medRegNo =  "", date = "";
 
     String URL_GETSYMPTMS = "http://sict-iis.nmmu.ac.za/ibitech/app/getpatientsymptomsfordiagnosis.php";
+    String URL_GETMED = "http://sict-iis.nmmu.ac.za/ibitech/app/getmedicineid.php";
+    String URL_GETCOND = "http://sict-iis.nmmu.ac.za/ibitech/app/getconditionid.php";
     String URL_ADDVISIT = "http://sict-iis.nmmu.ac.za/ibitech/app/insertvisit.php";
 
     @Override
@@ -100,7 +102,7 @@ public class Diagnosis extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please ensure all fields are entered.",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    addVisit(date, doctorID, medRegNo, symptomID, patientID, diagnosis);
+                    addVisit(date, doctorID, medRegNo, symptomID, patientID, diagnosis, medication);
                 }
             }
         });
@@ -108,6 +110,8 @@ public class Diagnosis extends AppCompatActivity {
 
 
     }
+
+
 
     public void GetPatientSymptoms(final String userID){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GETSYMPTMS, new Response.Listener<String>() {
@@ -148,7 +152,7 @@ public class Diagnosis extends AppCompatActivity {
         Singleton.getInstance(Diagnosis.this).addToRequestQue(stringRequest);
     }
 
-    public void addVisit(final String date, final String docID, final String medRegNo, final String symptomID, final String patientID,  final String condition){
+    public void addVisit(final String date, final String docID, final String medRegNo, final String symptomID, final String patientID,  final String condition, final String medicine){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ADDVISIT, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -189,6 +193,7 @@ public class Diagnosis extends AppCompatActivity {
                 params.put("patID",patientID);
 
                 params.put("condition", condition);
+                params.put("medicine", medicine);
                 return params;
             }
         };

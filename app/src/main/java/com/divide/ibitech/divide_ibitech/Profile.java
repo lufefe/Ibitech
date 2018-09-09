@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,8 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
     ImageView img_ProfilePic;
 
     Button btnSave;
+
+    LinearLayout llMedicalAid;
 
     SessionManager sessionManager;
 
@@ -79,6 +82,8 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         //tvMarital = findViewById(R.id.tv_marital);
         etWeight = findViewById(R.id.editWeight);
         etHeight = findViewById(R.id.editHeight);
+
+        llMedicalAid = findViewById(R.id.ll_MedicalAid);
 
         img_ProfilePic = findViewById(R.id.imgProfilePicInProfile);
 
@@ -124,6 +129,12 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
             }
         });
 
+        llMedicalAid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
     }
 

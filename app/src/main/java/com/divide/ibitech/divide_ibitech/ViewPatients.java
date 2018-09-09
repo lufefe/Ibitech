@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -37,9 +39,27 @@ public class ViewPatients extends AppCompatActivity {
         listView = findViewById(R.id.lv_viewPatients);
         patientsList = new ArrayList<>();
 
+
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("All Patients");
+        setSupportActionBar(toolbar);
+
         GetPatients();
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.doc_nav_drawer, menu);
+        return true;
+        //return super.onCreateOptionsMenu(menu);
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
 
+        if(id == R.id.action_dashboard){
+            startActivity(new Intent(ViewPatients.this,DocDashboard.class));
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private void GetPatients() {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GETPATIENTS, new Response.Listener<String>() {

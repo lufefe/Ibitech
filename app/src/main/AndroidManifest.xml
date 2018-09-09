@@ -16,7 +16,9 @@
         android:roundIcon="@drawable/ibitech_logo_no_slogan"
         android:supportsRtl="true"
         android:theme="@style/NoActionBarTheme">
-        <activity android:name=".Welcome" />
+        <activity android:name=".Welcome">
+
+        </activity>
         <activity android:name=".SlideOne" />
         <activity android:name=".SlideTwo" />
         <activity
@@ -48,8 +50,8 @@
             android:label="Setting" />
         <activity android:name=".DocLogin" />
         <activity android:name=".DocRegister" />
-        <activity android:name=".DocDashboard"></activity>
-        <activity android:name=".ViewAppointments" />
+        <activity android:name=".DocDashboard" />
+        <activity android:name=".ViewAppointments"/>
         <activity android:name=".Diagnosis" />
         <activity android:name=".ViewPatients" />
         <activity android:name=".PatientMedicalRecord" />
@@ -58,7 +60,8 @@
         <activity android:name=".ViewSymptom" />
         <activity android:name=".Tutorial" />
         <activity android:name=".DoctorTutorial" />
-        <activity android:name=".Barchart"></activity>
+        <activity android:name=".Barchart" />
+        <activity android:name=".AddMedicalAid"></activity>
     </application>
 
 </manifest>

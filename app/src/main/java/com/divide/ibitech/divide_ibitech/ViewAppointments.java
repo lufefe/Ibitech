@@ -2,12 +2,17 @@ package com.divide.ibitech.divide_ibitech;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -36,8 +41,28 @@ public class ViewAppointments extends AppCompatActivity {
         listView = findViewById(R.id.lv_ViewAppointments);
         apptsLists = new ArrayList<>();
 
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Appointments");
+        setSupportActionBar(toolbar);
+
+
         GetAppts();
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.doc_nav_drawer, menu);
+        return true;
+        //return super.onCreateOptionsMenu(menu);
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if(id == R.id.action_dashboard){
+            startActivity(new Intent(ViewAppointments.this,DocDashboard.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void GetAppts() {

@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -32,8 +34,9 @@ import java.util.Map;
 
 public class AddAllergy extends AppCompatActivity {
 
+    AutoCompleteTextView act_Allergy;
+    String[] allergyNames;
     Button btnCancel, btnAdd;
-    EditText et_Allergy;
     TextView tv_Date;
     ImageView img_Info;
     String idNo = "";
@@ -47,9 +50,13 @@ public class AddAllergy extends AppCompatActivity {
 
         btnAdd = findViewById(R.id.btnAdd);
         btnCancel = findViewById(R.id.btnCancel);
-        et_Allergy = findViewById(R.id.etAllergy);
         tv_Date = findViewById(R.id.tvDate);
         img_Info = findViewById(R.id.imgInfo);
+        act_Allergy = findViewById(R.id.actAllergy);
+
+        allergyNames = getResources().getStringArray(R.array.allergies);
+        ArrayAdapter<String> cAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,allergyNames);
+        act_Allergy.setAdapter(cAdapter);
 
         idNo = prefs.getString("pID","");
 
@@ -82,10 +89,10 @@ public class AddAllergy extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String allergy = et_Allergy.getText().toString();
+                final String allergy = act_Allergy.getText().toString();
                 final String date = tv_Date.getText().toString();
                 if(allergy.isEmpty()){
-                    et_Allergy.setError("Please enter a valid allergy");
+                    act_Allergy.setError("Please enter a valid allergy");
                 }
                 else {
                     addAllergy(allergy,date,idNo);

@@ -1426,4 +1426,268 @@
     </string-array>
 
 
+    <string-array name="allergies">
+        <item>	Abalone	</item>
+        <item>	Alaska pollock	</item>
+        <item>	Alder	</item>
+        <item>	Almond	</item>
+        <item>	American  oyster	</item>
+        <item>	American cockroach	</item>
+        <item>	American lobster	</item>
+        <item>	Annual mercury grass	</item>
+        <item>	Apple	</item>
+        <item>	Apricot	</item>
+        <item>	Arizona Cypress	</item>
+        <item>	Arthropod	</item>
+        <item>	Asian green mussell	</item>
+        <item>	Asian needle ant	</item>
+        <item>	Asian Seabass	</item>
+        <item>	Atlantic cod	</item>
+        <item>	Atlantic herring	</item>
+        <item>	Atlantic mackerel	</item>
+        <item>	Avocado	</item>
+        <item>	Bacteria	</item>
+        <item>	Bahia grass	</item>
+        <item>	Baltic cod	</item>
+        <item>	Banana	</item>
+        <item>	Banana Prawn	</item>
+        <item>	Barley	</item>
+        <item>	Bell pepper	</item>
+        <item>	Benguela hake	</item>
+        <item>	Bent grass	</item>
+        <item>	Bermuda grass	</item>
+        <item>	bigfin reef squid	</item>
+        <item>	Birch	</item>
+        <item>	biting midges	</item>
+        <item>	Black fire ant	</item>
+        <item>	Black mulberry	</item>
+        <item>	Black tiger shrimp	</item>
+        <item>	Black walnut	</item>
+        <item>	Blue hake	</item>
+        <item>	blue lupin	</item>
+        <item>	blue swimmer crab	</item>
+        <item>	booklice	</item>
+        <item>	Bovine	</item>
+        <item>	Brazil nut	</item>
+        <item>	Brazilian fire ant	</item>
+        <item>	Brook trout	</item>
+        <item>	Brown garden snail	</item>
+        <item>	Brown shrimp	</item>
+        <item>	Buckwheat	</item>
+        <item>	Bumblebee	</item>
+        <item>	Canary grass	</item>
+        <item>	caribean shrimp	</item>
+        <item>	Carp	</item>
+        <item>	Carrot	</item>
+        <item>	Cashew	</item>
+        <item>	Cassava	</item>
+        <item>	Castor bean	</item>
+        <item>	Cat	</item>
+        <item>	Cedar	</item>
+        <item>	Celery	</item>
+        <item>	Cherry	</item>
+        <item>	Chicken	</item>
+        <item>	Chinese mitten crab	</item>
+        <item>	Chinese razor clam	</item>
+        <item>	Chinese white shrimp	</item>
+        <item>	Chinese‐date	</item>
+        <item>	Chub mackerel	</item>
+        <item>	chum salmon	</item>
+        <item>	Clam	</item>
+        <item>	Climber (plant)	</item>
+        <item>	Coffee	</item>
+        <item>	Common Amaranth	</item>
+        <item>	Common timothy	</item>
+        <item>	Corn	</item>
+        <item>	Crab	</item>
+        <item>	Crimson seabream	</item>
+        <item>	Crustacean	</item>
+        <item>	cuttlefish	</item>
+        <item>	Danube crayfish	</item>
+        <item>	Date palm	</item>
+        <item>	Deep‐water cape hake	</item>
+        <item>	Disk abalone	</item>
+        <item>	Dog	</item>
+        <item>	Domestic guinea pig	</item>
+        <item>	Dust mite	</item>
+        <item>	Eastern oyster	</item>
+        <item>	English walnut	</item>
+        <item>	European ash	</item>
+        <item>	European Beech	</item>
+        <item>	European chestnut	</item>
+        <item>	European hake	</item>
+        <item>	European hazelnut	</item>
+        <item>	European hop hornbeam	</item>
+        <item>	European hornet	</item>
+        <item>	European pigeon tick	</item>
+        <item>	European rabbit	</item>
+        <item>	European white birch	</item>
+        <item>	Fishtail Palm	</item>
+        <item>	Flat fish	</item>
+        <item>	Frog	</item>
+        <item>	Fungus	</item>
+        <item>	German cockroach	</item>
+        <item>	Giant Bull Ant	</item>
+        <item>	Giant honeybee	</item>
+        <item>	giant mud crab	</item>
+        <item>	Giant ragweed	</item>
+        <item>	Giant River Prawn	</item>
+        <item>	Golden hamster	</item>
+        <item>	Gould's razor shell	</item>
+        <item>	Grape	</item>
+        <item>	Greasyback shrimp	</item>
+        <item>	green mud crab	</item>
+        <item>	Hardy Kiwi	</item>
+        <item>	Hemp	</item>
+        <item>	Honeybee	</item>
+        <item>	Hornbeam	</item>
+        <item>	Hornet	</item>
+        <item>	Horse	</item>
+        <item>	Horse Fly	</item>
+        <item>	Horsehair crab	</item>
+        <item>	House dust mite	</item>
+        <item>	Indian honeybee	</item>
+        <item>	Indian meal moth	</item>
+        <item>	Japanese cedar	</item>
+        <item>	Japanese cypress	</item>
+        <item>	Japanese flying squid	</item>
+        <item>	Japanese hop	</item>
+        <item>	Japanese horse mackerel	</item>
+        <item>	Japanese turban shell	</item>
+        <item>	Japanese white birch	</item>
+        <item>	Johnson grass	</item>
+        <item>	Jumper ant	</item>
+        <item>	Juniper	</item>
+        <item>	Kamchatka crab	</item>
+        <item>	Kentucky bluegrass	</item>
+        <item>	Kidney bean	</item>
+        <item>	King Prawn	</item>
+        <item>	Kiwi	</item>
+        <item>	Krill	</item>
+        <item>	Kuruma Shrimp	</item>
+        <item>	Lemon	</item>
+        <item>	Lentil	</item>
+        <item>	Lesser banded hornet	</item>
+        <item>	Lilac	</item>
+        <item>	Lobster	</item>
+        <item>	London plane tree	</item>
+        <item>	Lychee nut	</item>
+        <item>	Madagascar periwinkle	</item>
+        <item>	mantis shrimp	</item>
+        <item>	Mediterranean Cypress	</item>
+        <item>	mesquite	</item>
+        <item>	Midge	</item>
+        <item>	Mite	</item>
+        <item>	Mollusc	</item>
+        <item>	Mountain cedar	</item>
+        <item>	Mouse	</item>
+        <item>	Mozambique tilapia	</item>
+        <item>	Mugwort	</item>
+        <item>	Mulberry	</item>
+        <item>	mung bean	</item>
+        <item>	Mushroom	</item>
+        <item>	Muskmelon	</item>
+        <item>	Mustard	</item>
+        <item>	Narrow‐leaved plantain	</item>
+        <item>	Navel orange	</item>
+        <item>	Netted muskmelon	</item>
+        <item>	Noble scallop	</item>
+        <item>	North Pacific hake	</item>
+        <item>	North Pacific Krill	</item>
+        <item>	Oak	</item>
+        <item>	ocean perch (red fish)	</item>
+        <item>	Octopus	</item>
+        <item>	Olive tree	</item>
+        <item>	Orchard grass	</item>
+        <item>	oriental plane	</item>
+        <item>	Papaya	</item>
+        <item>	Paper wasp	</item>
+        <item>	Para rubber tree	</item>
+        <item>	Parasitic fish worm	</item>
+        <item>	Parasitic nematode	</item>
+        <item>	Parasitic roundworm	</item>
+        <item>	Patagonian Grenadier	</item>
+        <item>	Pea	</item>
+        <item>	Peach	</item>
+        <item>	Peanut	</item>
+        <item>	Pear	</item>
+        <item>	Pecan	</item>
+        <item>	Perennial ryegrass	</item>
+        <item>	Pig	</item>
+        <item>	Pigweed	</item>
+        <item>	Pine	</item>
+        <item>	Pine moth	</item>
+        <item>	Pineapple	</item>
+        <item>	pistachio	</item>
+        <item>	Plant hybrid	</item>
+        <item>	Plum	</item>
+        <item>	Pomegranate	</item>
+        <item>	Potato	</item>
+        <item>	Privet	</item>
+        <item>	rainbow trout	</item>
+        <item>	Rape	</item>
+        <item>	raspberry	</item>
+        <item>	Rat	</item>
+        <item>	Red cedar	</item>
+        <item>	Red fire ant	</item>
+        <item>	red squid	</item>
+        <item>	red swamp crayfish	</item>
+        <item>	Rice	</item>
+        <item>	Rye	</item>
+        <item>	Saffron crocus	</item>
+        <item>	Salmon	</item>
+        <item>	Sapodilla plum	</item>
+        <item>	Scabies mite	</item>
+        <item>	Schistosoma	</item>
+        <item>	Sesame	</item>
+        <item>	Shaggy mane	</item>
+        <item>	Shallow‐water cape hake	</item>
+        <item>	Short ragweed	</item>
+        <item>	Shrimp	</item>
+        <item>	Siberian hamster	</item>
+        <item>	Silkworm	</item>
+        <item>	Silver hake	</item>
+        <item>	Silverfish	</item>
+        <item>	Smokybrown cockroach	</item>
+        <item>	Snow Crab	</item>
+        <item>	South American pilchard	</item>
+        <item>	southern hake	</item>
+        <item>	Southern Pacific hake	</item>
+        <item>	Soybean	</item>
+        <item>	Storage mite	</item>
+        <item>	Strawberry	</item>
+        <item>	summer cypress	</item>
+        <item>	Sunflower	</item>
+        <item>	Sweet vernal grass	</item>
+        <item>	Swordfish	</item>
+        <item>	Tall fescue	</item>
+        <item>	Thistle	</item>
+        <item>	Tobacco	</item>
+        <item>	Tomato	</item>
+        <item>	Tropical Fire Ant	</item>
+        <item>	Trumpet lily	</item>
+        <item>	Tsetse fly	</item>
+        <item>	Turnip	</item>
+        <item>	Velvet grass	</item>
+        <item>	wasp	</item>
+        <item>	Weed	</item>
+        <item>	Western conenose	</item>
+        <item>	Western ragweed	</item>
+        <item>	Wheat	</item>
+        <item>	white lupine	</item>
+        <item>	White Mulberry	</item>
+        <item>	White mustard	</item>
+        <item>	Whiteface hornet	</item>
+        <item>	Whiteleg Shrimp	</item>
+        <item>	Wild cabbage	</item>
+        <item>	wolfberry	</item>
+        <item>	Wrinkled Neptune	</item>
+        <item>	Yak	</item>
+        <item>	Yeast	</item>
+        <item>	Yellow fever mosquito	</item>
+        <item>	Yellow jacket	</item>
+        <item>	Yellowfin tuna	</item>
+
+    </string-array>
+
 </resources>
