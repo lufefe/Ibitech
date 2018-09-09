@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.support.v7.view.menu.ShowableListMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -25,7 +28,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ViewCondition extends AppCompatActivity {
     ListView listView;
@@ -50,7 +55,7 @@ public class ViewCondition extends AppCompatActivity {
         toolbar.setTitle(fullname + "\'s conditions");
         setSupportActionBar(toolbar);
 
-        Showlist();
+        Showlist(id);
     }
 
     @Override
@@ -68,22 +73,69 @@ public class ViewCondition extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private  void  Showlist(){
+    private  void  Showlist(final String id){
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URLGETCONDS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject obj = new JSONObject(response);
-                            JSONArray array = obj.getJSONArray("server_response");
-                            for (int   x= 0;x<array.length();x++){
-                                JSONObject condOBJ= array.getJSONObject(x);
-                                ConditionList co = new ConditionList(condOBJ.getString("condition_name"),condOBJ.getString("visit_date"));
-                                condList.add(co);
+
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray jsonArray = jsonObject.getJSONArray("server_response");
+
+                            //Parallel arrays
+                            final String[] visitDate = new String[jsonArray.length()];
+                            final String[] doctorID = new String[jsonArray.length()];
+                            final String[] medicalRegNo = new String[jsonArray.length()];
+                            final String[] symptomID = new String[jsonArray.length()];
+                            final String[] conditionID = new String[jsonArray.length()];
+                            final String[] medicineID = new String[jsonArray.length()];
+
+                            for (int x= 0; x < jsonArray.length(); x++){
+                                JSONObject condOBJ = jsonArray.getJSONObject(x);
+
+                                visitDate[x] = condOBJ.getString("visit_date");
+                                doctorID[x] = condOBJ.getString("doctor_id");
+                                medicalRegNo[x] = condOBJ.getString("medical_reg_no");
+                                symptomID[x] = condOBJ.getString("symptom_id");
+                                conditionID[x] = condOBJ.getString("condition_id");
+                                medicineID[x] = condOBJ.getString("medicine_id");
+
+
+                                ConditionList conds = new ConditionList(condOBJ.getString("condition_name"),
+                                                                    condOBJ.getString("visit_date"),
+                                            condOBJ.getString("first_name"),
+                                            condOBJ.getString("surname"));
+                                condList.add(conds);
 
                             }
                             ConditionListAdapter adapter= new ConditionListAdapter(condList,getApplication());
                             listView.setAdapter(adapter);
+
+                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+
+                                    for (int i =0; i < conditionID.length; i++){
+                                        if (parent.getItemIdAtPosition(position) == i) {
+                                            SharedPreferences preferences = getSharedPreferences("PATIENTCONDITION", MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = preferences.edit();
+
+                                            editor.putString("pVisitDate", visitDate[i]);
+                                            editor.putString("pDoctorID", doctorID[i]);
+                                            editor.putString("pMedicalRegNo", medicalRegNo[i]);
+                                            editor.putString("pSymptomID", symptomID[i]);
+                                            editor.putString("pConditionID", conditionID[i]);
+                                            editor.putString("pMedicine", medicineID[i]);
+                                            editor.apply();
+                                            startActivity(new Intent(ViewCondition.this, PatientCondition.class));
+                                            finish();
+                                        }
+                                    }
+
+                                }
+                            });
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(ViewCondition.this,"Error"+e.toString(), Toast.LENGTH_LONG).show();
@@ -96,9 +148,13 @@ public class ViewCondition extends AppCompatActivity {
                 Toast.makeText(ViewCondition.this,"Error 2"+error.toString(),Toast.LENGTH_LONG).show();
             }
         }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> params = new HashMap<>();
 
-
-
+                params.put("id",id);
+                return params;
+            }
         };
         Singleton.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
     }

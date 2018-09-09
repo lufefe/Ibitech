@@ -1,7 +1,5 @@
 package com.divide.ibitech.divide_ibitech.Adapter;
-/**
- * Created by s216100801
- */
+
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -32,12 +30,17 @@ public class ConditionListAdapter extends ArrayAdapter<ConditionList> {
     @Override
     public View getView(int position,  View convertView,  ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
+
         View view= inflater.inflate(R.layout.condition_list,null,true);
-        TextView condition_name =(TextView) view.findViewById(R.id.etCoName);
-        TextView date_added =(TextView) view.findViewById(R.id.etCoDate);
-        ConditionList symptoms=  conditionLists.get(position);
-        condition_name.setText(symptoms.getCondition_name());
-        date_added.setText(symptoms.getDate_added());
-        return super.getView(position, convertView, parent);
+        TextView condition_name = view.findViewById(R.id.etCoName);
+        TextView date_added = view.findViewById(R.id.etCoDate);
+        TextView doctor_name = view.findViewById(R.id.txtDoctorName);
+
+        ConditionList conditionList =  conditionLists.get(position);
+        condition_name.setText(conditionList.getCondition_name());
+        date_added.setText(conditionList.getDate_added());
+        doctor_name.setText(String.format("Dr %s %s", conditionList.getDoctorName(), conditionList.getDoctorSurname()));
+
+        return view;
     }
 }
