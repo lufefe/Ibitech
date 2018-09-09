@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#795548"
+    tools:context="com.divide.ibitech.divide_ibitech.Login">
+<RelativeLayout
+    android:layout_width="350dp"
+    android:layout_height="507dp"
+    android:layout_marginTop="15dp"
+
+    android:layout_marginStart="20dp"
+    android:layout_marginLeft="25dp"
+    android:background="@android:color/white">
+    <ImageView
+        android:id="@+id/imglogo"
+        android:layout_height="100sp"
+        android:layout_width="100sp"
+        android:layout_centerHorizontal="true"
+        android:src ="@drawable/logo2"
+        />
+<TextView
+    android:id="@+id/textview"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/imglogo"
+    android:layout_marginLeft="20sp"
+    android:layout_marginRight="40sp"
+    android:layout_marginTop="12sp"
+    android:gravity="center_horizontal"
+    android:text="Enter your data bellow"
+    android:textSize="18sp"
+
+
+/>
+
+    <EditText
+        android:id="@+id/Fname"
+        android:layout_width="322sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/textview"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5sp"
+        android:hint="First Name"
+        android:text=""
+
+/>
+    <EditText
+        android:id="@+id/Lname"
+        android:layout_width="322sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/Fname"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5sp"
+        android:hint="Last Name"
+        android:text=""
+
+        />
+
+    <EditText
+        android:id="@+id/Dob"
+        android:layout_width="322sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/Lname"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5sp"
+        android:hint="1996/12/23"
+        android:text=""
+
+        />
+    <TextView
+        android:id="@+id/Gender"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/Dob"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5sp"
+        android:text="Gender"
+        android:textSize="21sp"
+/>
+    <RadioButton
+        android:id="@+id/female"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/Gender"
+        android:layout_alignBottom="@id/Gender"
+        android:layout_alignLeft="@id/imglogo"
+        android:text="Female"
+        android:layout_alignStart="@id/imglogo"
+/>
+
+    <RadioButton
+        android:id="@+id/male"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignBaseline="@+id/female"
+        android:layout_alignBottom="@+id/female"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_toEndOf="@+id/imglogo"
+        android:layout_toRightOf="@+id/imglogo"
+        android:text="Male"
+
+        />
+    <EditText
+        android:id="@+id/address1"
+        android:layout_width="322sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/male"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5sp"
+        android:hint="AddressLine 1"
+        android:text=""
+
+        />
+    <EditText
+        android:id="@+id/address2"
+        android:layout_width="322sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/address1"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5sp"
+        android:hint="Suburb"
+        android:text=""
+
+        />
+    <EditText
+        android:id="@+id/City"
+        android:layout_width="322sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/address2"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5sp"
+        android:hint="City"
+        android:text=""
+
+        />
+    ></RelativeLayout>
+
+</LinearLayout>
+
+
+

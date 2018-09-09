@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.divide.ibitech.divide_ibitech.Login">
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:src="@drawable/ibitech_logo_no_slogan"
+        android:textColor="#ffff"
+        android:contentDescription="@string/imgContentDescription" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/txtLogin"
+            android:textColor="#000"
+            android:textSize="26sp" />
+
+        <View
+            android:layout_width="88dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="#000" />
+
+    <EditText
+        android:id="@+id/ID_Num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:drawablePadding="9dp"
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        android:ems="15"
+        android:textSize="22sp"
+        android:hint="@string/hint_idNumber"
+        android:inputType="number"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/Contact_Number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:drawableLeft="@drawable/ic_phone_black_24dp"
+        android:drawablePadding="9dp"
+        android:drawableStart="@drawable/ic_phone_black_24dp"
+        android:ems="15"
+        android:textSize="22sp"
+        android:hint="@string/hint_CellphoneNum"
+        android:inputType="number"
+        android:text="" />
+
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:drawablePadding="9dp"
+        android:drawableStart="@drawable/ic_lock_black_24dp"
+        android:ems="15"
+        android:textSize="22sp"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword" />
+
+
+
+
+    <Button
+        android:id="@+id/button_Login"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:background="@drawable/buttonstyle"
+        android:text="@string/txtLoginBtn"
+        android:textColor="@color/White"/>
+
+    <TextView
+        android:id="@+id/txtForgotPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="22sp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/txtForgot_password" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvNewUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:textAlignment="textEnd"
+                android:layout_weight="2"
+                android:text="@string/txtNew_user"
+                android:textSize="21sp" />
+
+            <TextView
+                android:id="@+id/tvNewRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="2"
+                android:text="@string/txtNewRegister"
+                android:paddingLeft="7dp"
+                android:textSize="21sp"
+                android:paddingStart="7dp"
+                tools:ignore="RtlSymmetry"
+                android:linksClickable="true"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/terms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:gravity="bottom"
+            android:text="@string/txtTermsandConds"
+            android:textAlignment="center"
+            android:textSize="21sp" />
+
+</LinearLayout>

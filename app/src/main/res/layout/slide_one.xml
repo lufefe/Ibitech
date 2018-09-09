@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
+    <TextView
+        android:layout_marginTop="2dp"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"/>
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="1dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        app:srcCompat="@drawable/utyu"
+        android:layout_alignParentLeft="true" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:progress="5"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        tools:layout_editor_absoluteY="514dp" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="342dp"
+        android:background="@android:color/holo_blue_bright"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="25dp"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        tools:layout_editor_absoluteY="550dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/White"
+            android:text="HELP\n\n
+If you have an Ibitech account you can just fill in your details and press login to continue.\n
+1.	Click text box to enter ID #.\n
+2.	Click text box to enter Cell #.\n
+3.	Click text box to enter password.\n
+The login screen provides the user with 2 options they can click to get require information:\n
+1.	 Create account (Register):\n
+You can click the link “Register” to create an Ibitech account to have access in using the application\n
+2.	Forgot Password:\n
+By clicking the link “Forgot password “if you have an Ibitech account you will be taken to a forgot password page where you can retrieve your password.
+
+" />
+
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
