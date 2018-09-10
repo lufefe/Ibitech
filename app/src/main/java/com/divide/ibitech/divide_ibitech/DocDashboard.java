@@ -45,6 +45,8 @@ public class DocDashboard extends AppCompatActivity {
         btn_Logout = findViewById(R.id.btnLogout);
         btnTutorial = findViewById(R.id.imgTutorial);
 
+        imgProfilePic = findViewById(R.id.imgProfilePic);
+
         HashMap<String,String> doc = sessionManager.getDocDetails();
         String sName = doc.get(sessionManager.NAME);
         String sSurname = doc.get(sessionManager.SURNAME);
@@ -79,6 +81,11 @@ public class DocDashboard extends AppCompatActivity {
            }
        });
 
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.profilepic);
+        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(),bitmap);
+        roundedBitmapDrawable.setCircular(true);
+        imgProfilePic.setImageDrawable(roundedBitmapDrawable);
 
     }
 }

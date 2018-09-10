@@ -27,7 +27,7 @@ public class SlideOne extends AppCompatActivity implements DatePickerDialog.OnDa
     String name,surname,dob,gender,address,suburb,city,code;
     Boolean validFName = false, validSurname = false, validDOB = false,selected = false;
     RadioGroup rg_Gender;
-    RadioButton rb_Gender;
+    RadioButton rb_female, rb_male;
     Button btn_NextSlide;
 
 
@@ -47,6 +47,9 @@ public class SlideOne extends AppCompatActivity implements DatePickerDialog.OnDa
         et_PostalCode = findViewById(R.id.postalCode);
 
         rg_Gender = findViewById(R.id.rgGender);
+
+        rb_female = findViewById(R.id.female);
+        rb_male = findViewById(R.id.male);
 
         btn_NextSlide = findViewById(R.id.btnNextSlide);
 
@@ -97,15 +100,13 @@ public class SlideOne extends AppCompatActivity implements DatePickerDialog.OnDa
         rg_Gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                i = rg_Gender.getCheckedRadioButtonId();
-                rb_Gender = findViewById(i);
-                selected = true;
 
-                if(rb_Gender.getText() == "Female"){
+                selected = true;
+                if(rb_female.isChecked()){
                     gender = "F";
 
                 }
-                else {
+                else{
                     gender = "M";
                 }
             }
