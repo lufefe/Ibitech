@@ -13,7 +13,12 @@
         <item>AB</item>
         <item>B</item>
     </string-array>
+    <string-array name="doctorNames">
+        <item>Dr E.Jonas </item>
+        <item>Dr A.Jubhela </item>
+        <item>Dr S.Mathanjana </item>
 
+    </string-array>
     <string-array name="severity_level">
         <item>Urgent</item>
         <item>High</item>
