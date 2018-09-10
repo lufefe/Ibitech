@@ -37,7 +37,11 @@
         <activity
             android:name=".Dashboard"
             android:screenOrientation="locked">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".RequestDevice" />
         <activity android:name=".AddSymptom" />
@@ -53,10 +57,7 @@
             android:label="Setting" />
         <activity android:name=".DocLogin" />
         <activity android:name=".DocRegister" />
-        <activity android:name=".DocDashboard" >
-
-
-        </activity>
+        <activity android:name=".DocDashboard" />
         <activity android:name=".ViewAppointments" />
         <activity android:name=".Diagnosis" />
         <activity android:name=".ViewPatients" />
@@ -70,6 +71,7 @@
         <activity android:name=".AddMedicalAid" />
         <activity android:name=".PatientCondition" />
         <activity android:name=".PatientAllergy"></activity>
+
     </application>
 
 </manifest>
