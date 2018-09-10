@@ -132,7 +132,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         llMedicalAid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(Profile.this, AddMedicalAid.class));
             }
         });
 

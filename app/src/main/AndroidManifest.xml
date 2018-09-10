@@ -16,7 +16,7 @@
         android:roundIcon="@drawable/ibitech_logo_no_slogan"
         android:supportsRtl="true"
         android:theme="@style/NoActionBarTheme">
-        <activity android:name=".Welcome"></activity>
+        <activity android:name=".Welcome" />
         <activity android:name=".SlideOne" />
         <activity android:name=".SlideTwo" />
         <activity
@@ -60,7 +60,8 @@
         <activity android:name=".DoctorTutorial" />
         <activity android:name=".Barchart" />
         <activity android:name=".AddMedicalAid" />
-        <activity android:name=".PatientCondition"></activity>
+        <activity android:name=".PatientCondition" />
+        <activity android:name=".PatientAllergy"></activity>
     </application>
 
 </manifest>

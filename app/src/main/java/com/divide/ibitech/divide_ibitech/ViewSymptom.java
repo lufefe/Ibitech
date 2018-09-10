@@ -53,7 +53,7 @@ public class ViewSymptom extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         sympLists= new ArrayList<>();
-        ShowList();
+        ShowList(id);
     }
 
     @Override
@@ -71,9 +71,9 @@ public class ViewSymptom extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void  ShowList(){
+    private void  ShowList(final String id){
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLGETSYMPTS,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLGETSYMPTS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -101,7 +101,17 @@ public class ViewSymptom extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(ViewSymptom.this,"Error 2"+error.toString(),Toast.LENGTH_LONG).show();
             }
-        });
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> params = new HashMap<>();
+
+                params.put("id",id);
+                return params;
+            }
+        }
+
+    ;
         Singleton.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
     }
 }

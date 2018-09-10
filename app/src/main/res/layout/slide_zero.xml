@@ -46,6 +46,18 @@
             android:textSize="32sp"
             tools:ignore="UnusedAttribute" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="90dp"
+            android:fontFamily="cursive"
+            android:text="Slide >>>"
+            android:textAlignment="center"
+            android:textColor="@color/address"
+            android:textSize="28sp"
+            tools:ignore="UnusedAttribute" />
+
     </LinearLayout>
 
 

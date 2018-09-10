@@ -1690,4 +1690,89 @@
 
     </string-array>
 
+    <string-array name="medicalAid">
+
+        <item>	AECI MEDICAL AID SOCIETY	</item>
+        <item>	ALLIANCE-MIDMED MEDICAL SCHEME	</item>
+        <item>	ANGLO MEDICAL SCHEME	</item>
+        <item>	ANGLOVAAL GROUP MEDICAL SCHEME	</item>
+        <item>	BANKMED	</item>
+        <item>	BARLOWORLD MEDICAL SCHEME	</item>
+        <item>	BESTMED MEDICAL SCHEME	</item>
+        <item>	BMW EMPLOYEES MEDICAL AID SOCIETY	</item>
+        <item>	BONITAS MEDICAL FUND	</item>
+        <item>	BP MEDICAL AID SOCIETY	</item>
+        <item>	BUILDING &amp; CONSTRUCTION INDUSTRY MEDICAL AID FUND	</item>
+        <item>	CAPE MEDICAL PLAN	</item>
+        <item>	CHARTERED ACCOUNTANTS (SA) MEDICAL AID FUND (CAMAF)	</item>
+        <item>	COMPCARE WELLNESS MEDICAL SCHEME	</item>
+        <item>	DE BEERS BENEFIT SOCIETY	</item>
+        <item>	DISCOVERY HEALTH MEDICAL SCHEME	</item>
+        <item>	ENGEN MEDICAL BENEFIT FUND	</item>
+        <item>	FEDHEALTH MEDICAL SCHEME	</item>
+        <item>	FISHING INDUSTRY MEDICAL SCHEME (FISH-MED)	</item>
+        <item>	FOOD WORKERS MEDICAL BENEFIT FUND	</item>
+        <item>	GENESIS MEDICAL SCHEME	</item>
+        <item>	GLENCORE MEDICAL SCHEME	</item>
+        <item>	GOLDEN ARROWS EMPLOYEES' MEDICAL BENEFIT FUND	</item>
+        <item>	GOVERNMENT EMPLOYEES MEDICAL SCHEME (GEMS)	</item>
+        <item>	GRINTEK ELECTRONICS MEDICAL AID SCHEME	</item>
+        <item>	HORIZON MEDICAL SCHEME	</item>
+        <item>	HOSMED MEDICAL AID SCHEME	</item>
+        <item>	IMPALA MEDICAL PLAN	</item>
+        <item>	IMPERIAL GROUP MEDICAL SCHEME	</item>
+        <item>	KEYHEALTH	</item>
+        <item>	LA-HEALTH MEDICAL SCHEME	</item>
+        <item>	LIBCARE MEDICAL SCHEME	</item>
+        <item>	LONMIN MEDICAL SCHEME	</item>
+        <item>	MAKOTI MEDICAL SCHEME	</item>
+        <item>	MALCOR MEDICAL SCHEME	</item>
+        <item>	MASSMART HEALTH PLAN	</item>
+        <item>	MBMED MEDICAL AID FUND	</item>
+        <item>	MEDIHELP	</item>
+        <item>	MEDIMED MEDICAL SCHEME	</item>
+        <item>	MEDIPOS MEDICAL SCHEME	</item>
+        <item>	MEDSHIELD MEDICAL SCHEME	</item>
+        <item>	MOMENTUM HEALTH	</item>
+        <item>	MOTOHEALTH CARE	</item>
+        <item>	NASPERS MEDICAL FUND	</item>
+        <item>	NEDGROUP MEDICAL AID SCHEME	</item>
+        <item>	NETCARE MEDICAL SCHEME	</item>
+        <item>	OLD MUTUAL STAFF MEDICAL AID FUND	</item>
+        <item>	PARMED MEDICAL AID SCHEME	</item>
+        <item>	PG GROUP MEDICAL SCHEME	</item>
+        <item>	PICK N PAY MEDICAL SCHEME	</item>
+        <item>	PLATINUM HEALTH	</item>
+        <item>	PROFMED	</item>
+        <item>	QUANTUM MEDICAL AID SOCIETY	</item>
+        <item>	RAND WATER MEDICAL SCHEME	</item>
+        <item>	REMEDI MEDICAL AID SCHEME	</item>
+        <item>	RESOLUTION HEALTH MEDICAL SCHEME	</item>
+        <item>	RETAIL MEDICAL SCHEME	</item>
+        <item>	RHODES UNIVERSITY MEDICAL SCHEME	</item>
+        <item>	SABC MEDICAL AID SCHEME	</item>
+        <item>	SAMWUMED	</item>
+        <item>	SASOLMED	</item>
+        <item>	SEDMED	</item>
+        <item>	SELFMED MEDICAL SCHEME	</item>
+        <item>	SISONKE HEALTH MEDICAL SCHEME	</item>
+        <item>	SIZWE MEDICAL FUND	</item>
+        <item>	SOUTH AFRICAN BREWERIES MEDICAL SCHEME	</item>
+        <item>	SOUTH AFRICAN POLICE SERVICE MEDICAL SCHEME (POLMED)	</item>
+        <item>	SPECTRAMED	</item>
+        <item>	SUREMED HEALTH	</item>
+        <item>	TFG MEDICAL AID SCHEME	</item>
+        <item>	THEBEMED	</item>
+        <item>	TIGER BRANDS MEDICAL SCHEME	</item>
+        <item>	TOPMED MEDICAL SCHEME	</item>
+        <item>	TRANSMED MEDICAL FUND	</item>
+        <item>	TSOGO SUN GROUP MEDICAL SCHEME	</item>
+        <item>	UMVUZO HEALTH MEDICAL SCHEME	</item>
+        <item>	UNIVERSITY OF KWA-ZULU NATAL MEDICAL SCHEME	</item>
+        <item>	WITBANK COALFIELDS MEDICAL AID SCHEME	</item>
+        <item>	WOOLTRU HEALTHCARE FUND	</item>
+
+
+    </string-array>
+
 </resources>

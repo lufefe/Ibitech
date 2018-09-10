@@ -74,7 +74,7 @@ public class ViewCondition extends AppCompatActivity {
     }
 
     private  void  Showlist(final String id){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLGETCONDS,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLGETCONDS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -84,6 +84,7 @@ public class ViewCondition extends AppCompatActivity {
                             JSONArray jsonArray = jsonObject.getJSONArray("server_response");
 
                             //Parallel arrays
+                            final String[] visitID = new String[jsonArray.length()];
                             final String[] visitDate = new String[jsonArray.length()];
                             final String[] doctorID = new String[jsonArray.length()];
                             final String[] medicalRegNo = new String[jsonArray.length()];
@@ -94,6 +95,7 @@ public class ViewCondition extends AppCompatActivity {
                             for (int x= 0; x < jsonArray.length(); x++){
                                 JSONObject condOBJ = jsonArray.getJSONObject(x);
 
+                                visitID[x] = condOBJ.getString("visit_id");
                                 visitDate[x] = condOBJ.getString("visit_date");
                                 doctorID[x] = condOBJ.getString("doctor_id");
                                 medicalRegNo[x] = condOBJ.getString("medical_reg_no");
@@ -121,6 +123,7 @@ public class ViewCondition extends AppCompatActivity {
                                             SharedPreferences preferences = getSharedPreferences("PATIENTCONDITION", MODE_PRIVATE);
                                             SharedPreferences.Editor editor = preferences.edit();
 
+                                            editor.putString("pVisitID",visitID[i]);
                                             editor.putString("pVisitDate", visitDate[i]);
                                             editor.putString("pDoctorID", doctorID[i]);
                                             editor.putString("pMedicalRegNo", medicalRegNo[i]);
@@ -155,6 +158,7 @@ public class ViewCondition extends AppCompatActivity {
                 params.put("id",id);
                 return params;
             }
+
         };
         Singleton.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
     }
