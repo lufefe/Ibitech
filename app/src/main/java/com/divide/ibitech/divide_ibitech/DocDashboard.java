@@ -20,7 +20,7 @@ public class DocDashboard extends AppCompatActivity {
 
     TextView tv_DocName;
     ImageView imgProfilePic;
-    ImageButton btnTutorial;
+    ImageButton btnTutorial,btnReports;
     CardView cv_Appointments, cv_Patients;
     Button btn_Logout;
 
@@ -44,6 +44,7 @@ public class DocDashboard extends AppCompatActivity {
         cv_Patients = findViewById(R.id.cvAllPatients);
         btn_Logout = findViewById(R.id.btnLogout);
         btnTutorial = findViewById(R.id.imgTutorial);
+        btnReports = findViewById(R.id.docReports);
 
         imgProfilePic = findViewById(R.id.imgProfilePic);
 
@@ -57,6 +58,13 @@ public class DocDashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(DocDashboard.this, DoctorTutorial.class));
+            }
+        });
+
+        btnReports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DocDashboard.this,DoctorGraphReports.class));
             }
         });
 
