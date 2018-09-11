@@ -46,7 +46,7 @@
             android:textStyle="bold"
             android:textColor="@color/White"
             android:text="HELP\n\n
-
+            After you've successfully logged in you'll be welcomed by this screen, the dashboard. Here you will click on the View upcoming appointments view. This will take you to a screen of your appointments.
 
 " />
 

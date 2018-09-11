@@ -112,7 +112,7 @@ public class PatientCondition extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(PatientCondition.this, "JSON Error" + e.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(PatientCondition.this, "Conditions not found", Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {

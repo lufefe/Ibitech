@@ -47,7 +47,10 @@
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/White"
-            android:text="HELP\n\n" />
+            android:text="HELP\n\n
+
+The doctor will check the list of his/her patients.
+" />
 
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/topPart"
         android:layout_width="match_parent"
-        android:layout_height="528dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -40,7 +40,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:fontFamily="cursive"
-            android:text="be_your_own_patient"
+            android:text="@string/be_your_own_patient"
             android:textAlignment="center"
             android:textColor="@color/endblue"
             android:textSize="32sp"
@@ -57,6 +57,18 @@
             android:textColor="@color/address"
             android:textSize="28sp"
             tools:ignore="UnusedAttribute" />
+
+   <!--     <Button
+            android:id="@+id/btnSkipTutorial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Skip tutorial"
+            android:fontFamily="casual"
+            android:textColor="@color/darkgrey"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="70dp"
+            android:textStyle="bold"
+            android:background="@color/White"/>-->
 
     </LinearLayout>
 

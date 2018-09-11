@@ -47,7 +47,7 @@
             android:textStyle="bold"
             android:textColor="@color/White"
             android:text="HELP\n\n
-
+Here the doctor will be able to view all his/her patients.
 " />
 
     </android.support.v4.widget.NestedScrollView>

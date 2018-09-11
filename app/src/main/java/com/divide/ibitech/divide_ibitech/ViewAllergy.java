@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -20,6 +21,7 @@ import com.divide.ibitech.divide_ibitech.Adapter.AllergyListAdapter;
 import com.divide.ibitech.divide_ibitech.Models.AllergyList;
 //import com.divide.ibitech.divide_ibitech.Models.ConditionList;
 import com.divide.ibitech.divide_ibitech.Models.AllergyList;
+import com.github.clans.fab.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +36,10 @@ public class ViewAllergy extends AppCompatActivity {
     ListView listView;
     String URLGETALLRGY = "http://sict-iis.nmmu.ac.za/ibitech/app/getallergy.php";
     String URLAllergyfilter = "http://sict-iis.nmmu.ac.za/ibitech/app/search.php";
+    String WeekAllergy = "http://sict-iis.nmmu.ac.za/ibitech/app/getAllergydateRangeMonth.php";
+    String TodayAllergy = "http://sict-iis.nmmu.ac.za/ibitech/app/getAllergydateRangeWeek.php";
+
+    FloatingActionButton fabToday,fabWeek;
     String id = "";
     TextView input_search;
     List<AllergyList> alleList;
@@ -44,6 +50,28 @@ public class ViewAllergy extends AppCompatActivity {
         setContentView(R.layout.activity_view_allergy);
         listView=findViewById(R.id.listAllergy);
         alleList= new ArrayList<>();
+//        fabToday=(FloatingActionButton)findViewById(R.id.fabtoday);
+//        fabWeek=(FloatingActionButton)findViewById(R.id.fabWeek);
+//        fabToday.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//               showlistToday(id);
+//                alleList.clear();
+//
+//              // listView.setAdapter(null);
+//            }
+//        });
+
+//        fabWeek.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showlistWeek(id);
+//                alleList.clear();
+//                //listView.setAdapter(null);
+//
+//            }
+//        });
+
         SharedPreferences preferences = getSharedPreferences("PROFILEPREFS",MODE_PRIVATE);
 
         String name = preferences.getString("pFirstName","") + " " + preferences.getString("pSurname","");
@@ -53,7 +81,7 @@ public class ViewAllergy extends AppCompatActivity {
         toolbar.setTitle(name + "\'s allergies");
         setSupportActionBar(toolbar);
 
-        ShowList(id);
+       ShowList(id);
     }
 
     @Override
@@ -157,5 +185,100 @@ public class ViewAllergy extends AppCompatActivity {
 
         };
         Singleton.getInstance(ViewAllergy.this).addToRequestQue(stringRequest);
+    }
+    public  void showlistToday(final String id){
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, TodayAllergy,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject object = new JSONObject(response);
+                            JSONArray array = object.getJSONArray("server_response");
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject allergyObject = array.getJSONObject(i);
+
+                                AllergyList allergy = new AllergyList(allergyObject.getString("allergy_name"),
+                                        allergyObject.getString("date_added"));
+                                alleList.add(allergy);
+
+                            }
+                            AllergyListAdapter adapter = new AllergyListAdapter(alleList, getApplication());
+                            listView.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(ViewAllergy.this, "Error " + e.toString(), Toast.LENGTH_LONG).show();
+
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ViewAllergy.this,"Error 2"+error.toString(),Toast.LENGTH_LONG).show();
+
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+
+                params.put("id",id);
+                return params;
+            }
+
+        };
+        Singleton.getInstance(ViewAllergy.this).addToRequestQue(stringRequest);
+
+    }
+    public  void showlistWeek(final String id){
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, WeekAllergy,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject object = new JSONObject(response);
+                            JSONArray array = object.getJSONArray("server_response");
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject allergyObject = array.getJSONObject(i);
+
+                                AllergyList allergy = new AllergyList(allergyObject.getString("allergy_name"),
+                                        allergyObject.getString("date_added"));
+                                alleList.add(allergy);
+
+                            }
+                            AllergyListAdapter adapter = new AllergyListAdapter(alleList, getApplication());
+                            listView.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(ViewAllergy.this, "Error " + e.toString(), Toast.LENGTH_LONG).show();
+
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(ViewAllergy.this,"Error 2"+error.toString(),Toast.LENGTH_LONG).show();
+
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+
+                params.put("id",id);
+                return params;
+            }
+        };
+        Singleton.getInstance(ViewAllergy.this).addToRequestQue(stringRequest);
+
     }
 }

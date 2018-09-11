@@ -6,30 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".PatientGraphReports">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            android:background="#309BE0"
-            app.popupTheme="@style/AppTheme.PopupOverlay"
-            />
-
-    </android.support.design.widget.AppBarLayout>
-
 
     <ListView
         android:id="@+id/listReport"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/appbar"
-        android:layout_alignParentLeft="true">
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="?android:attr/actionBarSize">
 
     </ListView>
 

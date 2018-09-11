@@ -53,7 +53,7 @@ public class Settings extends AppCompatActivity implements NavigationView.OnNavi
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }else if(id == R.id.reports){
-            Intent searchIntent = new Intent(Settings.this, Reports.class);
+            Intent searchIntent = new Intent(Settings.this, PatientGraphReports.class);
             startActivity(searchIntent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }

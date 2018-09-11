@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
-    tools:context=".Reports">
+    tools:context=".Dashboard">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -20,7 +20,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-
-    <include layout="@layout/content_reports" />
+    <include layout="@layout/activity_list_of_patient_graph_reports" />
 
 </android.support.design.widget.CoordinatorLayout>
