@@ -93,7 +93,7 @@ public class ViewSymptom extends AppCompatActivity {
                             listView.setAdapter(adapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(ViewSymptom.this,"Error"+e.toString(),Toast.LENGTH_LONG).show();
+                            Toast.makeText(ViewSymptom.this,"You have no symptoms inserted yet.",Toast.LENGTH_LONG).show();
                         }
                     }
                 }, new Response.ErrorListener() {

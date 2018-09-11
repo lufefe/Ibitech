@@ -27,6 +27,8 @@ String items []= new String[]{"My Conditions","My Allergies","Medical Devices",}
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reports);
 
+        sessionManager = new SessionManager(this);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("My Reports");
         setSupportActionBar(toolbar);

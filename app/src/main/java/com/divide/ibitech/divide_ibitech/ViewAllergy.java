@@ -257,7 +257,7 @@ public class ViewAllergy extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(ViewAllergy.this, "Error " + e.toString(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(ViewAllergy.this, "You have no allergies inserted yet.", Toast.LENGTH_LONG).show();
 
                         }
 

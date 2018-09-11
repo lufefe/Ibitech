@@ -122,7 +122,7 @@ public class ViewAppointments extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(ViewAppointments.this,"Error "+e.toString(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(ViewAppointments.this,"There are no appointments.",Toast.LENGTH_LONG).show();
                 }
 
             }

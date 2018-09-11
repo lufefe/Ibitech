@@ -141,7 +141,7 @@ public class ViewCondition extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(ViewCondition.this,"Error"+e.toString(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(ViewCondition.this,"You have no conditions inserted yet.", Toast.LENGTH_LONG).show();
                         }
 
                     }

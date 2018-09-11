@@ -140,7 +140,7 @@ public class ViewPatients extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(ViewPatients.this,"Error "+e.toString(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(ViewPatients.this,"There are no patients in our database yet.",Toast.LENGTH_LONG).show();
                 }
 
             }
