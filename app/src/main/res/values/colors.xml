@@ -8,6 +8,8 @@
     <color name="colorStickyBG">#01c4ff</color>
     <color name="colorSticky">#074D71</color>
 
+    //for search toolbar
+    <color name="search_back">#309BE0</color>
 
     //for profile screen
     <color name="address">#2F7092</color>

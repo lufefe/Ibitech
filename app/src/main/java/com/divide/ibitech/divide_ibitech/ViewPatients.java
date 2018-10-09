@@ -2,6 +2,7 @@ package com.divide.ibitech.divide_ibitech;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.divide.ibitech.divide_ibitech.Adapter.DocPatientsAdapter;
 import com.divide.ibitech.divide_ibitech.Models.PatientsList;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,6 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewPatients extends AppCompatActivity {
+
+    MaterialSearchView searchView;
 
     ListView listView;
     List<PatientsList> patientsList;
@@ -42,13 +46,19 @@ public class ViewPatients extends AppCompatActivity {
 
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("All Patients");
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
         setSupportActionBar(toolbar);
+
+        searchView = findViewById(R.id.search_view);
+
 
         GetPatients();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.doc_nav_drawer, menu);
+        getMenuInflater().inflate(R.menu.menu_item, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        searchView.setMenuItem(item);
         return true;
         //return super.onCreateOptionsMenu(menu);
     }
