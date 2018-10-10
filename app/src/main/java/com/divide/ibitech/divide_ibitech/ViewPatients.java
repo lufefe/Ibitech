@@ -44,13 +44,13 @@ public class ViewPatients extends AppCompatActivity {
         patientsList = new ArrayList<>();
 
 
+
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("All Patients");
         toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
         setSupportActionBar(toolbar);
 
         searchView = findViewById(R.id.search_view);
-
 
         GetPatients();
     }
@@ -62,14 +62,7 @@ public class ViewPatients extends AppCompatActivity {
         return true;
         //return super.onCreateOptionsMenu(menu);
     }
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
 
-        if(id == R.id.action_dashboard){
-            startActivity(new Intent(ViewPatients.this,DocDashboard.class));
-        }
-        return super.onOptionsItemSelected(item);
-    }
     private void GetPatients() {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GETPATIENTS, new Response.Listener<String>() {
@@ -93,6 +86,40 @@ public class ViewPatients extends AppCompatActivity {
                     final String [] patientHeight = new String[jsonArray.length()];
                     final String [] patientMedicalAid = new String[jsonArray.length()];
 
+                    for (int i = 0; i < jsonArray.length(); i++) {
+
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        patientName[i] = object.getString("first_name");
+                    }
+                    searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+                        @Override
+                        public boolean onQueryTextSubmit(String query) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onQueryTextChange(String newText) {
+                            if (newText != null && !newText.isEmpty()){
+                                List<PatientsList> lstFound = new ArrayList<>();
+                                for (String item:patientName){
+                                    if (item.contains(newText)){
+                                        //lstFound.add(item);
+                                    }
+
+                                }
+                                DocPatientsAdapter adapter = new DocPatientsAdapter(getApplication(),lstFound);
+                                listView.setAdapter(adapter);
+                            }
+                            else {
+                                // if search text is null
+                                //return default
+                                DocPatientsAdapter adapter = new DocPatientsAdapter(getApplication(),patientsList);
+                                listView.setAdapter(adapter);
+                            }
+                            return true;
+                        }
+                    });
+
 
                     for (int i = 0; i < jsonArray.length(); i++) {
 
@@ -114,6 +141,20 @@ public class ViewPatients extends AppCompatActivity {
                         PatientsList patients = new PatientsList(object.getString("first_name"),object.getString("surname"), object.getString("dob") ,object.getString("cellphone_number"));
                         patientsList.add(patients);
                     }
+
+                    searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
+                        @Override
+                        public void onSearchViewShown() {
+
+                        }
+
+                        @Override
+                        public void onSearchViewClosed() {
+                            // If closed Search view, list view will return default
+                            DocPatientsAdapter adapter = new DocPatientsAdapter(getApplication(),patientsList);
+                            listView.setAdapter(adapter);
+                        }
+                    });
 
                     DocPatientsAdapter adapter = new DocPatientsAdapter(getApplication(),patientsList);
                     listView.setAdapter(adapter);
@@ -147,6 +188,7 @@ public class ViewPatients extends AppCompatActivity {
                             }
                         }
                     });
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
