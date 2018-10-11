@@ -71,7 +71,7 @@ public class ViewPatients extends AppCompatActivity {
                 try {
 
                     JSONObject jsonObject = new JSONObject(response);
-                    JSONArray jsonArray = jsonObject.getJSONArray("server_response");
+                    final JSONArray jsonArray = jsonObject.getJSONArray("server_response");
 
                     //Parallel arrays
                     final String [] patientID = new String[jsonArray.length()];
@@ -86,10 +86,13 @@ public class ViewPatients extends AppCompatActivity {
                     final String [] patientHeight = new String[jsonArray.length()];
                     final String [] patientMedicalAid = new String[jsonArray.length()];
 
+                    //for searching
+                    final String [] patientFullName = new String[jsonArray.length()];
+
                     for (int i = 0; i < jsonArray.length(); i++) {
 
                         JSONObject object = jsonArray.getJSONObject(i);
-                        patientName[i] = object.getString("first_name");
+                        patientFullName[i] = object.getString("first_name") + " " + object.getString("surname");
                     }
                     searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
                         @Override
@@ -101,9 +104,21 @@ public class ViewPatients extends AppCompatActivity {
                         public boolean onQueryTextChange(String newText) {
                             if (newText != null && !newText.isEmpty()){
                                 List<PatientsList> lstFound = new ArrayList<>();
-                                for (String item:patientName){
-                                    if (item.contains(newText)){
-                                        //lstFound.add(item);
+                                for (int i =0; i < patientFullName.length; i++){
+                                    JSONObject object = null;
+                                    try {
+                                        object = jsonArray.getJSONObject(i);
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    if (patientFullName[i].contains(newText)){
+                                        PatientsList patients = null;
+                                        try {
+                                            patients = new PatientsList(object.getString("first_name"),object.getString("surname"), object.getString("dob") ,object.getString("cellphone_number"));
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                        lstFound.add(patients);
                                     }
 
                                 }
@@ -142,6 +157,9 @@ public class ViewPatients extends AppCompatActivity {
                         patientsList.add(patients);
                     }
 
+                    DocPatientsAdapter adapter = new DocPatientsAdapter(getApplication(),patientsList);
+                    listView.setAdapter(adapter);
+
                     searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
                         @Override
                         public void onSearchViewShown() {
@@ -155,9 +173,6 @@ public class ViewPatients extends AppCompatActivity {
                             listView.setAdapter(adapter);
                         }
                     });
-
-                    DocPatientsAdapter adapter = new DocPatientsAdapter(getApplication(),patientsList);
-                    listView.setAdapter(adapter);
 
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
