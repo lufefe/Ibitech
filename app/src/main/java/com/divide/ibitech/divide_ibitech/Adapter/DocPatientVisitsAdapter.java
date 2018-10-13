@@ -15,12 +15,12 @@ import com.divide.ibitech.divide_ibitech.R;
 
 import java.util.List;
 
-public class DocAppointmentsAdapter extends ArrayAdapter<AppointmentsList>{
+public class DocPatientVisitsAdapter extends ArrayAdapter<AppointmentsList>{
 
     private List<AppointmentsList> apptsLists;
 
-    public DocAppointmentsAdapter(@NonNull Context context, List<AppointmentsList> apptsLists) {
-        super(context, R.layout.custom_docappointments_row,apptsLists);
+    public DocPatientVisitsAdapter(@NonNull Context context, List<AppointmentsList> apptsLists) {
+        super(context, R.layout.custom_docpatientvisits_row,apptsLists);
         this.apptsLists = apptsLists;
     }
 
@@ -29,7 +29,7 @@ public class DocAppointmentsAdapter extends ArrayAdapter<AppointmentsList>{
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View customView = inflater.inflate(R.layout.custom_docappointments_row, parent, false);
+        View customView = inflater.inflate(R.layout.custom_docpatientvisits_row, parent, false);
 
         AppointmentsList apptsList = apptsLists.get(position);
         TextView name = customView.findViewById(R.id.txtName);

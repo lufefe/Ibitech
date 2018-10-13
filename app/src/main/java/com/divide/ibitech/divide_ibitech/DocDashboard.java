@@ -21,7 +21,7 @@ public class DocDashboard extends AppCompatActivity {
     TextView tv_DocName;
     ImageView imgProfilePic;
     ImageButton btnTutorial,btnReports;
-    CardView cv_Appointments, cv_Patients;
+    CardView cv_Visits, cv_Patients;
     Button btn_Logout;
 
     private Bitmap bitmap;
@@ -40,7 +40,7 @@ public class DocDashboard extends AppCompatActivity {
         sessionManager.checkLogin();
 
         tv_DocName = findViewById(R.id.tvDocName);
-        cv_Appointments = findViewById(R.id.cvAppointments);
+        cv_Visits = findViewById(R.id.cvVisits);
         cv_Patients = findViewById(R.id.cvAllPatients);
         btn_Logout = findViewById(R.id.btnLogout);
         btnTutorial = findViewById(R.id.imgTutorial);
@@ -75,10 +75,10 @@ public class DocDashboard extends AppCompatActivity {
             }
         });
 
-       cv_Appointments.setOnClickListener(new View.OnClickListener() {
+        cv_Visits.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               startActivity(new Intent(DocDashboard.this, ViewAppointments.class));
+               startActivity(new Intent(DocDashboard.this, ViewPatientVisits.class));
            }
        });
 

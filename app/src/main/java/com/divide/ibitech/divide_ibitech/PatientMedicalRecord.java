@@ -52,8 +52,8 @@ public class PatientMedicalRecord extends AppCompatActivity {
             tvPatientGender.setText("Female");
 
         tvPatientBlood.setText(patientBlood);
-        tvPatientWeight.setText(patientWeight);
-        tvPatientHeight.setText(patientHeight);
+        tvPatientWeight.setText(String.format("%s kg", patientWeight));
+        tvPatientHeight.setText(String.format("%s cm", patientHeight));
         tvPatientStatus.setText(patientStatus);
 
     }

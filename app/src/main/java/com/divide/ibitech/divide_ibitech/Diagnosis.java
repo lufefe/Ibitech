@@ -2,14 +2,18 @@ package com.divide.ibitech.divide_ibitech;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +22,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.tooltip.Tooltip;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +42,7 @@ public class Diagnosis extends AppCompatActivity {
     TextView tvPatientName, tvDate;
     EditText  etPatientSymptoms;
     Button btnCancel, btnSave;
+    ImageView img_Info;
     String patientID = "", patientName = "", symptomID = "", doctorID = "", medRegNo =  "", date = "";
 
     String URL_GETSYMPTMS = "http://sict-iis.nmmu.ac.za/ibitech/app/getpatientsymptomsfordiagnosis.php";
@@ -60,6 +66,22 @@ public class Diagnosis extends AppCompatActivity {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         final Date date = new Date();
         tvDate.setText(dateFormat.format(date));
+
+        img_Info = findViewById(R.id.imgInfo);
+
+        img_Info.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View view) {
+                Tooltip tooltip = new Tooltip.Builder(img_Info)
+                        .setText("Add more symptoms by separating them using a comma (,).")
+                        .setTextColor(Color.WHITE)
+                        .setGravity(Gravity.TOP)
+                        .setCornerRadius(8f)
+                        .setDismissOnClick(true)
+                        .show();
+            }
+        });
 
         act_Diagnosis = findViewById(R.id.actx_Diagnosis);
         act_Medication = findViewById(R.id.actx_Medication);
@@ -89,7 +111,7 @@ public class Diagnosis extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Diagnosis.this, ViewAppointments.class));
+                startActivity(new Intent(Diagnosis.this, ViewPatientVisits.class));
                 finish();
             }
         });
@@ -214,7 +236,7 @@ public class Diagnosis extends AppCompatActivity {
                     //Log.i("tagconvertstr", "["+response+"]");
                     if (success.equals("1")) {
                         Toast.makeText(Diagnosis.this, "Diagnosis added successfully.", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(Diagnosis.this, ViewAppointments.class));
+                        startActivity(new Intent(Diagnosis.this, ViewPatientVisits.class));
                     }
                     else {
                         Toast.makeText(Diagnosis.this, "Sorry, diagnosis cannot be added at the moment.", Toast.LENGTH_LONG).show();
