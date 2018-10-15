@@ -1,5 +1,6 @@
 package com.divide.ibitech.divide_ibitech.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,23 +15,48 @@ import com.divide.ibitech.divide_ibitech.R;
 
 public class MedInfoAdapter extends ArrayAdapter<String> {
 
-     public MedInfoAdapter(Context context, String[] medrecInfo) {
+    private String[] cats;
+    private Integer[] imgid;
+    private Activity context;
+
+     public MedInfoAdapter(Activity context, String[] medrecInfo, Integer[] imgid) {
         super(context, R.layout.custom_med_rec_row, medrecInfo);
+        this.context = context;
+        this.cats = medrecInfo;
+        this.imgid = imgid;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater medrecInflater = LayoutInflater.from(getContext());
-        View myVeiw = medrecInflater.inflate(R.layout.custom_med_rec_row,parent,false );
 
-        String medRecCat = getItem(position);
-        TextView category = myVeiw.findViewById(R.id.tv_category);
-        ImageView imageView = myVeiw.findViewById(R.id.img_pic);
+         View r = convertView;
+         ViewHolder viewHolder = null;
+         if (r == null){
+             LayoutInflater layoutInflater = context.getLayoutInflater();
+             r = layoutInflater.inflate(R.layout.custom_med_rec_row,null,true );
+             viewHolder = new ViewHolder(r);
+             r.setTag(viewHolder);
+         }
+         else {
+            viewHolder = (ViewHolder) r.getTag();
+         }
+         viewHolder.tv.setText(cats[position]);
+         viewHolder.iv.setImageResource(imgid[position]);
 
-        category.setText(medRecCat);
-        imageView.setImageResource(R.drawable.ic_lock_black_24dp);
+         return r;
+    }
 
-        return myVeiw;
+    //optimizes the list view performance
+    class ViewHolder {
+
+         TextView tv;
+         ImageView iv;
+
+         ViewHolder(View v){
+             tv = v.findViewById(R.id.tv_category);
+             iv = v.findViewById(R.id.img_pic);
+         }
+
     }
 }

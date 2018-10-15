@@ -19,7 +19,7 @@ public class PatientMedicalRecord extends AppCompatActivity {
     TextView tvPatientID, tvPatientName, tvPatientDOB, tvPatientGender, tvPatientStatus, tvPatientCell, tvPatientBlood, tvPatientWeight, tvPatientHeight, tvPatientMedAid;
 
     String patientID = "", patientName = "", patientDOB="", patientGender ="", patientStatus="", patientCell="", patientBlood="", patientWeight="", patientHeight="", patientMedAid="";
-
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +28,10 @@ public class PatientMedicalRecord extends AppCompatActivity {
 
         SharedPreferences prefs = getSharedPreferences("PATIENT",MODE_PRIVATE);
 
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(patientName);
-        setSupportActionBar(toolbar);
 
-        String items []= new String[]{"Last Visit","Allergies","Medication", "Conditions","Test Results"};
-        ListAdapter medAdapter = new MedInfoAdapter(this,items);
+        String cats []= new String[]{"Last Visit","Allergies","Medication", "Conditions","Test Results", "Medical Devices", "Miscellaneous"};
+        Integer imgid [] = new Integer[]{R.drawable.doctor, R.drawable.allergy, R.drawable.pills,R.drawable.health, R.drawable.flask, R.drawable.serum, R.drawable.hands};
+        ListAdapter medAdapter = new MedInfoAdapter(this,cats, imgid);
         ListView listview = findViewById(R.id.lv_medInfo);
         listview.setAdapter(medAdapter);
 
@@ -55,7 +53,7 @@ public class PatientMedicalRecord extends AppCompatActivity {
         tvPatientBlood = findViewById(R.id.tvBloodType);
         tvPatientWeight = findViewById(R.id.tvWeight);
         tvPatientHeight = findViewById(R.id.tvHeight);
-//        tvPatientMedAid = findViewById(R.id.tvMedicalAid);
+        //tvPatientMedAid = findViewById(R.id.tvMedicalAid);
 
         patientID = prefs.getString("pID","");
         patientName = prefs.getString("pName","");
@@ -67,6 +65,11 @@ public class PatientMedicalRecord extends AppCompatActivity {
         patientWeight = prefs.getString("pWeight","");
         patientHeight = prefs.getString("pHeight","");
         patientMedAid = prefs.getString("pMedicalAid","");
+
+
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(patientName + "\'s Medical Record" );
+        setSupportActionBar(toolbar);
 
         tvPatientName.setText(patientName);
         tvPatientID.setText(patientID);
