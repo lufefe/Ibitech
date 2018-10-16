@@ -12,7 +12,7 @@ public class DocPatientLastVisit extends AppCompatActivity {
 
     android.support.v7.widget.Toolbar toolbar;
     String patientID="", patientName="";
-    String visitDate="";
+    String visitDate="",doctorName="", symptoms="",diagnosis="",medication="",notes="";
 
 
     @Override
@@ -20,10 +20,29 @@ public class DocPatientLastVisit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_patient_last_visit);
 
+        tv_VisitDate = findViewById(R.id.tvVisitDate);
+        tv_Doctor = findViewById(R.id.tvDoctor);
+        tv_Symptoms = findViewById(R.id.tvSymptoms);
+        tv_Diagnosis = findViewById(R.id.tvDiagnosis);
+        tv_Medication = findViewById(R.id.tvMedication);
+        tv_Notes = findViewById(R.id.tvNotes);
+
         //shared prefs for patient last visit
         SharedPreferences preferences = getSharedPreferences("LASTVISIT",MODE_PRIVATE);
         visitDate = preferences.getString("pVisitDate", "");
+        doctorName = preferences.getString("pDoctor", "");
+        symptoms = preferences.getString("pSymptomName", "");
+        diagnosis = preferences.getString("pDiagnosis", "");
+        medication = preferences.getString("pMedication", "");
+        notes = preferences.getString("pNotes", "");
+
+
         tv_VisitDate.setText(visitDate);
+        tv_Doctor.setText(doctorName);
+        tv_Symptoms.setText(symptoms);
+        tv_Diagnosis.setText(diagnosis);
+        tv_Medication.setText(medication);
+        tv_Notes.setText(notes);
 
         //shared prefs for patient data
         SharedPreferences prefs = getSharedPreferences("PATIENT",MODE_PRIVATE);

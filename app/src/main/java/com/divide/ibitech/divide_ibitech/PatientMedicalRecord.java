@@ -84,6 +84,7 @@ public class PatientMedicalRecord extends AppCompatActivity {
                         public void onResponse(String response) {
                             try {
 
+
                                 JSONObject jsonObject = new JSONObject(response);
                                 JSONArray jsonArray = jsonObject.getJSONArray("server_response");
 
@@ -94,7 +95,7 @@ public class PatientMedicalRecord extends AppCompatActivity {
                                 visitID = object.getString("visit_id");
                                 visitDate = object.getString("visit_date");
                                 docID = object.getString("doctor_id");
-                                medReg = object.getString("med_reg_no");
+                                medReg = object.getString("medical_reg_no");
                                 symptomID = object.getString("symptom_id");
                                 patID = object.getString("patient_id"); //can be opted out
                                 condID = object.getString("condition_id");
@@ -106,15 +107,16 @@ public class PatientMedicalRecord extends AppCompatActivity {
                                 editor.putString("pVisitDate", visitDate);
                                 editor.apply();
 
+                                getLastVisitDoctor(docID,medReg);
+                                getLastVisitSymptoms(symptomID);
+                                getLastVisitCondition(condID);
+                                getLastVisitMedication(medicineID);
+                                getLastVisitNotes(visitID,visitDate);
+
                                 Intent intent = new Intent(PatientMedicalRecord.this, DocPatientLastVisit.class);
                                 startActivity(intent);
                                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
-                               /* getLastVisitDoctor(docID,medReg);
-                                getLastVisitSymptoms(symptomID);
-                                getLastVisitCondition(condID);
-                                getLastVisitMedication(medicineID);
-                                getLastVisitNotes(visitID,visitDate);*/
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -131,7 +133,7 @@ public class PatientMedicalRecord extends AppCompatActivity {
 
                     {
                         @Override
-                        protected Map<String, String> getParams() throws AuthFailureError {
+                        protected Map<String, String> getParams() {
                             Map<String,String> params = new HashMap<>();
 
                             params.put("id",patientID);
@@ -209,12 +211,6 @@ public class PatientMedicalRecord extends AppCompatActivity {
 
     }
 
-    private void GetLastVisit(final String patientID) {
-
-
-
-    }
-
     private void getLastVisitNotes(final String visitID, final String visitDate) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GETLSTVSTNOTES, new Response.Listener<String>() {
             @Override
@@ -231,7 +227,13 @@ public class PatientMedicalRecord extends AppCompatActivity {
                     description = object.getString("description");
                     dateAdded = object.getString("date_added");
 
-                   // tv_Notes.setText(description);
+                    //sets shared preferences for last visit
+                    SharedPreferences preferences = getSharedPreferences("LASTVISIT", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("pNotes", description);
+                    editor.putString("pNoteDateAdded", dateAdded);
+                    editor.apply();
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -248,7 +250,7 @@ public class PatientMedicalRecord extends AppCompatActivity {
 
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
 
                 params.put("visitID",visitID);
@@ -276,10 +278,13 @@ public class PatientMedicalRecord extends AppCompatActivity {
 
                     JSONObject object = jsonArray.getJSONObject(0);
 
-                    medicine = object.getString("medicine_name");
+                    medicine = object.getString("description");
 
-
-                    //tv_Medication.setText(medicine);
+                    //sets shared preferences for last visit
+                    SharedPreferences preferences = getSharedPreferences("LASTVISIT", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("pMedication", medicine);
+                    editor.apply();
 
 
                 } catch (JSONException e) {
@@ -324,7 +329,11 @@ public class PatientMedicalRecord extends AppCompatActivity {
 
                     diagnosis = object.getString("condition_name");
 
-                   // tv_Diagnosis.setText(diagnosis);
+                    //sets shared preferences for last visit
+                    SharedPreferences preferences = getSharedPreferences("LASTVISIT", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("pDiagnosis", diagnosis);
+                    editor.apply();
 
 
                 } catch (JSONException e) {
@@ -342,7 +351,7 @@ public class PatientMedicalRecord extends AppCompatActivity {
 
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
 
                 params.put("condID",condID);
@@ -370,8 +379,13 @@ public class PatientMedicalRecord extends AppCompatActivity {
                     symptomName = object.getString("symptom_name");
                     dateAdded = object.getString("date_added");
 
-                    // sets symptoms oo text view
-                    //tv_Symptoms.setText(symptomName);
+                    //sets shared preferences for last visit
+                    SharedPreferences preferences = getSharedPreferences("LASTVISIT", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("pSymptomName", symptomName);
+                    editor.putString("pSymptomDateAdded", dateAdded);
+                    editor.apply();
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -418,12 +432,18 @@ public class PatientMedicalRecord extends AppCompatActivity {
                     cellphoneNo = object.getString("cellphone_number");
                     occupation = object.getString("occupation");
 
+                    //sets shared preferences for last visit doctor
+                    SharedPreferences preferences = getSharedPreferences("LASTVISIT", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
                     // sets doctor name as initials plus surname (charAt(0))
-                    //tv_Doctor.setText(String.format("%s %s", firstName.charAt(0), surname));
+                    editor.putString("pDoctor", String.format("%s %s", firstName.charAt(0), surname));
+                    editor.putString("pDocCell", cellphoneNo);
+                    editor.putString("pOccupation", occupation);
+                    editor.apply();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(PatientMedicalRecord.this,"There are no patients in our database yet.",Toast.LENGTH_LONG).show();
+                    Toast.makeText(PatientMedicalRecord.this,"Doctor retrieve failed.",Toast.LENGTH_LONG).show();
                 }
 
             }
