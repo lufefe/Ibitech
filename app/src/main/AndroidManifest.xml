@@ -16,9 +16,7 @@
         android:roundIcon="@drawable/ibitech_logo_no_slogan"
         android:supportsRtl="true"
         android:theme="@style/NoActionBarTheme">
-        <activity android:name=".Welcome" >
-
-        </activity>
+        <activity android:name=".Welcome" />
         <activity android:name=".SlideOne" />
         <activity android:name=".SlideTwo" />
         <activity
@@ -29,9 +27,7 @@
             android:screenOrientation="locked" />
         <activity
             android:name=".Dashboard"
-            android:screenOrientation="locked">
-
-        </activity>
+            android:screenOrientation="locked" />
         <activity android:name=".RequestDevice" />
         <activity android:name=".AddSymptom" />
         <activity android:name=".AddAllergy" />
@@ -43,7 +39,7 @@
             android:label="Setting" />
         <activity android:name=".DocLogin" />
         <activity android:name=".DocRegister" />
-        <activity android:name=".DocDashboard" >
+        <activity android:name=".DocDashboard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -71,8 +67,14 @@
         <activity android:name=".DoctorGraphReports" />
         <activity android:name=".AddMedicalAid" />
         <activity android:name=".PatientCondition" />
-    <activity android:name=".PatientAllergy" />
-
+        <activity android:name=".PatientAllergy" />
+        <activity android:name=".DocPatientLastVisit" />
+        <activity android:name=".DocPatientAllergies" />
+        <activity android:name=".DocPatientMedication" />
+        <activity android:name=".DocPatientConditions" />
+        <activity android:name=".DocPatientTestResults" />
+        <activity android:name=".DocPatientMedicalDevices" />
+        <activity android:name=".DocPatientMiscellaneous"></activity>
     </application>
 
 </manifest>

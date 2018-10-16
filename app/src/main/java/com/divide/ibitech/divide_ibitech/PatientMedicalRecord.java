@@ -1,16 +1,14 @@
 package com.divide.ibitech.divide_ibitech;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.divide.ibitech.divide_ibitech.Adapter.MedInfoAdapter;
 
@@ -28,7 +26,6 @@ public class PatientMedicalRecord extends AppCompatActivity {
 
         SharedPreferences prefs = getSharedPreferences("PATIENT",MODE_PRIVATE);
 
-
         String cats []= new String[]{"Last Visit","Allergies","Medication", "Conditions","Test Results", "Medical Devices", "Miscellaneous"};
         Integer imgid [] = new Integer[]{R.drawable.doctor, R.drawable.allergy, R.drawable.pills,R.drawable.health, R.drawable.flask, R.drawable.serum, R.drawable.hands};
         ListAdapter medAdapter = new MedInfoAdapter(this,cats, imgid);
@@ -39,7 +36,42 @@ public class PatientMedicalRecord extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
                 String cat = String.valueOf(parent.getItemAtPosition(position));
-                Toast.makeText(PatientMedicalRecord.this, cat, Toast.LENGTH_LONG).show();
+                if (cat.equals("Last Visit")){
+                    Intent intent = new Intent(PatientMedicalRecord.this, DocPatientLastVisit.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+                if (cat.equals("Allergies")){
+                    Intent intent = new Intent(PatientMedicalRecord.this, DocPatientAllergies.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+                if (cat.equals("Medication")){
+                    Intent intent = new Intent(PatientMedicalRecord.this, DocPatientMedication.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+                if (cat.equals("Conditions")){
+                    Intent intent = new Intent(PatientMedicalRecord.this, DocPatientConditions.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+                if (cat.equals("Test Results")){
+                    Intent intent = new Intent(PatientMedicalRecord.this, DocPatientTestResults.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+                if (cat.equals("Medical Devices")){
+                    Intent intent = new Intent(PatientMedicalRecord.this, DocPatientMedicalDevices.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+                if (cat.equals("Miscellaneous")){
+                    Intent intent = new Intent(PatientMedicalRecord.this, DocPatientMiscellaneous.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+
             }
         });
 
@@ -87,4 +119,5 @@ public class PatientMedicalRecord extends AppCompatActivity {
         tvPatientStatus.setText(patientStatus);
 
     }
+
 }
