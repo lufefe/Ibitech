@@ -74,7 +74,7 @@
         <activity android:name=".DocPatientConditions" />
         <activity android:name=".DocPatientTestResults" />
         <activity android:name=".DocPatientMedicalDevices" />
-        <activity android:name=".DocPatientMiscellaneous"></activity>
+        <activity android:name=".DocPatientMiscellaneous" />
     </application>
 
 </manifest>

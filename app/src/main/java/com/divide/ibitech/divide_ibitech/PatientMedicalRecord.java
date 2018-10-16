@@ -16,17 +16,20 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.divide.ibitech.divide_ibitech.Adapter.AllergyListAdapter;
 import com.divide.ibitech.divide_ibitech.Adapter.MedInfoAdapter;
+import com.divide.ibitech.divide_ibitech.Models.AllergyList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PatientMedicalRecord extends AppCompatActivity {
-
 
     TextView tvPatientID, tvPatientName, tvPatientDOB, tvPatientGender, tvPatientStatus, tvPatientCell, tvPatientBlood, tvPatientWeight, tvPatientHeight, tvPatientMedAid;
 
@@ -50,10 +53,13 @@ public class PatientMedicalRecord extends AppCompatActivity {
     //gets script for patient notes of last visit
     String URL_GETLSTVSTNOTES = "http://sict-iis.nmmu.ac.za/ibitech/app/getlastvisitnotes.php";
 
+    String URLGETALLRGY = "http://sict-iis.nmmu.ac.za/ibitech/app/getallergy.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_medical_record);
+
 
         //gets shared preferences from patients list
         SharedPreferences prefs = getSharedPreferences("PATIENT",MODE_PRIVATE);
@@ -83,7 +89,6 @@ public class PatientMedicalRecord extends AppCompatActivity {
                         @Override
                         public void onResponse(String response) {
                             try {
-
 
                                 JSONObject jsonObject = new JSONObject(response);
                                 JSONArray jsonArray = jsonObject.getJSONArray("server_response");
@@ -115,6 +120,7 @@ public class PatientMedicalRecord extends AppCompatActivity {
 
                                 Intent intent = new Intent(PatientMedicalRecord.this, DocPatientLastVisit.class);
                                 startActivity(intent);
+                                finish();
                                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
 

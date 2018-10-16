@@ -18,7 +18,7 @@ public class AllergyListAdapter extends ArrayAdapter<AllergyList> {
     List<AllergyList> allergyList;
     private Context mCtx;
 
-    public AllergyListAdapter(    List<AllergyList> Al, Context c) {
+    public AllergyListAdapter(List<AllergyList> Al, Context c) {
         super(c, R.layout.allergy_list,Al);
         this.allergyList=Al;
         this.mCtx=c;

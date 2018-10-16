@@ -99,7 +99,7 @@ public class ViewAllergy extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void ShowList(final String id) {
+    public void ShowList(final String id) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLGETALLRGY,
                 new Response.Listener<String>() {
                     @Override
