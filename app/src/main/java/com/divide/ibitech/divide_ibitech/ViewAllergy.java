@@ -78,7 +78,7 @@ public class ViewAllergy extends AppCompatActivity {
         id = preferences.getString("pID","");
 
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(name + "\'s allergies");
+        toolbar.setTitle("Your Allergies");
         setSupportActionBar(toolbar);
 
        ShowList(id);

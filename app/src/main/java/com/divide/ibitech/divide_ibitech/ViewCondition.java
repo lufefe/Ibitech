@@ -52,7 +52,7 @@ public class ViewCondition extends AppCompatActivity {
         id = preferences.getString("pID","");
 
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(fullname + "\'s conditions");
+        toolbar.setTitle("Your Conditions");
         setSupportActionBar(toolbar);
 
         Showlist(id);

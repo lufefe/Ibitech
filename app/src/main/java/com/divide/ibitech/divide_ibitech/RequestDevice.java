@@ -2,6 +2,7 @@ package com.divide.ibitech.divide_ibitech;
 
 
 
+import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;import android.content.Intent;
 import android.app.DatePickerDialog;
@@ -26,6 +27,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,7 +56,7 @@ public class RequestDevice extends AppCompatActivity {
 
     String URL_REQUEST = "http://sict-iis.nmmu.ac.za/ibitech/app/requestdevice.php";
 
-    String URL_GETDOCID = "http://sict-iis.nmmu.ac.za/ibitech/app/register.php";
+    String URL_GETDOCID = "http://sict-iis.nmmu.ac.za/ibitech/app/getdoctorid.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,7 @@ public class RequestDevice extends AppCompatActivity {
                 // extract doctor name for getting their id and reg no
                 String[] splitted = practitionerName.split("\\s+");
                 String name = splitted[1] + " " + splitted[2];
+                //Log.d("RequestDevice",name );
                 getDoctorID(name);
             }
 
@@ -111,17 +114,6 @@ public class RequestDevice extends AppCompatActivity {
             }
         });
 
-        //Real-time validation
-        autoDeviceName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(autoDeviceName.getText().length() > 0){
-                    dValid = DeviceValidate();
-                }
-            }
-        });
-
-
     }
 
     private void getDoctorID(final String practitionerName) {
@@ -129,23 +121,26 @@ public class RequestDevice extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    String success = jsonObject.getString("success");
+                        JSONObject jsonObject = new JSONObject(response);
+                        JSONArray jsonArray = jsonObject.getJSONArray("server_response");
 
-                    if (success.equals("1")) {
-                        Toast.makeText(RequestDevice.this, "Doc ID Found", Toast.LENGTH_LONG).show();
+                        JSONObject object = jsonArray.getJSONObject(0);
+                        final String doctorId = object.getString("doctor_id");
+                        final String medRegNo = object.getString("medical_reg_no");
                         btnRequest.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                initiate();
-                                requestDevice(idNumber, deviceName, practitionerName, requestDate);
+                                deviceName = autoDeviceName.getText().toString().trim();
+                                requestDate = tv_Date.getText().toString().trim();
+                                if (deviceName.isEmpty()){
+                                    Toast.makeText(getApplicationContext(), "Make sure all fields are entered.", Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                                    requestDevice(doctorId, medRegNo, idNumber, requestDate, deviceName);
+                                }
+
                             }
                         });
-                        finish();
-                    }
-                    else {
-                        Toast.makeText(RequestDevice.this, "Doctor not found", Toast.LENGTH_LONG).show();
-                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -176,19 +171,7 @@ public class RequestDevice extends AppCompatActivity {
     }
 
 
-    private boolean DeviceValidate() {
-        deviceName = autoDeviceName.getText().toString();
-        dValid = false;
-        if (deviceName.isEmpty()) {
-            autoDeviceName.setError("Please enter a device name");
-        }
-        else {
-            dValid = true;
-        }
-        return dValid;
-    }
-
-    private void requestDevice(final String idNumber, final String deviceName, final String practitionerName, final String requestDate) {
+    private void requestDevice(final String docID, final String medRegNo, final String patientID, final String requestDate, final String deviceName) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REQUEST, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -198,10 +181,10 @@ public class RequestDevice extends AppCompatActivity {
 
                     if (success.equals("1")) {
                         Toast.makeText(RequestDevice.this, "Device successfully requested", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(RequestDevice.this,Dashboard.class));
+                        finish();
                     }
                     else {
-                        Toast.makeText(RequestDevice.this, "Request Failed, the seems to be an internal error.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(RequestDevice.this, "Request Failed, you have already requested this device.", Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
@@ -221,10 +204,11 @@ public class RequestDevice extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
 
-                params.put("id",idNumber);
-                params.put("dName",deviceName);
-                params.put("pName",practitionerName);
+                params.put("docID",docID);
+                params.put("medRegNo",medRegNo);
+                params.put("patID",patientID);
                 params.put("date",requestDate);
+                params.put("deviceName", deviceName);
 
                 return params;
             }
@@ -232,24 +216,6 @@ public class RequestDevice extends AppCompatActivity {
 
         Singleton.getInstance(RequestDevice.this).addToRequestQue(stringRequest);
     }
-
-    public void initiate() {
-
-        if(dValid && pValid){
-            //*********Passing data to new variables************
-            deviceName = autoDeviceName.getText().toString().trim();
-            requestDate = tv_Date.getText().toString().trim();
-            requestDevice(idNumber, deviceName,practitionerName,requestDate);
-        }
-        else {
-            Toast.makeText(RequestDevice.this, "Make sure you have entered all details correctly. ", Toast.LENGTH_LONG).show();
-        }
-
-    }
-
-
-
-
 
 
 

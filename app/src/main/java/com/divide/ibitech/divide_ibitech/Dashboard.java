@@ -100,12 +100,12 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         return true;
     }
 
-    @Override
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.nav_drawer, menu);
         return true;
         //return super.onCreateOptionsMenu(menu);
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
@@ -228,6 +228,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         btnManageAllergies = findViewById(R.id.cvAllergies);
         btnManageSymptoms = findViewById(R.id.cvSymptoms);
         btnManageConditions = findViewById(R.id.cvConditions);
+        btnManageDevices = findViewById(R.id.cvDevices);
 
         btnManageConditions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -247,6 +248,13 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Dashboard.this, ViewSymptom.class));
+            }
+        });
+
+        btnManageDevices.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Dashboard.this, ViewMedicalDevices.class));
             }
         });
 
