@@ -96,6 +96,31 @@ public class DocPatientAllergies extends AppCompatActivity {
                             AllergyListAdapter adapter =  new AllergyListAdapter(alleList,getApplication());
                             allegyListView.setAdapter(adapter);
 
+                            allegyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+                                    for (int i =0; i < allergyID.length; i++){
+                                        if (parent.getItemIdAtPosition(position) == i) {
+                                            SharedPreferences preferences = getSharedPreferences("PATIENTALLERGY", MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = preferences.edit();
+
+                                            editor.putString("pAllergyID",allergyID[i]);
+                                            editor.putString("pAllergyName", allergyName[i]);
+                                            editor.putString("pAllergyType",allergyType[i]);
+                                            editor.putString("pSpecies",species[i]);
+                                            editor.putString("pDateAdded",dateAdded[i]);
+                                            editor.putString("pTreatmentID",treatment[i]);
+                                            editor.putString("pTested",tested[i]);
+                                            editor.apply();
+                                            startActivity(new Intent(DocPatientAllergies.this, PrescribeAllergyTreatment.class));
+                                            finish();
+
+                                        }
+                                    }
+
+                                }
+                            });
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();

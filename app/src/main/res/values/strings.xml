@@ -105,6 +105,12 @@
     <string name="navigation_drawer_close">Close Navigation Drawer</string>
     <string name="help">Help</string>
 
+    <string-array name="doctors">
+        <item>Dr Edward Jonas</item>
+        <item>Dr Vuyiswa Mazibuko</item>
+        <item>Dr Zach Leech</item>
+    </string-array>
+
     <string-array name="conditions">
         <item>	Acid Ingestion	</item>
         <item>	Acne	</item>
@@ -354,6 +360,7 @@
         <item>Hearing aid</item>
         <item>Apnea monitor</item>
     </string-array>
+
     <string name="title_activity_help">Help</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>

@@ -27,54 +27,94 @@
             android:screenOrientation="locked" />
         <activity
             android:name=".Dashboard"
-            android:screenOrientation="locked" />
-        <activity android:name=".RequestDevice" />
-        <activity android:name=".AddSymptom" />
-        <activity android:name=".AddAllergy" />
-        <activity
-            android:name=".Profile"
-            android:label="Profile" />
-        <activity
-            android:name=".Settings"
-            android:label="Setting" />
-        <activity android:name=".DocLogin" />
-        <activity android:name=".DocRegister" />
-        <activity android:name=".DocDashboard">
+            android:screenOrientation="locked" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ViewPatientVisits" />
-        <activity android:name=".Diagnosis" />
-        <activity android:name=".ViewPatients" />
-        <activity android:name=".PatientMedicalRecord" />
-        <activity android:name=".ViewAllergy" />
-        <activity android:name=".ViewCondition" />
+        <activity android:name=".RequestDevice"
+            android:screenOrientation="locked"/>
+        <activity android:name=".AddSymptom"
+            android:screenOrientation="locked"/>
+        <activity android:name=".AddAllergy"
+            android:screenOrientation="locked"/>
+        <activity
+            android:name=".Profile"
+            android:label="Profile"
+            android:screenOrientation="locked"/>
+        <activity
+            android:name=".Settings"
+            android:label="Settings"
+            android:screenOrientation="locked"
+            />
+        <activity android:name=".DocLogin"
+            android:screenOrientation="locked"/>
+        <activity android:name=".DocRegister"
+            android:screenOrientation="locked"/>
+        <activity android:name=".DocDashboard"
+            android:screenOrientation="locked">
+
+        </activity>
+        <activity android:name=".ViewPatientVisits"
+            android:screenOrientation="locked"/>
+        <activity android:name=".Diagnosis"
+            android:screenOrientation="locked"/>
+        <activity android:name=".ViewPatients"
+            android:screenOrientation="locked"/>
+        <activity android:name=".PatientMedicalRecord"
+            android:screenOrientation="locked"/>
+        <activity android:name=".ViewAllergy"
+            android:screenOrientation="locked"/>
+        <activity android:name=".ViewCondition"
+            android:screenOrientation="locked"/>
         <activity android:name=".ViewSymptom" />
-        <activity android:name=".Tutorial" />
-        <activity android:name=".DoctorTutorial" />
-        <activity android:name=".DoctorConditionsPieChart" />
-        <activity android:name=".DoctorAllergiesPieChart" />
-        <activity android:name=".DoctorAgeGroupPieChart" />
+        <activity android:name=".Tutorial"
+            android:screenOrientation="locked"/>
+        <activity android:name=".DoctorTutorial"
+            android:screenOrientation="locked"/>
+        <activity android:name=".DoctorConditionsPieChart"
+            android:screenOrientation="locked"/>
+        <activity android:name=".DoctorAllergiesPieChart"
+            android:screenOrientation="locked"/>
+        <activity android:name=".DoctorAgeGroupPieChart"
+            android:screenOrientation="locked"/>
         <activity
             android:name=".PatientConditionChart"
-            android:theme="@style/NoActionBarTheme" />
-        <activity android:name=".PatientConditionsPieChart" />
-        <activity android:name=".PatientAllergiesPieChart" />
-        <activity android:name=".PatientGraphReports" />
-        <activity android:name=".DoctorGraphReports" />
-        <activity android:name=".AddMedicalAid" />
-        <activity android:name=".PatientCondition" />
-        <activity android:name=".PatientAllergy" />
-        <activity android:name=".DocPatientLastVisit" />
-        <activity android:name=".DocPatientAllergies" />
-        <activity android:name=".DocPatientMedication" />
-        <activity android:name=".DocPatientConditions" />
-        <activity android:name=".DocPatientTestResults" />
-        <activity android:name=".DocPatientMedicalDevices" />
-        <activity android:name=".DocPatientMiscellaneous" />
+            android:theme="@style/NoActionBarTheme"
+            android:screenOrientation="locked"/>
+        <activity android:name=".PatientConditionsPieChart"
+            android:screenOrientation="locked"/>
+        <activity android:name=".PatientAllergiesPieChart"
+            android:screenOrientation="locked"/>
+        <activity android:name=".PatientGraphReports"
+            android:screenOrientation="locked"/>
+        <activity android:name=".DoctorGraphReports"
+            android:screenOrientation="locked"/>
+        <activity android:name=".AddMedicalAid"
+            android:screenOrientation="locked"/>
+        <activity android:name=".PatientCondition"
+            android:screenOrientation="locked"/>
+        <activity android:name=".PatientAllergy"
+            android:screenOrientation="locked"/>
+        <activity android:name=".DocPatientLastVisit"
+            android:screenOrientation="locked"/>
+        <activity android:name=".DocPatientAllergies"
+            android:screenOrientation="locked"/>
+        <activity android:name=".DocPatientMedication"
+            android:screenOrientation="locked"/>
+        <activity android:name=".DocPatientConditions"
+            android:screenOrientation="locked"/>
+        <activity android:name=".DocPatientTestResults"
+            android:screenOrientation="locked"/>
+        <activity android:name=".DocPatientMedicalDevices"
+            android:screenOrientation="locked"/>
+        <activity android:name=".DocPatientMiscellaneous"
+            android:screenOrientation="locked"/>
+        <activity android:name=".PrescribeAllergyTreatment"
+            android:screenOrientation="locked"></activity>
     </application>
 
 </manifest>

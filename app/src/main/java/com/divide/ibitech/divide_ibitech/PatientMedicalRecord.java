@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
@@ -53,7 +54,6 @@ public class PatientMedicalRecord extends AppCompatActivity {
     //gets script for patient notes of last visit
     String URL_GETLSTVSTNOTES = "http://sict-iis.nmmu.ac.za/ibitech/app/getlastvisitnotes.php";
 
-    String URLGETALLRGY = "http://sict-iis.nmmu.ac.za/ibitech/app/getallergy.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -199,6 +199,9 @@ public class PatientMedicalRecord extends AppCompatActivity {
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(patientName + "\'s Medical Record" );
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         tvPatientName.setText(patientName);
         tvPatientID.setText(patientID);
@@ -473,6 +476,23 @@ public class PatientMedicalRecord extends AppCompatActivity {
         }
                 ;
         Singleton.getInstance(PatientMedicalRecord.this).addToRequestQue(stringRequest);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == android.R.id.home)
+            this.finish();
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

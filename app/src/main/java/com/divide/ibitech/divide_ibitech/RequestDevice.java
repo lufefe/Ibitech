@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -38,20 +39,22 @@ import java.util.Map;
 
 public class RequestDevice extends AppCompatActivity {
 
-
-    private EditText et_PractitionerName;
     AutoCompleteTextView autoDeviceName;
     String[] deviceNames;
 
+    Spinner sp_Doctors;
+
     String deviceName, practitionerName, requestDate,idNumber;
-    TextView tv_Date, btnRequest,btnViewDevices;
-    public String subject, message,to;
-    String [] names = {"Request Device"};
-    String [] status = {"Device Requested"};
+    TextView tv_Date;
+    Boolean dValid = false, pValid = false;
+
+    Button btnRequest, btnCancel;
 
     SessionManager sessionManager;
+
     String URL_REQUEST = "http://sict-iis.nmmu.ac.za/ibitech/app/requestdevice.php";
-    Boolean dValid = false, pValid = false;
+
+    String URL_GETDOCID = "http://sict-iis.nmmu.ac.za/ibitech/app/register.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,34 +65,49 @@ public class RequestDevice extends AppCompatActivity {
         HashMap<String,String> user = sessionManager.getUserDetails();
         idNumber = user.get(sessionManager.ID);
 
+        //for loading spinner/drop-down
+        sp_Doctors = findViewById(R.id.spDoctor);
+        ArrayAdapter<CharSequence> docAdapter = ArrayAdapter.createFromResource(this, R.array.doctors, R.layout.support_simple_spinner_dropdown_item);
+        docAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        sp_Doctors.setAdapter(docAdapter);
+
+        sp_Doctors.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+                practitionerName = parent.getItemAtPosition(position).toString();
+                // extract doctor name for getting their id and reg no
+                String[] splitted = practitionerName.split("\\s+");
+                String name = splitted[1] + " " + splitted[2];
+                getDoctorID(name);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        // for autocomplete text field
         autoDeviceName = findViewById(R.id.autoDeviceName);
         deviceNames = getResources().getStringArray(R.array.devices);
         ArrayAdapter<String> adapt = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,deviceNames);
         autoDeviceName.setAdapter(adapt);
 
-
-        message = "You have Successfully requested medical device \n You can see the status of Device on the Ibitech app";
-        subject = "@NoReply";
-        to = "slabiti181@gmail.com";
-
-        et_PractitionerName = findViewById(R.id.etPractitioner);
         tv_Date = findViewById(R.id.tvDate);
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         tv_Date.setText(dateFormat.format(date));
 
-        //btnViewDevices= findViewById(R.id.ViewDevices);
 
         btnRequest = findViewById(R.id.btnRequest);
 
-        btnRequest.setOnClickListener(new View.OnClickListener() {
+
+        btnCancel = findViewById(R.id.btnCancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //everything is filled out
-                //send email
-                new SimpleMail().sendEmail(to, subject, message);
-                initiate();
+                finish();
             }
         });
 
@@ -103,28 +121,60 @@ public class RequestDevice extends AppCompatActivity {
             }
         });
 
-        et_PractitionerName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+    }
+
+    private void getDoctorID(final String practitionerName) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GETDOCID, new Response.Listener<String>() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(et_PractitionerName.getText().length() > 0){
-                    pValid = PractitionerValidate();
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String success = jsonObject.getString("success");
+
+                    if (success.equals("1")) {
+                        Toast.makeText(RequestDevice.this, "Doc ID Found", Toast.LENGTH_LONG).show();
+                        btnRequest.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                initiate();
+                                requestDevice(idNumber, deviceName, practitionerName, requestDate);
+                            }
+                        });
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(RequestDevice.this, "Doctor not found", Toast.LENGTH_LONG).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(RequestDevice.this, "1Register Error" + e.toString(), Toast.LENGTH_LONG).show();
                 }
             }
-        });
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(RequestDevice.this,"2Register Error"+error.toString(),Toast.LENGTH_LONG).show();
+
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String,String> params = new HashMap<>();
+
+                params.put("name",practitionerName);
+
+                return params;
+            }
+        };
+
+        Singleton.getInstance(RequestDevice.this).addToRequestQue(stringRequest);
+
 
     }
 
-    private boolean PractitionerValidate() {
-        practitionerName = et_PractitionerName.getText().toString();
-        pValid =false;
-        if (practitionerName.isEmpty()) {
-            et_PractitionerName.setError("Please enter a practitioner");
-        }
-        else {
-            pValid = true;
-        }
-        return pValid;
-    }
 
     private boolean DeviceValidate() {
         deviceName = autoDeviceName.getText().toString();
@@ -188,7 +238,6 @@ public class RequestDevice extends AppCompatActivity {
         if(dValid && pValid){
             //*********Passing data to new variables************
             deviceName = autoDeviceName.getText().toString().trim();
-            practitionerName = et_PractitionerName.getText().toString().trim();
             requestDate = tv_Date.getText().toString().trim();
             requestDevice(idNumber, deviceName,practitionerName,requestDate);
         }
