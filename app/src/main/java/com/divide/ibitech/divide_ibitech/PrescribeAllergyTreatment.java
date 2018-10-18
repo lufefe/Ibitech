@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,7 +29,7 @@ public class PrescribeAllergyTreatment extends AppCompatActivity {
     EditText et_Treatment;
     String allergyID="", allergyName="", allergyType="", species="",date_added="", treatment="";
     String patientID = "",patientName="";
-
+    android.support.v7.widget.Toolbar toolbar;
     Button btnPrescribe;
 
     String URLPRSCRBE = "http://sict-iis.nmmu.ac.za/ibitech/app/prescribeallergy.php";
@@ -61,12 +62,19 @@ public class PrescribeAllergyTreatment extends AppCompatActivity {
         date_added = preferences.getString("pDateAdded", "");
         treatment = preferences.getString("pTreatment", "");
 
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(allergyName);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         tv_AllergyName.setText(allergyName);
-        tv_AllergyType.setText(allergyType);;
+        tv_AllergyType.setText(allergyType);
         tv_Species.setText(species);
         tv_DateAdded.setText(date_added);
+
         if (treatment.isEmpty()){
-            et_Treatment.setEnabled(true);
             btnPrescribe.setText("Prescribe");
         }
         else {
@@ -74,6 +82,7 @@ public class PrescribeAllergyTreatment extends AppCompatActivity {
             btnPrescribe.setText("Update Treatment");
 
         }
+
 
         btnPrescribe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +100,8 @@ public class PrescribeAllergyTreatment extends AppCompatActivity {
                                  String success = jsonObject.getString("success");
 
                                  if (success.equals("1")) {
-                                     Toast.makeText(PrescribeAllergyTreatment.this, "Prescription successfully added.", Toast.LENGTH_LONG).show();
+                                     Toast.makeText(PrescribeAllergyTreatment.this, "Prescription successful.", Toast.LENGTH_LONG).show();
+                                     startActivity(new Intent(getApplicationContext(), PatientMedicalRecord.class));
                                      finish();
                                  }
                                  else {
@@ -130,5 +140,23 @@ public class PrescribeAllergyTreatment extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == android.R.id.home)
+            this.finish();
+
+        return super.onOptionsItemSelected(item);
     }
 }

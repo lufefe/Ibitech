@@ -92,7 +92,7 @@ public class DocPatientAllergies extends AppCompatActivity {
                                 allergyType[x] = allergyObject.getString("allergy_type");
                                 species[x] = allergyObject.getString("species");
                                 dateAdded[x] = allergyObject.getString("date_added");
-                                treatment[x] = allergyObject.getString("treatment_id");
+                                treatment[x] = allergyObject.getString("treatment");
                                 tested[x] = allergyObject.getString("tested");
 
                                 AllergyList allergy = new AllergyList(allergyObject.getString("allergy_name"),
@@ -117,7 +117,7 @@ public class DocPatientAllergies extends AppCompatActivity {
                                             editor.putString("pAllergyType",allergyType[i]);
                                             editor.putString("pSpecies",species[i]);
                                             editor.putString("pDateAdded",dateAdded[i]);
-                                            editor.putString("pTreatmentID",treatment[i]);
+                                            editor.putString("pTreatment",treatment[i]);
                                             editor.putString("pTested",tested[i]);
                                             editor.apply();
                                             startActivity(new Intent(DocPatientAllergies.this, PrescribeAllergyTreatment.class));
