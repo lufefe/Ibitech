@@ -50,6 +50,9 @@ public class ViewPatients extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         searchView = findViewById(R.id.search_view);
 
         GetPatients();
@@ -200,7 +203,6 @@ public class ViewPatients extends AppCompatActivity {
                                     editor.apply();
                                     startActivity(new Intent(ViewPatients.this, PatientMedicalRecord.class));
                                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                                    finish();
                                 }
 
                             }
@@ -222,5 +224,23 @@ public class ViewPatients extends AppCompatActivity {
         });
         Singleton.getInstance(ViewPatients.this).addToRequestQue(stringRequest);
 
+    }
+
+    @Override
+    public void finish() {
+        startActivity(new Intent(ViewPatients.this,DocDashboard.class));
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == android.R.id.home)
+            this.finish();
+
+        return super.onOptionsItemSelected(item);
     }
 }

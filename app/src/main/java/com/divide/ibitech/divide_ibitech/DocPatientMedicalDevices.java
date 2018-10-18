@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -32,7 +34,8 @@ public class DocPatientMedicalDevices extends AppCompatActivity {
     List<MedicalDevicesList> deviceList;
     String patientID = "",patientName="";
 
-
+    ImageView ivDevices;
+    TextView tvDevices;
 
     String URLGETDVCS = "http://sict-iis.nmmu.ac.za/ibitech/app/getdevices.php";
 
@@ -40,6 +43,9 @@ public class DocPatientMedicalDevices extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_patient_devices);
+
+        ivDevices = findViewById(R.id.ivDevices);
+        tvDevices = findViewById(R.id.tvDevices);
 
         listView= findViewById(R.id.lvDevices);
         deviceList = new ArrayList<>();
@@ -95,6 +101,7 @@ public class DocPatientMedicalDevices extends AppCompatActivity {
                                 deviceList.add(medsDev);
 
                             }
+                            listView.setVisibility(View.VISIBLE);
                             MedicalDevicesAdapter adapter= new MedicalDevicesAdapter(deviceList, getApplication());
                             listView.setAdapter(adapter);
 
@@ -125,7 +132,10 @@ public class DocPatientMedicalDevices extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(DocPatientMedicalDevices.this,"You have no medical devices inserted yet.", Toast.LENGTH_LONG).show();
+                            listView.setVisibility(View.GONE);
+                            ivDevices.setVisibility(View.VISIBLE);
+                            tvDevices.setText(patientName + " has no medical devices recorded yet.");
+                            tvDevices.setVisibility(View.VISIBLE);
                         }
 
                     }

@@ -37,7 +37,7 @@ public class DocDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_doc_dashboard);
 
         sessionManager = new SessionManager(this);
-        sessionManager.checkLogin();
+        sessionManager.checkDocLogin();
 
         tv_DocName = findViewById(R.id.tvDocName);
         cv_Visits = findViewById(R.id.cvVisits);
@@ -52,7 +52,7 @@ public class DocDashboard extends AppCompatActivity {
         String sName = doc.get(sessionManager.NAME);
         String sSurname = doc.get(sessionManager.SURNAME);
 
-        tv_DocName.setText("Dr " + sName + " " + sSurname);
+        tv_DocName.setText(String.format("Dr %s %s", sName, sSurname));
 
         btnTutorial.setOnClickListener(new View.OnClickListener() {
             @Override

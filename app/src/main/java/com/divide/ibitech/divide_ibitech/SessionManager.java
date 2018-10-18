@@ -92,6 +92,14 @@ public class SessionManager {
         }
     }
 
+    public void checkDocLogin(){
+        if(!this.isLoggin()){
+            Intent i = new Intent(context,DocLogin.class);
+            context.startActivity(i);
+            ((DocDashboard) context).finish();
+        }
+    }
+
     public HashMap<String,String>getUserDetails(){
         HashMap<String,String> user = new HashMap<>();
         user.put(ID,sharedPreferences.getString(ID,null));

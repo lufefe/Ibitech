@@ -4,7 +4,10 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -17,6 +20,7 @@ import com.divide.ibitech.divide_ibitech.Models.DocPatientMedicationList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +31,9 @@ public class DocPatientMedication extends AppCompatActivity {
 
     ListView listView;
     List<DocPatientMedicationList> medicationListView;
+
+    TextView tvNoMeds;
+    ImageView ivMeds;
 
     String patientID = "", patientName="";
 
@@ -39,6 +46,8 @@ public class DocPatientMedication extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_patient_medication);
 
+        tvNoMeds = findViewById(R.id.tvNoMeds);
+        ivMeds = findViewById(R.id.ivMedication);
         listView = findViewById(R.id.lvMedication);
         medicationListView = new ArrayList<>();
 
@@ -95,12 +104,17 @@ public class DocPatientMedication extends AppCompatActivity {
                                 medicationListView.add(meds);
 
                             }
+                            listView.setVisibility(View.VISIBLE);
                             DocPatientMedicationAdapter adapter =  new DocPatientMedicationAdapter(medicationListView,getApplication());
                             listView.setAdapter(adapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(DocPatientMedication.this,"Error "+e.toString(),Toast.LENGTH_LONG).show();
+
+                            listView.setVisibility(View.GONE);
+                            ivMeds.setVisibility(View.VISIBLE);
+                            tvNoMeds.setText(patientName + " has no medication recorded yet.");
+                            tvNoMeds.setVisibility(View.VISIBLE);
                         }
 
                     }

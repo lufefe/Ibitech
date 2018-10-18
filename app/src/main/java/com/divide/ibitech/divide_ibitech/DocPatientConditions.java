@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -32,6 +34,9 @@ public class DocPatientConditions extends AppCompatActivity {
     List<ConditionList> condList;
     ListView listView;
 
+    ImageView ivConds;
+    TextView tvConds;
+
     android.support.v7.widget.Toolbar toolbar;
     String patientID = "",patientName="";
 
@@ -41,6 +46,9 @@ public class DocPatientConditions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_patient_conditions);
+
+        ivConds = findViewById(R.id.ivconditions);
+        tvConds = findViewById(R.id.tvNoConditions);
 
         condList = new ArrayList<>();
         listView = findViewById(R.id.lvConditions);
@@ -114,6 +122,7 @@ public class DocPatientConditions extends AppCompatActivity {
                                 condList.add(conds);
 
                             }
+                            listView.setVisibility(View.VISIBLE);
                             ConditionListAdapter adapter= new ConditionListAdapter(condList,getApplication());
                             listView.setAdapter(adapter);
 
@@ -145,7 +154,10 @@ public class DocPatientConditions extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(DocPatientConditions.this,patientName + " has no conditions inserted yet.", Toast.LENGTH_LONG).show();
+                            listView.setVisibility(View.GONE);
+                            ivConds.setVisibility(View.VISIBLE);
+                            tvConds.setText(patientName + " has no conditions recorded yet.");
+                            tvConds.setVisibility(View.VISIBLE);
                         }
 
                     }

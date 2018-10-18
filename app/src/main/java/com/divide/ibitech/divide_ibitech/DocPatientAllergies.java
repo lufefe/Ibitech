@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -31,14 +33,20 @@ public class DocPatientAllergies extends AppCompatActivity {
     List<AllergyList> alleList;
     ListView allegyListView;
 
+    TextView tv_Error;
+    ImageView iv_Error;
     android.support.v7.widget.Toolbar toolbar;
     String patientID = "",patientName="";
+
     String URLGETALLRGY = "http://sict-iis.nmmu.ac.za/ibitech/app/getallergy.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_patient_allergies);
+
+        tv_Error = findViewById(R.id.tvNoAllergies);
+        iv_Error = findViewById(R.id.ivAllergy);
 
         allegyListView=findViewById(R.id.listAllergy);
 
@@ -92,7 +100,7 @@ public class DocPatientAllergies extends AppCompatActivity {
                                 alleList.add(allergy);
 
                             }
-
+                            allegyListView.setVisibility(View.VISIBLE);
                             AllergyListAdapter adapter =  new AllergyListAdapter(alleList,getApplication());
                             allegyListView.setAdapter(adapter);
 
@@ -113,7 +121,7 @@ public class DocPatientAllergies extends AppCompatActivity {
                                             editor.putString("pTested",tested[i]);
                                             editor.apply();
                                             startActivity(new Intent(DocPatientAllergies.this, PrescribeAllergyTreatment.class));
-                                            finish();
+                                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                                         }
                                     }
@@ -124,7 +132,10 @@ public class DocPatientAllergies extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(DocPatientAllergies.this,"Error "+e.toString(),Toast.LENGTH_LONG).show();
+                            allegyListView.setVisibility(View.GONE);
+                            iv_Error.setVisibility(View.VISIBLE);
+                            tv_Error.setText(patientName + " has no allergies recorded yet.");
+                            tv_Error.setVisibility(View.VISIBLE);
                         }
 
                     }
