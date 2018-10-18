@@ -74,22 +74,19 @@ public class PrescribeAllergyTreatment extends AppCompatActivity {
         tv_Species.setText(species);
         tv_DateAdded.setText(date_added);
 
-        if (treatment.isEmpty()){
-            btnPrescribe.setText("Prescribe");
-        }
+        if (treatment.equals("null"))
+            et_Treatment.setText("");
         else {
             et_Treatment.setText(treatment);
-            btnPrescribe.setText("Update Treatment");
-
+            btnPrescribe.setEnabled(false);
         }
-
 
         btnPrescribe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                  treatment = et_Treatment.getText().toString().trim();
                  if (treatment.isEmpty()){
-                     et_Treatment.setError("Don't leave field blank.");
+                     et_Treatment.setError("Please enter a treatment.");
                  }
                  else {
                      StringRequest stringRequest = new StringRequest(Request.Method.POST, URLPRSCRBE, new Response.Listener<String>() {

@@ -100,10 +100,11 @@ public class DocPatientMedication extends AppCompatActivity {
                                 medReg[x] = medsObject.getString("medical_reg_no");
                                 condID[x] = medsObject.getString("condition_id");
 
-                                DocPatientMedicationList meds = new DocPatientMedicationList(medsObject.getString("description"), medsObject.getString("visit_date"), medsObject.getString("doctor_id"));
+                                DocPatientMedicationList meds = new DocPatientMedicationList(medsObject.getString("description"), medsObject.getString("visit_date"), "Dr " + medsObject.getString("first_name") + " " + medsObject.getString("surname"));
                                 medicationListView.add(meds);
 
                             }
+
                             listView.setVisibility(View.VISIBLE);
                             DocPatientMedicationAdapter adapter =  new DocPatientMedicationAdapter(medicationListView,getApplication());
                             listView.setAdapter(adapter);

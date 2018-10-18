@@ -27,7 +27,7 @@
             android:screenOrientation="locked" />
         <activity
             android:name=".Dashboard"
-            android:screenOrientation="locked"></activity>
+            android:screenOrientation="locked" />
         <activity
             android:name=".RequestDevice"
             android:screenOrientation="locked" />
@@ -142,7 +142,8 @@
             android:screenOrientation="locked" />
         <activity android:name=".ViewMedicalDevices" />
         <activity android:name=".MedicalDevice" />
-        <activity android:name=".DocPatientMedicalDevices"></activity>
+        <activity android:name=".DocPatientMedicalDevices" />
+        <activity android:name=".DocIssueMedicalDevice"></activity>
     </application>
 
 </manifest>

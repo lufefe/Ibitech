@@ -145,7 +145,7 @@ public class DocPatientConditions extends AppCompatActivity {
                                             editor.apply();
                                             //startActivity(new Intent(DocPatientConditions.this, PatientCondition.class));
                                             //start activity of a class to view more details about condition
-                                            finish();
+                                            //finish();
                                         }
                                     }
 

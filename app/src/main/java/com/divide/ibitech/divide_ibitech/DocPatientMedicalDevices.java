@@ -123,7 +123,7 @@ public class DocPatientMedicalDevices extends AppCompatActivity {
                                             editor.putString("pInstructions", instruction[i]);
                                             editor.putString("pStatus", status[i]);
                                             editor.apply();
-                                            startActivity(new Intent(DocPatientMedicalDevices.this, MedicalDevice.class));
+                                            //startActivity(new Intent(DocPatientMedicalDevices.this, MedicalDevice.class));
                                         }
                                     }
 
