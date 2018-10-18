@@ -1,12 +1,157 @@
 package com.divide.ibitech.divide_ibitech;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.divide.ibitech.divide_ibitech.Adapter.MedicalDevicesAdapter;
+import com.divide.ibitech.divide_ibitech.Models.MedicalDevicesList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DocPatientMedicalDevices extends AppCompatActivity {
 
+    ListView listView;
+    List<MedicalDevicesList> deviceList;
+    String patientID = "",patientName="";
+
+
+
+    String URLGETDVCS = "http://sict-iis.nmmu.ac.za/ibitech/app/getdevices.php";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_doc_patient_devices);
+
+        listView= findViewById(R.id.lvDevices);
+        deviceList = new ArrayList<>();
+
+        SharedPreferences prefs = getSharedPreferences("PATIENT",MODE_PRIVATE);
+        patientID = prefs.getString("pID", "");
+        patientName = prefs.getString("pName","");
+
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(patientName + "\'s Medical Devices");
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        ShowList(patientID);
+    }
+
+    private void ShowList(final String id) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLGETDVCS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray jsonArray = jsonObject.getJSONArray("server_response");
+
+                            //Parallel arrays
+                            final String[] deviceID = new String[jsonArray.length()];
+                            final String[] deviceName = new String[jsonArray.length()];
+                            final String[] requestDate = new String[jsonArray.length()];
+                            final String[] receiveDate = new String[jsonArray.length()];
+                            final String[] medicalRegNo = new String[jsonArray.length()];
+                            final String[] doctorID = new String[jsonArray.length()];
+                            final String[] instruction = new String[jsonArray.length()];
+                            final String[] status = new String[jsonArray.length()];
+
+                            for (int x= 0; x < jsonArray.length(); x++){
+                                JSONObject object = jsonArray.getJSONObject(x);
+
+                                deviceID[x] = object.getString("medical_device_id");
+                                deviceName[x] = object.getString("medical_device_name");
+                                requestDate[x] = object.getString("date_requested");
+                                receiveDate[x] = object.getString("date_received");
+                                medicalRegNo[x] = object.getString("medical_reg_no");
+                                doctorID[x] = object.getString("doctor_id");
+                                instruction[x] = object.getString("use_instructions");
+                                status[x] = object.getString("status");
+
+
+                                MedicalDevicesList medsDev = new MedicalDevicesList(object.getString("medical_device_name"), object.getString("doctor_id"), object.getString("status"));
+                                deviceList.add(medsDev);
+
+                            }
+                            MedicalDevicesAdapter adapter= new MedicalDevicesAdapter(deviceList, getApplication());
+                            listView.setAdapter(adapter);
+
+                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+
+                                    for (int i =0; i < deviceID.length; i++){
+                                        if (parent.getItemIdAtPosition(position) == i) {
+                                            SharedPreferences preferences = getSharedPreferences("PATIENTDEVICES", MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = preferences.edit();
+
+                                            editor.putString("pDeviceID",deviceID[i]);
+                                            editor.putString("pDeviceName", deviceName[i]);
+                                            editor.putString("pRequestDate", requestDate[i]);
+                                            editor.putString("pMedicalRegNo", medicalRegNo[i]);
+                                            editor.putString("pReceiveDate", receiveDate[i]);
+                                            editor.putString("pDoctorID", doctorID[i]);
+                                            editor.putString("pInstructions", instruction[i]);
+                                            editor.putString("pStatus", status[i]);
+                                            editor.apply();
+                                            startActivity(new Intent(DocPatientMedicalDevices.this, MedicalDevice.class));
+                                        }
+                                    }
+
+                                }
+                            });
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(DocPatientMedicalDevices.this,"You have no medical devices inserted yet.", Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(DocPatientMedicalDevices.this,"Error 2"+error.toString(),Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+                HashMap<String,String> params = new HashMap<>();
+
+                params.put("id",id);
+                return params;
+            }
+
+        };
+        Singleton.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -16,31 +161,5 @@ public class DocPatientMedicalDevices extends AppCompatActivity {
             this.finish();
 
         return super.onOptionsItemSelected(item);
-    }
-
-    android.support.v7.widget.Toolbar toolbar;
-    String patientName="";
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doc_patient_medical_devices);
-
-        //shared prefs for patient data
-        SharedPreferences prefs = getSharedPreferences("PATIENT",MODE_PRIVATE);
-        patientName = prefs.getString("pName","");
-
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(patientName + "\'s Medical Devices");
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-    }
-
-    @Override
-    public void finish() {
-        super.finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

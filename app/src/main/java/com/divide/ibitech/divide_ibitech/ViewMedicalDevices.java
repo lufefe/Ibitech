@@ -92,7 +92,7 @@ public class ViewMedicalDevices extends AppCompatActivity {
                                 status[x] = object.getString("status");
 
 
-                                MedicalDevicesList medsDev = new MedicalDevicesList(object.getString("medical_device_name"), object.getString("doctor_id"), object.getString("status"));
+                                MedicalDevicesList medsDev = new MedicalDevicesList(object.getString("medical_device_name"), object.getString("date_requested"), object.getString("status"));
                                 deviceList.add(medsDev);
 
                             }

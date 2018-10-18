@@ -199,6 +199,7 @@ public class ViewPatients extends AppCompatActivity {
                                     editor.putString("pMedicalAid", patientMedicalAid[i]);
                                     editor.apply();
                                     startActivity(new Intent(ViewPatients.this, PatientMedicalRecord.class));
+                                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                     finish();
                                 }
 

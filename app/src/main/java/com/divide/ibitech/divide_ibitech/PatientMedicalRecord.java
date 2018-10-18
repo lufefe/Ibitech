@@ -74,6 +74,14 @@ public class PatientMedicalRecord extends AppCompatActivity {
         patientHeight = prefs.getString("pHeight","");
         patientMedAid = prefs.getString("pMedicalAid","");
 
+
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(patientName + "\'s Medical Record" );
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         String cats []= new String[]{"Last Visit","Allergies","Medication", "Conditions","Test Results", "Medical Devices", "Miscellaneous"};
         Integer imgid [] = new Integer[]{R.drawable.doctor, R.drawable.allergy, R.drawable.pills,R.drawable.health, R.drawable.flask, R.drawable.serum, R.drawable.hands};
         ListAdapter medAdapter = new MedInfoAdapter(this,cats, imgid);
@@ -120,9 +128,8 @@ public class PatientMedicalRecord extends AppCompatActivity {
 
                                 Intent intent = new Intent(PatientMedicalRecord.this, DocPatientLastVisit.class);
                                 startActivity(intent);
-                                finish();
                                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
+                                finish();
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -195,13 +202,6 @@ public class PatientMedicalRecord extends AppCompatActivity {
         tvPatientHeight = findViewById(R.id.tvHeight);
         //tvPatientMedAid = findViewById(R.id.tvMedicalAid);
 
-
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(patientName + "\'s Medical Record" );
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         tvPatientName.setText(patientName);
         tvPatientID.setText(patientID);
@@ -480,6 +480,7 @@ public class PatientMedicalRecord extends AppCompatActivity {
 
     @Override
     public void finish() {
+        startActivity(new Intent(PatientMedicalRecord.this,ViewPatients.class));
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }

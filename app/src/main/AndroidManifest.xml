@@ -27,13 +27,7 @@
             android:screenOrientation="locked" />
         <activity
             android:name=".Dashboard"
-            android:screenOrientation="locked">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:screenOrientation="locked"></activity>
         <activity
             android:name=".RequestDevice"
             android:screenOrientation="locked" />
@@ -59,7 +53,13 @@
             android:screenOrientation="locked" />
         <activity
             android:name=".DocDashboard"
-            android:screenOrientation="locked" />
+            android:screenOrientation="locked">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ViewPatientVisits"
             android:screenOrientation="locked" />
@@ -135,16 +135,14 @@
             android:name=".DocPatientTestResults"
             android:screenOrientation="locked" />
         <activity
-            android:name=".DocPatientMedicalDevices"
-            android:screenOrientation="locked" />
-        <activity
             android:name=".DocPatientMiscellaneous"
             android:screenOrientation="locked" />
         <activity
             android:name=".PrescribeAllergyTreatment"
             android:screenOrientation="locked" />
         <activity android:name=".ViewMedicalDevices" />
-        <activity android:name=".MedicalDevice"></activity>
+        <activity android:name=".MedicalDevice" />
+        <activity android:name=".DocPatientMedicalDevices"></activity>
     </application>
 
 </manifest>
