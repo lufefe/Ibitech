@@ -124,6 +124,7 @@ public class SessionManager {
     public HashMap<String,String>getDocDetails(){
         HashMap<String,String> doc = new HashMap<>();
         doc.put(ID,sharedPreferences.getString(ID,null));
+        doc.put(MEDREGNO, sharedPreferences.getString(MEDREGNO, null));
         doc.put(NAME,sharedPreferences.getString(NAME,null));
         doc.put(SURNAME,sharedPreferences.getString(SURNAME,null));
         doc.put(EMAIL,sharedPreferences.getString(EMAIL,null));

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,16 +34,25 @@ public class DocPatientMedicalDevices extends AppCompatActivity {
     ListView listView;
     List<MedicalDevicesList> deviceList;
     String patientID = "",patientName="";
+    String docID="", medRegNo="";
 
     ImageView ivDevices;
     TextView tvDevices;
 
     String URLGETDVCS = "http://sict-iis.nmmu.ac.za/ibitech/app/getdevices.php";
 
+    SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_patient_devices);
+
+        sessionManager = new SessionManager(this);
+
+        HashMap<String,String> doc = sessionManager.getDocDetails();
+        docID = doc.get(sessionManager.ID);
+        medRegNo = doc.get(sessionManager.MEDREGNO);
 
         ivDevices = findViewById(R.id.ivDevices);
         tvDevices = findViewById(R.id.tvDevices);
@@ -61,10 +71,10 @@ public class DocPatientMedicalDevices extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        ShowList(patientID);
+        ShowList(patientID, docID, medRegNo);
     }
 
-    private void ShowList(final String id) {
+    private void ShowList(final String id, final String docID, final String medRegNo) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLGETDVCS,
                 new Response.Listener<String>() {
                     @Override
@@ -73,6 +83,7 @@ public class DocPatientMedicalDevices extends AppCompatActivity {
 
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray jsonArray = jsonObject.getJSONArray("server_response");
+
 
                             //Parallel arrays
                             final String[] deviceID = new String[jsonArray.length()];
@@ -150,6 +161,8 @@ public class DocPatientMedicalDevices extends AppCompatActivity {
                 HashMap<String,String> params = new HashMap<>();
 
                 params.put("id",id);
+                params.put("docID",docID);
+                params.put("medRegNo",medRegNo);
                 return params;
             }
 

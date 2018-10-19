@@ -106,9 +106,9 @@ public class PatientMedicalRecord extends AppCompatActivity {
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
                 if (cat.equals("Miscellaneous")){
-                    Intent intent = new Intent(PatientMedicalRecord.this, DocPatientMiscellaneous.class);
+                    /*Intent intent = new Intent(PatientMedicalRecord.this, DocPatientMiscellaneous.class);
                     startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);*/
                 }
 
             }

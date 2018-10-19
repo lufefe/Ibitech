@@ -39,6 +39,7 @@ public class ViewPatientVisits extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_patient_visit);
+
         listView = findViewById(R.id.lv_ViewAppointments);
         visitsLists = new ArrayList<>();
 
@@ -46,6 +47,10 @@ public class ViewPatientVisits extends AppCompatActivity {
         toolbar.setTitle("Select a patient");
         toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         searchView = findViewById(R.id.search_view);
 
@@ -174,7 +179,6 @@ public class ViewPatientVisits extends AppCompatActivity {
                                     editor.putString("pName", patientName[i] + " " + patientSurname[i]);
                                     editor.apply();
                                     startActivity(new Intent(ViewPatientVisits.this, Diagnosis.class));
-                                    finish();
                                 }
 
                             }
@@ -195,5 +199,23 @@ public class ViewPatientVisits extends AppCompatActivity {
         });
         Singleton.getInstance(ViewPatientVisits.this).addToRequestQue(stringRequest);
 
+    }
+
+    @Override
+    public void finish() {
+        startActivity(new Intent(ViewPatientVisits.this,DocDashboard.class));
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == android.R.id.home)
+            this.finish();
+
+        return super.onOptionsItemSelected(item);
     }
 }
