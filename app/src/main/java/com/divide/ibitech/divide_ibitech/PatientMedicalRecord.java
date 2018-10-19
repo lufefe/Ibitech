@@ -65,7 +65,7 @@ public class PatientMedicalRecord extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        String cats []= new String[]{"Last Visit","Allergies","Medication", "Conditions","Test Results", "Medical Devices", "Miscellaneous"};
+        String cats []= new String[]{"Last Visit","Allergies","Medication", "Diagnoses","Test Results", "Medical Devices", "Miscellaneous"};
         Integer imgid [] = new Integer[]{R.drawable.doctor, R.drawable.allergy, R.drawable.pills,R.drawable.health, R.drawable.flask, R.drawable.serum, R.drawable.hands};
         ListAdapter medAdapter = new MedInfoAdapter(this,cats, imgid);
         ListView listview = findViewById(R.id.lv_medInfo);
@@ -90,7 +90,7 @@ public class PatientMedicalRecord extends AppCompatActivity {
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
-                if (cat.equals("Conditions")){
+                if (cat.equals("Diagnoses")){
                     Intent intent = new Intent(PatientMedicalRecord.this, DocPatientConditions.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
