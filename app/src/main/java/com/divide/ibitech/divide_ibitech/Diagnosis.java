@@ -8,6 +8,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -39,17 +40,17 @@ public class Diagnosis extends AppCompatActivity {
     AutoCompleteTextView act_Diagnosis;
     String[] conditionNames, medicationNames;
     AutoCompleteTextView act_Medication;
-    TextView tvPatientName, tvDate;
+    TextView tvPatientName, tvDate, txtDiagnosis, txtMedication;
     EditText  etPatientSymptoms;
     Button btnCancel, btnSave;
     ImageView img_Info;
-    String patientID = "", patientName = "", symptomID = "", doctorID = "", medRegNo =  "", date = "";
+    String patientID = "", patientName = "", symptomID = "",symptomName="", doctorID = "", medRegNo =  "", addDate = "";
 
     String URL_GETSYMPTMS = "http://sict-iis.nmmu.ac.za/ibitech/app/getpatientsymptomsfordiagnosis.php";
-//    String URL_GETMED = "http://sict-iis.nmmu.ac.za/ibitech/app/getmedicineid.php";
-//    String URL_GETCOND = "http://sict-iis.nmmu.ac.za/ibitech/app/getconditionid.php";
+    String URL_GETMED = "http://sict-iis.nmmu.ac.za/ibitech/app/getmedicineid.php";
+    String URL_GETCOND = "http://sict-iis.nmmu.ac.za/ibitech/app/getconditionid.php";
     String URL_ADDVISIT = "http://sict-iis.nmmu.ac.za/ibitech/app/insertvisit.php";
-//    String URL_ADD = "http://sict-iis.nmmu.ac.za/ibitech/app/addsymptom.php";
+    String URL_ADD = "http://sict-iis.nmmu.ac.za/ibitech/app/addsymptom.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +61,14 @@ public class Diagnosis extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("DIAGNOSIS",MODE_PRIVATE);
         SharedPreferences preferences = getSharedPreferences("DOCPREFS", MODE_PRIVATE);
 
-        tvPatientName = findViewById(R.id.txtPatientName);
+        txtDiagnosis = findViewById(R.id.txtDiagnosis);
+        txtMedication = findViewById(R.id.txtMedication);
         etPatientSymptoms = findViewById(R.id.etSymptoms);
         tvDate = findViewById(R.id.txtDate);
+
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         final Date date = new Date();
+        addDate = dateFormat.format(date);
         tvDate.setText(dateFormat.format(date));
 
         img_Info = findViewById(R.id.imgInfo);
@@ -103,10 +107,17 @@ public class Diagnosis extends AppCompatActivity {
 
         GetPatientSymptoms(patientID);
 
-        tvPatientName.setText(patientName);
+        //tvPatientName.setText(patientName);
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(patientName);
+        //toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         btnCancel = findViewById(R.id.btnCancel);
-        btnSave = findViewById(R.id.btnSave);
+        btnSave = findViewById(R.id.btnSaveD);
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,27 +127,10 @@ public class Diagnosis extends AppCompatActivity {
             }
         });
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final String diagnosis = act_Diagnosis.getText().toString();
-                final String medication = act_Medication.getText().toString();
-                //final String symptoms = etPatientSymptoms.getText().toString();
-                final String date = tvDate.getText().toString();
-                if(diagnosis.isEmpty() || medication.isEmpty()){
-                    Toast.makeText(getApplicationContext(), "Please ensure all fields are entered.",Toast.LENGTH_SHORT).show();
-                }
-                else {
-//                    addSymptom(symptoms,date,patientID);
-                    addVisit(date, doctorID, medRegNo, symptomID, patientID, diagnosis, medication);
-                }
-            }
-        });
-
 
     }
 
-/*    private void addSymptom(final String symptoms, final String date, final String patientID) {
+    private void addSymptom(final String symptoms, final String date, final String patientID) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ADD, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -145,10 +139,31 @@ public class Diagnosis extends AppCompatActivity {
                     String success = jsonObject.getString("success");
 
                     if (success.equals("1")) {
-                        GetPatientSymptoms(patientID);
-                    }
-                    else {
-                        Toast.makeText(Diagnosis.this, "Sorry, diagnosis cannot be added at the moment.", Toast.LENGTH_LONG).show();
+
+                        etPatientSymptoms.setText(symptoms);
+                        etPatientSymptoms.setEnabled(false);
+                        Toast.makeText(Diagnosis.this, "Symptoms added.", Toast.LENGTH_LONG).show();
+                        txtDiagnosis.setVisibility(View.VISIBLE);
+                        act_Diagnosis.setVisibility(View.VISIBLE);
+                        txtMedication.setVisibility(View.VISIBLE);
+                        act_Medication.setVisibility(View.VISIBLE);
+
+                        btnSave.setText("Save Diagnosis");
+                        btnSave.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                final String diagnosis = act_Diagnosis.getText().toString();
+                                final String medication = act_Medication.getText().toString();
+                                final String symptoms = etPatientSymptoms.getText().toString();
+                                final String date = tvDate.getText().toString();
+                                if(diagnosis.isEmpty() || medication.isEmpty()){
+                                    Toast.makeText(getApplicationContext(), "Please ensure all fields are entered.",Toast.LENGTH_SHORT).show();
+                                }
+                                else {
+                                    addVisit(addDate, doctorID, medRegNo, symptomID, patientID,diagnosis,medication);
+                                }
+                            }
+                        });
                     }
 
                 } catch (JSONException e) {
@@ -177,8 +192,7 @@ public class Diagnosis extends AppCompatActivity {
         };
 
         Singleton.getInstance(Diagnosis.this).addToRequestQue(stringRequest);
-    }*/
-
+    }
 
     public void GetPatientSymptoms(final String userID){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GETSYMPTMS, new Response.Listener<String>() {
@@ -189,20 +203,25 @@ public class Diagnosis extends AppCompatActivity {
                     JSONArray jsonArray = jsonObject.getJSONArray("server_response");
 
                     JSONObject object = jsonArray.getJSONObject(0);
-                    if(object.getString("symptom_id").isEmpty() || object.getString("symptom_name").isEmpty() ){
-//                     etPatientSymptoms.setEnabled(true);
-                        btnSave.setEnabled(false);
-                    }
-                    else {
-                        etPatientSymptoms.setText(object.getString("symptom_name"));
-                        symptomID = object.getString("symptom_id");
-                        etPatientSymptoms.setEnabled(false);
-                    }
-
+                    symptomID = object.getString("symptom_id");
+                    symptomName = object.getString("symptom_name");
+                    etPatientSymptoms.setText(symptomName);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(Diagnosis.this, "Note: This patient has no symptoms inserted.", Toast.LENGTH_LONG).show();
+                    txtDiagnosis.setVisibility(View.INVISIBLE);
+                    act_Diagnosis.setVisibility(View.INVISIBLE);
+                    txtMedication.setVisibility(View.INVISIBLE);
+                    act_Medication.setVisibility(View.INVISIBLE);
+                    btnSave.setText("Save Symptoms");
+                    btnSave.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            addSymptom(etPatientSymptoms.getText().toString(), addDate, patientID);
+                        }
+                    });
+
+                    Toast.makeText(Diagnosis.this, "Note: This patient has no symptoms inserted. Add symptoms first.", Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -236,10 +255,7 @@ public class Diagnosis extends AppCompatActivity {
                     //Log.i("tagconvertstr", "["+response+"]");
                     if (success.equals("1")) {
                         Toast.makeText(Diagnosis.this, "Diagnosis added successfully.", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(Diagnosis.this, ViewPatientVisits.class));
-                    }
-                    else {
-                        Toast.makeText(Diagnosis.this, "Sorry, diagnosis cannot be added at the moment.", Toast.LENGTH_LONG).show();
+                        finish();
                     }
 
                 } catch (JSONException e) {
@@ -256,7 +272,7 @@ public class Diagnosis extends AppCompatActivity {
         })
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
 
 
@@ -273,5 +289,23 @@ public class Diagnosis extends AppCompatActivity {
         };
 
         Singleton.getInstance(Diagnosis.this).addToRequestQue(stringRequest);
+    }
+
+    @Override
+    public void finish() {
+        startActivity(new Intent(Diagnosis.this,ViewPatientVisits.class));
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == android.R.id.home)
+            this.finish();
+
+        return super.onOptionsItemSelected(item);
     }
 }

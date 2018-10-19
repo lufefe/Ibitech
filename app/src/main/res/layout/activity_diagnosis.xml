@@ -7,31 +7,17 @@
     android:background="@color/White"
     tools:context=".Diagnosis">
 
-
-    <TextView
-        android:id="@+id/txtPatientName"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        app.popupTheme="@style/AppTheme.PopupOverlay"
         android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:padding="5dp"
-        android:text="Patient Name"
-        android:textAlignment="center"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.013" />
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="#309BE0"
+        android:theme="@style/Theme.ToolbarBack"/>
+
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtMedication"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginBottom="8dp"
@@ -51,24 +37,23 @@
         app:layout_constraintVertical_bias="0.544" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/txtDiagnosis"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="376dp"
         android:text="Diagnosis:"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintTop_toBottomOf="@+id/etSymptoms" />
 
     <TextView
         android:id="@+id/textView7"
@@ -132,19 +117,19 @@
         android:id="@+id/actx_Diagnosis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.426" />
+        app:layout_constraintVertical_bias="0.424" />
 
     <AutoCompleteTextView
         android:id="@+id/actx_Medication"
@@ -205,7 +190,7 @@
         app:layout_constraintVertical_bias="0.986" />
 
     <Button
-        android:id="@+id/btnSave"
+        android:id="@+id/btnSaveD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -217,8 +202,7 @@
         android:background="@drawable/buttonstyle"
         android:text="Save"
         android:textColor="@color/White"
-        android:textStyle="bold
-"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.973"
