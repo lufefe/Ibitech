@@ -5,7 +5,7 @@
     <item
         android:id="@+id/action_dashboard"
         android:orderInCategory="100"
-        android:title="Dashboard"
+        android:title="Back To Dashboard"
         app:showAsAction="never" />
 
 </menu>

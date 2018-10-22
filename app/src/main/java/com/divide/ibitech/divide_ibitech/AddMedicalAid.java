@@ -1,9 +1,8 @@
 package com.divide.ibitech.divide_ibitech;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,7 +12,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -34,8 +32,6 @@ public class AddMedicalAid extends AppCompatActivity {
 
     String patientID = "", medicalAid = "";
 
-    private static String URL_UPDATEMED = "http://sict-iis.nmmu.ac.za/ibitech/app/updatemedicalaid.php";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +46,7 @@ public class AddMedicalAid extends AppCompatActivity {
         actx_MedicalAid = findViewById(R.id.actx_MedicalAid);
 
         medicalAidNames = getResources().getStringArray(R.array.medicalAid);
-        ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,medicalAidNames);
+        ArrayAdapter<String> mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, medicalAidNames);
         actx_MedicalAid.setAdapter(mAdapter);
 
         btnSave = findViewById(R.id.btnAddMedAid);
@@ -69,6 +65,7 @@ public class AddMedicalAid extends AppCompatActivity {
 
     private void UpdateMedicalAid(final String patientID,final String medicalAid) {
 
+        String URL_UPDATEMED = "http://sict-iis.nmmu.ac.za/ibitech/app/updatemedicalaid.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_UPDATEMED,
                 new Response.Listener<String>() {
                     @Override
@@ -79,8 +76,6 @@ public class AddMedicalAid extends AppCompatActivity {
 
                             if(success.equals("1")){
                                 Toast.makeText(AddMedicalAid.this,"Medical aid successfully saved.",Toast.LENGTH_SHORT).show();
-                                //CHANGE ALL SHARED PREFERENCES TO NEW DATA OR ASK USER TO LOGOUT
-                                startActivity(new Intent(AddMedicalAid.this,Dashboard.class));
                                 finish();
                             }
                         } catch (JSONException e) {
@@ -97,7 +92,7 @@ public class AddMedicalAid extends AppCompatActivity {
                 })
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("id",patientID);
                 params.put("medicalAidName",medicalAid);
@@ -111,7 +106,6 @@ public class AddMedicalAid extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.nav_drawer, menu);
         return true;
-        //return super.onCreateOptionsMenu(menu);
     }
 
 
@@ -120,7 +114,7 @@ public class AddMedicalAid extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.action_dashboard){
-            startActivity(new Intent(AddMedicalAid.this,Dashboard.class));
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }

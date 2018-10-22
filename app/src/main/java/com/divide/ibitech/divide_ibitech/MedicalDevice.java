@@ -27,7 +27,7 @@ public class MedicalDevice extends AppCompatActivity {
         deviceName = preferences.getString("pDeviceName", "");
         instructions = preferences.getString("pInstructions", "");
 
-        tvDeviceName.setText(deviceName);;
+        tvDeviceName.setText(deviceName);
         tvInstructions.setText(instructions);
 
 

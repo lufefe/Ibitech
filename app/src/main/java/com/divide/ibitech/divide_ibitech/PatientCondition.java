@@ -30,7 +30,7 @@ public class PatientCondition extends AppCompatActivity {
     EditText etNotes;
     Button btnSaveNotes;
 
-    String patientID = "", conditionID = "", conditionName = "",visitID = "", visitDate = "", doctorID = "", doctorName = "",medRegNo = "", symptomID = "", symptoms = "", symptomDate = "", medicineID = "", medication = "", notes = "";
+    String patientID = "", conditionID = "", visitID = "", visitDate = "", doctorID = "", medRegNo = "", symptomID = "", medicineID = "", medication = "", notes = "";
 
     String URL_GETCONDDETAILS = "http://sict-iis.nmmu.ac.za/ibitech/app/getconditiondetails.php";
 
@@ -54,7 +54,7 @@ public class PatientCondition extends AppCompatActivity {
 
 
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Patient Condition");
+        toolbar.setTitle("Diagnosis Details");
         setSupportActionBar(toolbar);
 
         SharedPreferences prefs = getSharedPreferences("PATIENTCONDITION",MODE_PRIVATE);
@@ -197,13 +197,12 @@ public class PatientCondition extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.nav_drawer, menu);
         return true;
-        //return super.onCreateOptionsMenu(menu);
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         if(id == R.id.action_dashboard){
-            startActivity(new Intent(PatientCondition.this,Dashboard.class));
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }

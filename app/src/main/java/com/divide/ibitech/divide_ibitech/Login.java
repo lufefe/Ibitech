@@ -1,17 +1,11 @@
 package com.divide.ibitech.divide_ibitech;
 
-import android.app.VoiceInteractor;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Paint;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,13 +13,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,7 +58,7 @@ public class Login extends AppCompatActivity {
         pb_loading = findViewById(R.id.pbLoading);
 
 
-        /**Real-time validation**/
+        /*Real-time validation**/
         //ID Number
         et_IDNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
@@ -183,46 +174,50 @@ public class Login extends AppCompatActivity {
                     String success = jsonObject.getString("success");
                     JSONArray jsonArray = jsonObject.getJSONArray("login");
 
-                    if (success.equals("1")) {
-                        String name = "", surname = "", age = "", bloodtype = "", gender = "", status = "", address = "", cellNo = "", email = "", weight = "", height = "", profilePic = "", medicalAid = "";
-                        for (int i = 0; i < jsonArray.length(); i++) {
+                    switch (success) {
+                        case "1":
+                            String name = "", surname = "", age = "", bloodtype = "", gender = "", status = "", address = "", cellNo = "", email = "", weight = "", height = "", profilePic = "", medicalAid = "";
+                            for (int i = 0; i < jsonArray.length(); i++) {
 
-                            JSONObject object = jsonArray.getJSONObject(i);
+                                JSONObject object = jsonArray.getJSONObject(i);
 
-                            name = object.getString("name").trim();
-                            surname = object.getString("surname").trim();
-                            age = object.getString("age").trim();
-                            bloodtype = object.getString("bloodtype").trim();
-                            gender = object.getString("gender").trim();
-                            status = object.getString("status").trim();
-                            address = object.getString("address").trim();
+                                name = object.getString("name").trim();
+                                surname = object.getString("surname").trim();
+                                age = object.getString("age").trim();
+                                bloodtype = object.getString("bloodtype").trim();
+                                gender = object.getString("gender").trim();
+                                status = object.getString("status").trim();
+                                address = object.getString("address").trim();
 
-                            cellNo = object.getString("cell").trim();
-                            email = object.getString("email").trim();
-                            weight = object.getString("weight").trim();
-                            height = object.getString("height").trim();
-                            profilePic = object.getString("profilePic").trim();
-                            medicalAid = object.getString("medicalAid").trim();
+                                cellNo = object.getString("cell").trim();
+                                email = object.getString("email").trim();
+                                weight = object.getString("weight").trim();
+                                height = object.getString("height").trim();
+                                profilePic = object.getString("profilePic").trim();
+                                medicalAid = object.getString("medicalAid").trim();
 
-                        }
-                        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
-                        pb_loading.setVisibility(View.GONE);
-                        btn_Login.setVisibility(View.VISIBLE);
+                            }
+                            Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
+                            pb_loading.setVisibility(View.GONE);
+                            btn_Login.setVisibility(View.VISIBLE);
 
-                        //uses SessionManager class
-                        sessionManager.createSession(id, name, surname, age, bloodtype, gender, status, address,cellNo,email,weight,height,profilePic,medicalAid);
-                        startActivity(new Intent(Login.this, Dashboard.class));
+                            //uses SessionManager class
+                            sessionManager.createSession(id, name, surname, age, bloodtype, gender, status, address, cellNo, email, weight, height, profilePic, medicalAid);
+                            startActivity(new Intent(Login.this, Dashboard.class));
 
-                    } else if (success.equals("-1")) {
-                        Toast.makeText(Login.this, "Wrong login details", Toast.LENGTH_LONG).show();
-                        pb_loading.setVisibility(View.GONE);
-                        btn_Login.setVisibility(View.VISIBLE);
+                            break;
+                        case "-1":
+                            Toast.makeText(Login.this, "Wrong login details", Toast.LENGTH_LONG).show();
+                            pb_loading.setVisibility(View.GONE);
+                            btn_Login.setVisibility(View.VISIBLE);
 
-                    } else {
-                        pb_loading.setVisibility(View.GONE);
-                        btn_Login.setVisibility(View.VISIBLE);
-                        Toast.makeText(Login.this, "Login Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
+                            break;
+                        default:
+                            pb_loading.setVisibility(View.GONE);
+                            btn_Login.setVisibility(View.VISIBLE);
+                            Toast.makeText(Login.this, "Login Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
 
+                            break;
                     }
 
                 } catch (JSONException e) {

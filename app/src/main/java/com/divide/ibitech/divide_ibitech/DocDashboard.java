@@ -24,11 +24,6 @@ public class DocDashboard extends AppCompatActivity {
     CardView cv_Visits, cv_Patients;
     Button btn_Logout;
 
-    private Bitmap bitmap;
-    String getId;
-
-    private static final String TAG = DocDashboard.class.getSimpleName(); //getting the info
-
     SessionManager sessionManager;
 
     @Override
@@ -49,8 +44,8 @@ public class DocDashboard extends AppCompatActivity {
         imgProfilePic = findViewById(R.id.imgProfilePic);
 
         HashMap<String,String> doc = sessionManager.getDocDetails();
-        String sName = doc.get(sessionManager.NAME);
-        String sSurname = doc.get(sessionManager.SURNAME);
+        String sName = doc.get(SessionManager.NAME);
+        String sSurname = doc.get(SessionManager.SURNAME);
 
         tv_DocName.setText(String.format("Dr %s %s", sName, sSurname));
 

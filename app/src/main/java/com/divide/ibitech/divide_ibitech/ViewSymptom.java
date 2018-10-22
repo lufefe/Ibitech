@@ -1,22 +1,17 @@
 package com.divide.ibitech.divide_ibitech;
-/**
- * Created by s216100801
- */
+
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.divide.ibitech.divide_ibitech.Adapter.SymptomListAdapter;
 import com.divide.ibitech.divide_ibitech.Models.SymptomList;
@@ -60,13 +55,12 @@ public class ViewSymptom extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.nav_drawer, menu);
         return true;
-        //return super.onCreateOptionsMenu(menu);
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         if(id == R.id.action_dashboard){
-            startActivity(new Intent(ViewSymptom.this,Dashboard.class));
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -103,7 +97,7 @@ public class ViewSymptom extends AppCompatActivity {
             }
         }){
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 HashMap<String,String> params = new HashMap<>();
 
                 params.put("id",id);

@@ -47,7 +47,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        //Get input values from xml
+        // Get input values from xml
         et_IDNumber = findViewById(R.id.etIDNumber);
 
         et_EnterPassword = findViewById(R.id.etCreatePassword);
@@ -100,7 +100,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
             }
         });
 
-        /**Real-time validation*/
+        /* Real-time validation */
         //ID Number
         et_IDNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -114,7 +114,6 @@ public class  Register extends AppCompatActivity implements TextWatcher {
 
             }
         });
-
 
         //Cellphone number
         et_CellphoneNum.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -180,22 +179,13 @@ public class  Register extends AppCompatActivity implements TextWatcher {
         final String s_Email = et_EmailAddress.getText().toString().toLowerCase();
         final String s_Pass = et_EnterPassword.getText().toString();
 
-       /* Intent intent = new Intent(Register.this,IntroActivity.class);
-        intent.putExtra("pID",s_ID);
-        intent.putExtra("pCell",s_Cell);
-        intent.putExtra("pEmail",s_Email);
-        intent.putExtra("pPass",s_Pass);
-        startActivity(intent);*/
-
         editor.putString("pID",s_ID);
         editor.putString("pCell",s_Cell);
         editor.putString("pEmail",s_Email);
         editor.putString("pPass",s_Pass);
         editor.apply();
 
-
     }
-
 
     //Validate methods
     private boolean IDNumberValidate() {
@@ -268,7 +258,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
     }
 
 
-    //PASSWORD STRENGTH CHECKER
+    // PASSWORD STRENGTH CHECKER METHODS
     @Override
     public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
 
@@ -316,6 +306,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
 
     }
 
+    // Registration Process (Checks if user already exists in database)
     public void userRegister(final String userID){
         pb_loading.setVisibility(View.VISIBLE);
         btn_Register.setVisibility(View.GONE);
@@ -330,7 +321,6 @@ public class  Register extends AppCompatActivity implements TextWatcher {
                         Toast.makeText(Register.this, "Proceed", Toast.LENGTH_LONG).show();
                         savePreferences();
                         startActivity(new Intent(Register.this,SlideOne.class));
-                        finish();
                     }
                     else {
                         pb_loading.setVisibility(View.GONE);
@@ -340,9 +330,6 @@ public class  Register extends AppCompatActivity implements TextWatcher {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    pb_loading.setVisibility(View.GONE);
-                    btn_Register.setVisibility(View.VISIBLE);
-                    Toast.makeText(Register.this, "1Register Error" + e.toString(), Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -350,7 +337,7 @@ public class  Register extends AppCompatActivity implements TextWatcher {
             public void onErrorResponse(VolleyError error) {
                 pb_loading.setVisibility(View.GONE);
                 btn_Register.setVisibility(View.VISIBLE);
-                Toast.makeText(Register.this,"2Register Error"+error.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(Register.this,"There has been an error with our internal servers, try again later. Sorry for the inconvenience.",Toast.LENGTH_LONG).show();
 
             }
         })
@@ -360,7 +347,6 @@ public class  Register extends AppCompatActivity implements TextWatcher {
                 Map<String,String> params = new HashMap<>();
 
                 params.put("id",userID);
-                //params.put("cell", cellphoneNumber);
 
                 return params;
             }
@@ -368,6 +354,5 @@ public class  Register extends AppCompatActivity implements TextWatcher {
 
         Singleton.getInstance(Register.this).addToRequestQue(stringRequest);
     }
-
 
 }

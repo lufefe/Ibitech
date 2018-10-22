@@ -61,7 +61,7 @@ public class AddSymptom extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                Tooltip tooltip = new Tooltip.Builder(img_Info)
+                new Tooltip.Builder(img_Info)
                         .setText("Add more symptoms by separating them using a comma (,).")
                         .setTextColor(Color.WHITE)
                         .setGravity(Gravity.TOP)
@@ -104,7 +104,6 @@ public class AddSymptom extends AppCompatActivity {
 
                     if (success.equals("1")) {
                         Toast.makeText(AddSymptom.this, "Symptom successfully added.", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(AddSymptom.this,AddSymptom.class));
                         finish();
                     }
                     else {
@@ -113,13 +112,13 @@ public class AddSymptom extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(AddSymptom.this, "JSON Error" + e.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddSymptom.this, "There was an error in adding your symptoms, try again later.", Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(AddSymptom.this,"Volley Error"+error.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(AddSymptom.this,"There was an error in our internal server, try again later.",Toast.LENGTH_LONG).show();
 
             }
         })

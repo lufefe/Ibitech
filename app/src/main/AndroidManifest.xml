@@ -16,7 +16,13 @@
         android:roundIcon="@drawable/ibitech_logo_no_slogan"
         android:supportsRtl="true"
         android:theme="@style/NoActionBarTheme">
-        <activity android:name=".Welcome"></activity>
+        <activity android:name=".Welcome" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".SlideOne" />
         <activity android:name=".SlideTwo" />
         <activity
@@ -27,7 +33,8 @@
             android:screenOrientation="locked" />
         <activity
             android:name=".Dashboard"
-            android:screenOrientation="locked" />
+            android:screenOrientation="locked">
+        </activity>
         <activity
             android:name=".RequestDevice"
             android:screenOrientation="locked" />
@@ -101,11 +108,6 @@
         <activity
             android:name=".PatientGraphReports"
             android:screenOrientation="locked">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".DoctorGraphReports"
@@ -145,7 +147,8 @@
         <activity android:name=".DocPatientMedicalDevices" />
         <activity android:name=".DocIssueMedicalDevice" />
         <activity android:name=".VisitsBarChart" />
-        <activity android:name=".ViewMedicalAid"></activity>
+        <activity android:name=".ViewMedicalAid" />
+        <activity android:name=".ViewNextOfKin"></activity>
     </application>
 
 </manifest>

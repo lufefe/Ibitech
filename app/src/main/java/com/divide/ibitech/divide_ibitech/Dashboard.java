@@ -17,18 +17,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -48,14 +45,10 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
     TextView tv_FullName, tv_Age, tv_BloodType, tv_Address,tv_Gender,tv_MaritalStatus;
     ImageView img_ProfilePic;
-    private FloatingActionButton fab_Symptoms, fab_Allergy, fabRequestDevice;
     private Bitmap bitmap;
     String getId;
-    LinearLayout bt,device;
-    CardView btnManageAllergies, btnManageDevices, btnManageSymptoms, btnManageConditions, btnManageMedicalAid;
+    CardView btnManageAllergies, btnManageDevices, btnManageSymptoms, btnManageConditions, btnManageMedicalAid, btnManageNextOfKin;
     private static final String TAG = Dashboard.class.getSimpleName(); //getting the info
-
-    private static String URL_UPLOAD = "http://sict-iis.nmmu.ac.za/ibitech/app/upload.php";
 
     SessionManager sessionManager;
 
@@ -99,13 +92,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-   /* @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.nav_drawer, menu);
-        return true;
-        //return super.onCreateOptionsMenu(menu);
-    }*/
 
     @Override
     public void onBackPressed() {
@@ -153,20 +139,20 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         img_ProfilePic = findViewById(R.id.imgProfilePic);
         //btn_photo_upload = findViewById(R.id.btnPhoto);
 
-        fab_Symptoms = findViewById(R.id.fabSymptoms);
-        fabRequestDevice = findViewById(R.id.fabRequest);
-        fab_Allergy = findViewById(R.id.fabAllergy);
+        FloatingActionButton fab_Symptoms = findViewById(R.id.fabSymptoms);
+        FloatingActionButton fabRequestDevice = findViewById(R.id.fabRequest);
+        FloatingActionButton fab_Allergy = findViewById(R.id.fabAllergy);
 
         //For Dashboard display
 
         HashMap<String,String> user = sessionManager.getUserDetails();
-        String sName = user.get(sessionManager.NAME);
-        String sSurname = user.get(sessionManager.SURNAME);
-        String sAge = user.get(sessionManager.AGE);
-        String sBloodType = user.get(sessionManager.BLOODTYPE);
-        String sGender = user.get(sessionManager.GENDER);
-        String sStatus = user.get(sessionManager.STATUS);
-        String sAddress = user.get(sessionManager.ADDRESS);
+        String sName = user.get(SessionManager.NAME);
+        String sSurname = user.get(SessionManager.SURNAME);
+        String sAge = user.get(SessionManager.AGE);
+        String sBloodType = user.get(SessionManager.BLOODTYPE);
+        String sGender = user.get(SessionManager.GENDER);
+        String sStatus = user.get(SessionManager.STATUS);
+        String sAddress = user.get(SessionManager.ADDRESS);
 
         tv_FullName.setText(String.format("%s %s", sName, sSurname));
         tv_Age.setText(sAge);
@@ -176,13 +162,13 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         tv_Address.setText(sAddress);
 
        // For Edit Profile
-        String sID = user.get(sessionManager.ID);
-        String sCell = user.get(sessionManager.CELLNUMBER);
-        String sEmail = user.get(sessionManager.EMAIL);
-        String sWeight = user.get(sessionManager.WEIGHT);
-        String sHeight = user.get(sessionManager.HEIGHT);
-        String sProfilePic = user.get(sessionManager.PROFILEPIC);
-        String sMedicaAid = user.get(sessionManager.MEDICALAID);
+        String sID = user.get(SessionManager.ID);
+        String sCell = user.get(SessionManager.CELLNUMBER);
+        String sEmail = user.get(SessionManager.EMAIL);
+        String sWeight = user.get(SessionManager.WEIGHT);
+        String sHeight = user.get(SessionManager.HEIGHT);
+        String sProfilePic = user.get(SessionManager.PROFILEPIC);
+        String sMedicaAid = user.get(SessionManager.MEDICALAID);
 
         editor.putString("pID",sID);
         editor.putString("pName",sName + " " + sSurname);
@@ -230,6 +216,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         btnManageConditions = findViewById(R.id.cvConditions);
         btnManageDevices = findViewById(R.id.cvDevices);
         btnManageMedicalAid = findViewById(R.id.cvMedicalAid);
+        btnManageNextOfKin = findViewById(R.id.cvNextOfKin);
 
         btnManageConditions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -264,14 +251,13 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                 startActivity(new Intent(Dashboard.this, ViewMedicalAid.class));
             }
         });
+        btnManageNextOfKin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Dashboard.this, ViewNextOfKin.class));
+            }
+        });
 
-    }
-
-    private void chooseFile(){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,"Select Picture"),1);
     }
 
     @Override
@@ -295,6 +281,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         progressDialog.setMessage("Uploading...");
         progressDialog.show();
 
+        String URL_UPLOAD = "http://sict-iis.nmmu.ac.za/ibitech/app/upload.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_UPLOAD,
                 new Response.Listener<String>() {
                     @Override
@@ -324,7 +311,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                 })
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("id",id);
                 params.put("photo",photo);
@@ -339,8 +326,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
 
         byte[] imageByteArray = byteArrayOutputStream.toByteArray();
-        String encodedImage = Base64.encodeToString(imageByteArray,Base64.DEFAULT);
 
-        return  encodedImage;
+        return Base64.encodeToString(imageByteArray,Base64.DEFAULT);
     }
 }

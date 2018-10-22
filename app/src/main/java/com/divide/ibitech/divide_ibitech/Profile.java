@@ -23,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -40,7 +39,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
     String id ="", name="",surname="", status="", cell="", email="",weight="",height="",medicalAid="",profilePic="";
 
-    EditText etName, etSurname, etAdrress, etEmail, etCellphone, etMarital, etWeight, etHeight;
+    EditText etName, etSurname, etEmail, etCellphone, etWeight, etHeight;
 
     ImageView img_ProfilePic;
 
@@ -49,8 +48,6 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
     LinearLayout llMedicalAid;
 
     SessionManager sessionManager;
-
-    private static String URL_UPDATE = "http://sict-iis.nmmu.ac.za/ibitech/app/updateprofile.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +112,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = "", surname = "", cell = "", email = "", weight = "", height = "";
+                String name, surname, cell, email, weight, height;
                 name = etName.getText().toString();
                 surname = etSurname.getText().toString();
                 cell = etCellphone.getText().toString();
@@ -137,6 +134,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
     private void updateProfile(final String id ,final String name,final String surname,final String cell,final String email,final String weight,final String height) {
 
+        String URL_UPDATE = "http://sict-iis.nmmu.ac.za/ibitech/app/updateprofile.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_UPDATE,
                 new Response.Listener<String>() {
                     @Override
@@ -147,8 +145,6 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
                             if(success.equals("1")){
                                 Toast.makeText(Profile.this,"Profile updated successfully.",Toast.LENGTH_SHORT).show();
-                                //CHANGE ALL SHARED PREFERENCES TO NEW DATA OR ASK USER TO LOGOUT
-                                startActivity(new Intent(Profile.this,Dashboard.class));
                                 finish();
                             }
                         } catch (JSONException e) {
@@ -165,7 +161,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
                 })
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("id",id);
                 params.put("name",name);

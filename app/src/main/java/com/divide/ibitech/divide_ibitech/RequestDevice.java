@@ -2,26 +2,17 @@ package com.divide.ibitech.divide_ibitech;
 
 
 
-import android.nfc.Tag;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;import android.content.Intent;
-import android.app.DatePickerDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -33,7 +24,6 @@ import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -65,7 +55,7 @@ public class RequestDevice extends AppCompatActivity {
 
         sessionManager = new SessionManager(this);
         HashMap<String,String> user = sessionManager.getUserDetails();
-        idNumber = user.get(sessionManager.ID);
+        idNumber = user.get(SessionManager.ID);
 
         //for loading spinner/drop-down
         sp_Doctors = findViewById(R.id.spDoctor);
@@ -182,8 +172,7 @@ public class RequestDevice extends AppCompatActivity {
                     if (success.equals("1")) {
                         Toast.makeText(RequestDevice.this, "Device successfully requested", Toast.LENGTH_LONG).show();
                         finish();
-                    }
-                    else {
+                    } else {
                         Toast.makeText(RequestDevice.this, "Request Failed, you have already requested this device.", Toast.LENGTH_LONG).show();
                     }
 

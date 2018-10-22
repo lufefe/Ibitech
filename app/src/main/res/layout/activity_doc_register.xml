@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/clRegister"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -70,7 +72,7 @@
         android:drawablePadding="9dp"
         android:drawableStart="@drawable/ic_person_black_24dp"
         android:ems="10"
-        android:hint="Medical Reg No."
+        android:hint="@string/medical_reg_no"
         android:inputType="text"
         android:text=""
         android:textSize="18sp"
@@ -198,7 +200,7 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:background="@drawable/buttonstyle"
-            android:text="Submit"
+            android:text="@string/submit"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

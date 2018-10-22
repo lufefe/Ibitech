@@ -470,7 +470,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="Manage Devices"
+                        android:text="@string/manage_devices"
                         android:textColor="@color/cardview_dark_background" />
 
 

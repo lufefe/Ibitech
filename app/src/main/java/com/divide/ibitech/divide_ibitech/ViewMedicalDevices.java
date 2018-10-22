@@ -2,8 +2,8 @@ package com.divide.ibitech.divide_ibitech;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,14 +13,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.divide.ibitech.divide_ibitech.Adapter.ConditionListAdapter;
 import com.divide.ibitech.divide_ibitech.Adapter.MedicalDevicesAdapter;
-import com.divide.ibitech.divide_ibitech.Models.ConditionList;
 import com.divide.ibitech.divide_ibitech.Models.MedicalDevicesList;
 
 import org.json.JSONArray;
@@ -161,7 +158,6 @@ public class ViewMedicalDevices extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.nav_drawer, menu);
         return true;
-        //return super.onCreateOptionsMenu(menu);
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

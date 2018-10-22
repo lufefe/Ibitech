@@ -17,7 +17,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Logout"
+        android:text="@string/logout"
         android:textStyle="bold"
         android:clickable="true"
         android:background="?android:attr/selectableItemBackground"
@@ -26,7 +26,8 @@
         app:layout_constraintHorizontal_bias="0.973"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.013" />
+        app:layout_constraintVertical_bias="0.013"
+        android:focusable="true" />
 
     <View
         android:id="@+id/view"
@@ -103,7 +104,8 @@
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.641">
+        app:layout_constraintVertical_bias="0.641"
+        android:focusable="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -116,13 +118,14 @@
                 android:layout_height="64dp"
                 android:background="@drawable/circlesymptoms"
                 android:padding="10dp"
-                android:src="@drawable/ic_appointment" />
+                android:src="@drawable/ic_appointment"
+                android:contentDescription="@string/image_icon_for_visits" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Visits"
+                android:text="@string/visits"
                 android:textStyle="bold" />
 
             <View
@@ -136,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="Create a patient visit"
+                android:text="@string/create_a_patient_visit"
                 android:textColor="@color/darkgrey" />
 
         </LinearLayout>
@@ -160,7 +163,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cvVisits"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="1.0"
+        android:focusable="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -173,13 +177,14 @@
                 android:layout_height="64dp"
                 android:background="@drawable/circlecondition"
                 android:padding="10dp"
-                android:src="@drawable/ic_patients" />
+                android:src="@drawable/ic_patients"
+                android:contentDescription="@string/patients_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Patients"
+                android:text="@string/patients"
                 android:textStyle="bold" />
 
             <View
@@ -193,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="View all patients"
+                android:text="@string/view_all_patients"
                 android:textColor="@color/darkgrey" />
 
         </LinearLayout>
@@ -219,7 +224,9 @@
         app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.013" />
+        app:layout_constraintVertical_bias="0.013"
+        android:focusable="true"
+        android:contentDescription="@string/information_icon_for_tutorial" />
 
     <ImageButton
         android:id="@+id/docReports"
@@ -239,6 +246,7 @@
         app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102" />
+        app:layout_constraintVertical_bias="0.102"
+        android:contentDescription="@string/trending_image_for_reports" />
 
 </android.support.constraint.ConstraintLayout>

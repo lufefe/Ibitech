@@ -14,8 +14,6 @@ public class PatientAllergy extends AppCompatActivity {
 
     String patientID = "", allergyID = "", allergyName = "", allergyType = "", species = "",dateAdded = "", treatmentID = "", tested = "";
 
-    String URL_GETALLRGYDETAILS = "http://sict-iis.nmmu.ac.za/ibitech/app/getallergydetails.php";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +54,6 @@ public class PatientAllergy extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.nav_drawer, menu);
         return true;
-        //return super.onCreateOptionsMenu(menu);
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

@@ -4,15 +4,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,7 +54,7 @@ public class AddAllergy extends AppCompatActivity {
         act_Allergy = findViewById(R.id.actAllergy);
 
         allergyNames = getResources().getStringArray(R.array.allergies);
-        ArrayAdapter<String> cAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,allergyNames);
+        ArrayAdapter<String> cAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,allergyNames);
         act_Allergy.setAdapter(cAdapter);
 
         idNo = prefs.getString("pID","");
@@ -68,7 +67,7 @@ public class AddAllergy extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                Tooltip tooltip = new Tooltip.Builder(img_Info)
+                new Tooltip.Builder(img_Info)
                         .setText("Add one allergy at a time.")
                         .setTextColor(Color.WHITE)
                         .setGravity(Gravity.TOP)
@@ -103,7 +102,6 @@ public class AddAllergy extends AppCompatActivity {
     }
 
     private void addAllergy(final String allergy, final String date, final String idNo) {
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ADD, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -113,22 +111,21 @@ public class AddAllergy extends AppCompatActivity {
 
                     if (success.equals("1")) {
                         Toast.makeText(AddAllergy.this, "Allergy successfully added.", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(AddAllergy.this,AddAllergy.class));
                         finish();
                     }
-                    else {
-                        Toast.makeText(AddAllergy.this, "There was an error in adding your allergy, try again later.", Toast.LENGTH_LONG).show();
-                    }
+                    else
+                        Toast.makeText(AddAllergy.this, "You have already entered this allergy.", Toast.LENGTH_LONG).show();
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(AddAllergy.this, "JSON Error" + e.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddAllergy.this, "There has been an error in adding your allergy, try again later.", Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(AddAllergy.this,"Volley Error"+error.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(AddAllergy.this,"There has been an error in our internal server, try again later.",Toast.LENGTH_LONG).show();
 
             }
         })

@@ -1,11 +1,9 @@
 package com.divide.ibitech.divide_ibitech;
 
-import android.arch.lifecycle.SingleGeneratedAdapterObserver;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.menu.ShowableListMenu;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,14 +11,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.divide.ibitech.divide_ibitech.Adapter.ConditionListAdapter;
-import com.divide.ibitech.divide_ibitech.Models.ConditionList;
-//import com.divide.ibitech.divide_ibitech.Models.SymptomsList;
 import com.divide.ibitech.divide_ibitech.Models.ConditionList;
 
 import org.json.JSONArray;
@@ -31,6 +26,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+//import com.divide.ibitech.divide_ibitech.Models.SymptomsList;
 
 public class ViewCondition extends AppCompatActivity {
     ListView listView;
@@ -52,7 +49,7 @@ public class ViewCondition extends AppCompatActivity {
         id = preferences.getString("pID","");
 
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Your Conditions");
+        toolbar.setTitle("Your Diagnoses");
         setSupportActionBar(toolbar);
 
         Showlist(id);
@@ -62,13 +59,12 @@ public class ViewCondition extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.nav_drawer, menu);
         return true;
-        //return super.onCreateOptionsMenu(menu);
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         if(id == R.id.action_dashboard){
-            startActivity(new Intent(ViewCondition.this,Dashboard.class));
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -132,7 +128,6 @@ public class ViewCondition extends AppCompatActivity {
                                             editor.putString("pMedicine", medicineID[i]);
                                             editor.apply();
                                             startActivity(new Intent(ViewCondition.this, PatientCondition.class));
-                                            finish();
                                         }
                                     }
 
@@ -152,7 +147,7 @@ public class ViewCondition extends AppCompatActivity {
             }
         }){
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 HashMap<String,String> params = new HashMap<>();
 
                 params.put("id",id);

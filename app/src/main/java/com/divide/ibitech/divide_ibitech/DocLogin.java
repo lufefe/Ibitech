@@ -145,40 +145,43 @@ public class DocLogin extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
-                    //Log.i("tagconvertstr", "["+response+"]");
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
                     JSONArray jsonArray = jsonObject.getJSONArray("login");
 
-                    if (success.equals("1")) {
-                        String id= "", cell="", name = "", surname = "", email= "", occupation = "";
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject object = jsonArray.getJSONObject(i);
+                    switch (success) {
+                        case "1":
+                            String id = "", cell = "", name = "", surname = "", email = "", occupation = "";
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject object = jsonArray.getJSONObject(i);
 
-                            id = object.getString("id").trim();
-                            cell = object.getString("cell").trim();
-                            name = object.getString("name").trim();
-                            surname = object.getString("surname").trim();
-                            email = object.getString("email").trim();
-                            occupation = object.getString("occupation").trim();
+                                id = object.getString("id").trim();
+                                cell = object.getString("cell").trim();
+                                name = object.getString("name").trim();
+                                surname = object.getString("surname").trim();
+                                email = object.getString("email").trim();
+                                occupation = object.getString("occupation").trim();
 
-                        }
-                        Toast.makeText(DocLogin.this, "Login Successful", Toast.LENGTH_LONG).show();
-                        pb_loading.setVisibility(View.GONE);
-                        btn_Login.setVisibility(View.VISIBLE);
-                        saveDocPreferences(id,regNo,cell, name,surname, email, occupation);
-                        //sessionManager
-                        sessionManager.createDocSession(id, regNo, cell,name,surname,email,occupation);
-                        startActivity(new Intent(DocLogin.this,DocDashboard.class));
+                            }
+                            Toast.makeText(DocLogin.this, "Login Successful", Toast.LENGTH_LONG).show();
+                            pb_loading.setVisibility(View.GONE);
+                            btn_Login.setVisibility(View.VISIBLE);
+                            saveDocPreferences(id, regNo, cell, name, surname, email, occupation);
+                            //sessionManager to create session for doctor
+                            sessionManager.createDocSession(id, regNo, cell, name, surname, email, occupation);
+                            startActivity(new Intent(DocLogin.this, DocDashboard.class));
 
-                    } else if (success.equals("-1")) {
-                        Toast.makeText(DocLogin.this, "Wrong login details", Toast.LENGTH_LONG).show();
-                        pb_loading.setVisibility(View.GONE);
-                        btn_Login.setVisibility(View.VISIBLE);
-                    } else {
-                        pb_loading.setVisibility(View.GONE);
-                        btn_Login.setVisibility(View.VISIBLE);
-                        Toast.makeText(DocLogin.this, "Login Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
+                            break;
+                        case "-1":
+                            Toast.makeText(DocLogin.this, "Wrong login details", Toast.LENGTH_LONG).show();
+                            pb_loading.setVisibility(View.GONE);
+                            btn_Login.setVisibility(View.VISIBLE);
+                            break;
+                        default:
+                            pb_loading.setVisibility(View.GONE);
+                            btn_Login.setVisibility(View.VISIBLE);
+                            Toast.makeText(DocLogin.this, "Login Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
+                            break;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

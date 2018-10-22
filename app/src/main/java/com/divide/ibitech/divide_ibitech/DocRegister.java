@@ -2,6 +2,8 @@ package com.divide.ibitech.divide_ibitech;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ybs.passwordstrengthmeter.PasswordStrength;
 
@@ -25,12 +28,16 @@ public class DocRegister extends AppCompatActivity implements TextWatcher {
     ProgressBar progressBar,pb_loading;
     Boolean validRegNo = false, validEmail = false, validNewPass = false, validCPass = false;
 
-    String URL_REGIST = "http://sict-iis.nmmu.ac.za/ibitech/app/docregister.php";
+    ConstraintLayout constraintLayout;
+
+    //String URL_REGIST = "http://sict-iis.nmmu.ac.za/ibitech/app/docregister.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_register);
+
+        constraintLayout = findViewById(R.id.clRegister);
 
         et_RegNo = findViewById(R.id.etMedReg);
         et_EmailAddress = findViewById(R.id.etEmailAddress);
@@ -38,6 +45,7 @@ public class DocRegister extends AppCompatActivity implements TextWatcher {
         et_ConfirmPassword = findViewById(R.id.etConfirmPassword);
 
         btn_Submit = findViewById(R.id.btnSubmit);
+
 
         tv_login = findViewById(R.id.login);
         pb_loading = findViewById(R.id.pbLoading);
@@ -50,7 +58,7 @@ public class DocRegister extends AppCompatActivity implements TextWatcher {
             }
         });
 
-        /**Real-time validation*/
+        /*Real-time validation*/
         et_RegNo.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -100,20 +108,32 @@ public class DocRegister extends AppCompatActivity implements TextWatcher {
             }
         });
 
-
         btn_Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if((validRegNo) && (validEmail) && (validCPass)){
-                    docSubmit(regNo, emailAddress, newPassword);
+                    docSubmit();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Please ensure all fields are correctly filled", Toast.LENGTH_LONG).show();
                 }
             }
         });
 
     }
 
-    private void docSubmit(final String regNo, final String emailAddress, final String newPassword) {
+    private void docSubmit() {
         //to ADMIN for registration
+        final Snackbar snackbar = Snackbar.make(constraintLayout,"Your details have been submitted, Further communication to occur via email.", Snackbar.LENGTH_LONG);
+        snackbar.setAction("Dismiss", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                snackbar.dismiss();
+            }
+        });
+        snackbar.show();
+        finish();
+
     }
 
     private Boolean ConfirmPasswordValidate() {

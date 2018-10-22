@@ -50,7 +50,7 @@
         android:drawableStart="@drawable/ic_person_black_24dp"
         android:ems="10"
         android:textSize="18sp"
-        android:hint="Medical Reg No."
+        android:hint="@string/medical_reg_no"
         android:inputType="text"
         android:text="" />
 
@@ -92,7 +92,7 @@
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="@font/open_sans"
-            android:text="@string/txtToggleSHOW"
+            android:text="@string/txtToggleShow"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/etPassword"

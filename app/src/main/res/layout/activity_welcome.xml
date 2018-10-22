@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="70dp"
             android:contentDescription="@string/welcome_ibitech_logo"
             android:src="@drawable/logo2"
             android:textSize="60sp"
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="cursive"
             android:text="@string/be_your_own_patient"
             android:textAlignment="center"
@@ -51,7 +51,7 @@
     <LinearLayout
         android:id="@+id/bottomPart"
         android:layout_width="match_parent"
-        android:layout_height="186dp"
+        android:layout_height="231dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -68,30 +68,29 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
+            android:layout_height="21dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
 
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="228dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="27dp"
-                android:text="User Type"
-                android:textOff="Off"
-                android:textOn="On"
-                android:textSize="25sp"
-                android:layout_marginLeft="27dp"
-                android:layout_alignParentLeft="true" />
-
-            <TextView
-                android:id="@+id/cherrie"
+            <io.ghyeok.stickyswitch.widget.StickySwitch
+                android:id="@+id/stick_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cherrie"
-                android:layout_alignParentRight="true"/>
+                android:layout_centerInParent="true"
+                app:ss_animationDuration="600"
+                app:ss_animationType="curved"
+                app:ss_iconPadding="18dp"
+                app:ss_iconSize="22dp"
+                app:ss_leftIcon="@drawable/ic_patient"
+                app:ss_leftText="Patient"
+                app:ss_rightIcon="@drawable/ic_doctor"
+                app:ss_rightText="Doctor"
+                app:ss_selectedTextSize="16sp"
+                app:ss_sliderBackgroundColor="@color/colorStickyBG"
+                app:ss_switchColor="@color/colorSticky"
+                app:ss_textColor="@android:color/black"
+                app:ss_textSize="12sp" />
 
         </RelativeLayout>
 
@@ -100,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal"
-            >
+            android:gravity="center_horizontal">
 
             <Button
                 android:id="@+id/btnRegister"
@@ -108,8 +107,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="3dp"
-                android:layout_marginLeft="7dp"
-                android:layout_marginStart="7dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:background="@drawable/secondarybuttonstyle"
                 android:padding="8dp"
                 android:text="@string/txtNewRegister"
@@ -125,14 +124,15 @@
                 android:layout_marginBottom="3dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
+                android:layout_marginRight="15dp"
                 android:background="@drawable/buttonstyle"
                 android:padding="8dp"
                 android:text="@string/txtLogin"
                 android:textColor="#fff"
                 android:textSize="16sp"
-                tools:ignore="ButtonStyle" />
+                tools:ignore="ButtonStyle"
+                android:layout_marginEnd="15dp" />
         </LinearLayout>
-
 
 
     </LinearLayout>

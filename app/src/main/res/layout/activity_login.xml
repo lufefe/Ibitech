@@ -108,7 +108,7 @@
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="@font/open_sans"
-            android:text="@string/txtToggleSHOW"
+            android:text="@string/txtToggleShow"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/etPassword"

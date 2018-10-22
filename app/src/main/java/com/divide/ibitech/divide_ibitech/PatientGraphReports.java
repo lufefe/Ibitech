@@ -42,7 +42,7 @@ String items []= new String[]{"My Conditions","My Allergies","Medical Devices","
         navigationView.setNavigationItemSelectedListener(this);
 
         ListView listview = findViewById(R.id.listReport);
-        ArrayAdapter <String> adapter= new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,items);
+        ArrayAdapter <String> adapter= new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, items);
         listview.setAdapter(adapter);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
