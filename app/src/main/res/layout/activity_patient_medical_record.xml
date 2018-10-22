@@ -91,7 +91,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="8dp"
                     android:gravity="start"
-                    android:text="Fullname"
+                    android:text="@string/first_name"
                     android:textAlignment="viewStart"
                     android:textSize="16sp"
                     android:textStyle="italic" />
@@ -107,7 +107,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="8dp"
                     android:gravity="start"
-                    android:text="ID Number"
+                    android:text="@string/hint_idNumber"
                     android:textAlignment="viewStart"
                     android:textSize="16sp"
                     android:textStyle="italic" />
@@ -123,7 +123,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="8dp"
                     android:gravity="start"
-                    android:text="Gender"
+                    android:text="@string/txtGender"
                     android:textAlignment="viewStart"
                     android:textSize="16sp"
                     android:textStyle="italic" />
@@ -138,7 +138,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:gravity="start"
-                    android:text="Marital Status"
+                    android:text="@string/mstatus"
                     android:textAlignment="viewStart"
                     android:textSize="16sp"
                     android:textStyle="italic" />
@@ -169,7 +169,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="8dp"
                     android:gravity="start"
-                    android:text="Cell Number"
+                    android:text="@string/hint_CellphoneNum"
                     android:textAlignment="textStart"
                     android:textSize="16sp"
                     android:textStyle="italic" />
@@ -185,7 +185,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="8dp"
                     android:gravity="start"
-                    android:text="Blood Type"
+                    android:text="@string/txtBloodType"
                     android:textAlignment="viewStart"
                     android:textSize="16sp"
                     android:textStyle="italic" />
@@ -202,7 +202,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="8dp"
                     android:gravity="start"
-                    android:text="Weight"
+                    android:text="@string/weight_kg"
                     android:textSize="16sp"
                     android:textStyle="italic" />
 
@@ -216,7 +216,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:gravity="start"
-                    android:text="Height"
+                    android:text="@string/height_cm"
                     android:textAlignment="viewStart"
                     android:textSize="16sp"
                     android:textStyle="italic" />
@@ -259,7 +259,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="8dp"
-                android:text="Medical Information"
+                android:text="@string/medical_information"
                 android:textAlignment="center"
                 android:textSize="18sp"
                 android:textStyle="bold"

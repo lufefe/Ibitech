@@ -92,7 +92,7 @@ public class DocPatientAllergies extends AppCompatActivity {
                                 allergyType[x] = allergyObject.getString("allergy_type");
                                 species[x] = allergyObject.getString("species");
                                 dateAdded[x] = allergyObject.getString("date_added");
-                                treatment[x] = allergyObject.getString("treatment");
+                                treatment[x] = allergyObject.getString("treatment_id");
                                 tested[x] = allergyObject.getString("tested");
 
                                 AllergyList allergy = new AllergyList(allergyObject.getString("allergy_name"),
@@ -134,7 +134,7 @@ public class DocPatientAllergies extends AppCompatActivity {
                             e.printStackTrace();
                             allegyListView.setVisibility(View.GONE);
                             iv_Error.setVisibility(View.VISIBLE);
-                            tv_Error.setText(patientName + " has no allergies recorded yet.");
+                            tv_Error.setText(String.format("%s has no allergies recorded yet.", patientName));
                             tv_Error.setVisibility(View.VISIBLE);
                         }
 

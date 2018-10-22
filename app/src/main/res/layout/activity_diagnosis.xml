@@ -26,7 +26,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Medication :"
+        android:text="@string/medication"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,7 +46,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="376dp"
-        android:text="Diagnosis:"
+        android:text="@string/diagnosis"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,7 +65,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Symptoms:"
+        android:text="@string/symptoms"
         android:textStyle="bold"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -111,7 +111,9 @@
         app:layout_constraintHorizontal_bias="0.977"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.239" />
+        app:layout_constraintVertical_bias="0.239"
+        android:focusable="true"
+        android:contentDescription="@string/info_icon_for_tooltip" />
 
     <AutoCompleteTextView
         android:id="@+id/actx_Diagnosis"
@@ -129,7 +131,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.424" />
+        app:layout_constraintVertical_bias="0.443" />
 
     <AutoCompleteTextView
         android:id="@+id/actx_Medication"
@@ -142,6 +144,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text=""
+        android:hint="@string/paracetamol"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -159,7 +162,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Date"
+        android:text="@string/date"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -179,7 +182,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/secondarybuttonstyle"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:textColor="@color/White"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -200,7 +203,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/buttonstyle"
-        android:text="Add Symptoms"
+        android:text="@string/add_symptoms"
         android:textColor="@color/White"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -221,7 +224,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/buttonstyle"
-        android:text="Save Diagnosis"
+        android:text="@string/save_diagnosis"
         android:textColor="@color/White"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

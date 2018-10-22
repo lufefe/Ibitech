@@ -1,8 +1,9 @@
 package com.divide.ibitech.divide_ibitech;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -11,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -23,6 +23,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class DocPatientLastVisit extends AppCompatActivity {
 
@@ -52,6 +53,7 @@ public class DocPatientLastVisit extends AppCompatActivity {
 
     //gets script for patient notes of last visit
     String URL_GETLSTVSTNOTES = "http://sict-iis.nmmu.ac.za/ibitech/app/getlastvisitnotes.php";
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +81,7 @@ public class DocPatientLastVisit extends AppCompatActivity {
         toolbar.setTitle(patientName + "\'s Last Visit");
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         ShowLastVisit();
@@ -98,7 +100,7 @@ public class DocPatientLastVisit extends AppCompatActivity {
 
                     JSONObject object = jsonArray.getJSONObject(0);
 
-                    String visitID="", visitDate="",docID="",medReg="",symptomID="",patID="",condID="",medicineID="";
+                    String visitID, visitDate,docID,medReg,symptomID,patID="",condID,medicineID;
 
                     visitID = object.getString("visit_id");
                     visitDate = object.getString("visit_date");
@@ -124,7 +126,7 @@ public class DocPatientLastVisit extends AppCompatActivity {
                     e.printStackTrace();
                     clVisits.setVisibility(View.GONE);
                     ivNoVisits.setVisibility(View.VISIBLE);
-                    tvNoVisits.setText(patientName + " has no visits recorded yet.");
+                    tvNoVisits.setText(String.format("%s has no visits recorded yet.", patientName));
                     tvNoVisits.setVisibility(View.VISIBLE);
                 }
 
@@ -184,14 +186,13 @@ public class DocPatientLastVisit extends AppCompatActivity {
                     dateAdded = object.getString("date_added");
 
                     if (description.isEmpty())
-                        tv_Notes.setText("No notes available.");
+                        tv_Notes.setText(R.string.nonotes);
                     else
                         tv_Notes.setText(description);
 
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(DocPatientLastVisit.this,patientName + " has no notes recorded yet.",Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -251,7 +252,7 @@ public class DocPatientLastVisit extends AppCompatActivity {
 
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
 
                 params.put("medID",medicineID);
@@ -269,7 +270,7 @@ public class DocPatientLastVisit extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
 
-                    String diagnosis="";
+                    String diagnosis;
 
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("server_response");
@@ -342,7 +343,7 @@ public class DocPatientLastVisit extends AppCompatActivity {
 
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
 
                 params.put("symptomID",symptomID);
@@ -360,7 +361,7 @@ public class DocPatientLastVisit extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
 
-                    String firstName="", surname="",cellphoneNo="",occupation="";
+                    String firstName, surname,cellphoneNo="",occupation="";
 
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("server_response");
@@ -389,7 +390,7 @@ public class DocPatientLastVisit extends AppCompatActivity {
 
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
 
                 params.put("docID",docID);

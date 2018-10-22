@@ -2,42 +2,30 @@ package com.divide.ibitech.divide_ibitech;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.divide.ibitech.divide_ibitech.Adapter.AllergyListAdapter;
 import com.divide.ibitech.divide_ibitech.Adapter.MedInfoAdapter;
-import com.divide.ibitech.divide_ibitech.Models.AllergyList;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 
 public class PatientMedicalRecord extends AppCompatActivity {
 
-    TextView tvPatientID, tvPatientName, tvPatientDOB, tvPatientGender, tvPatientStatus, tvPatientCell, tvPatientBlood, tvPatientWeight, tvPatientHeight, tvPatientMedAid;
+    TextView tvPatientID, tvPatientName, tvPatientGender, tvPatientStatus, tvPatientCell, tvPatientBlood, tvPatientWeight, tvPatientHeight;
 
     String patientID = "", patientName = "", patientDOB="", patientGender ="", patientStatus="", patientCell="", patientBlood="", patientWeight="", patientHeight="", patientMedAid="";
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +50,7 @@ public class PatientMedicalRecord extends AppCompatActivity {
         toolbar.setTitle(patientName + "\'s Medical Record" );
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         String cats []= new String[]{"Last Visit","Allergies","Medication", "Diagnoses","Test Results", "Medical Devices", "Miscellaneous"};
@@ -105,11 +93,6 @@ public class PatientMedicalRecord extends AppCompatActivity {
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
-                if (cat.equals("Miscellaneous")){
-                    /*Intent intent = new Intent(PatientMedicalRecord.this, DocPatientMiscellaneous.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);*/
-                }
 
             }
         });
@@ -133,9 +116,9 @@ public class PatientMedicalRecord extends AppCompatActivity {
         //tvPatientDOB.setText(patientDOB);
 
         if (patientGender.equals("M"))
-            tvPatientGender.setText("Male");
+            tvPatientGender.setText(R.string.male);
         else if (patientGender.equals("F"))
-            tvPatientGender.setText("Female");
+            tvPatientGender.setText(R.string.female);
 
         tvPatientBlood.setText(patientBlood);
         tvPatientWeight.setText(String.format("%s kg", patientWeight));

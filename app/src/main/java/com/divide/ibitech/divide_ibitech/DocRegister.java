@@ -132,7 +132,6 @@ public class DocRegister extends AppCompatActivity implements TextWatcher {
             }
         });
         snackbar.show();
-        finish();
 
     }
 

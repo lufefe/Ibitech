@@ -3,6 +3,8 @@ package com.divide.ibitech.divide_ibitech;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,6 +28,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ViewPatientVisits extends AppCompatActivity {
 
@@ -35,6 +38,7 @@ public class ViewPatientVisits extends AppCompatActivity {
     List<AppointmentsList> visitsLists;
     String URL_GETAPPTS = "http://sict-iis.nmmu.ac.za/ibitech/app/getpatientvisits.php";
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +52,7 @@ public class ViewPatientVisits extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 

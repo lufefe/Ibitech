@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -34,6 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Diagnosis extends AppCompatActivity {
 
@@ -47,11 +47,10 @@ public class Diagnosis extends AppCompatActivity {
     String patientID = "", patientName = "", symptomID = "",symptomName="", doctorID = "", medRegNo =  "", addDate = "";
 
     String URL_GETSYMPTMS = "http://sict-iis.nmmu.ac.za/ibitech/app/getpatientsymptomsfordiagnosis.php";
-    String URL_GETMED = "http://sict-iis.nmmu.ac.za/ibitech/app/getmedicineid.php";
-    String URL_GETCOND = "http://sict-iis.nmmu.ac.za/ibitech/app/getconditionid.php";
     String URL_ADDVISIT = "http://sict-iis.nmmu.ac.za/ibitech/app/insertvisit.php";
     String URL_ADD = "http://sict-iis.nmmu.ac.za/ibitech/app/addsymptom.php";
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +79,7 @@ public class Diagnosis extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                Tooltip tooltip = new Tooltip.Builder(img_Info)
+                new Tooltip.Builder(img_Info)
                         .setText("Add more symptoms by separating them using a comma (,).")
                         .setTextColor(Color.WHITE)
                         .setGravity(Gravity.TOP)
@@ -94,11 +93,11 @@ public class Diagnosis extends AppCompatActivity {
         act_Medication = findViewById(R.id.actx_Medication);
 
         conditionNames = getResources().getStringArray(R.array.conditions);
-        ArrayAdapter<String> cAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,conditionNames);
+        ArrayAdapter<String> cAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, conditionNames);
         act_Diagnosis.setAdapter(cAdapter);
 
         medicationNames = getResources().getStringArray(R.array.medication);
-        ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,medicationNames);
+        ArrayAdapter<String> mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, medicationNames);
         act_Medication.setAdapter(mAdapter);
 
         patientID = prefs.getString("pID","");
@@ -113,10 +112,9 @@ public class Diagnosis extends AppCompatActivity {
         //tvPatientName.setText(patientName);
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(patientName);
-        //toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         btnSaveDiagnosis.setOnClickListener(new View.OnClickListener() {
@@ -142,7 +140,6 @@ public class Diagnosis extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(Diagnosis.this, ViewPatientVisits.class));
                 finish();
             }
         });

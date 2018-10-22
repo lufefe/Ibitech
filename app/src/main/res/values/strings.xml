@@ -419,6 +419,16 @@
     <string name="type_your_medical_aid_scheme">Type your medical aid scheme :</string>
     <string name="save">Save</string>
     <string name="icon_of_tools">Icon of tools</string>
+    <string name="save_diagnosis">Save Diagnosis</string>
+    <string name="add_symptoms">Add Symptoms</string>
+    <string name="date">Date</string>
+    <string name="paracetamol">Paracetamol</string>
+    <string name="diagnosis">Diagnosis:</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="medical_information">Medical Information</string>
+    <string name="mstatus">Marital Status</string>
+    <string name="nonotes">No notes available.</string>
 
 
     <string-array name="medication">
