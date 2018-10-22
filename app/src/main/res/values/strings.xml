@@ -73,8 +73,8 @@
     <string name="txtManage_symptoms_icon">Manage symptoms icon</string>
     <string name="txtSymptoms">Symptoms</string>
     <string name="txtCondition_icon">Condition icon</string>
-    <string name="txtManage_conditions">Manage conditions</string>
-    <string name="txtConditions">Conditions</string>
+    <string name="txtManage_conditions">Manage diagnoses</string>
+    <string name="txtConditions">Diagnosis</string>
     <string name="txtHint_Email_address">E-mail Address</string>
     <string name="next">Next</string>
     <string name="skip">Skip</string>

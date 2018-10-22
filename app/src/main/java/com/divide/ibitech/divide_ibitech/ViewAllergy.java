@@ -48,29 +48,9 @@ public class ViewAllergy extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_allergy);
+
         listView=findViewById(R.id.listAllergy);
         alleList= new ArrayList<>();
-//        fabToday=(FloatingActionButton)findViewById(R.id.fabtoday);
-//        fabWeek=(FloatingActionButton)findViewById(R.id.fabWeek);
-//        fabToday.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//               showlistToday(id);
-//                alleList.clear();
-//
-//              // listView.setAdapter(null);
-//            }
-//        });
-
-//        fabWeek.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showlistWeek(id);
-//                alleList.clear();
-//                //listView.setAdapter(null);
-//
-//            }
-//        });
 
         SharedPreferences preferences = getSharedPreferences("PROFILEPREFS",MODE_PRIVATE);
 
@@ -125,7 +105,7 @@ public class ViewAllergy extends AppCompatActivity {
                                 allergyType[x] = allergyObject.getString("allergy_type");
                                 species[x] = allergyObject.getString("species");
                                 dateAdded[x] = allergyObject.getString("date_added");
-                                treatment[x] = allergyObject.getString("treatment_id");
+                                treatment[x] = allergyObject.getString("treatment");
                                 tested[x] = allergyObject.getString("tested");
 
                                 AllergyList allergy = new AllergyList(allergyObject.getString("allergy_name"),

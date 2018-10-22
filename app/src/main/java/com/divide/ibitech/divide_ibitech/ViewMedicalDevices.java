@@ -8,7 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -30,12 +32,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.view.View.VISIBLE;
+
 public class ViewMedicalDevices extends AppCompatActivity {
 
     ListView listView;
 
     String id = "", fullname = "";
-
+    ImageView imgDev;
+    TextView tvDev;
     List<MedicalDevicesList> deviceList;
     String URLGETDVCS = "http://sict-iis.nmmu.ac.za/ibitech/app/getdevices.php";
 
@@ -46,6 +51,9 @@ public class ViewMedicalDevices extends AppCompatActivity {
 
         listView= findViewById(R.id.listDevices);
         deviceList = new ArrayList<>();
+
+        tvDev = findViewById(R.id.tvNoDevs);
+        imgDev = findViewById(R.id.imgNoDevs);
 
         SharedPreferences preferences = getSharedPreferences("PROFILEPREFS",MODE_PRIVATE);
 
@@ -126,7 +134,8 @@ public class ViewMedicalDevices extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(ViewMedicalDevices.this,"You have no medical devices inserted yet.", Toast.LENGTH_LONG).show();
+                            tvDev.setVisibility(VISIBLE);
+                            imgDev.setVisibility(VISIBLE);
                         }
 
                     }

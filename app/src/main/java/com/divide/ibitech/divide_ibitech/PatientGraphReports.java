@@ -17,7 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class PatientGraphReports extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
-String items []= new String[]{"My Conditions","My Allergies","Medical Devices",};
+String items []= new String[]{"My Conditions","My Allergies","Medical Devices","My Visits"};
 
     SessionManager sessionManager;
 
@@ -57,6 +57,10 @@ String items []= new String[]{"My Conditions","My Allergies","Medical Devices",}
                     Intent intent= new Intent(view.getContext(),PatientAllergiesPieChart.class);
                     startActivity(intent);
 
+                }
+                else if(position==3){
+                    Intent intent= new Intent(view.getContext(),VisitsBarChart.class);
+                    startActivity(intent);
                 }
             }
         });
