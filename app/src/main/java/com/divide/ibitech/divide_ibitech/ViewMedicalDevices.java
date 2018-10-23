@@ -39,7 +39,7 @@ public class ViewMedicalDevices extends AppCompatActivity {
     ImageView imgDev;
     TextView tvDev;
     List<MedicalDevicesList> deviceList;
-    String URLGETDVCS = "http://sict-iis.nmmu.ac.za/ibitech/app/getdevices.php";
+    String URLGETDVCS = "http://10.0.2.2/app/getdevices.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

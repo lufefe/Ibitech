@@ -135,6 +135,7 @@ public class DocPatientMedicalDevices extends AppCompatActivity {
                                             editor.putString("pStatus", status[i]);
                                             editor.apply();
                                             startActivity(new Intent(DocPatientMedicalDevices.this, DocIssueMedicalDevice.class));
+                                            finish();
                                         }
                                     }
 

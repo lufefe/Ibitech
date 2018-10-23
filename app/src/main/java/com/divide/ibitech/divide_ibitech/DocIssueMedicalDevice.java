@@ -1,5 +1,6 @@
 package com.divide.ibitech.divide_ibitech;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -98,6 +99,7 @@ public class DocIssueMedicalDevice extends AppCompatActivity {
 
                             if (success.equals("1")) {
                                 Toast.makeText(DocIssueMedicalDevice.this, "Device successfully issued.", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(getApplicationContext(), PatientMedicalRecord.class));
                                 finish();
                             }
                             else {

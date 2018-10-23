@@ -32,7 +32,8 @@ public class PrescribeAllergyTreatment extends AppCompatActivity {
     android.support.v7.widget.Toolbar toolbar;
     Button btnPrescribe;
 
-    String URLPRSCRBE = "http://sict-iis.nmmu.ac.za/ibitech/app/prescribeallergy.php";
+    //String URLPRSCRBE = "http://sict-iis.nmmu.ac.za/ibitech/app/prescribeallergy.php";
+    String URLPRSCRBE = "http://10.0.2.2/app/prescribeallergy.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

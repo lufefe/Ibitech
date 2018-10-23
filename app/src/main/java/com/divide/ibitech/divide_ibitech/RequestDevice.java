@@ -44,7 +44,8 @@ public class RequestDevice extends AppCompatActivity {
 
     SessionManager sessionManager;
 
-    String URL_REQUEST = "http://sict-iis.nmmu.ac.za/ibitech/app/requestdevice.php";
+//    String URL_REQUEST = "http://sict-iis.nmmu.ac.za/ibitech/app/requestdevice.php";
+    String URL_REQUEST = "http://10.0.2.2/app/requestdevice.php";
 
     String URL_GETDOCID = "http://sict-iis.nmmu.ac.za/ibitech/app/getdoctorid.php";
 

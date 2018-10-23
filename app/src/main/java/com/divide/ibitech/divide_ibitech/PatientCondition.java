@@ -107,7 +107,7 @@ public class PatientCondition extends AppCompatActivity {
                         finish();
                     }
                     else {
-                        Toast.makeText(PatientCondition.this, "There was an error in saving your notes, try again later.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(PatientCondition.this, "You have already written notes for this visit.", Toast.LENGTH_LONG).show();
                     }
 
                 } catch (JSONException e) {
