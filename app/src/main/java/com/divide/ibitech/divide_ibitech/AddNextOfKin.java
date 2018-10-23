@@ -1,11 +1,17 @@
 package com.divide.ibitech.divide_ibitech;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,11 +23,18 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
-public class AddNextOfKin extends AppCompatActivity {
-    TextView KinID,KinName,KinSname,KinCell,KinEmail,KinAddress,KinRelation,KinDate,Kinststus;
+public class AddNextOfKin extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
+    EditText KinID,KinName,KinSname,KinCell,KinEmail,KinAddress,KinRelation,KinDate,Kinststus;
     Button btnSave;
     String idNo = "";
     String  kID,kname,kSname,kDate,kCell,kEmail,kAddress,kRelation ,kStatus;
@@ -29,20 +42,36 @@ public class AddNextOfKin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_next_of_kin);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Add A Next Of Kin");
+        setSupportActionBar(toolbar);
 
         SharedPreferences prefs = getSharedPreferences("PROFILEPREFS", MODE_PRIVATE);
         idNo = prefs.getString("pID","");
-        KinID =(TextView) findViewById(R.id.kinId);
-        KinName =(TextView) findViewById(R.id.Fname);
-        KinSname =(TextView) findViewById(R.id.KinSname);
-        KinCell =(TextView) findViewById(R.id.KinNo);
-        KinEmail =(TextView) findViewById(R.id.KinEmail);
-        KinAddress =(TextView) findViewById(R.id.KinAddress);
-        KinRelation =(TextView) findViewById(R.id.KinRelation);
-        KinDate =(TextView) findViewById(R.id.kinDob);
-        btnSave=(Button)findViewById(R.id.btnNet);
+        KinID = findViewById(R.id.kinId);
+        KinName = findViewById(R.id.Fname);
+        KinSname = findViewById(R.id.KinSname);
+        KinCell =findViewById(R.id.KinNo);
+        KinEmail = findViewById(R.id.KinEmail);
+        KinAddress = findViewById(R.id.KinAddress);
+        KinRelation =findViewById(R.id.KinRelation);
+        KinDate = findViewById(R.id.kinDob);
+        KinDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (hasFocus){
+                    datePicker(view);
+                }
+                else{
+                    //do nothing
+                }
+            }
+        });
+
+
+        btnSave=findViewById(R.id.btnNet);
 
 
 
@@ -59,16 +88,44 @@ public class AddNextOfKin extends AppCompatActivity {
                 kRelation = KinRelation.getText().toString();
                 kDate = KinDate.getText().toString();
                 kStatus = KinID.getText().toString();
+                Date d = new Date(kDate);
+                String format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(d);
 
+                addKids(kID,kname,kSname,format,kCell,kEmail,kAddress,kRelation,idNo);
 
-                addKids(kID,kname,kSname,kDate,kCell,kEmail,kAddress,kRelation,idNo);
             }
 
         });
 
-
-
     }
+
+    private void datePicker(View view) {
+        DatePickerFragment fragment = new DatePickerFragment();
+        fragment.show(getFragmentManager(), "date");
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int day) {
+        Calendar calendar = new GregorianCalendar(year,month,day);
+        setDate(calendar);
+    }
+
+    private void setDate(final Calendar calendar){
+        final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
+        KinDate.setText(dateFormat.format(calendar.getTime()));
+    }
+    public static class DatePickerFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState){
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            return new DatePickerDialog(getActivity(), (DatePickerDialog.OnDateSetListener) getActivity(),year,month,day);
+        }
+    }
+
     private void addKids(final String kID, final String kname, final String kSname,final String kDate,final String kCell,final String kEmail,final String kAddress,final String kRelation,final String idNo) {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
