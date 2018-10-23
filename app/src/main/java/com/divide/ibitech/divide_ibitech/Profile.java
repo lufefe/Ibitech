@@ -45,7 +45,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
     Button btnSave;
 
-    LinearLayout llMedicalAid;
+    LinearLayout llMedicalAid, llNextOfKin;
 
     SessionManager sessionManager;
 
@@ -78,6 +78,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         etHeight = findViewById(R.id.editHeight);
 
         llMedicalAid = findViewById(R.id.ll_MedicalAid);
+        llNextOfKin = findViewById(R.id.ll_NextOfKin);
 
         img_ProfilePic = findViewById(R.id.imgProfilePicInProfile);
 
@@ -130,6 +131,13 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
             }
         });
 
+        llNextOfKin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Profile.this, AddNextOfKin.class));
+
+            }
+        });
     }
 
     private void updateProfile(final String id ,final String name,final String surname,final String cell,final String email,final String weight,final String height) {

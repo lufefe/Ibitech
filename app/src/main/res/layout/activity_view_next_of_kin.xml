@@ -21,6 +21,24 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <ListView
+        android:id="@+id/listNextOfKin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ImageView
         android:id="@+id/imgNoNext"
         android:layout_width="173dp"
@@ -31,6 +49,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:scaleType="fitCenter"
+        android:visibility="gone"
         android:src="@drawable/users_family"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +57,7 @@
         android:contentDescription="@string/txtNext_of_kin_icon" />
 
     <TextView
+        android:id="@+id/tvNoNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -49,6 +69,7 @@
         android:text="@string/you_have_no_next_of_kin_yet"
         android:textAlignment="center"
         android:textSize="22sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
