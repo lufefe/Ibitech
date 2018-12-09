@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#795548"
-    tools:context="com.divide.ibitech.divide_ibitech.Login">
+    tools:context="com.envy.patrema.envy_patrema.PatientLogin">
 <RelativeLayout
     android:layout_width="350dp"
     android:layout_height="507dp"

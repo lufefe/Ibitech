@@ -1,99 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical"
-    tools:context="com.divide.ibitech.divide_ibitech.Login">
+    tools:context="com.envy.patrema.envy_patrema.PatientLogin">
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="111dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="164dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/welcome_ibitech_logo"
         android:scaleType="centerCrop"
-        android:src="@drawable/ibitech_logo_no_slogan"
+        android:src="@drawable/plogo_copy_hdpi"
         android:textColor="#ffff"
-        android:contentDescription="@string/imgContentDescription" />
+        app:layout_constraintBottom_toTopOf="@+id/txtLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <TextView
+        android:id="@+id/txtLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="16dp"
         android:text="@string/txtLogin"
         android:textColor="#000"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <View
+        android:id="@+id/view3"
         android:layout_width="88dp"
         android:layout_height="1dp"
         android:layout_gravity="center"
-        android:layout_marginTop="9dp"
-        android:background="#000" />
-
-    <EditText
-        android:id="@+id/etIDNumber"
-        android:layout_width="341dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:drawableLeft="@drawable/ic_person_black_24dp"
-        android:drawablePadding="9dp"
-        android:drawableStart="@drawable/ic_person_black_24dp"
-        android:ems="10"
-        android:maxLength="13"
-        android:textSize="18sp"
-        android:hint="@string/hint_idNumber"
-        android:inputType="number"
-        android:text="" />
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLogin" />
 
     <EditText
         android:id="@+id/etCellphoneNum"
         android:layout_width="342dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:drawableLeft="@drawable/ic_phone_black_24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:drawableStart="@drawable/ic_email_black_24dp"
+        android:drawableLeft="@drawable/ic_email_black_24dp"
         android:drawablePadding="9dp"
-        android:drawableStart="@drawable/ic_phone_black_24dp"
         android:ems="10"
-        android:maxLength="10"
-        android:hint="@string/hint_CellphoneNum"
-        android:textSize="18sp"
+        android:hint="@string/txtHint_Email_address"
         android:inputType="number"
-        android:text="" />
+        android:maxLength="10"
+        android:text=""
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="346dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp">
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCellphoneNum">
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="342dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="35dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:drawableStart="@drawable/ic_lock_black_24dp"
             android:drawableLeft="@drawable/ic_lock_black_24dp"
             android:drawablePadding="9dp"
-            android:drawableStart="@drawable/ic_lock_black_24dp"
             android:ems="10"
             android:fontFamily="@font/raleway"
             android:hint="@string/hint_password"
             android:inputType="textPassword"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="UnusedAttribute" />
 
 
@@ -101,10 +121,10 @@
             android:id="@+id/tvTogglePassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="@font/open_sans"
@@ -119,65 +139,86 @@
             tools:targetApi="jelly_bean" />
     </android.support.constraint.ConstraintLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center">
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/buttonstyle"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/txtLoginBtn"
+        android:textColor="@color/White"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
-        <ProgressBar
-            android:id="@+id/pbLoading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:background="@drawable/buttonstyle"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="@string/txtLoginBtn"
-            android:textColor="@color/White" />
-
-    </RelativeLayout>
 
     <TextView
         android:id="@+id/tvForgotPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/txtForgot_password"
         android:textSize="17sp"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="horizontal">
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="80dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/tvNewUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:textAlignment="textEnd"
             android:layout_weight="2"
             android:text="@string/txtNew_user"
+            android:textAlignment="textEnd"
             android:textSize="17sp" />
 
         <TextView
@@ -186,42 +227,36 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_weight="2"
-            android:text="@string/txtNewRegister"
-            android:paddingLeft="7dp"
-            android:textSize="17sp"
-            android:paddingStart="7dp"
-            tools:ignore="RtlSymmetry"
             android:clickable="true"
             android:focusable="true"
+            android:paddingStart="7dp"
+            android:paddingLeft="7dp"
+            android:text="@string/txtNewRegister"
+            android:textColor="#0000FF"
             android:textColorLink="#0000FF"
-            android:textColor="#0000FF"/>
+            android:textSize="17sp"
+            tools:ignore="RtlSymmetry" />
     </LinearLayout>
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/tvTerms"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        >
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="bottom"
+        android:text="@string/txtTermsandConds"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <TextView
-            android:id="@+id/tvTerms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:gravity="bottom"
-            android:text="@string/txtTermsandConds"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-    </android.support.constraint.ConstraintLayout>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1016589756571",
+    "firebase_url": "https://ehrotpauth.firebaseio.com",
+    "project_id": "ehrotpauth",
+    "storage_bucket": "ehrotpauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016589756571:android:aad7baef0b16f719",
+        "android_client_info": {
+          "package_name": "com.envy.patrema.envy_patrema"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016589756571-hvhtrnv89ohuptvgripd8mdhiug09fh4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.envy.patrema.envy_patrema",
+            "certificate_hash": "2a99719fb9541e2c99fbd85262fa48045c5d8bd0"
+          }
+        },
+        {
+          "client_id": "1016589756571-4h4qid0i3e249f8tu67ioi2mo345l4jt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMjnagSiF1dEGLjC8JBM2b0yqUo_m4pAs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016589756571-4h4qid0i3e249f8tu67ioi2mo345l4jt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

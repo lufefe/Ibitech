@@ -6,7 +6,7 @@
     android:background="#fff"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="com.divide.ibitech.divide_ibitech.Login">
+    tools:context="com.envy.patrema.envy_patrema.PatientLogin">
 
 
     <ImageView
