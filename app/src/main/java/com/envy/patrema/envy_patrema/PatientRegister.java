@@ -1,8 +1,11 @@
 package com.envy.patrema.envy_patrema;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -37,16 +40,23 @@ import java.util.Map;
 
 public class PatientRegister extends AppCompatActivity implements TextWatcher {
 
-    String newPassword = "",cPassword = "", emailAddress="";
+    String newPassword = "",cPassword = "", emailAddress="", userType= "";
     EditText et_EmailAddress, et_EnterPassword, et_ConfirmPassword;
     Button btn_Register;
     TextView tv_login,strengthView;
     String passStrength;
     ProgressBar progressBar,pb_loading;
+    Dialog dialog;
+    TextView tv_dialogText;
+    Button btnDialogDissmis;
+    String dialogText = "";
+
     public Boolean validEmail= false, validNewPass = false,validCpass = false, checked = false;
     CheckBox policyCheck;
 
-    String URL_REGIST = "http://sict-iis.nmmu.ac.za/ibitech/app/register.php";
+    String URL_REGIST = "http://10.0.2.2/app/patientregister.php";
+
+    String URL_REGISTCONT = "http://10.0.2.2/app/patientregister2.php";
 
     private FirebaseAuth mAuth;
 
@@ -55,7 +65,14 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        SharedPreferences preferences = getSharedPreferences("USERTYPE",MODE_PRIVATE);
+        userType = preferences.getString("pUserType", "");
+
         mAuth = FirebaseAuth.getInstance();
+
+        dialog = new Dialog(this);
+        tv_dialogText = findViewById(R.id.txtErrorMessage);
+        btnDialogDissmis = findViewById(R.id.btnDismiss);
 
 
         // Get input values from xml
@@ -81,23 +98,12 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
             @Override
             public void onClick(View view) {
 
+                if (!checked)
+                    policyCheck.setError("Please check the box to agree to our terms and conditions and privacy policy.");
+
                 if ((validEmail) && (validCpass) && (checked)){
-                    et_EmailAddress.setEnabled(false);
-                    pb_loading.setVisibility(View.VISIBLE);
-                    btn_Register.setVisibility(View.INVISIBLE);
-
-                    mAuth.createUserWithEmailAndPassword(emailAddress, newPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful() ){
-                                sendVerificationEmail();
-                            }
-                            else {
-                                Toast.makeText(getApplicationContext(), "Error creating user", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });
-
+                    final String email = et_EmailAddress.getText().toString();
+                    checkUserExists(email);
 
                 }
             }
@@ -113,6 +119,7 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
                 if(policyCheck.isChecked()){
                     checked = true;
                     policyCheck.setError(null);
+                    et_EmailAddress.requestFocus();
                 }
             }
         });
@@ -161,6 +168,21 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
 
     }
 
+    private void showErrorDialog(String message){
+        dialog.setContentView(R.layout.custom_error_dialog);
+        btnDialogDissmis = dialog.findViewById(R.id.btnDismiss);
+        btnDialogDissmis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        tv_dialogText = dialog.findViewById(R.id.txtErrorMessage);
+        tv_dialogText.setText(message);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+    }
+
     private void sendVerificationEmail(){
         FirebaseUser user = mAuth.getCurrentUser();
 
@@ -169,14 +191,12 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()){
-
                         Toast.makeText(getApplicationContext(), "Registration email sent", Toast.LENGTH_LONG).show();
-                        Intent regIntent = new Intent(PatientRegister.this, PatientLogin.class);
-                        startActivity(regIntent);
+                        registerPatient(emailAddress, newPassword, userType);
                         mAuth.signOut();
                     }
                     else {
-                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Error sending the verification email.", Toast.LENGTH_LONG).show();
                         mAuth.signOut();
                     }
                 }
@@ -184,19 +204,57 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
         }
 
     }
+    private void registerPatient(final String emailAddress, final String password, final String userType) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGISTCONT, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
 
+                    JSONObject jsonObject = new JSONObject(response);
+                    String success = jsonObject.getString("success");
 
-    private void savePreferences() {
-        SharedPreferences preferences = getSharedPreferences("REGP",MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
+                    if (success.equals("1")) {
+                        //sessionManager.createSession(userID, userFName,userSurname,age.toString(),userBloodType,userGender,userMaritalStatus,userAddress,userCell, userEmail, userWeight,userHeight,"","");
+                        startActivity(new Intent(getApplicationContext(), PatientLogin.class));
+                        finish();
+                    }
+                    else {
+                        pb_loading.setVisibility(View.INVISIBLE);
+                        btn_Register.setVisibility(View.VISIBLE);
+                        Toast.makeText(getApplicationContext(), "Failed , couldn't complete registration", Toast.LENGTH_LONG).show();
+                    }
 
-        final String s_Email = et_EmailAddress.getText().toString().toLowerCase();
-        final String s_Pass = et_EnterPassword.getText().toString();
+                } catch (JSONException e) {
+                    pb_loading.setVisibility(View.INVISIBLE);
+                    btn_Register.setVisibility(View.VISIBLE);
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "1Register Error" + e.toString(), Toast.LENGTH_LONG).show();
 
-        editor.putString("pEmail",s_Email);
-        editor.putString("pPass",s_Pass);
-        editor.apply();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                pb_loading.setVisibility(View.INVISIBLE);
+                btn_Register.setVisibility(View.VISIBLE);
+                Toast.makeText(getApplicationContext(),"3Register Error"+error.toString(),Toast.LENGTH_LONG).show();
 
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String,String> params = new HashMap<>();
+
+                params.put("email",emailAddress);
+                params.put("password",password);
+                params.put("usertype",userType);
+
+                return params;
+            }
+        };
+
+        Singleton.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
     }
 
     //Validate methods
@@ -292,10 +350,11 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
 
     }
 
-    // Registration Process (Checks if user already exists in database)
-    public void userRegister(final String userID){
+    // method checks if email address already exists in database
+    public void checkUserExists(final String emailAddress){
         pb_loading.setVisibility(View.VISIBLE);
-        btn_Register.setVisibility(View.GONE);
+        btn_Register.setVisibility(View.INVISIBLE);
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -304,14 +363,29 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
                     String success = jsonObject.getString("success");
 
                     if (success.equals("1")) {
-                        Toast.makeText(PatientRegister.this, "Proceed", Toast.LENGTH_LONG).show();
-                        savePreferences();
-                        startActivity(new Intent(PatientRegister.this,SlideOne.class));
+
+                        mAuth.createUserWithEmailAndPassword(emailAddress, newPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful() ){
+                                    sendVerificationEmail();
+                                }
+                                else {
+                                    dialogText = "Error creating the user";
+                                    showErrorDialog(dialogText);
+                                    pb_loading.setVisibility(View.INVISIBLE);
+                                    btn_Register.setVisibility(View.VISIBLE);
+                                }
+                            }
+                        });
+
                     }
                     else {
-                        pb_loading.setVisibility(View.GONE);
+                        pb_loading.setVisibility(View.INVISIBLE);
                         btn_Register.setVisibility(View.VISIBLE);
-                        Toast.makeText(PatientRegister.this, "This user already exist in our database", Toast.LENGTH_LONG).show();
+
+                        dialogText = "This user already exist in our database";
+                        showErrorDialog(dialogText);
                     }
 
                 } catch (JSONException e) {
@@ -321,9 +395,11 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                pb_loading.setVisibility(View.GONE);
+                pb_loading.setVisibility(View.INVISIBLE);
                 btn_Register.setVisibility(View.VISIBLE);
-                Toast.makeText(PatientRegister.this,"There has been an error with our internal servers, try again later. Sorry for the inconvenience.",Toast.LENGTH_LONG).show();
+                dialogText = "There has been an error with our internal servers, try again later. Sorry for the inconvenience.";
+                showErrorDialog(dialogText);
+
 
             }
         })
@@ -332,7 +408,7 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
             protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
 
-                params.put("id",userID);
+                params.put("email",emailAddress);
 
                 return params;
             }

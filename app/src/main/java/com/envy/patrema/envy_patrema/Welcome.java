@@ -48,7 +48,7 @@ public class Welcome extends AppCompatActivity {
 
         // Gets user type and stores it in preferences
         userType = stickySwitch.getText();
-        SharedPreferences preferences = getSharedPreferences("userType",MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("USERTYPE",MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
         editor.putString("pUserType", userType);

@@ -24,7 +24,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -44,7 +43,7 @@ public class PatientLogin extends AppCompatActivity {
         ProgressBar pb_loading;
 
         //PatientLogin URL
-        String URL_LOGIN = "http://sict-iis.nmmu.ac.za/ibitech/app/login.php";
+        String URL_LOGIN = "http://10.0.2.2/app/patientlogin.php";
 
         SessionManager sessionManager;
 
@@ -59,6 +58,7 @@ public class PatientLogin extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        et_EmailAddress = findViewById(R.id.etEmailAddress);
         et_Password =  findViewById(R.id.etPassword);
         btn_Login = findViewById(R.id.btnLogin);
         tv_NewRegister = findViewById(R.id.tvNewRegister);
@@ -67,8 +67,6 @@ public class PatientLogin extends AppCompatActivity {
 
 
         /*Real-time validation**/
-
-
 
         //Show password toggle
         tv_PasswordToggle = findViewById(R.id.tvTogglePassword);
@@ -128,8 +126,12 @@ public class PatientLogin extends AppCompatActivity {
         btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                    emailAddress = et_EmailAddress.getText().toString();
+                    password = et_Password.getText().toString();
 
-                if(true) {
+                    pb_loading.setVisibility(View.VISIBLE);
+                    btn_Login.setVisibility(View.INVISIBLE);
+
                     mAuth.signInWithEmailAndPassword(emailAddress, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -138,12 +140,13 @@ public class PatientLogin extends AppCompatActivity {
 
                             }
                             else {
-                                Toast.makeText(getApplicationContext(), "Pleases verify email first", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "There was an error with verifying your email account.", Toast.LENGTH_LONG).show();
+                                pb_loading.setVisibility(View.INVISIBLE);
+                                btn_Login.setVisibility(View.VISIBLE);
                             }
                         }
                     });
 
-                }
             }
         });
 
@@ -154,19 +157,20 @@ public class PatientLogin extends AppCompatActivity {
         Boolean emailVerified = user.isEmailVerified();
 
         if (emailVerified){
-            startActivity(new Intent(PatientLogin.this, Dashboard.class));
+            UserLogin(emailAddress, password);
         }
         else {
-            Toast.makeText(getApplicationContext(), "Pleases verify email first", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Please verify email first", Toast.LENGTH_LONG).show();
+            pb_loading.setVisibility(View.INVISIBLE);
+            btn_Login.setVisibility(View.VISIBLE);
             mAuth.signOut();
         }
     }
 
 
-
-    private void UserLogin(final String id, final String cell, final String pass) {
+    private void UserLogin(final String emailAddress, final String password) {
         pb_loading.setVisibility(View.VISIBLE);
-        btn_Login.setVisibility(View.GONE);
+        btn_Login.setVisibility(View.INVISIBLE);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN, new Response.Listener<String>() {
             @Override
@@ -175,11 +179,12 @@ public class PatientLogin extends AppCompatActivity {
 
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
-                    JSONArray jsonArray = jsonObject.getJSONArray("login");
+
+                    //JSONArray jsonArray = jsonObject.getJSONArray("login");
 
                     switch (success) {
                         case "1":
-                            String name = "", surname = "", age = "", bloodtype = "", gender = "", status = "", address = "", cellNo = "", email = "", weight = "", height = "", profilePic = "", medicalAid = "";
+                           /* String name = "", surname = "", age = "", bloodtype = "", gender = "", status = "", address = "", cellNo = "", email = "", weight = "", height = "", profilePic = "", medicalAid = "";
                             for (int i = 0; i < jsonArray.length(); i++) {
 
                                 JSONObject object = jsonArray.getJSONObject(i);
@@ -199,33 +204,34 @@ public class PatientLogin extends AppCompatActivity {
                                 profilePic = object.getString("profilePic").trim();
                                 medicalAid = object.getString("medicalAid").trim();
 
-                            }
-                            Toast.makeText(PatientLogin.this, "PatientLogin Successful", Toast.LENGTH_LONG).show();
-                            pb_loading.setVisibility(View.GONE);
+                            }*/
+                            Toast.makeText(PatientLogin.this, "Patient Login Successful", Toast.LENGTH_LONG).show();
+                            pb_loading.setVisibility(View.INVISIBLE);
                             btn_Login.setVisibility(View.VISIBLE);
 
                             //uses SessionManager class
-                            sessionManager.createSession(id, name, surname, age, bloodtype, gender, status, address, cellNo, email, weight, height, profilePic, medicalAid);
-                            startActivity(new Intent(PatientLogin.this, Dashboard.class));
+                            //sessionManager.createSession(id, name, surname, age, bloodtype, gender, status, address, cellNo, email, weight, height, profilePic, medicalAid);
+                            /*startActivity(new Intent(PatientLogin.this, Dashboard.class));
+                            finish();*/
 
                             break;
                         case "-1":
                             Toast.makeText(PatientLogin.this, "Wrong login details", Toast.LENGTH_LONG).show();
-                            pb_loading.setVisibility(View.GONE);
+                            pb_loading.setVisibility(View.INVISIBLE);
                             btn_Login.setVisibility(View.VISIBLE);
 
                             break;
                         default:
-                            pb_loading.setVisibility(View.GONE);
+                            pb_loading.setVisibility(View.INVISIBLE);
                             btn_Login.setVisibility(View.VISIBLE);
-                            Toast.makeText(PatientLogin.this, "PatientLogin Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
+                            Toast.makeText(PatientLogin.this, "Patient Login Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
 
                             break;
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    pb_loading.setVisibility(View.GONE);
+                    pb_loading.setVisibility(View.INVISIBLE);
                     btn_Login.setVisibility(View.VISIBLE);
                     Toast.makeText(PatientLogin.this,"Error "+e.toString(),Toast.LENGTH_LONG).show();
                 }
@@ -234,9 +240,9 @@ public class PatientLogin extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                pb_loading.setVisibility(View.GONE);
+                pb_loading.setVisibility(View.INVISIBLE);
                 btn_Login.setVisibility(View.VISIBLE);
-                Toast.makeText(PatientLogin.this,"MJError "+error.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(PatientLogin.this,"Error connecting to server - "+error.toString(),Toast.LENGTH_LONG).show();
             }
         })
     {
@@ -244,9 +250,8 @@ public class PatientLogin extends AppCompatActivity {
             protected Map<String,String> getParams() {
                 Map<String,String> params = new HashMap<>();
 
-                params.put("id",id);
-                params.put("cell",cell);
-                params.put("pass",pass);
+                params.put("email",emailAddress);
+                params.put("password",password);
                 return params;
             }
         };

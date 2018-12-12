@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ibitech</string>
+    <string name="app_name">Patrema</string>
 
     <string-array name="marital_status">
         <item>Single</item>
