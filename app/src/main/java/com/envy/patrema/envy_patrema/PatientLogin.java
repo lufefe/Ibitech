@@ -1,6 +1,10 @@
 package com.envy.patrema.envy_patrema;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +45,11 @@ public class PatientLogin extends AppCompatActivity {
         Button btn_Login;
         TextView tv_NewRegister,tv_ForgotPass,tv_PasswordToggle;
         ProgressBar pb_loading;
+        Dialog dialog;
+        TextView tv_dialogText;
+        Button btnDialogDissmis;
+        String dialogText = "";
+        Boolean firstStart;
 
         //PatientLogin URL
         String URL_LOGIN = "http://10.0.2.2/app/patientlogin.php";
@@ -53,6 +62,13 @@ public class PatientLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        firstStart = prefs.getBoolean("firstStart", true);
+
+        dialog = new Dialog(this);
+        tv_dialogText = findViewById(R.id.txtErrorMessage);
+        btnDialogDissmis = findViewById(R.id.btnDismiss);
 
         sessionManager = new SessionManager(this);
 
@@ -140,7 +156,9 @@ public class PatientLogin extends AppCompatActivity {
 
                             }
                             else {
-                                Toast.makeText(getApplicationContext(), "There was an error with verifying your email account.", Toast.LENGTH_LONG).show();
+                                dialogText = "There was an error with verifying your email account. Please check your log in details and try again.";
+                                showErrorDialog(dialogText);
+
                                 pb_loading.setVisibility(View.INVISIBLE);
                                 btn_Login.setVisibility(View.VISIBLE);
                             }
@@ -152,6 +170,21 @@ public class PatientLogin extends AppCompatActivity {
 
     }
 
+    private void showErrorDialog(String message){
+        dialog.setContentView(R.layout.custom_error_dialog);
+        btnDialogDissmis = dialog.findViewById(R.id.btnDismiss);
+        btnDialogDissmis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        tv_dialogText = dialog.findViewById(R.id.txtErrorMessage);
+        tv_dialogText.setText(message);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+    }
+
     public void verifyEmailAddress(){
         FirebaseUser user = mAuth.getCurrentUser();
         Boolean emailVerified = user.isEmailVerified();
@@ -160,7 +193,8 @@ public class PatientLogin extends AppCompatActivity {
             UserLogin(emailAddress, password);
         }
         else {
-            Toast.makeText(getApplicationContext(), "Please verify email first", Toast.LENGTH_LONG).show();
+            dialogText = "Please verify email first";
+            showErrorDialog(dialogText);
             pb_loading.setVisibility(View.INVISIBLE);
             btn_Login.setVisibility(View.VISIBLE);
             mAuth.signOut();
@@ -205,7 +239,13 @@ public class PatientLogin extends AppCompatActivity {
                                 medicalAid = object.getString("medicalAid").trim();
 
                             }*/
-                            Toast.makeText(PatientLogin.this, "Patient Login Successful", Toast.LENGTH_LONG).show();
+                           if (firstStart){
+                               startOnboarding();
+                           }
+                           else {
+                               startDashboard();
+                           }
+
                             pb_loading.setVisibility(View.INVISIBLE);
                             btn_Login.setVisibility(View.VISIBLE);
 
@@ -215,8 +255,11 @@ public class PatientLogin extends AppCompatActivity {
                             finish();*/
 
                             break;
+                        // to be deleted in future
                         case "-1":
-                            Toast.makeText(PatientLogin.this, "Wrong login details", Toast.LENGTH_LONG).show();
+
+                            dialogText = "Wrong login details";
+                            showErrorDialog(dialogText);
                             pb_loading.setVisibility(View.INVISIBLE);
                             btn_Login.setVisibility(View.VISIBLE);
 
@@ -224,8 +267,9 @@ public class PatientLogin extends AppCompatActivity {
                         default:
                             pb_loading.setVisibility(View.INVISIBLE);
                             btn_Login.setVisibility(View.VISIBLE);
-                            Toast.makeText(PatientLogin.this, "Patient Login Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
 
+                            dialogText = "Patient Login Failed, this user doesn't exist in our database";
+                            showErrorDialog(dialogText);
                             break;
                     }
 
@@ -233,7 +277,9 @@ public class PatientLogin extends AppCompatActivity {
                     e.printStackTrace();
                     pb_loading.setVisibility(View.INVISIBLE);
                     btn_Login.setVisibility(View.VISIBLE);
-                    Toast.makeText(PatientLogin.this,"Error "+e.toString(),Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                    dialogText = "Error communicating with the database, try again later. Sorry for the inconvenience.";
+                    showErrorDialog(dialogText);
                 }
 
             }
@@ -242,7 +288,8 @@ public class PatientLogin extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 pb_loading.setVisibility(View.INVISIBLE);
                 btn_Login.setVisibility(View.VISIBLE);
-                Toast.makeText(PatientLogin.this,"Error connecting to server - "+error.toString(),Toast.LENGTH_LONG).show();
+                dialogText = "There has been an error with our internal servers, try again later. Sorry for the inconvenience.";
+                showErrorDialog(dialogText);
             }
         })
     {
@@ -257,6 +304,22 @@ public class PatientLogin extends AppCompatActivity {
         };
         Singleton.getInstance(PatientLogin.this).addToRequestQue(stringRequest);
 
+    }
+
+    private void startDashboard() {
+//        startActivity(new Intent(getApplicationContext(), Dashboard.class));
+//        finish();
+        Toast.makeText(PatientLogin.this, "Starts dashboard", Toast.LENGTH_LONG).show();
+    }
+
+    private void startOnboarding() {
+//        startActivity(new Intent(getApplicationContext(), Onboarding.class));
+//        finish();
+        Toast.makeText(PatientLogin.this, "Starts onboarding", Toast.LENGTH_LONG).show();
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstStart", false);
+        editor.apply();
     }
 
 

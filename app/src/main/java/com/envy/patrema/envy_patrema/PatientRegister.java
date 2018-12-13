@@ -389,6 +389,10 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
                     }
 
                 } catch (JSONException e) {
+                    pb_loading.setVisibility(View.INVISIBLE);
+                    btn_Register.setVisibility(View.VISIBLE);
+                    dialogText = "Error communicating with the database, try again later. Sorry for the inconvenience.";
+                    showErrorDialog(dialogText);
                     e.printStackTrace();
                 }
             }
