@@ -75,7 +75,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:text="@string/txtUserFullName"
+        android:text="@string/txtNotSet"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp"

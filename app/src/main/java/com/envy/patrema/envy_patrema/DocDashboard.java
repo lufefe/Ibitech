@@ -59,7 +59,7 @@ public class DocDashboard extends AppCompatActivity {
         btnReports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DocDashboard.this,DoctorGraphReports.class));
+                //startActivity(new Intent(DocDashboard.this,DoctorGraphReports.class));
             }
         });
 

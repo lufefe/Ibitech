@@ -164,7 +164,7 @@ public class ViewNextOfKin extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.action_dashboard){
-            startActivity(new Intent(ViewNextOfKin.this,Dashboard.class));
+            //startActivity(new Intent(ViewNextOfKin.this,Dashboard.class));
         }
         return super.onOptionsItemSelected(item);
     }

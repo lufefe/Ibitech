@@ -219,7 +219,7 @@ public class SlideTwo extends AppCompatActivity {
                         Integer age = calculateAge(dob);
 
                         sessionManager.createSession(userID, userFName,userSurname,age.toString(),userBloodType,userGender,userMaritalStatus,userAddress,userCell, userEmail, userWeight,userHeight,"","");
-                        startActivity(new Intent(SlideTwo.this,Dashboard.class));
+                        //startActivity(new Intent(SlideTwo.this,Dashboard.class));
                         finish();
                     }
                     else if(success.equals("-1")){

@@ -1,6 +1,5 @@
 package com.envy.patrema.envy_patrema;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -80,7 +79,7 @@ public class AddAllergy extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AddAllergy.this,Dashboard.class));
+                //startActivity(new Intent(AddAllergy.this,Dashboard.class));
                 finish();
             }
         });

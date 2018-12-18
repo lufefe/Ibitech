@@ -120,7 +120,7 @@ public class ViewMedicalAid extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.action_dashboard){
-            startActivity(new Intent(ViewMedicalAid.this,Dashboard.class));
+            //startActivity(new Intent(ViewMedicalAid.this,Dashboard.class));
         }
         return super.onOptionsItemSelected(item);
     }

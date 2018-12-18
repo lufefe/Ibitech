@@ -90,7 +90,7 @@ public class SessionManager {
         if(this.isLoggin()){
             Intent i = new Intent(context,PatientLogin.class);
             context.startActivity(i);
-            ((Dashboard) context).finish();
+            //((Dashboard) context).finish();
         }
     }
 
@@ -142,7 +142,7 @@ public class SessionManager {
         editor.commit();
         Intent i = new Intent(context,PatientLogin.class);
         context.startActivity(i);
-        ((Dashboard) context).finish();
+        //((Dashboard) context).finish();
     }
     void doclogout(){
         editor.clear();

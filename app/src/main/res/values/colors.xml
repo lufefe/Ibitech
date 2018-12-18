@@ -2,7 +2,7 @@
 
 <resources>
     <color name="colorPrimary">#309BE0</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">#FF4081</color>
 
     //for Sticky toggle switch

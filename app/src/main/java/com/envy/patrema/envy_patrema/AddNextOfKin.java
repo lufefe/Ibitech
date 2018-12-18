@@ -3,10 +3,9 @@ package com.envy.patrema.envy_patrema;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -135,7 +134,7 @@ public class AddNextOfKin extends AppCompatActivity implements DatePickerDialog.
 
                     if (success.equals("1")) {
                         Toast.makeText(AddNextOfKin.this, "Next Of Kin successfully added.", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(AddNextOfKin.this,Dashboard.class));
+                        //startActivity(new Intent(AddNextOfKin.this,Dashboard.class));
                         finish();
                     }
                     else {

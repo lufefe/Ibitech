@@ -1,12 +1,11 @@
 package com.envy.patrema.envy_patrema;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -74,7 +73,7 @@ public class AddSymptom extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AddSymptom.this,Dashboard.class));
+                //startActivity(new Intent(AddSymptom.this,Dashboard.class));
                 finish();
             }
         });

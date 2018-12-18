@@ -19,9 +19,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/SplashTheme">
-
-        </activity>
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".Welcome"
             android:screenOrientation="locked" />
@@ -34,9 +32,6 @@
             android:name=".PatientLogin"
             android:screenOrientation="locked" />
         <activity
-            android:name=".Dashboard"
-            android:screenOrientation="locked" />
-        <activity
             android:name=".RequestDevice"
             android:screenOrientation="locked" />
         <activity
@@ -44,14 +39,6 @@
             android:screenOrientation="locked" />
         <activity
             android:name=".AddAllergy"
-            android:screenOrientation="locked" />
-        <activity
-            android:name=".Profile"
-            android:label="Profile"
-            android:screenOrientation="locked" />
-        <activity
-            android:name=".Settings"
-            android:label="Settings"
             android:screenOrientation="locked" />
         <activity
             android:name=".DocLogin"
@@ -86,31 +73,6 @@
             android:screenOrientation="locked" />
         <activity
             android:name=".DoctorTutorial"
-            android:screenOrientation="locked" />
-        <activity
-            android:name=".DoctorConditionsPieChart"
-            android:screenOrientation="locked" />
-        <activity
-            android:name=".DoctorAllergiesPieChart"
-            android:screenOrientation="locked" />
-        <activity
-            android:name=".DoctorAgeGroupPieChart"
-            android:screenOrientation="locked" />
-        <activity
-            android:name=".PatientConditionChart"
-            android:screenOrientation="locked"
-            android:theme="@style/NoActionBarTheme" />
-        <activity
-            android:name=".PatientConditionsPieChart"
-            android:screenOrientation="locked" />
-        <activity
-            android:name=".PatientAllergiesPieChart"
-            android:screenOrientation="locked" />
-        <activity
-            android:name=".PatientGraphReports"
-            android:screenOrientation="locked" />
-        <activity
-            android:name=".DoctorGraphReports"
             android:screenOrientation="locked" />
         <activity
             android:name=".AddMedicalAid"
@@ -152,14 +114,15 @@
         <activity android:name=".AddNextOfKin" />
         <activity android:name=".NextOfKinDetails" />
         <activity android:name=".OTP_Auth" />
-        <activity android:name=".EmailVerification" />
-        <activity android:name=".Onboarding">
+        <activity android:name=".Onboarding"></activity>
+        <activity android:name=".PatientMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".PatientEditProfile"></activity>
     </application>
 
 </manifest>
