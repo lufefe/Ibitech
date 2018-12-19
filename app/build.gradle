@@ -19,6 +19,7 @@ android {
     }
     productFlavors {
     }
+
 }
 
 dependencies {
@@ -52,7 +53,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.6'
     implementation 'com.firebaseui:firebase-ui-auth:1.2.0'
     implementation 'com.google.firebase:firebase-auth:16.1.0'
-
+    implementation 'com.github.ganfra:material-spinner:1.1.1'
 
 }
 apply plugin: 'com.google.gms.google-services'

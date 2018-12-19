@@ -31,16 +31,16 @@ public class PatientMainActivity extends AppCompatActivity implements BottomNavi
 
         switch (item.getItemId()){
             case R.id.navigation_dashboard:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, dashboardFragment).commit();
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(R.id.container, dashboardFragment).commit();
                 return true;
             case R.id.navigation_profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, profileFragment).commit();
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(R.id.container, profileFragment).commit();
                 return true;
             case R.id.navigation_reports:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, reportsFragment).commit();
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(R.id.container, reportsFragment).commit();
                 return true;
             case R.id.navigation_search:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, tbcFragment).commit();
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(R.id.container, tbcFragment).commit();
                 return true;
         }
 

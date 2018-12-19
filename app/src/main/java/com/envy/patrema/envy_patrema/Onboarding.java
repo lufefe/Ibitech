@@ -1,5 +1,6 @@
 package com.envy.patrema.envy_patrema;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -46,7 +47,12 @@ public class Onboarding extends AppCompatActivity {
         mBtnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSlideViewPager.setCurrentItem(mCurrentPage + 1);
+                if (mBtnNext.getText().equals("Setup")){
+                    startActivity(new Intent(getApplicationContext(), PatientEditProfile.class));
+                    finish();
+                }
+                else
+                    mSlideViewPager.setCurrentItem(mCurrentPage + 1);
             }
         });
 

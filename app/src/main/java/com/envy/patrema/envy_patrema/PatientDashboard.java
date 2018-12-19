@@ -23,7 +23,7 @@ public class PatientDashboard extends Fragment {
     TextView tv_FullName, tv_Age, tv_BloodType, tv_Address,tv_Gender,tv_MaritalStatus;
     ImageView img_ProfilePic;
     CardView btnManageAllergies, btnManageDevices, btnManageSymptoms, btnManageConditions, btnManageMedicalAid, btnManageNextOfKin;
-    FloatingActionButton fab_Symptoms, fabRequestDevice, fab_Allergy;
+    FloatingActionButton fab_Symptoms, fab_Allergy;
 
     SessionManager sessionManager;
 
@@ -64,7 +64,6 @@ public class PatientDashboard extends Fragment {
         img_ProfilePic = view.findViewById(R.id.imgProfilePic);
 
         fab_Symptoms = view.findViewById(R.id.fabSymptoms);
-        fabRequestDevice = view.findViewById(R.id.fabRequest);
         fab_Allergy = view.findViewById(R.id.fabAllergy);
 
         return view;

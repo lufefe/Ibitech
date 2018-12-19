@@ -37,8 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="189dp"
             android:layout_marginTop="60dp"
-            android:background="@color/colorPrimaryDark"
-            android:backgroundTint="@color/endblue"
+            android:background="@color/gradStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -237,6 +236,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="8dp"
+                    app:cardElevation="8dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
@@ -252,12 +252,10 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@drawable/circlesymptoms"
-                            android:contentDescription="@string/txtManage_symptoms_icon"
+                            android:background="@drawable/circlesymptoms"                                                             android:contentDescription="@string/txtManage_symptoms_icon"
                             android:padding="8dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/symptom_icon" />
@@ -267,6 +265,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:textColor="#000000"
                             android:text="@string/txtSymptoms"
                             android:textStyle="bold" />
 
@@ -284,7 +283,7 @@
                             android:gravity="center"
                             android:padding="5dp"
                             android:text="@string/txtManage_symptoms"
-                            android:textColor="@color/cardview_dark_background" />
+                            android:textColor="#000000" />
 
 
                     </LinearLayout>
@@ -302,6 +301,7 @@
                     android:layout_marginBottom="8dp"
                     android:clickable="true"
                     android:focusable="true"
+                    app:cardElevation="8dp"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toTopOf="@+id/cvAllergies"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -322,7 +322,7 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@drawable/circlecondition"
+                            android:background="@drawable/circlesymptoms"
                             android:contentDescription="@string/txtCondition_icon"
                             android:padding="8dp"
                             android:scaleType="centerCrop"
@@ -333,6 +333,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:textColor="#000000"
                             android:text="@string/txtConditions"
                             android:textStyle="bold" />
 
@@ -350,7 +351,7 @@
                             android:gravity="center"
                             android:padding="5dp"
                             android:text="@string/txtManage_conditions"
-                            android:textColor="@color/cardview_dark_background" />
+                            android:textColor="#000000"/>
 
 
                     </LinearLayout>
@@ -369,6 +370,7 @@
                     android:layout_marginBottom="8dp"
                     android:clickable="true"
                     android:focusable="true"
+                    app:cardElevation="8dp"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toTopOf="@+id/cvMedicalAid"
                     app:layout_constraintEnd_toStartOf="@+id/cvAllergies"
@@ -388,7 +390,7 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@drawable/circledevice"
+                            android:background="@drawable/circleallergy"
                             android:contentDescription="@string/txtDevices_icon"
                             android:padding="8dp"
                             android:scaleType="centerCrop"
@@ -403,6 +405,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="@string/txtDevices"
+                            android:textColor="#000000"
                             android:textStyle="bold" />
 
 
@@ -419,7 +422,7 @@
                             android:gravity="center"
                             android:padding="5dp"
                             android:text="@string/manage_devices"
-                            android:textColor="@color/cardview_dark_background" />
+                            android:textColor="#000000" />
 
 
                     </LinearLayout>
@@ -438,6 +441,7 @@
                     android:layout_marginBottom="8dp"
                     android:clickable="true"
                     android:focusable="true"
+                    app:cardElevation="8dp"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toTopOf="@+id/cvNextOfKin"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -468,6 +472,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="@string/txtAllergies"
+                            android:textColor="#000000"
                             android:textStyle="bold" />
 
 
@@ -484,7 +489,7 @@
                             android:gravity="center"
                             android:padding="5dp"
                             android:text="@string/txtManage_allergies"
-                            android:textColor="@color/cardview_dark_background" />
+                            android:textColor="#000000" />
 
 
                     </LinearLayout>
@@ -502,6 +507,7 @@
                     android:layout_marginBottom="8dp"
                     android:clickable="true"
                     android:focusable="true"
+                    app:cardElevation="8dp"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -532,6 +538,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="@string/txtNext_of_kin"
+                            android:textColor="#000000"
                             android:textStyle="bold" />
 
 
@@ -548,7 +555,7 @@
                             android:gravity="center"
                             android:padding="5dp"
                             android:text="@string/txtManage_next_of_kin"
-                            android:textColor="@color/cardview_dark_background" />
+                            android:textColor="#000000" />
 
 
                     </LinearLayout>
@@ -567,6 +574,7 @@
                     android:layout_marginBottom="8dp"
                     android:clickable="true"
                     android:focusable="true"
+                    app:cardElevation="8dp"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/cvNextOfKin"
@@ -583,7 +591,7 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@drawable/circlesymptoms"
+                            android:background="@drawable/circlecondition"
                             android:contentDescription="@string/txtMedical_aid_icon"
                             android:padding="8dp"
                             android:scaleType="centerCrop"
@@ -595,6 +603,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="@string/txtMedical_aid"
+                            android:textColor="#000000"
                             android:textStyle="bold" />
 
 
@@ -611,7 +620,7 @@
                             android:gravity="center"
                             android:padding="5dp"
                             android:text="@string/txtManage_medical_aid"
-                            android:textColor="@color/cardview_dark_background" />
+                            android:textColor="#000000" />
 
 
                     </LinearLayout>
@@ -636,13 +645,17 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.269">
+            app:layout_constraintVertical_bias="0.351"
+            app:menu_colorNormal="@android:color/holo_red_dark">
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/fabSymptoms"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/add"
+                android:src="@drawable/fab_add"
+                app:fab_colorNormal="@color/colorSticky"
+                app:fab_colorPressed="@color/grey"
+                app:fab_colorRipple="#99FFFFFF"
                 app:fab_label="Symptoms"
                 app:fab_size="mini" />
 
@@ -650,17 +663,13 @@
                 android:id="@+id/fabAllergy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/add"
+                android:src="@drawable/fab_add"
                 app:fab_label="Allergy"
+                app:fab_colorNormal="@color/colorSticky"
+                app:fab_colorPressed="@color/grey"
+                app:fab_colorRipple="#99FFFFFF"
                 app:fab_size="mini" />
 
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fabRequest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/add"
-                app:fab_label="Request A Device"
-                app:fab_size="mini" />
 
         </com.github.clans.fab.FloatingActionMenu>
 
