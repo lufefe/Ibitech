@@ -3,10 +3,8 @@ package com.envy.patrema.envy_patrema;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -45,7 +43,7 @@ public class PatientProfile extends Fragment {
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,7 +52,6 @@ public class PatientProfile extends Fragment {
 
         toolbar = view.findViewById(R.id.tbProfile);
         toolbar.setTitle("Profile");
-        toolbar.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
         cvEditProfile = view.findViewById(R.id.cvProfile);
 

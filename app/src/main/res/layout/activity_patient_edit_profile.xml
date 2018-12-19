@@ -10,8 +10,7 @@
         android:id="@+id/tbEditProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/White"
-        android:elevation="14dp"/>
+        android:background="@color/White" />
 
 
     <ScrollView
@@ -36,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                app:cardElevation="16dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -47,15 +46,31 @@
                     android:layout_height="match_parent"
                     android:background="@color/grey">
 
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/imgProfilePic"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_marginTop="8dp"
                         android:src="@drawable/profile_icon"
+
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imgEditImage"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:scaleType="centerCrop"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:src="@drawable/edit_pencil"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgProfilePic"
+                        app:layout_constraintEnd_toEndOf="@+id/imgProfilePic"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="@+id/imgProfilePic"
+                        app:layout_constraintTop_toTopOf="@+id/imgProfilePic"
+                        app:layout_constraintVertical_bias="0.88" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -112,7 +127,7 @@
 
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/textInputEditText"
+                    android:id="@+id/etIDNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -144,6 +159,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etEmailAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -152,11 +168,12 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:inputType="textEmailAddress"
+                    android:enabled="false"
                     android:hint="@string/txtHint_Email_address"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+                    app:layout_constraintTop_toBottomOf="@+id/etIDNumber" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -176,6 +193,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etCellphone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -195,11 +213,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rg_Gender">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etHeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -207,8 +226,8 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    android:inputType="numberDecimal"
-                    android:hint="Height (cm)" />
+                    android:hint="Height (cm)"
+                    android:inputType="numberDecimal" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -218,15 +237,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.898"
-                app:layout_constraintStart_toEndOf="@+id/textInputLayout4"
-                app:layout_constraintTop_toBottomOf="@+id/statusSpinner">
+                app:layout_constraintHorizontal_bias="0.032"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etWeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -234,14 +254,14 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    android:inputType="numberDecimal"
-                    android:hint="Weight (kg)" />
+                    android:hint="Weight (kg)"
+                    android:inputType="numberDecimal" />
 
             </android.support.design.widget.TextInputLayout>
 
             <RadioGroup
                 android:id="@+id/rg_Gender"
-                android:layout_width="wrap_content"
+                android:layout_width="148dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
@@ -277,7 +297,7 @@
 
             <fr.ganfra.materialspinner.MaterialSpinner
                 android:id="@+id/statusSpinner"
-                android:layout_width="220dp"
+                android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
@@ -290,7 +310,26 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
                 app:ms_arrowColor="@color/starBlue"
                 app:ms_arrowSize="14dp"
-                app:ms_hint="Choose Marital Status"
+                app:ms_hint="Marital Status"
+                app:ms_hintColor="#000000"
+                app:ms_multiline="false" />
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/bloodSpinner"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textInputLayout4"
+                app:layout_constraintTop_toBottomOf="@+id/statusSpinner"
+                app:ms_arrowColor="@color/starBlue"
+                app:ms_arrowSize="14dp"
+                app:ms_hint="Blood Type"
                 app:ms_hintColor="#000000"
                 app:ms_multiline="false" />
 
@@ -308,6 +347,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Street Address"
@@ -327,17 +367,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.102"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout6"
-                app:layout_constraintVertical_bias="0.454">
+                app:layout_constraintVertical_bias="0.0">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etCity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -355,13 +392,11 @@
                 android:id="@+id/provinceSpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.086"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/textInputLayout8"
+                app:layout_constraintHorizontal_bias="0.062"
                 app:layout_constraintStart_toEndOf="@+id/textInputLayout7"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout6"
                 app:ms_arrowColor="@color/starBlue"
@@ -371,6 +406,7 @@
                 app:ms_multiline="false" />
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout8"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -382,6 +418,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
@@ -391,7 +428,7 @@
                     android:layout_marginRight="8dp"
                     android:hint="Code"
                     android:inputType="number"
-                    android:maxLength="4"/>
+                    android:maxLength="4" />
 
             </android.support.design.widget.TextInputLayout>
 

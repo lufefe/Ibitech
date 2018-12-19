@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -307,19 +306,15 @@ public class PatientLogin extends AppCompatActivity {
     }
 
     private void startDashboard() {
-//        startActivity(new Intent(getApplicationContext(), Dashboard.class));
-//        finish();
-        Toast.makeText(PatientLogin.this, "Starts dashboard", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(getApplicationContext(), PatientMainActivity.class));
+        finish();
+        //Toast.makeText(PatientLogin.this, "Starts dashboard", Toast.LENGTH_LONG).show();
     }
 
     private void startOnboarding() {
-//        startActivity(new Intent(getApplicationContext(), Onboarding.class));
-//        finish();
-        Toast.makeText(PatientLogin.this, "Starts onboarding", Toast.LENGTH_LONG).show();
-        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("firstStart", false);
-        editor.apply();
+        startActivity(new Intent(getApplicationContext(), Onboarding.class));
+        finish();
+        //Toast.makeText(PatientLogin.this, "Starts onboarding", Toast.LENGTH_LONG).show();
     }
 
 
