@@ -24,7 +24,7 @@ public class PatientMainActivity extends AppCompatActivity implements BottomNavi
     PatientDashboard dashboardFragment = new PatientDashboard();
     PatientProfile profileFragment = new PatientProfile();
     PatientReports reportsFragment = new PatientReports();
-    PatientTBC tbcFragment = new PatientTBC();
+    PatientNewsFeed newsFeedFragment = new PatientNewsFeed();
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -39,8 +39,8 @@ public class PatientMainActivity extends AppCompatActivity implements BottomNavi
             case R.id.navigation_reports:
                 getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(R.id.container, reportsFragment).commit();
                 return true;
-            case R.id.navigation_search:
-                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(R.id.container, tbcFragment).commit();
+            case R.id.navigation_news:
+                getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(R.id.container, newsFeedFragment).commit();
                 return true;
         }
 
