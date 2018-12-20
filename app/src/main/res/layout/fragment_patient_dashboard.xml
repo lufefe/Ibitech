@@ -47,17 +47,17 @@
 
         </View>
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgProfilePic"
-            android:layout_width="0dp"
-            android:layout_height="109dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:contentDescription="@string/txtUserProfilePic"
-            android:src="@drawable/profilepic"
+            android:src="@drawable/profile_icon"
             app:layout_constraintDimensionRatio="w,1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

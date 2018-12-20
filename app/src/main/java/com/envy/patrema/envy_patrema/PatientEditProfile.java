@@ -31,6 +31,7 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,8 +48,8 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
     Bitmap bitmap;
     CircleImageView profile_image;
 
-    String idNumber, name, surname, dob, cell, email, address, city, postalCode, bloodType, weight, height;
-    TextInputEditText etName, etID, etCell, etHeight, etWeight, etAddress, etCity, etPostalCode;
+    String idNumber, fullName, firstName, surname, dob, cell, email, address, city, postalCode, bloodType, weight, height;
+    TextInputEditText etName, etID, etEmail, etCell, etHeight, etWeight, etAddress, etCity, etPostalCode;
 
     Boolean firstStart;
 
@@ -80,19 +81,31 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
 
             idNumber = etID.getText().toString();
             dob = getDateOfBirth(idNumber);
-            name = etName.getText().toString();
+            fullName = etName.getText().toString();
+            firstName = getFirstName(fullName);
+            surname = getSurname(fullName);
+
             cell = etCell.getText().toString();
+
+            weight = etWeight.getText().toString();
+            height = etHeight.getText().toString();
+
             address = etAddress.getText().toString();
             city = etCity.getText().toString();
             postalCode = etPostalCode.getText().toString();
 
+
             if (firstStart){
                 UploadPicture(idNumber, getStringImage(bitmap));
-                firstProfileUpdate(idNumber,email, name, surname, cell, dob,gender, maritalStatus, bloodType, weight, height, address, city,province, postalCode);
+                firstProfileUpdate(idNumber,email, firstName, surname, cell, dob,gender, maritalStatus, bloodType, weight, height, address, city,province, postalCode);
+                SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("firstStart", false);
+                editor.apply();
                 return true;
             }
             else {
-                updateProfile(idNumber,email, name, surname, cell, dob,gender, maritalStatus, bloodType, weight, height, address, city,province, postalCode);
+                updateProfile(idNumber,email, firstName, surname, cell, dob,gender, maritalStatus, bloodType, weight, height, address, city,province, postalCode);
                 return true;
             }
 
@@ -101,11 +114,41 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
         return super.onOptionsItemSelected(item);
     }
 
+    private String getSurname(String fullName) {
+        String[] temp = fullName.split("\\s+");
+
+        return temp[temp.length-1];
+
+    }
+
+    private String getFirstName(String fullName) {
+
+        String[] temp = fullName.split("\\s+");
+
+        return temp[0];
+
+    }
+
     private String getDateOfBirth(String idNumber) {
-        String temp = idNumber.substring(0, 7);
+        String year = idNumber.substring(0,2);
+        String month = idNumber.substring(2,4);
+        String day = idNumber.substring(4,6);
 
+        String tempYear = "19"+year;
 
-        return temp;
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+
+        if (currentYear - Integer.parseInt(tempYear) >= 18 && currentYear - Integer.parseInt(tempYear) < 100){
+            return day + "-" + month + "-" + tempYear;
+        }
+        else {
+            tempYear = "20"+year;
+
+            if (currentYear - Integer.parseInt(tempYear) >= 18 && currentYear - Integer.parseInt(tempYear) < 100)
+                return day + "-" + month + "-" + tempYear;
+        }
+
+        return null;
     }
 
     @Override
@@ -128,6 +171,10 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         firstStart = prefs.getBoolean("firstStart", true);
 
+        SharedPreferences preferences = getSharedPreferences("patient", MODE_PRIVATE);
+        email = preferences.getString("email", "");
+
+
         toolbar = findViewById(R.id.tbEditProfile);
         toolbar.setTitle("Edit Profile");
         setSupportActionBar(toolbar);
@@ -140,6 +187,8 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
 
         etName = findViewById(R.id.etPatientName);
         etID = findViewById(R.id.etIDNumber);
+        etEmail = findViewById(R.id.etEmailAddress);
+        etEmail.setText(email);
         etCell = findViewById(R.id.etCellphone);
 
         etHeight = findViewById(R.id.etHeight);

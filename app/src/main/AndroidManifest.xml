@@ -119,13 +119,15 @@
         <activity android:name=".OTP_Auth" />
         <activity android:name=".Onboarding"></activity>
         <activity android:name=".PatientMainActivity">
+        </activity>
+        <activity android:name=".PatientEditProfile">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PatientEditProfile"></activity>
     </application>
 
 </manifest>
