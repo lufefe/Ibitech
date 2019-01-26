@@ -42,19 +42,20 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
 
     MaterialSpinner sp_MaritalStatus, sp_Province, sp_BloodType;
     RadioGroup rgGender;
-    String gender = "", maritalStatus = "", province = "";
+    String gender = "", maritalStatus = "", prov = "";
     android.support.v7.widget.Toolbar toolbar;
     ImageView imgEditImage;
     Bitmap bitmap;
     CircleImageView profile_image;
 
-    String idNumber, fullName, firstName, surname, dob, cell, email, address, city, postalCode, bloodType, weight, height;
-    TextInputEditText etName, etID, etEmail, etCell, etHeight, etWeight, etAddress, etCity, etPostalCode;
+    String idNumber, fullName, firstName, surname, dob, cell, email, address,suburb, city, province, postalCode, bloodType, weight, height;
+    TextInputEditText etName, etID, etEmail, etCell, etHeight, etWeight, etAddress,etSuburb, etCity, etPostalCode;
 
     Boolean firstStart;
 
     String URL_UPLOAD = "http://10.0.2.2/app/upload_profile_image.php";
-    String URL_UPDATE = "http://10.0.2.2/app/updateprofile.php";
+    String URL_UPDATE = "http://10.0.2.2/app/updatepatientprofile.php";
+    String URL_FIRSTUPDATE = "http://10.0.2.2/app/firstupdateprofile.php";
 
 
     @Override
@@ -91,13 +92,15 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
             height = etHeight.getText().toString();
 
             address = etAddress.getText().toString();
+            suburb = etSuburb.getText().toString();
             city = etCity.getText().toString();
+            province = getProvince(prov);
             postalCode = etPostalCode.getText().toString();
 
 
             if (firstStart){
                 UploadPicture(idNumber, getStringImage(bitmap));
-                firstProfileUpdate(idNumber,email, firstName, surname, cell, dob,gender, maritalStatus, bloodType, weight, height, address, city,province, postalCode);
+                firstProfileUpdate(idNumber,email, firstName, surname, cell, dob,gender, maritalStatus, bloodType, weight, height, address,suburb, city,province, postalCode);
                 SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putBoolean("firstStart", false);
@@ -105,13 +108,49 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
                 return true;
             }
             else {
-                updateProfile(idNumber,email, firstName, surname, cell, dob,gender, maritalStatus, bloodType, weight, height, address, city,province, postalCode);
+                updateProfile(idNumber,email, firstName, surname, cell, dob,gender, maritalStatus, bloodType, weight, height, address,suburb, city,province, postalCode);
                 return true;
             }
 
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private String getProvince(String prov) {
+        String tempProv = "";
+
+        switch (prov){
+            case "EC":
+                tempProv = "Eastern Cape";
+                break;
+            case "WC":
+                tempProv = "Western Cape";
+                break;
+            case "LP":
+                tempProv = "Limpopo";
+                break;
+            case "NC":
+                tempProv = "Northern Cape";
+                break;
+            case "NW":
+                tempProv = "North West";
+                break;
+            case "KZN":
+                tempProv = "KwaZulu-Natal";
+                break;
+            case "MP":
+                tempProv = "Mpumalanga";
+                break;
+            case "GP":
+                tempProv = "Gauteng";
+                break;
+            case "FS":
+                tempProv = "Free State";
+                break;
+
+        }
+        return tempProv;
     }
 
     private String getSurname(String fullName) {
@@ -194,6 +233,7 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
         etHeight = findViewById(R.id.etHeight);
         etWeight = findViewById(R.id.etWeight);
         etAddress = findViewById(R.id.etAddress);
+        etSuburb = findViewById(R.id.etSuburb);
         etCity = findViewById(R.id.etCity);
         etPostalCode = findViewById(R.id.etCode);
 
@@ -218,7 +258,7 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
         sp_Province.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                province = parent.getItemAtPosition(position).toString();
+                prov = parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -363,7 +403,7 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
     }
 
 
-    public void updateProfile(final String idNumber,final String email, final String name, final String surname, final String cell,final String dob, final String gender, final String maritalStatus, final String bloodType,final String weight,final String height,final String address, final String city, final String province, final String postalCode){
+    public void updateProfile(final String idNumber,final String email, final String name, final String surname, final String cell,final String dob, final String gender, final String maritalStatus, final String bloodType,final String weight,final String height,final String address,final String suburb, final String city, final String province, final String postalCode){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_UPDATE,
                 new Response.Listener<String>() {
                     @Override
@@ -375,6 +415,9 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
                             if(success.equals("1")){
                                 Toast.makeText(PatientEditProfile.this,"Profile updated successfully.",Toast.LENGTH_SHORT).show();
                                 finish();
+                            }
+                            else {
+                                Toast.makeText(PatientEditProfile.this,"Profile updated not successfully.",Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -405,6 +448,7 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
                 params.put("weight",weight);
                 params.put("height",height);
                 params.put("address",address);
+                params.put("suburb", suburb);
                 params.put("city",city);
                 params.put("province",province);
                 params.put("postalCode",postalCode);
@@ -415,8 +459,8 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
         Singleton.getInstance(PatientEditProfile.this).addToRequestQue(stringRequest);
     }
 
-    public void firstProfileUpdate(final String idNumber,final String email, final String name, final String surname, final String cell,final String dob, final String gender, final String maritalStatus, final String bloodType,final String weight,final String height,final String address, final String city, final String province, final String postalCode){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_UPDATE,
+    public void firstProfileUpdate(final String idNumber,final String email, final String name, final String surname, final String cell,final String dob, final String gender, final String maritalStatus, final String bloodType,final String weight,final String height,final String address,final String suburb, final String city, final String province, final String postalCode){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_FIRSTUPDATE,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -457,6 +501,7 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
                 params.put("weight",weight);
                 params.put("height",height);
                 params.put("address",address);
+                params.put("suburb", suburb);
                 params.put("city",city);
                 params.put("province",province);
                 params.put("postalCode",postalCode);
