@@ -191,7 +191,6 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()){
-                        Toast.makeText(getApplicationContext(), "Registration email sent", Toast.LENGTH_LONG).show();
                         registerPatient(emailAddress, newPassword, userType);
                         mAuth.signOut();
                     }
@@ -215,20 +214,31 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
 
                     if (success.equals("1")) {
                         //sessionManager.createSession(userID, userFName,userSurname,age.toString(),userBloodType,userGender,userMaritalStatus,userAddress,userCell, userEmail, userWeight,userHeight,"","");
-                        startActivity(new Intent(getApplicationContext(), PatientLogin.class));
-                        finish();
+                        dialogText = "A verification link has been sent to your email. Please verify your account and login.";
+                        showErrorDialog(dialogText);
+                        btnDialogDissmis.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(getApplicationContext(), PatientLogin.class));
+                                finish();
+                            }
+                        });
+
                     }
                     else {
                         pb_loading.setVisibility(View.INVISIBLE);
                         btn_Register.setVisibility(View.VISIBLE);
-                        Toast.makeText(getApplicationContext(), "Failed , couldn't complete registration", Toast.LENGTH_LONG).show();
+                        dialogText = "There has been an error in registering your account, our database administrator will sort it out. Try again later.";
+                        showErrorDialog(dialogText);
+                        //Delete the user from firebase
                     }
 
                 } catch (JSONException e) {
                     pb_loading.setVisibility(View.INVISIBLE);
                     btn_Register.setVisibility(View.VISIBLE);
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "1Register Error" + e.toString(), Toast.LENGTH_LONG).show();
+                    //e.printStackTrace();
+                    dialogText = "There was an internal error with communicating with our database. Please try again later.";
+                    showErrorDialog(dialogText);
 
                 }
             }
@@ -237,7 +247,8 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
             public void onErrorResponse(VolleyError error) {
                 pb_loading.setVisibility(View.INVISIBLE);
                 btn_Register.setVisibility(View.VISIBLE);
-                Toast.makeText(getApplicationContext(),"3Register Error"+error.toString(),Toast.LENGTH_LONG).show();
+                dialogText = "Our servers are currently down. Sorry for the inconvenience.";
+                showErrorDialog(dialogText);
 
             }
         })
@@ -371,7 +382,7 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
                                     sendVerificationEmail();
                                 }
                                 else {
-                                    dialogText = "Error creating the user";
+                                    dialogText = "Error creating the user, the user already exists. Please check your email for a verification link.";
                                     showErrorDialog(dialogText);
                                     pb_loading.setVisibility(View.INVISIBLE);
                                     btn_Register.setVisibility(View.VISIBLE);
@@ -380,13 +391,13 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
                         });
 
                     }
-                    else {
+                    /*else {
                         pb_loading.setVisibility(View.INVISIBLE);
                         btn_Register.setVisibility(View.VISIBLE);
 
                         dialogText = "This user already exist in our database";
                         showErrorDialog(dialogText);
-                    }
+                    }*/
 
                 } catch (JSONException e) {
                     pb_loading.setVisibility(View.INVISIBLE);

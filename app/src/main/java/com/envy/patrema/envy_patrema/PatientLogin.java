@@ -192,7 +192,7 @@ public class PatientLogin extends AppCompatActivity {
             UserLogin(emailAddress, password);
         }
         else {
-            dialogText = "Please verify email first";
+            dialogText = "Please verify your email first";
             showErrorDialog(dialogText);
             pb_loading.setVisibility(View.INVISIBLE);
             btn_Login.setVisibility(View.VISIBLE);
@@ -216,6 +216,9 @@ public class PatientLogin extends AppCompatActivity {
                     //JSONArray jsonArray = jsonObject.getJSONArray("login");
 
                     switch (success) {
+
+                        //TODO
+                        // put every user detail in shared preference for dashboard
                         case "1":
                            /* String name = "", surname = "", age = "", bloodtype = "", gender = "", status = "", address = "", cellNo = "", email = "", weight = "", height = "", profilePic = "", medicalAid = "";
                             for (int i = 0; i < jsonArray.length(); i++) {

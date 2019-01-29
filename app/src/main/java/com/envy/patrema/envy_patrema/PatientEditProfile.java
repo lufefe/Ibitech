@@ -99,8 +99,16 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
 
 
             if (firstStart){
-                UploadPicture(idNumber, getStringImage(bitmap));
-                firstProfileUpdate(idNumber,email, firstName, surname, cell, dob,gender, maritalStatus, bloodType, weight, height, address,suburb, city,province, postalCode);
+
+                if (idNumber.equals("")) {
+                    etID.setError("You cannot leave this field empty");
+                }
+                else{
+                    UploadPicture(idNumber, getStringImage(bitmap));
+                    firstProfileUpdate(idNumber, email, firstName, surname, cell, dob, gender, maritalStatus, bloodType, weight, height, address, suburb, city, province, postalCode);
+                }
+
+
                 SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putBoolean("firstStart", false);
