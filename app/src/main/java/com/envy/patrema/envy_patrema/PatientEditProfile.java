@@ -81,7 +81,6 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
         else if (i == R.id.btnSaveProfile) {
 
             idNumber = etID.getText().toString();
-            dob = getDateOfBirth(idNumber);
             fullName = etName.getText().toString();
             firstName = getFirstName(fullName);
             surname = getSurname(fullName);
@@ -104,20 +103,29 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
                     etID.setError("You cannot leave this field empty");
                 }
                 else{
+                    dob = getDateOfBirth(idNumber);
                     UploadPicture(idNumber, getStringImage(bitmap));
                     firstProfileUpdate(idNumber, email, firstName, surname, cell, dob, gender, maritalStatus, bloodType, weight, height, address, suburb, city, province, postalCode);
+
+                    SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean("firstStart", false);
+                    editor.apply();
+                    return true;
                 }
 
-
-                SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putBoolean("firstStart", false);
-                editor.apply();
-                return true;
             }
             else {
-                updateProfile(idNumber,email, firstName, surname, cell, dob,gender, maritalStatus, bloodType, weight, height, address,suburb, city,province, postalCode);
-                return true;
+
+                if (idNumber.equals("")) {
+                    etID.setError("You cannot leave this field empty");
+                }
+                else {
+                    dob = getDateOfBirth(idNumber);
+                    updateProfile(idNumber,email, firstName, surname, cell, dob,gender, maritalStatus, bloodType, weight, height, address,suburb, city,province, postalCode);
+                    return true;
+                }
+
             }
 
         }
@@ -421,22 +429,22 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
                             String success = jsonObject.getString("success");
 
                             if(success.equals("1")){
-                                Toast.makeText(PatientEditProfile.this,"Profile updated successfully.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PatientEditProfile.this,"Profile updated successfully.<Update>",Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                             else {
-                                Toast.makeText(PatientEditProfile.this,"Profile updated not successfully.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PatientEditProfile.this,"Profile updated not successfully.<Update>",Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(PatientEditProfile.this,"There was a problem updating your profile, try again later." + e.toString(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PatientEditProfile.this,"There was a problem updating your profile, try again later.<Update>" + e.toString(),Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(PatientEditProfile.this,"There was an internal error, please try again later." + error.toString(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PatientEditProfile.this,"There was an internal error, please try again later. <Update>" + error.toString(),Toast.LENGTH_SHORT).show();
                     }
                 })
         {
@@ -477,19 +485,19 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
                             String success = jsonObject.getString("success");
 
                             if(success.equals("1")){
-                                Toast.makeText(PatientEditProfile.this,"Profile updated successfully.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PatientEditProfile.this,"Profile updated successfully.<FirstUpdate>",Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(PatientEditProfile.this,"There was a problem updating your profile, try again later." + e.toString(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PatientEditProfile.this,"There was a problem updating your profile, try again later.<FirstUpdate>" + e.toString(),Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(PatientEditProfile.this,"There was an internal error, please try again later." + error.toString(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PatientEditProfile.this,"There was an internal error, please try again later. <FirstUpdate>" + error.toString(),Toast.LENGTH_SHORT).show();
                     }
                 })
         {

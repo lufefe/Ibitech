@@ -391,13 +391,13 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
                         });
 
                     }
-                    /*else {
+                    else {
                         pb_loading.setVisibility(View.INVISIBLE);
                         btn_Register.setVisibility(View.VISIBLE);
 
                         dialogText = "This user already exist in our database";
                         showErrorDialog(dialogText);
-                    }*/
+                    }
 
                 } catch (JSONException e) {
                     pb_loading.setVisibility(View.INVISIBLE);
