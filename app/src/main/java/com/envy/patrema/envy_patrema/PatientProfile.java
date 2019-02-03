@@ -10,6 +10,11 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.HashMap;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 /**
@@ -17,8 +22,12 @@ import android.view.ViewGroup;
  */
 public class PatientProfile extends Fragment {
 
+    SessionManager sessionManager;
+
     android.support.v7.widget.Toolbar toolbar;
     CardView cvEditProfile;
+    TextView tv_Fullname, tv_IdNumber;
+    String fullname, idNumber, profilePic;
 
 
     public PatientProfile() {
@@ -54,6 +63,18 @@ public class PatientProfile extends Fragment {
         toolbar.setTitle("Profile");
 
         cvEditProfile = view.findViewById(R.id.cvProfile);
+
+        tv_Fullname = view.findViewById(R.id.tvName);
+        tv_IdNumber = view.findViewById(R.id.tvIDNumber);
+
+        sessionManager = new SessionManager(getApplicationContext());
+
+        HashMap<String,String> user = sessionManager.getUserDetails();
+        fullname = String.format("%s %s", user.get(SessionManager.NAME), user.get(SessionManager.SURNAME));
+        idNumber = user.get(SessionManager.ID);
+
+        tv_Fullname.setText(fullname);
+        tv_IdNumber.setText(idNumber);
 
         // Inflate the layout for this fragment
         return view;

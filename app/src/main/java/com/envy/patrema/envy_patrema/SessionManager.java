@@ -14,22 +14,23 @@ public class SessionManager {
     //For PatientLogin (Dashboard)
     private static final String PREF_NAME = "LOGIN";
     private static final String LOGIN = "IS_LOGIN";
-    public static final String ID = "IDNUMBER";
+    static final String ID = "IDNUMBER";
     static final String NAME = "NAME";
     static final String SURNAME = "SURNAME";
     static final String AGE = "AGE";
     static final String BLOODTYPE = "BLOODTYPE";
-    static final String GENDER = "GENDER";
-    static final String STATUS = "STATUS";
-    static final String ADDRESS = "ADDRESS";
-
-    //For Edit Profile
-    static final String CELLNUMBER = "CELLPHONENUMBER";
-    static final String EMAIL = "EMAIL";
-    static final String WEIGHT = "WEIGHT";
-    static final String HEIGHT = "HEIGHT";
-    static final String PROFILEPIC = "PROFILEPIC";
-    static final String MEDICALAID = "MEDICALAIDID";
+     static final String GENDER = "GENDER";
+     static final String STATUS = "STATUS";
+     static final String ADDRESS = "ADDRESS";
+     static final String CELLNUMBER = "CELLPHONENUMBER";
+     static final String EMAIL = "EMAIL";
+     static final String WEIGHT = "WEIGHT";
+     static final String HEIGHT = "HEIGHT";
+     static final String PROFILEPIC = "PROFILEPIC";
+     static final String SUBURBNAME = "SUBURBNAME";
+     static final String POSTALCODE = "POSTALCODE";
+     static final String CITYNAME = "CITYNAME";
+     static final String PROVINCE = "PROVINCE";
 
     static final String MEDREGNO = "MEDREGNO";
     private static final String OCCUPATION = "OCCUPATION";
@@ -46,7 +47,7 @@ public class SessionManager {
 
     // creates a session for patient
     void createSession(String id, String name, String surname, String age, String bloodtype,
-                       String gender, String status, String address, String cell, String email, String weight, String height, String profilePic, String medicalAid){
+                       String gender, String status, String address, String cell, String email, String weight, String height, String profilePic, String suburbName, String postalCode, String cityName, String province){
         editor.putBoolean(LOGIN,true);
         editor.putString(ID,id);
         editor.putString(NAME,name);
@@ -62,7 +63,12 @@ public class SessionManager {
         editor.putString(WEIGHT,weight);
         editor.putString(HEIGHT,height);
         editor.putString(PROFILEPIC,profilePic);
-        editor.putString(MEDICALAID,medicalAid);
+
+        editor.putString(SUBURBNAME, suburbName);
+        editor.putString(POSTALCODE, postalCode);
+        editor.putString(CITYNAME, cityName);
+        editor.putString(PROVINCE, province);
+
 
         editor.apply();
 
@@ -119,7 +125,12 @@ public class SessionManager {
         user.put(WEIGHT,sharedPreferences.getString(WEIGHT,null));
         user.put(HEIGHT,sharedPreferences.getString(HEIGHT,null));
         user.put(PROFILEPIC,sharedPreferences.getString(PROFILEPIC,null));
-        user.put(MEDICALAID,sharedPreferences.getString(MEDICALAID,null));
+
+        user.put(SUBURBNAME, sharedPreferences.getString(SUBURBNAME, null));
+        user.put(POSTALCODE,sharedPreferences.getString(POSTALCODE, null));
+        user.put(CITYNAME,sharedPreferences.getString(CITYNAME, null));
+        user.put(PROVINCE, sharedPreferences.getString(PROVINCE, null));
+
 
         return user;
     }

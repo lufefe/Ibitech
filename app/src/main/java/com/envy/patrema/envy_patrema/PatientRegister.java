@@ -18,7 +18,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -187,19 +186,7 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
         FirebaseUser user = mAuth.getCurrentUser();
 
         if (user != null){
-            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()){
-                        registerPatient(emailAddress, newPassword, userType);
-                        mAuth.signOut();
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(), "Error sending the verification email.", Toast.LENGTH_LONG).show();
-                        mAuth.signOut();
-                    }
-                }
-            });
+            registerPatient(emailAddress, newPassword, userType);
         }
 
     }
@@ -213,6 +200,20 @@ public class PatientRegister extends AppCompatActivity implements TextWatcher {
                     String success = jsonObject.getString("success");
 
                     if (success.equals("1")) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()){
+                                    mAuth.signOut();
+                                }
+                                else {
+                                    dialogText = "Error sending the verification email.";
+                                    showErrorDialog(dialogText);
+                                    mAuth.signOut();
+                                }
+                            }
+                        });
                         //sessionManager.createSession(userID, userFName,userSurname,age.toString(),userBloodType,userGender,userMaritalStatus,userAddress,userCell, userEmail, userWeight,userHeight,"","");
                         dialogText = "A verification link has been sent to your email. Please verify your account and login.";
                         showErrorDialog(dialogText);

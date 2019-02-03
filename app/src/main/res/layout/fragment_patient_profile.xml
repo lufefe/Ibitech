@@ -15,8 +15,11 @@
             android:id="@+id/tbProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:titleTextColor="@color/White"
-            android:background="@color/starBlue"/>
+            android:background="@color/starBlue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@color/White" />
 
         <android.support.v7.widget.CardView
             android:id="@+id/cvProfile"

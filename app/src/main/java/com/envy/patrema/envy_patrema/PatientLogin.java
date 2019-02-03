@@ -27,6 +27,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -213,40 +214,46 @@ public class PatientLogin extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
 
-                    //JSONArray jsonArray = jsonObject.getJSONArray("login");
+                    JSONArray jsonArray = jsonObject.getJSONArray("login");
 
                     switch (success) {
 
                         //TODO
                         // put every user detail in shared preference for dashboard
                         case "1":
-                           /* String name = "", surname = "", age = "", bloodtype = "", gender = "", status = "", address = "", cellNo = "", email = "", weight = "", height = "", profilePic = "", medicalAid = "";
+
+                            String id = "", name = "", surname = "", age = "", bloodtype = "", gender = "", status = "", address = "", cellNo = "", email = "", weight = "", height = "", profilePic = "", suburbName = "", postalCode = "", cityName = "", province = "";
+
                             for (int i = 0; i < jsonArray.length(); i++) {
 
                                 JSONObject object = jsonArray.getJSONObject(i);
 
+                                email = object.getString("email").trim();
                                 name = object.getString("name").trim();
                                 surname = object.getString("surname").trim();
                                 age = object.getString("age").trim();
-                                bloodtype = object.getString("bloodtype").trim();
+
                                 gender = object.getString("gender").trim();
-                                status = object.getString("status").trim();
-                                address = object.getString("address").trim();
-
                                 cellNo = object.getString("cell").trim();
-                                email = object.getString("email").trim();
-                                weight = object.getString("weight").trim();
-                                height = object.getString("height").trim();
-                                profilePic = object.getString("profilePic").trim();
-                                medicalAid = object.getString("medicalAid").trim();
 
-                            }*/
-                           if (firstStart){
-                               startOnboarding();
-                           }
-                           else {
-                               startDashboard();
-                           }
+                                address = object.getString("address").trim();
+                                status = object.getString("status").trim();
+                                bloodtype = object.getString("bloodtype").trim();
+
+                                height = object.getString("height").trim();
+                                weight = object.getString("weight").trim();
+                                profilePic = object.getString("profilePic").trim();
+
+                                id = object.getString("id").trim();
+
+                                suburbName = object.getString("suburb_name").trim();
+                                postalCode = object.getString("postal_code").trim();
+
+                                cityName = object.getString("city_name").trim();
+                                province = object.getString("province").trim();
+
+
+                            }
 
                             pb_loading.setVisibility(View.INVISIBLE);
                             btn_Login.setVisibility(View.VISIBLE);
@@ -257,9 +264,14 @@ public class PatientLogin extends AppCompatActivity {
                             editor.apply();
 
                             //uses SessionManager class
-                            //sessionManager.createSession(id, name, surname, age, bloodtype, gender, status, address, cellNo, email, weight, height, profilePic, medicalAid);
-                            /*startActivity(new Intent(PatientLogin.this, Dashboard.class));
-                            finish();*/
+                            sessionManager.createSession(id, name, surname, age, bloodtype, gender, status, address, cellNo, email, weight, height, profilePic, suburbName, postalCode, cityName, province);
+
+                           if (firstStart){
+                               startOnboarding();
+                           }
+                           else {
+                               startDashboard();
+                           }
 
                             break;
                         // to be deleted in future

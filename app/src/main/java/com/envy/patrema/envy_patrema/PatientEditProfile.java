@@ -40,6 +40,8 @@ import fr.ganfra.materialspinner.MaterialSpinner;
 
 public class PatientEditProfile extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
+    SessionManager sessionManager;
+
     MaterialSpinner sp_MaritalStatus, sp_Province, sp_BloodType;
     RadioGroup rgGender;
     String gender = "", maritalStatus = "", prov = "";
@@ -55,7 +57,7 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
 
     String URL_UPLOAD = "http://10.0.2.2/app/upload_profile_image.php";
     String URL_UPDATE = "http://10.0.2.2/app/updatepatientprofile.php";
-    String URL_FIRSTUPDATE = "http://10.0.2.2/app/firstupdateprofile.php";
+    //String URL_FIRSTUPDATE = "http://10.0.2.2/app/firstupdateprofile.php";
 
 
     @Override
@@ -194,13 +196,13 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 
         if (currentYear - Integer.parseInt(tempYear) >= 18 && currentYear - Integer.parseInt(tempYear) < 100){
-            return day + "-" + month + "-" + tempYear;
+            return tempYear + "-" + month + "-" + day;
         }
         else {
             tempYear = "20"+year;
 
             if (currentYear - Integer.parseInt(tempYear) >= 18 && currentYear - Integer.parseInt(tempYear) < 100)
-                return day + "-" + month + "-" + tempYear;
+                return tempYear + "-" + month + "-" + day;
         }
 
         return null;
@@ -222,6 +224,8 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_edit_profile);
+
+        sessionManager = new SessionManager(getApplicationContext());
 
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         firstStart = prefs.getBoolean("firstStart", true);
@@ -257,6 +261,7 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
 
         rgGender = findViewById(R.id.rg_Gender);
         rgGender.setOnCheckedChangeListener(this);
+
 
         imgEditImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -318,6 +323,38 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
 
             }
         });
+
+        // set text fields
+        HashMap<String,String> user = sessionManager.getUserDetails();
+        fullName = String.format("%s %s", user.get(SessionManager.NAME), user.get(SessionManager.SURNAME));
+        idNumber = user.get(SessionManager.ID);
+        cell = user.get(SessionManager.CELLNUMBER);
+        gender = user.get(SessionManager.GENDER);
+
+        maritalStatus = user.get(SessionManager.STATUS);
+        bloodType = user.get(SessionManager.BLOODTYPE);
+
+        height = user.get(SessionManager.HEIGHT);
+        weight = user.get(SessionManager.WEIGHT);
+        address = user.get(SessionManager.ADDRESS);
+        suburb = user.get(SessionManager.SUBURBNAME);
+        city = user.get(SessionManager.CITYNAME);
+        province = user.get(SessionManager.PROVINCE);
+
+        postalCode = user.get(SessionManager.POSTALCODE);
+
+        etName.setText(fullName);
+        etID.setText(idNumber);
+        etCell.setText(cell);
+        // TODO -> set radio button default gender
+        // TODO -> set m.status and blood type to default
+        etHeight.setText(height);
+        etWeight.setText(weight);
+        etAddress.setText(address);
+        etSuburb.setText(suburb);
+        etCity.setText(city);
+        // TODO -> set province to default
+        etPostalCode.setText(postalCode);
 
     }
 
@@ -425,11 +462,15 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
                     @Override
                     public void onResponse(String response) {
                         try {
+
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
 
                             if(success.equals("1")){
                                 Toast.makeText(PatientEditProfile.this,"Profile updated successfully.<Update>",Toast.LENGTH_SHORT).show();
+                                // Save all profile details in shared prefs
+
+
                                 finish();
                             }
                             else {
@@ -476,7 +517,7 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
     }
 
     public void firstProfileUpdate(final String idNumber,final String email, final String name, final String surname, final String cell,final String dob, final String gender, final String maritalStatus, final String bloodType,final String weight,final String height,final String address,final String suburb, final String city, final String province, final String postalCode){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_FIRSTUPDATE,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_UPDATE,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
