@@ -20,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -124,6 +123,7 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
                 }
                 else {
                     dob = getDateOfBirth(idNumber);
+                    UploadPicture(idNumber, getStringImage(bitmap));
                     updateProfile(idNumber,email, firstName, surname, cell, dob,gender, maritalStatus, bloodType, weight, height, address,suburb, city,province, postalCode);
                     return true;
                 }
@@ -382,6 +382,7 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 profile_image.setImageBitmap(bitmap);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -406,6 +407,10 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
 
                     if (success.equals("1")){
                         Toast.makeText(getApplicationContext(), "Image Uploaded", Toast.LENGTH_LONG).show();
+
+                        // TODO -> update sessionManager for PROFILEPIC
+
+
                     }
 
                 } catch (JSONException e) {
@@ -424,7 +429,7 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
                 })
         {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
 
                 params.put("id", id);
@@ -452,6 +457,11 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
 
         byte[] imageByteArray = byteArrayOutputStream.toByteArray();
 
+        SharedPreferences bitPrefs = getSharedPreferences("bitPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = bitPrefs.edit();
+        editor.putString("bitProf",Base64.encodeToString(imageByteArray, Base64.DEFAULT) );
+        editor.apply();
+
         return Base64.encodeToString(imageByteArray, Base64.DEFAULT);
     }
 
@@ -470,7 +480,9 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
                                 Toast.makeText(PatientEditProfile.this,"Profile updated successfully.<Update>",Toast.LENGTH_SHORT).show();
                                 // Save all profile details in shared prefs
 
+                                sessionManager.createSession(idNumber, name, surname, dob, bloodType, gender,maritalStatus ,address ,cell ,email ,weight ,height ,bitmap.toString() ,suburb ,postalCode ,city ,province);
 
+                                // TODO => create a feedback that will send user to profile settings
                                 finish();
                             }
                             else {

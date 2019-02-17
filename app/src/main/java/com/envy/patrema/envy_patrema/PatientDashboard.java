@@ -16,6 +16,8 @@ import com.github.clans.fab.FloatingActionButton;
 
 import java.util.HashMap;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 
@@ -31,6 +33,7 @@ public class PatientDashboard extends Fragment {
     FloatingActionButton fab_Symptoms, fab_Allergy;
 
     SessionManager sessionManager;
+    CircleImageView profile_image;
 
     public PatientDashboard() {
         // Required empty public constructor

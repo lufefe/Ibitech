@@ -2,17 +2,23 @@ package com.envy.patrema.envy_patrema;
 
 
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.HashMap;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -29,6 +35,9 @@ public class PatientProfile extends Fragment {
     TextView tv_Fullname, tv_IdNumber;
     String fullname, idNumber, profilePic;
 
+    CircleImageView profile_image;
+
+
 
     public PatientProfile() {
         // Required empty public constructor
@@ -38,6 +47,7 @@ public class PatientProfile extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
 
         cvEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +76,16 @@ public class PatientProfile extends Fragment {
 
         tv_Fullname = view.findViewById(R.id.tvName);
         tv_IdNumber = view.findViewById(R.id.tvIDNumber);
+
+        profile_image = view.findViewById(R.id.imgProfilePic);
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("bitPrefs", Context.MODE_PRIVATE);
+        String encoded = preferences.getString("bitProf", "0");
+
+        if (!encoded.equals("0")){
+            byte[] imageAsBytes = Base64.decode(encoded.getBytes(), Base64.DEFAULT);
+            profile_image.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
+        }
+
 
         sessionManager = new SessionManager(getApplicationContext());
 
