@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -244,6 +245,14 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
         imgEditImage = findViewById(R.id.imgEditImage);
         profile_image = findViewById(R.id.imgProfilePic);
 
+        SharedPreferences bitmapPref = getSharedPreferences("bitmapPref", MODE_PRIVATE);
+        String encoded = bitmapPref.getString("bitmapString", "0");
+
+        if (!encoded.equals("0")){
+            byte[] imageAsBytes = Base64.decode(encoded.getBytes(), Base64.DEFAULT);
+            profile_image.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
+        }
+
         etName = findViewById(R.id.etPatientName);
         etID = findViewById(R.id.etIDNumber);
         etEmail = findViewById(R.id.etEmailAddress);
@@ -457,10 +466,11 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
 
         byte[] imageByteArray = byteArrayOutputStream.toByteArray();
 
-        SharedPreferences bitPrefs = getSharedPreferences("bitPrefs", MODE_PRIVATE);
+        SharedPreferences bitPrefs = getSharedPreferences("bitmapPref", MODE_PRIVATE);
         SharedPreferences.Editor editor = bitPrefs.edit();
-        editor.putString("bitProf",Base64.encodeToString(imageByteArray, Base64.DEFAULT) );
+        editor.putString("bitmapString",Base64.encodeToString(imageByteArray, Base64.DEFAULT) );
         editor.apply();
+
 
         return Base64.encodeToString(imageByteArray, Base64.DEFAULT);
     }

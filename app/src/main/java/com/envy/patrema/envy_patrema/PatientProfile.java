@@ -78,8 +78,8 @@ public class PatientProfile extends Fragment {
         tv_IdNumber = view.findViewById(R.id.tvIDNumber);
 
         profile_image = view.findViewById(R.id.imgProfilePic);
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("bitPrefs", Context.MODE_PRIVATE);
-        String encoded = preferences.getString("bitProf", "0");
+        SharedPreferences bitmapPref = this.getActivity().getSharedPreferences("bitmapPref", Context.MODE_PRIVATE);
+        String encoded = bitmapPref.getString("bitmapString", "0");
 
         if (!encoded.equals("0")){
             byte[] imageAsBytes = Base64.decode(encoded.getBytes(), Base64.DEFAULT);
