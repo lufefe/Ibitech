@@ -1,6 +1,5 @@
 package com.envy.patrema.envy_patrema;
 
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,6 +7,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,38 +23,56 @@ import com.tooltip.Tooltip;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import fr.ganfra.materialspinner.MaterialSpinner;
+
 public class AddSymptom extends AppCompatActivity {
 
+    SessionManager sessionManager;
+
+    MaterialSpinner sp_Duration, sp_Severity;
+    android.support.v7.widget.Toolbar toolbar;
     Button btnCancel, btnAdd;
     EditText et_Symptoms;
     TextView tv_Date;
     ImageView img_Info;
     String idNo = "";
     String URL_ADD = "http://sict-iis.nmmu.ac.za/ibitech/app/addsymptom.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_symptom);
 
-        SharedPreferences prefs = getSharedPreferences("PROFILEPREFS", MODE_PRIVATE);
+        sessionManager = new SessionManager(getApplicationContext());
 
         btnAdd = findViewById(R.id.btnAdd);
         btnCancel = findViewById(R.id.btnCancel);
         et_Symptoms = findViewById(R.id.etSymptoms);
-        tv_Date = findViewById(R.id.tvDate);
         img_Info = findViewById(R.id.imgInfo);
 
-        idNo = prefs.getString("pID","");
+        toolbar = findViewById(R.id.tbAddSymptom);
+        toolbar.setTitle("Add Symptom(s)");
+        setSupportActionBar(toolbar);
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-        tv_Date.setText(dateFormat.format(date));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        sp_Duration = findViewById(R.id.msDuration);
+        String[] DURATION = {"Started today","Since yesterday", "Last week", "More than a week"};
+        ArrayAdapter<String> durationAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, DURATION);
+        durationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_Duration.setAdapter(durationAdapter);
+
+        sp_Severity = findViewById(R.id.msSeverity);
+        String[] SEVERITY = {"Urgent", "High", "Normal", "Low"};
+        ArrayAdapter<String> severityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, SEVERITY);
+        severityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_Severity.setAdapter(severityAdapter);
+
+
 
         img_Info.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -73,7 +91,6 @@ public class AddSymptom extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(AddSymptom.this,Dashboard.class));
                 finish();
             }
         });
@@ -84,7 +101,7 @@ public class AddSymptom extends AppCompatActivity {
                 final String symptoms = et_Symptoms.getText().toString();
                 final String date = tv_Date.getText().toString();
                 if(symptoms.isEmpty()){
-                    et_Symptoms.setError("Please enter a valid symptom(s).");
+                    et_Symptoms.setError("Please at least one symptom!");
                 }
                 else {
                     addSymptom(symptoms,date,idNo);
