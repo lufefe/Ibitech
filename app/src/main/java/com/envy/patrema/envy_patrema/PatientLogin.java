@@ -287,7 +287,7 @@ public class PatientLogin extends AppCompatActivity {
                             pb_loading.setVisibility(View.INVISIBLE);
                             btn_Login.setVisibility(View.VISIBLE);
 
-                            dialogText = "Patient Login Failed, this user doesn't exist in our database";
+                            dialogText = "Patient login failed, there seems to be an issue retrieving your details in our database, please contact our administrator.";
                             showErrorDialog(dialogText);
                             break;
                     }

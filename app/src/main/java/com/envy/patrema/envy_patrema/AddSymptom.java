@@ -1,17 +1,19 @@
 package com.envy.patrema.envy_patrema;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -32,14 +34,24 @@ public class AddSymptom extends AppCompatActivity {
 
     SessionManager sessionManager;
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int i = item.getItemId();
+
+        if (i == android.R.id.home){
+            startActivity(new Intent(getApplicationContext(), PatientMainActivity.class));
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     MaterialSpinner sp_Duration, sp_Severity;
     android.support.v7.widget.Toolbar toolbar;
     Button btnCancel, btnAdd;
     EditText et_Symptoms;
-    TextView tv_Date;
     ImageView img_Info;
-    String idNo = "";
-    String URL_ADD = "http://sict-iis.nmmu.ac.za/ibitech/app/addsymptom.php";
+    String emailAddress = "", symptoms = "", duration="", severity="";
+    String URL_ADD = "http://10.0.2.2/app/addsymptom.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +59,9 @@ public class AddSymptom extends AppCompatActivity {
         setContentView(R.layout.activity_add_symptom);
 
         sessionManager = new SessionManager(getApplicationContext());
+
+        HashMap<String,String> user = sessionManager.getUserDetails();
+        emailAddress = user.get(SessionManager.EMAIL);
 
         btnAdd = findViewById(R.id.btnAdd);
         btnCancel = findViewById(R.id.btnCancel);
@@ -66,11 +81,35 @@ public class AddSymptom extends AppCompatActivity {
         durationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_Duration.setAdapter(durationAdapter);
 
+        sp_Duration.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                duration = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         sp_Severity = findViewById(R.id.msSeverity);
         String[] SEVERITY = {"Urgent", "High", "Normal", "Low"};
         ArrayAdapter<String> severityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, SEVERITY);
         severityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_Severity.setAdapter(severityAdapter);
+
+        sp_Severity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                severity = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
 
@@ -91,6 +130,7 @@ public class AddSymptom extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), PatientMainActivity.class));
                 finish();
             }
         });
@@ -98,19 +138,16 @@ public class AddSymptom extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String symptoms = et_Symptoms.getText().toString();
-                final String date = tv_Date.getText().toString();
-                if(symptoms.isEmpty()){
-                    et_Symptoms.setError("Please at least one symptom!");
-                }
-                else {
-                    addSymptom(symptoms,date,idNo);
-                }
+
+                symptoms = et_Symptoms.getText().toString();
+                addSymptom(emailAddress, symptoms,duration , severity);
+
+
             }
         });
     }
 
-    private void addSymptom(final String symptoms, final String date, final String idNo) {
+    private void addSymptom(final String email, final String symptoms, final String duration, final String severity) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ADD, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -120,10 +157,7 @@ public class AddSymptom extends AppCompatActivity {
 
                     if (success.equals("1")) {
                         Toast.makeText(AddSymptom.this, "Symptom successfully added.", Toast.LENGTH_LONG).show();
-                        finish();
-                    }
-                    else {
-                        Toast.makeText(AddSymptom.this, "There was an error in adding your symptoms, try again later.", Toast.LENGTH_LONG).show();
+                        //finish();
                     }
 
                 } catch (JSONException e) {
@@ -143,9 +177,10 @@ public class AddSymptom extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
 
-                params.put("symptom",symptoms);
-                params.put("date", date);
-                params.put("id",idNo);
+                params.put("email", email);
+                params.put("symptoms",symptoms);
+                params.put("duration", duration);
+                params.put("severity", severity);
 
                 return params;
             }

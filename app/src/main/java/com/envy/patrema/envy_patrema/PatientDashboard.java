@@ -1,6 +1,7 @@
 package com.envy.patrema.envy_patrema;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -71,6 +72,7 @@ public class PatientDashboard extends Fragment {
         img_ProfilePic = view.findViewById(R.id.imgProfilePic);
 
         fab_Symptoms = view.findViewById(R.id.fabSymptoms);
+
         fab_Allergy = view.findViewById(R.id.fabAllergy);
 
         sessionManager = new SessionManager(getApplicationContext());
@@ -91,6 +93,13 @@ public class PatientDashboard extends Fragment {
         tv_Gender.setText(gender);
         tv_MaritalStatus.setText(maritalStatus);
         tv_Address.setText(fullAddress);
+
+        fab_Symptoms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AddSymptom.class));
+            }
+        });
 
         return view;
     }
