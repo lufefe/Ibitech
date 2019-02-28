@@ -45,6 +45,12 @@ public class AddSymptom extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
     MaterialSpinner sp_Duration, sp_Severity;
     android.support.v7.widget.Toolbar toolbar;
     Button btnCancel, btnAdd;

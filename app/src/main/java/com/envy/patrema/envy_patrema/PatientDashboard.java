@@ -101,6 +101,13 @@ public class PatientDashboard extends Fragment {
             }
         });
 
+        fab_Allergy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),AddAllergy.class));
+            }
+        });
+
         return view;
     }
 

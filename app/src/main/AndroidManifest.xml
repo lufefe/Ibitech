@@ -56,7 +56,9 @@
         </activity>
         <activity
             android:name=".AddAllergy"
-            android:screenOrientation="locked" />
+            android:screenOrientation="locked" >
+
+        </activity>
         <activity
             android:name=".DocLogin"
             android:screenOrientation="locked" />
