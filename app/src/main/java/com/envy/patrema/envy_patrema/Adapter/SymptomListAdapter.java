@@ -7,17 +7,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.envy.patrema.envy_patrema.Models.SymptomList;
+import com.envy.patrema.envy_patrema.Models.MySymptomsList;
 import com.envy.patrema.envy_patrema.R;
 
 import java.util.List;
 
-public class SymptomListAdapter extends ArrayAdapter<SymptomList> {
+public class SymptomListAdapter extends ArrayAdapter<MySymptomsList> {
 
-    private List<SymptomList> symptomsList;
+    private List<MySymptomsList> symptomsList;
     private Activity context;
 
-    public SymptomListAdapter(List<SymptomList> symptomsList, Activity context){
+    public SymptomListAdapter(List<MySymptomsList> symptomsList, Activity context){
         super(context, R.layout.my_symptoms_list, symptomsList);
 
         this.symptomsList = symptomsList;

@@ -81,12 +81,12 @@
             android:name=".PatientMedicalRecord"
             android:screenOrientation="locked" />
         <activity
-            android:name=".ViewAllergy"
+            android:name=".ViewMyAllergies"
             android:screenOrientation="locked" />
         <activity
             android:name=".ViewCondition"
             android:screenOrientation="locked" />
-        <activity android:name=".ViewSymptom" />
+        <activity android:name=".ViewMySymptoms" />
         <activity
             android:name=".Tutorial"
             android:screenOrientation="locked" />

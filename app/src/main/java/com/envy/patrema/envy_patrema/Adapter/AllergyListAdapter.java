@@ -1,39 +1,63 @@
 package com.envy.patrema.envy_patrema.Adapter;
 
-import android.content.Context;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.envy.patrema.envy_patrema.Models.AllergyList;
+import com.envy.patrema.envy_patrema.Models.MyAllergiesList;
 import com.envy.patrema.envy_patrema.R;
 
 import java.util.List;
 
-public class AllergyListAdapter extends ArrayAdapter<AllergyList> {
-    List<AllergyList> allergyList;
-    private Context mCtx;
+public class AllergyListAdapter extends ArrayAdapter<MyAllergiesList> {
 
-    public AllergyListAdapter(List<AllergyList> Al, Context c) {
-        super(c, R.layout.allergy_list,Al);
-        this.allergyList=Al;
-        this.mCtx=c;
+    private List<MyAllergiesList> allergyList;
+    private Activity context;
+
+    public AllergyListAdapter(List<MyAllergiesList> allergyList, Activity context) {
+        super(context, R.layout.my_allergy_list, allergyList);
+
+        this.allergyList = allergyList;
+        this.context = context;
+
     }
 
 
     @Override
     public View getView(int position,  View convertView,  ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.allergy_list,null,true);
-        TextView condition_name =(TextView) view.findViewById(R.id.etAName);
-        TextView date_added =(TextView) view.findViewById(R.id.etAVisDate);
-        AllergyList allergy =allergyList.get(position);
-        condition_name.setText(allergy.getAllergy_name());
-        date_added.setText(allergy.getDate_added());
 
+        View r = convertView;
+        ViewHolder viewHolder;
 
-        return view;
+        if (r == null){
+            LayoutInflater layoutInflater = context.getLayoutInflater();
+            r = layoutInflater.inflate(R.layout.my_allergy_list, null, true);
+            viewHolder = new ViewHolder(r);
+            r.setTag(viewHolder);
+        }
+        else {
+            viewHolder = (ViewHolder) r.getTag();
+        }
+
+        viewHolder.tvAllergy.setText(allergyList.get(position).getAllergy());
+        viewHolder.tvDateAdded.setText(allergyList.get(position).getDate_added());
+        viewHolder.tvTested.setText(allergyList.get(position).getTested());;
+
+        return r;
+    }
+
+    class ViewHolder{
+        TextView tvAllergy, tvDateAdded, tvTested;
+
+        ViewHolder(View v){
+            tvAllergy = v.findViewById(R.id.etAllergy);
+            tvDateAdded = v.findViewById(R.id.etDateAdded);
+            tvTested = v.findViewById(R.id.etTested);
+
+        }
+
     }
 }

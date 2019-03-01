@@ -12,7 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.envy.patrema.envy_patrema.Adapter.SymptomListAdapter;
-import com.envy.patrema.envy_patrema.Models.SymptomList;
+import com.envy.patrema.envy_patrema.Models.MySymptomsList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,19 +23,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ViewSymptom extends AppCompatActivity {
+public class ViewMySymptoms extends AppCompatActivity {
 
     SessionManager sessionManager;
     android.support.v7.widget.Toolbar toolbar;
     ListView lvSymptoms;
-    String URLGETSYMPTS = "http://10.0.2.2/app/getmysymptoms.php";
-    List <SymptomList> symptomList;
+    List <MySymptomsList> symptomList;
     String emailAddress= "";
+    String URLGETSYMPTS = "http://10.0.2.2/app/getmysymptoms.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_symptom);
+        setContentView(R.layout.activity_view_my_symptoms);
 
         sessionManager = new SessionManager(getApplicationContext());
 
@@ -69,23 +69,23 @@ public class ViewSymptom extends AppCompatActivity {
 
                                 JSONObject object = jsonArray.getJSONObject(i);
 
-                                SymptomList symptoms = new SymptomList(object.getString("symptom"),
+                                MySymptomsList symptoms = new MySymptomsList(object.getString("symptom"),
                                         object.getString("date_added"), object.getString("severity"));
                                 symptomList.add(symptoms);
                             }
 
-                            SymptomListAdapter sAdapter = new SymptomListAdapter(symptomList, ViewSymptom.this);
+                            SymptomListAdapter sAdapter = new SymptomListAdapter(symptomList, ViewMySymptoms.this);
                             lvSymptoms.setAdapter(sAdapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(ViewSymptom.this,"You have no symptoms inserted yet.",Toast.LENGTH_LONG).show();
+                            Toast.makeText(ViewMySymptoms.this,"You have no symptoms inserted yet.",Toast.LENGTH_LONG).show();
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ViewSymptom.this,"There was an error retrieving your symptoms from our database, please try again later."+error.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(ViewMySymptoms.this,"There was an error retrieving your symptoms from our database, please try again later."+error.toString(),Toast.LENGTH_LONG).show();
             }
         }){
             @Override

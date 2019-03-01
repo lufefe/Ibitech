@@ -1,13 +1,9 @@
 package com.envy.patrema.envy_patrema;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -16,7 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.envy.patrema.envy_patrema.Adapter.AllergyListAdapter;
-import com.envy.patrema.envy_patrema.Models.AllergyList;
+import com.envy.patrema.envy_patrema.Models.MyAllergiesList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,58 +25,51 @@ import java.util.Map;
 
 //import com.divide.ibitech.divide_ibitech.Models.ConditionList;
 
-public class ViewAllergy extends AppCompatActivity {
-    ListView listView;
-    String URLGETALLRGY = "http://sict-iis.nmmu.ac.za/ibitech/app/getallergy.php";
+public class ViewMyAllergies extends AppCompatActivity {
 
-    String id = "";
-    List<AllergyList> alleList;
     SessionManager sessionManager;
+    android.support.v7.widget.Toolbar toolbar;
+    ListView lvAllergies;
+    List<MyAllergiesList> allergyList;
+    String emailAddress="";
+    String URLGETALLRGY = "http://10.0.2.2/app/getmyallergies.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_allergy);
+        setContentView(R.layout.activity_view_my_allergies);
 
-        listView = findViewById(R.id.listAllergy);
-        alleList = new ArrayList<>();
+        sessionManager = new SessionManager(getApplicationContext());
 
-        SharedPreferences preferences = getSharedPreferences("PROFILEPREFS", MODE_PRIVATE);
+        HashMap<String,String> user = sessionManager.getUserDetails();
+        emailAddress = user.get(SessionManager.EMAIL);
 
-        id = preferences.getString("pID", "");
+        lvAllergies = findViewById(R.id.lv_Allergies);
 
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Your Allergies");
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.tbViewAllergies);
+        toolbar.setTitle("My Allergies");
         setSupportActionBar(toolbar);
 
-        ShowList(id);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        allergyList = new ArrayList<>();
+        GetAllergies(emailAddress);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.nav_drawer, menu);
-        return true;
-    }
+    private void GetAllergies(final String emailAddress) {
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_dashboard) {
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void ShowList(final String id) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLGETALLRGY,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
+
                             JSONObject obj = new JSONObject(response);
                             JSONArray array = obj.getJSONArray("server_response");
 
-                            //Parallel arrays
+                            //Parallel arrays for selected row
+
                             final String[] allergyID = new String[array.length()];
                             final String[] allergyName = new String[array.length()];
                             final String[] allergyType = new String[array.length()];
@@ -90,29 +79,32 @@ public class ViewAllergy extends AppCompatActivity {
                             final String[] tested = new String[array.length()];
 
                             for (int x = 0; x < array.length(); x++) {
-                                JSONObject allergyObject = array.getJSONObject(x);
 
-                                allergyID[x] = allergyObject.getString("allergy_id");
-                                allergyName[x] = allergyObject.getString("allergy_name");
-                                allergyType[x] = allergyObject.getString("allergy_type");
-                                species[x] = allergyObject.getString("species");
-                                dateAdded[x] = allergyObject.getString("date_added");
-                                treatment[x] = allergyObject.getString("treatment_id");
-                                tested[x] = allergyObject.getString("tested");
+                                JSONObject object = array.getJSONObject(x);
 
-                                AllergyList allergy = new AllergyList(allergyObject.getString("allergy_name"),
-                                        allergyObject.getString("date_added"));
-                                alleList.add(allergy);
+                                /*allergyID[x] = object.getString("allergy_id");
+                                allergyName[x] = object.getString("allergy_name");
+                                allergyType[x] = object.getString("allergy_type");
+                                species[x] = object.getString("species");
+                                dateAdded[x] = object.getString("date_added");
+                                treatment[x] = object.getString("treatment_id");
+                                tested[x] = object.getString("tested");*/
+
+                                MyAllergiesList myAllergiesList = new MyAllergiesList(object.getString("allergy"), object.getString("date_added"), object.getString("tested"));
+                                allergyList.add(myAllergiesList);
 
                             }
-                            AllergyListAdapter adapter = new AllergyListAdapter(alleList, getApplication());
-                            listView.setAdapter(adapter);
 
-                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            AllergyListAdapter adapter = new AllergyListAdapter(allergyList, ViewMyAllergies.this);
+                            lvAllergies.setAdapter(adapter);
+/*
+                            lvAllergies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
                                     for (int i = 0; i < allergyID.length; i++) {
+
                                         if (parent.getItemIdAtPosition(position) == i) {
+
                                             SharedPreferences preferences = getSharedPreferences("PATIENTALLERGY", MODE_PRIVATE);
                                             SharedPreferences.Editor editor = preferences.edit();
 
@@ -124,18 +116,18 @@ public class ViewAllergy extends AppCompatActivity {
                                             editor.putString("pTreatmentID", treatment[i]);
                                             editor.putString("pTested", tested[i]);
                                             editor.apply();
-                                            startActivity(new Intent(ViewAllergy.this, PatientAllergy.class));
+                                            startActivity(new Intent(ViewMyAllergies.this, PatientAllergy.class));
                                             finish();
 
                                         }
                                     }
 
                                 }
-                            });
+                            });*/
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(ViewAllergy.this, "Error " + e.toString(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(ViewMyAllergies.this, "You have no allergies recorded yet." + e.toString(), Toast.LENGTH_LONG).show();
                         }
 
                     }
@@ -143,7 +135,7 @@ public class ViewAllergy extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(ViewAllergy.this, "Error 2" + error.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(ViewMyAllergies.this, "There has been an error retrieving your allergies from the database, please try again later" + error.toString(), Toast.LENGTH_LONG).show();
             }
         }) {
 
@@ -151,11 +143,31 @@ public class ViewAllergy extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
 
-                params.put("id", id);
+                params.put("email", emailAddress);
                 return params;
             }
 
         };
-        Singleton.getInstance(ViewAllergy.this).addToRequestQue(stringRequest);
+        Singleton.getInstance(ViewMyAllergies.this).addToRequestQue(stringRequest);
+
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int i = item.getItemId();
+
+        if (i == android.R.id.home){
+            startActivity(new Intent(getApplicationContext(), PatientMainActivity.class));
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+
 }

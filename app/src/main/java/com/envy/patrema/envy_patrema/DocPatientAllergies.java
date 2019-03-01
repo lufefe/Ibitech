@@ -17,7 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.envy.patrema.envy_patrema.Adapter.AllergyListAdapter;
-import com.envy.patrema.envy_patrema.Models.AllergyList;
+import com.envy.patrema.envy_patrema.Models.MyAllergiesList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class DocPatientAllergies extends AppCompatActivity {
 
-    List<AllergyList> alleList;
+    List<MyAllergiesList> alleList;
     ListView allegyListView;
 
     TextView tv_Error;
@@ -95,13 +95,12 @@ public class DocPatientAllergies extends AppCompatActivity {
                                 treatment[x] = allergyObject.getString("treatment_id");
                                 tested[x] = allergyObject.getString("tested");
 
-                                AllergyList allergy = new AllergyList(allergyObject.getString("allergy_name"),
-                                        allergyObject.getString("date_added"));
+                                MyAllergiesList allergy = new MyAllergiesList(allergyObject.getString("allergy"), allergyObject.getString("date_added"), allergyObject.getString("tested"));
                                 alleList.add(allergy);
 
                             }
                             allegyListView.setVisibility(View.VISIBLE);
-                            AllergyListAdapter adapter =  new AllergyListAdapter(alleList,getApplication());
+                            AllergyListAdapter adapter =  new AllergyListAdapter(alleList,DocPatientAllergies.this);
                             allegyListView.setAdapter(adapter);
 
                             allegyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -79,7 +79,15 @@ public class PatientDashboard extends Fragment {
         btnManageSymptoms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ViewSymptom.class));
+                startActivity(new Intent(getApplicationContext(), ViewMySymptoms.class));
+            }
+        });
+
+        btnManageAllergies = view.findViewById(R.id.cvAllergies);
+        btnManageAllergies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ViewMyAllergies.class));
             }
         });
 
