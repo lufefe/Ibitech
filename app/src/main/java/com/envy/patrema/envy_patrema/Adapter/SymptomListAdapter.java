@@ -1,6 +1,6 @@
 package com.envy.patrema.envy_patrema.Adapter;
 
-import android.content.Context;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,24 +15,45 @@ import java.util.List;
 public class SymptomListAdapter extends ArrayAdapter<SymptomList> {
 
     private List<SymptomList> symptomsList;
-    private Context mCtx;
+    private Activity context;
 
-    public SymptomListAdapter(List<SymptomList> S,Context c){
-        super(c, R.layout.symptom_list,S);
-        this.symptomsList=S;
-        this.mCtx=c;
+    public SymptomListAdapter(List<SymptomList> symptomsList, Activity context){
+        super(context, R.layout.my_symptoms_list, symptomsList);
+
+        this.symptomsList = symptomsList;
+        this.context = context;
     }
 
 
     @Override
     public View getView(int position,  View convertView,  ViewGroup parent) {
-        LayoutInflater inflater= LayoutInflater.from(mCtx);
-        View view= inflater.inflate(R.layout.symptom_list,null,true);
-        TextView symptom_name =(TextView) view.findViewById(R.id.etName);
-        TextView date_added =(TextView) view.findViewById(R.id.etVisDate);
-        SymptomList symptoms=  symptomsList.get(position);
-        symptom_name.setText(symptoms.getSymptom_name());
-        date_added.setText(symptoms.getDate_added());
-        return  view;
+
+        View r = convertView;
+        ViewHolder viewHolder;
+
+        if (r == null){
+            LayoutInflater layoutInflater = context.getLayoutInflater();
+            r = layoutInflater.inflate(R.layout.my_symptoms_list, null,true);
+            viewHolder = new ViewHolder(r);
+            r.setTag(viewHolder);
+        }
+        else {
+            viewHolder = (ViewHolder) r.getTag();
+        }
+        viewHolder.tvSymptom.setText(symptomsList.get(position).getSymptom());
+        viewHolder.tvDateAdded.setText(symptomsList.get(position).getDate_added());
+        viewHolder.tvSeverity.setText(symptomsList.get(position).getSeverity());
+
+        return  r;
+    }
+
+    class ViewHolder{
+        TextView tvSymptom, tvDateAdded, tvSeverity;
+
+        ViewHolder(View v){
+            tvSymptom = v.findViewById(R.id.etSymptom);
+            tvDateAdded = v.findViewById(R.id.etDateAdded);
+            tvSeverity = v.findViewById(R.id.etSeverity);
+        }
     }
 }

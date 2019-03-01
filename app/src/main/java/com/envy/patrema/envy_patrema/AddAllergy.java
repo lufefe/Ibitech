@@ -8,6 +8,7 @@ import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -40,6 +41,7 @@ public class AddAllergy extends AppCompatActivity implements RadioGroup.OnChecke
     ImageView img_Info;
     String emailAddress="",tested="", date_tested="", doctor="";
     String URL_ADD = "http://10.0.2.2/app/addallergy.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -183,13 +185,23 @@ public class AddAllergy extends AppCompatActivity implements RadioGroup.OnChecke
     }
 
     @Override
-    public void finish() {
-        super.finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int i = item.getItemId();
+
+        if (i == android.R.id.home){
+            startActivity(new Intent(getApplicationContext(), PatientMainActivity.class));
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

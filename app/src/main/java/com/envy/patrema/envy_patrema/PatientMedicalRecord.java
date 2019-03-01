@@ -55,6 +55,7 @@ public class PatientMedicalRecord extends AppCompatActivity {
 
         String cats []= new String[]{"Last Visit","Allergies","Medication", "Diagnoses","Test Results", "Medical Devices", "Miscellaneous"};
         Integer imgid [] = new Integer[]{R.drawable.doctor, R.drawable.allergy, R.drawable.pills,R.drawable.health, R.drawable.flask, R.drawable.serum, R.drawable.hands};
+
         ListAdapter medAdapter = new MedInfoAdapter(this,cats, imgid);
         ListView listview = findViewById(R.id.lv_medInfo);
         listview.setAdapter(medAdapter);

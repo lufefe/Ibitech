@@ -1,9 +1,8 @@
 package com.envy.patrema.envy_patrema;
 
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -25,47 +24,38 @@ import java.util.List;
 import java.util.Map;
 
 public class ViewSymptom extends AppCompatActivity {
-    ListView listView;
-    String URLGETSYMPTS = "http://sict-iis.nmmu.ac.za/ibitech/app/getsymptoms.php";
 
-    String id = "", fullname = "";
+    SessionManager sessionManager;
+    android.support.v7.widget.Toolbar toolbar;
+    ListView lvSymptoms;
+    String URLGETSYMPTS = "http://10.0.2.2/app/getmysymptoms.php";
+    List <SymptomList> symptomList;
+    String emailAddress= "";
 
-    List <SymptomList> sympLists;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_symptom);
-        SharedPreferences preferences = getSharedPreferences("PROFILEPREFS",MODE_PRIVATE);
 
-        listView = findViewById(R.id.listSymp);
+        sessionManager = new SessionManager(getApplicationContext());
 
-        fullname = preferences.getString("pFirstName","") + " " + preferences.getString("pSurname","") ;
-        id = preferences.getString("pID","");
+        HashMap<String,String> user = sessionManager.getUserDetails();
+        emailAddress = user.get(SessionManager.EMAIL);
 
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(fullname + "\'s symptoms");
+        lvSymptoms = findViewById(R.id.lv_Symptoms);
+
+        toolbar = findViewById(R.id.tbViewSymptoms);
+        toolbar.setTitle("My Symptoms");
         setSupportActionBar(toolbar);
 
-        sympLists= new ArrayList<>();
-        ShowList(id);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        symptomList = new ArrayList<>();
+        GetSymptoms(emailAddress);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.nav_drawer, menu);
-        return true;
-    }
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if(id == R.id.action_dashboard){
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void  ShowList(final String id){
-
+    private void GetSymptoms(final String emailAddress) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLGETSYMPTS,
                 new Response.Listener<String>() {
                     @Override
@@ -75,15 +65,18 @@ public class ViewSymptom extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray jsonArray = jsonObject.getJSONArray("server_response");
 
-                            for (int i = 0; i < jsonArray.length();i++){
+                            for (int i = 0; i < jsonArray.length(); i++){
+
                                 JSONObject object = jsonArray.getJSONObject(i);
 
-                                SymptomList list = new SymptomList(object.getString("symptom_name"),
-                                                                object.getString("date_added"));
-                                sympLists.add(list);
+                                SymptomList symptoms = new SymptomList(object.getString("symptom"),
+                                        object.getString("date_added"), object.getString("severity"));
+                                symptomList.add(symptoms);
                             }
-                            SymptomListAdapter adapter = new SymptomListAdapter(sympLists,getApplication());
-                            listView.setAdapter(adapter);
+
+                            SymptomListAdapter sAdapter = new SymptomListAdapter(symptomList, ViewSymptom.this);
+                            lvSymptoms.setAdapter(sAdapter);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(ViewSymptom.this,"You have no symptoms inserted yet.",Toast.LENGTH_LONG).show();
@@ -92,19 +85,35 @@ public class ViewSymptom extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ViewSymptom.this,"Error 2"+error.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(ViewSymptom.this,"There was an error retrieving your symptoms from our database, please try again later."+error.toString(),Toast.LENGTH_LONG).show();
             }
         }){
             @Override
             protected Map<String, String> getParams() {
                 HashMap<String,String> params = new HashMap<>();
 
-                params.put("id",id);
+                params.put("email",emailAddress);
                 return params;
             }
-        }
-
-    ;
+        };
         Singleton.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int i = item.getItemId();
+
+        if (i == android.R.id.home){
+            startActivity(new Intent(getApplicationContext(), PatientMainActivity.class));
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
 }
