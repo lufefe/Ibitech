@@ -318,7 +318,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
                 app:ms_arrowColor="@color/starBlue"
                 app:ms_arrowSize="14dp"
-                app:ms_hint="Marital Status"
+                app:ms_hint="Choose status"
                 app:ms_hintColor="#000000"
                 app:ms_multiline="false" />
 
@@ -337,7 +337,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/statusSpinner"
                 app:ms_arrowColor="@color/starBlue"
                 app:ms_arrowSize="14dp"
-                app:ms_hint="Blood Type"
+                app:ms_hint="Choose blood type"
                 app:ms_hintColor="#000000"
                 app:ms_multiline="false" />
 
@@ -424,18 +424,19 @@
 
             <fr.ganfra.materialspinner.MaterialSpinner
                 android:id="@+id/provinceSpinner"
-                android:layout_width="wrap_content"
+                android:layout_width="107dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
                 app:layout_constraintEnd_toStartOf="@+id/textInputLayout8"
                 app:layout_constraintHorizontal_bias="0.062"
                 app:layout_constraintStart_toEndOf="@+id/textInputLayout7"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout9"
                 app:ms_arrowColor="@color/starBlue"
                 app:ms_arrowSize="14dp"
-                app:ms_hint="Province"
+                app:ms_hint="Choose prov"
                 app:ms_hintColor="#000000"
                 app:ms_multiline="false" />
 

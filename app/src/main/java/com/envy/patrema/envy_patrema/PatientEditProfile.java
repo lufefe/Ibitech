@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
 
     MaterialSpinner sp_MaritalStatus, sp_Province, sp_BloodType;
     RadioGroup rgGender;
+    RadioButton rbFemale, rbMale;
     String gender = "", maritalStatus = "", prov = "";
     android.support.v7.widget.Toolbar toolbar;
     ImageView imgEditImage;
@@ -267,6 +269,8 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
         etPostalCode = findViewById(R.id.etCode);
 
 
+        rbFemale = findViewById(R.id.rbFemale);
+        rbMale = findViewById(R.id.rbMale);
 
         rgGender = findViewById(R.id.rg_Gender);
         rgGender.setOnCheckedChangeListener(this);
@@ -279,59 +283,6 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
             }
         });
 
-        sp_Province = findViewById(R.id.provinceSpinner);
-        String[] PROVINCES = {"EC", "WC", "MP", "NW", "NC","KZN","GP","LP","FS"};
-        ArrayAdapter<String> provAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, PROVINCES);
-        provAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp_Province.setAdapter(provAdapter);
-
-        sp_Province.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                prov = parent.getItemAtPosition(position).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        sp_MaritalStatus = findViewById(R.id.statusSpinner);
-        String[] STATUS = {"Single", "Married", "Divorced", "Widowed", "Separated"};
-        ArrayAdapter<String> statusAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, STATUS);
-        statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp_MaritalStatus.setAdapter(statusAdapter);
-
-        sp_MaritalStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                maritalStatus = parent.getItemAtPosition(position).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        sp_BloodType = findViewById(R.id.bloodSpinner);
-        String[] BLOOD = {"A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"};
-        ArrayAdapter<String> bloodAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, BLOOD);
-        bloodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp_BloodType.setAdapter(bloodAdapter);
-
-        sp_BloodType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                bloodType = parent.getItemAtPosition(position).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         // set text fields
         HashMap<String,String> user = sessionManager.getUserDetails();
@@ -352,11 +303,143 @@ public class PatientEditProfile extends AppCompatActivity implements RadioGroup.
 
         postalCode = user.get(SessionManager.POSTALCODE);
 
+        sp_Province = findViewById(R.id.provinceSpinner);
+        String[] PROVINCES = {"EC", "WC", "MP", "NW", "NC","KZN","GP","LP","FS"};
+        ArrayAdapter<String> provAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, PROVINCES);
+        provAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_Province.setAdapter(provAdapter);
+        switch (province){
+            case "Eastern Cape":
+                sp_Province.setSelection(1);
+                prov = "EC";
+                break;
+            case "Western Cape":
+                sp_Province.setSelection(2);
+                break;
+            case "Mpumalanga":
+                sp_Province.setSelection(3);
+                break;
+            case "North West":
+                sp_Province.setSelection(4);
+                break;
+            case "Northern Cape":
+                sp_Province.setSelection(5);
+                break;
+            case "KwaZulu-Natal":
+                sp_Province.setSelection(6);
+                break;
+            case "Gauteng":
+                sp_Province.setSelection(7);
+                break;
+            case "Limpopo":
+                sp_Province.setSelection(8);
+                break;
+            case "Free State":
+                sp_Province.setSelection(9);
+                break;
+        }
+
+        sp_Province.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                prov = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        sp_MaritalStatus = findViewById(R.id.statusSpinner);
+        String[] STATUS = {"Single", "Married", "Divorced", "Widowed", "Separated"};
+        ArrayAdapter<String> statusAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, STATUS);
+        statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_MaritalStatus.setAdapter(statusAdapter);
+        switch (maritalStatus){
+            case "Single":
+                sp_MaritalStatus.setSelection(1);
+                break;
+            case "Married":
+                sp_MaritalStatus.setSelection(2);
+                break;
+            case "Divorced":
+                sp_MaritalStatus.setSelection(3);
+                break;
+            case "Widowed":
+                sp_MaritalStatus.setSelection(4);
+                break;
+            case "Separated":
+                sp_MaritalStatus.setSelection(5);
+                break;
+        }
+
+        sp_MaritalStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                maritalStatus = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        sp_BloodType = findViewById(R.id.bloodSpinner);
+        String[] BLOOD = {"A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"};
+        ArrayAdapter<String> bloodAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, BLOOD);
+        bloodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_BloodType.setAdapter(bloodAdapter);
+        switch (bloodType){
+            case "A+":
+                sp_BloodType.setSelection(1);
+                break;
+            case "A-":
+                sp_BloodType.setSelection(2);
+                break;
+            case "B+":
+                sp_BloodType.setSelection(3);
+                break;
+            case "B-":
+                sp_BloodType.setSelection(4);
+                break;
+            case "O+":
+                sp_BloodType.setSelection(5);
+                break;
+            case "O-":
+                sp_BloodType.setSelection(6);
+                break;
+            case "AB+":
+                sp_BloodType.setSelection(7);
+                break;
+            case "AB-":
+                sp_BloodType.setSelection(8);
+                break;
+        }
+
+        sp_BloodType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                bloodType = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         etName.setText(fullName);
         etID.setText(idNumber);
         etCell.setText(cell);
         // TODO -> set radio button default gender
-        // TODO -> set m.status and blood type to default
+        if (gender.equals("Female"))
+            rbFemale.setChecked(true);
+        else if (gender.equals("Male"))
+            rbMale.setChecked(true);
+
         etHeight.setText(height);
         etWeight.setText(weight);
         etAddress.setText(address);

@@ -31,7 +31,7 @@ public class PatientProfile extends Fragment {
     SessionManager sessionManager;
 
     android.support.v7.widget.Toolbar toolbar;
-    CardView cvEditProfile;
+    CardView cvEditProfile, cvSignOut;
     TextView tv_Fullname, tv_IdNumber;
     String fullname, idNumber, profilePic;
 
@@ -60,6 +60,13 @@ public class PatientProfile extends Fragment {
 
             }
         });
+
+        cvSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sessionManager.logout();
+            }
+        });
     }
 
 
@@ -73,6 +80,7 @@ public class PatientProfile extends Fragment {
         toolbar.setTitle("Profile");
 
         cvEditProfile = view.findViewById(R.id.cvProfile);
+        cvSignOut = view.findViewById(R.id.cvSignOut);
 
         tv_Fullname = view.findViewById(R.id.tvName);
         tv_IdNumber = view.findViewById(R.id.tvIDNumber);
