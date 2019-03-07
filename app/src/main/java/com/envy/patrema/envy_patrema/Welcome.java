@@ -25,6 +25,12 @@ public class Welcome extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Gets user type and stores it in preferences
+                SharedPreferences preferences = getSharedPreferences("USERTYPE",MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+
+                editor.putString("pUserType", userType);
+                editor.apply();
                 openRegister();
             }
         });
@@ -45,14 +51,7 @@ public class Welcome extends AppCompatActivity {
                 userType = stickySwitch.getText();
             }
         });
-
-        // Gets user type and stores it in preferences
         userType = stickySwitch.getText();
-        SharedPreferences preferences = getSharedPreferences("USERTYPE",MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-
-        editor.putString("pUserType", userType);
-        editor.apply();
     }
 
     private void openRegister() {
@@ -64,7 +63,7 @@ public class Welcome extends AppCompatActivity {
 
         }
         else {
-            Intent intent = new Intent(this, DocRegister.class);
+            Intent intent = new Intent(this, DoctorRegister.class);
             startActivity(intent);
             finish();
         }
@@ -77,7 +76,7 @@ public class Welcome extends AppCompatActivity {
             finish();
         }
         else {
-            Intent intent = new Intent(this, DocLogin.class);
+            Intent intent = new Intent(this, DoctorLogin.class);
             startActivity(intent);
             finish();
         }

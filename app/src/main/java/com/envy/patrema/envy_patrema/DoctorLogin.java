@@ -26,7 +26,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DocLogin extends AppCompatActivity {
+public class DoctorLogin extends AppCompatActivity {
 
     String medRegNo = "";
     Boolean validRegNo = false;
@@ -115,7 +115,7 @@ public class DocLogin extends AppCompatActivity {
         tv_NewDocRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DocLogin.this, DocRegister.class));
+                startActivity(new Intent(DoctorLogin.this, DoctorRegister.class));
             }
         });
 
@@ -123,7 +123,7 @@ public class DocLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!(validRegNo) || medRegNo.isEmpty()){
-                    Toast.makeText(DocLogin.this, "Please ensure all fields are correctly filled",Toast.LENGTH_LONG).show();
+                    Toast.makeText(DoctorLogin.this, "Please ensure all fields are correctly filled",Toast.LENGTH_LONG).show();
                 }
 
                 if(validRegNo){
@@ -162,31 +162,31 @@ public class DocLogin extends AppCompatActivity {
                                 occupation = object.getString("occupation").trim();
 
                             }
-                            Toast.makeText(DocLogin.this, "PatientLogin Successful", Toast.LENGTH_LONG).show();
+                            Toast.makeText(DoctorLogin.this, "PatientLogin Successful", Toast.LENGTH_LONG).show();
                             pb_loading.setVisibility(View.GONE);
                             btn_Login.setVisibility(View.VISIBLE);
                             saveDocPreferences(id, regNo, cell, name, surname, email, occupation);
                             //sessionManager to create session for doctor
                             sessionManager.createDocSession(id, regNo, cell, name, surname, email, occupation);
-                            startActivity(new Intent(DocLogin.this, DocDashboard.class));
+                            startActivity(new Intent(DoctorLogin.this, DocDashboard.class));
 
                             break;
                         case "-1":
-                            Toast.makeText(DocLogin.this, "Wrong login details", Toast.LENGTH_LONG).show();
+                            Toast.makeText(DoctorLogin.this, "Wrong login details", Toast.LENGTH_LONG).show();
                             pb_loading.setVisibility(View.GONE);
                             btn_Login.setVisibility(View.VISIBLE);
                             break;
                         default:
                             pb_loading.setVisibility(View.GONE);
                             btn_Login.setVisibility(View.VISIBLE);
-                            Toast.makeText(DocLogin.this, "PatientLogin Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
+                            Toast.makeText(DoctorLogin.this, "PatientLogin Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
                             break;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                     pb_loading.setVisibility(View.GONE);
                     btn_Login.setVisibility(View.VISIBLE);
-                    Toast.makeText(DocLogin.this, "Error " + e.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(DoctorLogin.this, "Error " + e.toString(), Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -194,7 +194,7 @@ public class DocLogin extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 pb_loading.setVisibility(View.GONE);
                 btn_Login.setVisibility(View.VISIBLE);
-                Toast.makeText(DocLogin.this,"MJError "+error.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(DoctorLogin.this,"MJError "+error.toString(),Toast.LENGTH_LONG).show();
             }
         })
         {
@@ -207,7 +207,7 @@ public class DocLogin extends AppCompatActivity {
                 return params;
             }
         };
-        Singleton.getInstance(DocLogin.this).addToRequestQue(stringRequest);
+        Singleton.getInstance(DoctorLogin.this).addToRequestQue(stringRequest);
 
     }
 

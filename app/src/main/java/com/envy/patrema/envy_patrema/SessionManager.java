@@ -102,7 +102,7 @@ public class SessionManager {
 
     void checkDocLogin(){
         if(this.isLoggin()){
-            Intent i = new Intent(context,DocLogin.class);
+            Intent i = new Intent(context, DoctorLogin.class);
             context.startActivity(i);
             ((DocDashboard) context).finish();
         }
@@ -158,7 +158,7 @@ public class SessionManager {
     void doclogout(){
         editor.clear();
         editor.commit();
-        Intent i = new Intent(context,DocLogin.class);
+        Intent i = new Intent(context, DoctorLogin.class);
         context.startActivity(i);
         ((DocDashboard) context).finish();
     }

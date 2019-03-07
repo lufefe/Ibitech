@@ -60,10 +60,10 @@
 
         </activity>
         <activity
-            android:name=".DocLogin"
+            android:name=".DoctorLogin"
             android:screenOrientation="locked" />
         <activity
-            android:name=".DocRegister"
+            android:name=".DoctorRegister"
             android:screenOrientation="locked" />
         <activity
             android:name=".DocDashboard"
