@@ -1,9 +1,13 @@
 package com.envy.patrema.envy_patrema;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -18,6 +22,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,47 +37,45 @@ import java.util.Map;
 
 public class DoctorLogin extends AppCompatActivity {
 
-    String medRegNo = "";
-    Boolean validRegNo = false;
+    String emailAddress = "", password = "";
+    Boolean validEmail;
 
-    EditText et_MedRegNo, et_Password;
+    EditText et_EmailAddress, et_Password;
     Button btn_Login;
     TextView tv_NewDocRegister, tv_ForgotPass, tv_PasswordToggle;
     ProgressBar pb_loading;
+    Dialog dialog;
+    TextView tv_dialogText;
+    Button btnDialogDissmis;
+    String dialogText = "";
+    Boolean firstStart;
 
-    String URL_LOGIN = "http://sict-iis.nmmu.ac.za/ibitech/app/doclogin.php";
+    String URL_LOGIN = "http://10.0.2.2/app/doctorlogin.php";
 
     SessionManager sessionManager;
 
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_login);
 
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        firstStart = prefs.getBoolean("docFirstStart", true);
+
+        dialog = new Dialog(this);
         sessionManager = new SessionManager(this);
 
-        et_MedRegNo = findViewById(R.id.etMedReg);
-        et_Password = findViewById(R.id.etPassword);
+        mAuth = FirebaseAuth.getInstance();
 
+        et_EmailAddress = findViewById(R.id.etEmailAddress);
+        et_Password = findViewById(R.id.etPassword);
         btn_Login = findViewById(R.id.btnLogin);
         tv_NewDocRegister = findViewById(R.id.tvNewRegister);
         tv_ForgotPass = findViewById(R.id.tvForgotPass);
-
         pb_loading = findViewById(R.id.pbLoading);
 
-        /*Real-time validation*/
-        et_MedRegNo.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (et_MedRegNo.getText().length() > 0){
-                    validRegNo = RegNoValidate();
-                }
-                else {
-                    et_MedRegNo.setError(null);
-                }
-            }
-        });
-
+        //Show password toggle
         tv_PasswordToggle = findViewById(R.id.tvTogglePassword);
         tv_PasswordToggle.setVisibility(View.GONE);
         et_Password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -122,19 +129,67 @@ public class DoctorLogin extends AppCompatActivity {
         btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!(validRegNo) || medRegNo.isEmpty()){
-                    Toast.makeText(DoctorLogin.this, "Please ensure all fields are correctly filled",Toast.LENGTH_LONG).show();
-                }
+                emailAddress = et_EmailAddress.getText().toString();
+                password = et_Password.getText().toString();
 
-                if(validRegNo){
-                    String regNo = et_MedRegNo.getText().toString();
-                    String pass = et_Password.getText().toString();
-                    UserLogin(regNo,pass);
-                }
+                pb_loading.setVisibility(View.VISIBLE);
+                btn_Login.setVisibility(View.INVISIBLE);
+
+                mAuth.signInWithEmailAndPassword(emailAddress, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            verifyEmailAddress();
+
+                        }
+                        else {
+                            dialogText = "There was an error with verifying your email account. Please check your log in details and try again.";
+                            showErrorDialog(dialogText);
+
+                            pb_loading.setVisibility(View.INVISIBLE);
+                            btn_Login.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
+
+
             }
         });
 
     }
+
+    private void showErrorDialog(String message){
+        dialog.setContentView(R.layout.custom_error_dialog);
+        btnDialogDissmis = dialog.findViewById(R.id.btnDismiss);
+        btnDialogDissmis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        tv_dialogText = dialog.findViewById(R.id.txtErrorMessage);
+        tv_dialogText.setText(message);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+    }
+
+    public void verifyEmailAddress(){
+        FirebaseUser user = mAuth.getCurrentUser();
+        Boolean emailVerified = user.isEmailVerified();
+
+        if (emailVerified){
+            UserLogin(emailAddress, password);
+        }
+        else {
+            dialogText = "Please verify your email first";
+            showErrorDialog(dialogText);
+            pb_loading.setVisibility(View.INVISIBLE);
+            btn_Login.setVisibility(View.VISIBLE);
+            mAuth.signOut();
+        }
+    }
+
+
 
     private void UserLogin(final String regNo,final String pass) {
         pb_loading.setVisibility(View.VISIBLE);
@@ -162,10 +217,10 @@ public class DoctorLogin extends AppCompatActivity {
                                 occupation = object.getString("occupation").trim();
 
                             }
-                            Toast.makeText(DoctorLogin.this, "PatientLogin Successful", Toast.LENGTH_LONG).show();
+                            Toast.makeText(DoctorLogin.this, "Login Successful", Toast.LENGTH_LONG).show();
                             pb_loading.setVisibility(View.GONE);
                             btn_Login.setVisibility(View.VISIBLE);
-                            saveDocPreferences(id, regNo, cell, name, surname, email, occupation);
+
                             //sessionManager to create session for doctor
                             sessionManager.createDocSession(id, regNo, cell, name, surname, email, occupation);
                             startActivity(new Intent(DoctorLogin.this, DocDashboard.class));
@@ -211,27 +266,6 @@ public class DoctorLogin extends AppCompatActivity {
 
     }
 
-    private void saveDocPreferences(String id, String regNo, String cell, String name, String surname, String email, String occupation) {
-        SharedPreferences preferences = getSharedPreferences("DOCPREFS", MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("pID",id);
-        editor.putString("pRegNo",regNo);
-        editor.putString("pCell", cell);
-        editor.putString("pName",name);
-        editor.putString("pSurname",surname);
-        editor.putString("pEmail",email);
-        editor.putString("pOccupation",occupation);
-        editor.apply();
-    }
 
-    private Boolean RegNoValidate() {
-        medRegNo = et_MedRegNo.getText().toString();
-        boolean valid = true;
 
-        if(medRegNo.isEmpty() || medRegNo.length() > 12){
-            et_MedRegNo.setError("Please enter a valid medical registration number");
-            valid = false;
-        }
-        return valid;
-    }
 }

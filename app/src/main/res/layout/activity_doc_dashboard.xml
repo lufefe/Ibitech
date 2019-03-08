@@ -32,16 +32,14 @@
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="153dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="186dp"
+        android:layout_marginTop="52dp"
         android:background="@color/colorPrimaryDark"
         android:backgroundTint="@color/endblue"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imgProfilePic"
-        app:layout_constraintVertical_bias="0.142"
         tools:ignore="MissingConstraints"
         tools:targetApi="lollipop">
 
@@ -51,61 +49,58 @@
         android:id="@+id/imgProfilePic"
         android:layout_width="0dp"
         android:layout_height="109dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:contentDescription="@string/txtUserProfilePic"
-        android:src="@drawable/profilepic"
+        android:src="@drawable/profile_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.129" />
+        app:layout_constraintVertical_bias="0.136" />
 
 
     <TextView
         android:id="@+id/tvDocName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/txtNotSet"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.338" />
+        app:layout_constraintTop_toBottomOf="@+id/imgProfilePic" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/cvVisits"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:layout_margin="10dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="95dp"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@+id/cvAllPatients"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.641"
-        android:focusable="true">
+        app:layout_constraintTop_toBottomOf="@+id/view">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,9 +112,9 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:background="@drawable/circlesymptoms"
+                android:contentDescription="@string/image_icon_for_visits"
                 android:padding="10dp"
-                android:src="@drawable/ic_appointment"
-                android:contentDescription="@string/image_icon_for_visits" />
+                android:src="@drawable/ic_appointment" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -176,9 +171,9 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:background="@drawable/circlecondition"
+                android:contentDescription="@string/patients_icon"
                 android:padding="10dp"
-                android:src="@drawable/ic_patients"
-                android:contentDescription="@string/patients_icon" />
+                android:src="@drawable/ic_patients" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -209,44 +204,112 @@
         android:id="@+id/imgTutorial"
         android:layout_width="36dp"
         android:layout_height="33dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
+        android:contentDescription="@string/information_icon_for_tutorial"
+        android:focusable="true"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_info_black_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.013"
-        android:focusable="true"
-        android:contentDescription="@string/information_icon_for_tutorial" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/docReports"
         android:layout_width="41dp"
         android:layout_height="37dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/White"
+        android:contentDescription="@string/trending_image_for_reports"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_trending_up_black_24dp"
-        android:background="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102"
-        android:contentDescription="@string/trending_image_for_reports" />
+        app:layout_constraintTop_toBottomOf="@+id/imgTutorial"
+        app:layout_constraintVertical_bias="0.012" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Reg No :"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDocName" />
+
+    <TextView
+        android:id="@+id/tvRegNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/txtNotSet"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvAddress"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView29"
+        app:layout_constraintTop_toBottomOf="@+id/tvDocName" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Occupation :"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+    <TextView
+        android:id="@+id/tvOccupation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/txtNotSet"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvAddress"
+        app:layout_constraintHorizontal_bias="0.094"
+        app:layout_constraintStart_toEndOf="@+id/textView30"
+        app:layout_constraintTop_toBottomOf="@+id/tvRegNo" />
+
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="start"
+        android:text="@string/txtNotSet"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintTop_toBottomOf="@+id/tvDocName" />
 
 </android.support.constraint.ConstraintLayout>

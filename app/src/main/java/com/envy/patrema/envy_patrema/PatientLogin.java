@@ -82,8 +82,6 @@ public class PatientLogin extends AppCompatActivity {
         pb_loading = findViewById(R.id.pbLoading);
 
 
-        /*Real-time validation**/
-
         //Show password toggle
         tv_PasswordToggle = findViewById(R.id.tvTogglePassword);
         tv_PasswordToggle.setVisibility(View.GONE);
@@ -133,7 +131,7 @@ public class PatientLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(PatientLogin.this,PatientRegister.class));
-                finish();
+                //finish();
             }
         });
 
@@ -257,11 +255,6 @@ public class PatientLogin extends AppCompatActivity {
 
                             pb_loading.setVisibility(View.INVISIBLE);
                             btn_Login.setVisibility(View.VISIBLE);
-
-                            SharedPreferences preferences = getSharedPreferences("patient", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("email", emailAddress);
-                            editor.apply();
 
                             //uses SessionManager class
                             sessionManager.createSession(id, name, surname, age, bloodtype, gender, status, address, cellNo, email, weight, height, profilePic, suburbName, postalCode, cityName, province);
