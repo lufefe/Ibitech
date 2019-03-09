@@ -191,7 +191,7 @@ public class DoctorLogin extends AppCompatActivity {
 
 
 
-    private void UserLogin(final String regNo,final String pass) {
+    private void UserLogin(final String emailAddress,final String pass) {
         pb_loading.setVisibility(View.VISIBLE);
         btn_Login.setVisibility(View.GONE);
 
@@ -205,7 +205,7 @@ public class DoctorLogin extends AppCompatActivity {
 
                     switch (success) {
                         case "1":
-                            String id = "", cell = "", name = "", surname = "", email = "", occupation = "";
+                            String id = "", regNo="", cell = "", name = "", surname = "", email = "", occupation = "", office_address="", profilePic = "", suburbName = "", postalCode = "", cityName = "", province = "";
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject object = jsonArray.getJSONObject(i);
 
@@ -215,6 +215,14 @@ public class DoctorLogin extends AppCompatActivity {
                                 surname = object.getString("surname").trim();
                                 email = object.getString("email").trim();
                                 occupation = object.getString("occupation").trim();
+                                office_address = object.getString("address").trim();
+
+                                profilePic = object.getString("profilePic").trim();
+                                suburbName = object.getString("suburb_name").trim();
+                                postalCode = object.getString("postal_code").trim();
+
+                                cityName = object.getString("city_name").trim();
+                                province = object.getString("province").trim();
 
                             }
                             Toast.makeText(DoctorLogin.this, "Login Successful", Toast.LENGTH_LONG).show();
@@ -222,7 +230,7 @@ public class DoctorLogin extends AppCompatActivity {
                             btn_Login.setVisibility(View.VISIBLE);
 
                             //sessionManager to create session for doctor
-                            sessionManager.createDocSession(id, regNo, cell, name, surname, email, occupation);
+                            sessionManager.createDocSession(id, regNo, cell, name, surname, email, occupation,office_address,profilePic, suburbName, postalCode, cityName, province);
                             startActivity(new Intent(DoctorLogin.this, DocDashboard.class));
 
                             break;
@@ -234,7 +242,7 @@ public class DoctorLogin extends AppCompatActivity {
                         default:
                             pb_loading.setVisibility(View.GONE);
                             btn_Login.setVisibility(View.VISIBLE);
-                            Toast.makeText(DoctorLogin.this, "PatientLogin Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
+                            Toast.makeText(DoctorLogin.this, "Login Failed, this user doesn't exist in our database", Toast.LENGTH_LONG).show();
                             break;
                     }
                 } catch (JSONException e) {
@@ -257,7 +265,7 @@ public class DoctorLogin extends AppCompatActivity {
             protected Map<String,String> getParams() {
                 Map<String,String> params = new HashMap<>();
 
-                params.put("regNo",regNo);
+                params.put("email",emailAddress);
                 params.put("pass",pass);
                 return params;
             }

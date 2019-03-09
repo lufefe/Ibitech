@@ -19,18 +19,18 @@ public class SessionManager {
     static final String SURNAME = "SURNAME";
     static final String AGE = "AGE";
     static final String BLOODTYPE = "BLOODTYPE";
-     static final String GENDER = "GENDER";
-     static final String STATUS = "STATUS";
-     static final String ADDRESS = "ADDRESS";
-     static final String CELLNUMBER = "CELLPHONENUMBER";
-     static final String EMAIL = "EMAIL";
-     static final String WEIGHT = "WEIGHT";
-     static final String HEIGHT = "HEIGHT";
-     static final String PROFILEPIC = "PROFILEPIC";
-     static final String SUBURBNAME = "SUBURBNAME";
-     static final String POSTALCODE = "POSTALCODE";
-     static final String CITYNAME = "CITYNAME";
-     static final String PROVINCE = "PROVINCE";
+    static final String GENDER = "GENDER";
+    static final String STATUS = "STATUS";
+    static final String ADDRESS = "ADDRESS";
+    static final String CELLNUMBER = "CELLPHONENUMBER";
+    static final String EMAIL = "EMAIL";
+    static final String WEIGHT = "WEIGHT";
+    static final String HEIGHT = "HEIGHT";
+    static final String PROFILEPIC = "PROFILEPIC";
+    static final String SUBURBNAME = "SUBURBNAME";
+    static final String POSTALCODE = "POSTALCODE";
+    static final String CITYNAME = "CITYNAME";
+    static final String PROVINCE = "PROVINCE";
 
     static final String MEDREGNO = "MEDREGNO";
     private static final String OCCUPATION = "OCCUPATION";
@@ -75,7 +75,7 @@ public class SessionManager {
     }
 
     // creates session for doctor
-    void createDocSession(String id, String regNo, String cell, String name, String surname, String email, String occupation){
+    void createDocSession(String id, String regNo, String cell, String name, String surname, String email, String occupation,String address, String profilePic, String suburbName, String postalCode, String cityName, String province){
         editor.putBoolean(LOGIN,true);
         editor.putString(ID,id);
         editor.putString(MEDREGNO,regNo);
@@ -84,6 +84,14 @@ public class SessionManager {
         editor.putString(CELLNUMBER, cell);
         editor.putString(EMAIL, email);
         editor.putString(OCCUPATION,occupation);
+        editor.putString(ADDRESS,address);
+
+        editor.putString(PROFILEPIC,profilePic);
+
+        editor.putString(SUBURBNAME, suburbName);
+        editor.putString(POSTALCODE, postalCode);
+        editor.putString(CITYNAME, cityName);
+        editor.putString(PROVINCE, province);
 
         editor.apply();
     }
@@ -143,7 +151,14 @@ public class SessionManager {
         doc.put(SURNAME,sharedPreferences.getString(SURNAME,null));
         doc.put(EMAIL,sharedPreferences.getString(EMAIL,null));
         doc.put(CELLNUMBER,sharedPreferences.getString(CELLNUMBER,null));
-        doc.put(PROFILEPIC,sharedPreferences.getString(OCCUPATION,null));
+        doc.put(OCCUPATION,sharedPreferences.getString(OCCUPATION,null));
+        doc.put(ADDRESS,sharedPreferences.getString(ADDRESS,null));
+
+        doc.put(PROFILEPIC,sharedPreferences.getString(PROFILEPIC,null));
+        doc.put(SUBURBNAME, sharedPreferences.getString(SUBURBNAME, null));
+        doc.put(POSTALCODE,sharedPreferences.getString(POSTALCODE, null));
+        doc.put(CITYNAME,sharedPreferences.getString(CITYNAME, null));
+        doc.put(PROVINCE, sharedPreferences.getString(PROVINCE, null));
 
         return doc;
     }
