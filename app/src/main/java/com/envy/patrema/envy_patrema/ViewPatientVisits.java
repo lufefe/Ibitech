@@ -207,7 +207,7 @@ public class ViewPatientVisits extends AppCompatActivity {
 
     @Override
     public void finish() {
-        startActivity(new Intent(ViewPatientVisits.this,DocDashboard.class));
+        startActivity(new Intent(ViewPatientVisits.this, DoctorDashboard.class));
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }

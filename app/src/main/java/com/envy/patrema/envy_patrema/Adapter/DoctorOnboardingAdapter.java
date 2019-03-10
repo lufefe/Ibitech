@@ -12,32 +12,29 @@ import android.widget.TextView;
 
 import com.envy.patrema.envy_patrema.R;
 
-public class OnboardingAdapter extends PagerAdapter {
+public class DoctorOnboardingAdapter extends PagerAdapter {
 
     Context context;
 
-    public OnboardingAdapter(Context context) {
+    public DoctorOnboardingAdapter(Context context) {
         this.context = context;
     }
 
-    // Arrays
     private int[] slide_images = {
-            R.drawable.ehr_icon,
+            R.drawable.doctor_stetho,
             R.drawable.secure_icon,
-            R.drawable.profile_icon
-
+            R.drawable.doctor_icon
     };
 
     private String[] slide_headings = {
-            "Welcome",
+            "Welcome Doctor",
             "Security",
             "Setup Your Profile"
-
     };
 
     private String[] slide_content = {
-            "An electronic health record app that stores and maintains your health activity and health history.",
-            "We aim to ensure the safety and security of your medical record, including all your confidential information.",
+            "An electronic health record app that stores and maintains your patients' health activity and health history.",
+            "We aim to ensure confidentiality, integrity and authorized availability of these medical records.",
             "Please setup your profile by entering your basic details."
 
     };

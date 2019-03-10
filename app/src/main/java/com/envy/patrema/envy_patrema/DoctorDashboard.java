@@ -16,10 +16,10 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 
-public class DocDashboard extends AppCompatActivity {
+public class DoctorDashboard extends AppCompatActivity {
 
     TextView tv_DocName;
-    ImageView imgProfilePic;
+    ImageView imgProfilePic, imgEditProfile;
     ImageButton btnTutorial,btnReports;
     CardView cv_Visits, cv_Patients;
     Button btn_Logout;
@@ -42,6 +42,7 @@ public class DocDashboard extends AppCompatActivity {
         btnReports = findViewById(R.id.docReports);
 
         imgProfilePic = findViewById(R.id.imgProfilePic);
+        imgEditProfile = findViewById(R.id.imgEditImage);
 
         HashMap<String,String> doc = sessionManager.getDocDetails();
         String sName = doc.get(SessionManager.NAME);
@@ -52,14 +53,14 @@ public class DocDashboard extends AppCompatActivity {
         btnTutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DocDashboard.this, DoctorTutorial.class));
+                startActivity(new Intent(DoctorDashboard.this, DoctorTutorial.class));
             }
         });
 
         btnReports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(DocDashboard.this,DoctorGraphReports.class));
+                //startActivity(new Intent(DoctorDashboard.this,DoctorGraphReports.class));
             }
         });
 
@@ -73,17 +74,23 @@ public class DocDashboard extends AppCompatActivity {
         cv_Visits.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               startActivity(new Intent(DocDashboard.this, ViewPatientVisits.class));
+               startActivity(new Intent(DoctorDashboard.this, ViewPatientVisits.class));
            }
        });
 
        cv_Patients.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               startActivity(new Intent(DocDashboard.this, ViewPatients.class));
+               startActivity(new Intent(DoctorDashboard.this, ViewPatients.class));
            }
        });
 
+       imgEditProfile.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               startActivity(new Intent(getApplicationContext(), DoctorEditProfile.class));
+           }
+       });
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.profilepic);
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(),bitmap);

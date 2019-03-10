@@ -280,7 +280,7 @@ public class PatientLogin extends AppCompatActivity {
                             pb_loading.setVisibility(View.INVISIBLE);
                             btn_Login.setVisibility(View.VISIBLE);
 
-                            dialogText = "Patient login failed, there seems to be an issue retrieving your details in our database, please contact our administrator.";
+                            dialogText = "Login failed, there seems to be an issue retrieving your details in our database, please contact our administrator.";
                             showErrorDialog(dialogText);
                             break;
                     }

@@ -112,7 +112,7 @@ public class SessionManager {
         if(this.isLoggin()){
             Intent i = new Intent(context, DoctorLogin.class);
             context.startActivity(i);
-            ((DocDashboard) context).finish();
+            ((DoctorDashboard) context).finish();
         }
     }
 
@@ -175,6 +175,6 @@ public class SessionManager {
         editor.commit();
         Intent i = new Intent(context, DoctorLogin.class);
         context.startActivity(i);
-        ((DocDashboard) context).finish();
+        ((DoctorDashboard) context).finish();
     }
 }
