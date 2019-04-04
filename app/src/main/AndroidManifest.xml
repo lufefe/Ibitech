@@ -23,7 +23,13 @@
         <activity android:name=".DoctorEditProfile"></activity>
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/SplashTheme"></activity>
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Welcome"
             android:screenOrientation="locked" />
@@ -121,11 +127,7 @@
         <activity android:name=".PatientMainActivity"></activity>
         <activity android:name=".PatientEditProfile"></activity>
         <activity android:name=".DoctorOnboarding">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

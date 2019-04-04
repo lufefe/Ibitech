@@ -33,7 +33,7 @@ public class SessionManager {
     static final String PROVINCE = "PROVINCE";
 
     static final String MEDREGNO = "MEDREGNO";
-    private static final String OCCUPATION = "OCCUPATION";
+    static final String OCCUPATION = "OCCUPATION";
 
 
     // constructor access and retrieve shared preferences

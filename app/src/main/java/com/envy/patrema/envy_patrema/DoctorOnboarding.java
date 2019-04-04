@@ -1,6 +1,9 @@
 package com.envy.patrema.envy_patrema;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -13,6 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.envy.patrema.envy_patrema.Adapter.DoctorOnboardingAdapter;
+import com.marcoscg.licenser.Library;
+import com.marcoscg.licenser.License;
+import com.marcoscg.licenser.LicenserDialog;
 
 public class DoctorOnboarding extends AppCompatActivity {
 
@@ -27,6 +33,11 @@ public class DoctorOnboarding extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
+
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("docFirstStart", false);
+        editor.apply();
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -48,9 +59,12 @@ public class DoctorOnboarding extends AppCompatActivity {
         mBtnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mBtnNext.getText().equals("Setup")){
-                    startActivity(new Intent(getApplicationContext(), PatientEditProfile.class));
-                    finish();
+                if (mBtnNext.getText().equals("Accept")){
+                    termsAndConditions();
+                    SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean("firstStart", false);
+                    editor.apply();
                 }
                 else
                     mSlideViewPager.setCurrentItem(mCurrentPage + 1);
@@ -64,6 +78,31 @@ public class DoctorOnboarding extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void termsAndConditions() {
+        // TODO: before 20/03/2019
+        // accept terms and conditions
+        new LicenserDialog(this)
+                .setTitle("Terms and Conditons")
+                .setCustomNoticeTitle("Notices for files:")
+                .setBackgroundColor(Color.WHITE) // Optional
+                .setLibrary(new Library("Android Support Libraries",
+                        "https://developer.android.com/topic/libraries/support-library/index.html",
+                        License.APACHE))
+                .setLibrary(new Library("Example Library",
+                        "https://github.com/marcoscgdev",
+                        License.APACHE))
+                .setLibrary(new Library("Licenser",
+                        "https://github.com/marcoscgdev/Licenser",
+                        License.MIT))
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(new Intent(getApplicationContext(), DoctorDashboard.class));
+                    }
+                })
+                .show();
     }
 
     public void addDotsIndicator(int position){
@@ -106,7 +145,7 @@ public class DoctorOnboarding extends AppCompatActivity {
                 mBtnNext.setEnabled(true);
                 mBtnPrev.setEnabled(true);
                 mBtnPrev.setVisibility(View.VISIBLE);
-                mBtnNext.setText("Setup");
+                mBtnNext.setText("Accept");
                 mBtnPrev.setText("Back");
             }
             else {

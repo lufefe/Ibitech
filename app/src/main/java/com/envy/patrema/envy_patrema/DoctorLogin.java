@@ -1,7 +1,6 @@
 package com.envy.patrema.envy_patrema;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -17,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -28,9 +26,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.marcoscg.licenser.Library;
-import com.marcoscg.licenser.License;
-import com.marcoscg.licenser.LicenserDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -214,6 +209,7 @@ public class DoctorLogin extends AppCompatActivity {
                                 JSONObject object = jsonArray.getJSONObject(i);
 
                                 id = object.getString("id").trim();
+                                regNo = object.getString("med_reg_no").trim();
                                 cell = object.getString("cell").trim();
                                 name = object.getString("name").trim();
                                 surname = object.getString("surname").trim();
@@ -229,7 +225,6 @@ public class DoctorLogin extends AppCompatActivity {
                                 province = object.getString("province").trim();
 
                             }
-                            Toast.makeText(DoctorLogin.this, "Login Successful", Toast.LENGTH_LONG).show();
                             pb_loading.setVisibility(View.INVISIBLE);
                             btn_Login.setVisibility(View.VISIBLE);
 
@@ -289,30 +284,10 @@ public class DoctorLogin extends AppCompatActivity {
     }
 
     private void startOnboarding() {
-        // TODO: before 20/03/2019
-        // accept terms and conditions
-        new LicenserDialog(this)
-                .setTitle("Terms and Conditons")
-                .setCustomNoticeTitle("Notices for files:")
-                .setBackgroundColor(Color.RED) // Optional
-                .setLibrary(new Library("Android Support Libraries",
-                        "https://developer.android.com/topic/libraries/support-library/index.html",
-                        License.APACHE))
-                .setLibrary(new Library("Example Library",
-                        "https://github.com/marcoscgdev",
-                        License.APACHE))
-                .setLibrary(new Library("Licenser",
-                        "https://github.com/marcoscgdev/Licenser",
-                        License.MIT))
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // proceed to Onboarding (Tutorial)
-                        startActivity(new Intent(getApplicationContext(), DoctorOnboarding.class));
-                        //finish();
-                    }
-                })
-                .show();
+        // proceed to Onboarding (Tutorial)
+        startActivity(new Intent(getApplicationContext(), DoctorOnboarding.class));
+        //finish();
+
     }
 
     private void startDashboard() {
