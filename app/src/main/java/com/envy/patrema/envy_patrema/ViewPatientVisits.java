@@ -19,7 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.envy.patrema.envy_patrema.Adapter.DocPatientVisitsAdapter;
-import com.envy.patrema.envy_patrema.Models.AppointmentsList;
+import com.envy.patrema.envy_patrema.Models.CreateVisitList;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import org.json.JSONArray;
@@ -34,9 +34,10 @@ public class ViewPatientVisits extends AppCompatActivity {
 
     MaterialSearchView searchView;
 
-    ListView listView;
-    List<AppointmentsList> visitsLists;
-    String URL_GETAPPTS = "http://sict-iis.nmmu.ac.za/ibitech/app/getpatientvisits.php";
+    ListView lvVisits;
+    List<CreateVisitList> visitsLists;
+    //String URL_GETAPPTS = "http://sict-iis.nmmu.ac.za/ibitech/app/getpatientvisits.php";
+    String URL_GETPATIENTS = "http://10.0.2.2/app/getpatients.php";
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -44,7 +45,7 @@ public class ViewPatientVisits extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_patient_visit);
 
-        listView = findViewById(R.id.lv_ViewAppointments);
+        lvVisits = findViewById(R.id.lv_Patients);
         visitsLists = new ArrayList<>();
 
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
@@ -55,25 +56,14 @@ public class ViewPatientVisits extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-
         searchView = findViewById(R.id.search_view);
 
-        GetAppts();
+        GetPatients();
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_search, menu);
-        MenuItem item = menu.findItem(R.id.action_search);
-        searchView.setMenuItem(item);
-        return true;
-        //return super.onCreateOptionsMenu(menu);
-    }
-
-    private void GetAppts() {
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GETAPPTS, new Response.Listener<String>() {
+    private void GetPatients() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GETPATIENTS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -85,7 +75,6 @@ public class ViewPatientVisits extends AppCompatActivity {
                     final String [] patientID = new String[jsonArray.length()];
                     final String [] patientName = new String[jsonArray.length()];
                     final String [] patientSurname = new String[jsonArray.length()];
-                    final String [] patientCell = new String[jsonArray.length()];
 
                     //for searching
 
@@ -105,7 +94,7 @@ public class ViewPatientVisits extends AppCompatActivity {
                         @Override
                         public boolean onQueryTextChange(String newText) {
                             if ((newText != null) && !newText.isEmpty()){
-                                List<AppointmentsList> lstFound = new ArrayList<>();
+                                List<CreateVisitList> lstFound = new ArrayList<>();
                                 for (int i = 0; i < patientFullName.length; i++){
                                     JSONObject object = null;
                                     try {
@@ -114,23 +103,23 @@ public class ViewPatientVisits extends AppCompatActivity {
                                         e.printStackTrace();
                                     }
                                     if (patientFullName[i].toLowerCase().contains(newText.toLowerCase())){
-                                        AppointmentsList patients = null;
+                                        CreateVisitList patients = null;
                                         try{
                                             assert object != null;
-                                            patients = new AppointmentsList(object.getString("first_name"),object.getString("surname"), object.getString("cellphone_number"));
+                                            patients = new CreateVisitList(object.getString("first_name"),object.getString("surname"), object.getString("id_number"));
                                         } catch (JSONException e){
                                             e.printStackTrace();
                                         }
                                         lstFound.add(patients);
                                     }
                                 }
-                                DocPatientVisitsAdapter adapter = new DocPatientVisitsAdapter(getApplication(),lstFound);
-                                listView.setAdapter(adapter);
+                                DocPatientVisitsAdapter adapter = new DocPatientVisitsAdapter(lstFound, ViewPatientVisits.this);
+                                lvVisits.setAdapter(adapter);
 
                             }
                             else {
-                                DocPatientVisitsAdapter adapter = new DocPatientVisitsAdapter(getApplication(),visitsLists);
-                                listView.setAdapter(adapter);
+                                DocPatientVisitsAdapter adapter = new DocPatientVisitsAdapter(visitsLists, ViewPatientVisits.this);
+                                lvVisits.setAdapter(adapter);
                             }
                             return true;
                         }
@@ -140,18 +129,18 @@ public class ViewPatientVisits extends AppCompatActivity {
 
                         JSONObject object = jsonArray.getJSONObject(i);
 
-                         patientID[i] = object.getString("patient_id");
-                         patientName[i] = object.getString("first_name");
-                         patientSurname[i] = object.getString("surname");
-                         patientCell[i] = object.getString("cellphone_number");
+                        patientID[i] = object.getString("id_number");
+                        patientName[i] = object.getString("first_name");
+                        patientSurname[i] = object.getString("surname");
 
 
-                        AppointmentsList appts = new AppointmentsList(object.getString("first_name"),object.getString("surname"), object.getString("cellphone_number"));
+
+                        CreateVisitList appts = new CreateVisitList(object.getString("first_name"),object.getString("surname"), object.getString("id_number"));
                         visitsLists.add(appts);
                     }
 
-                    DocPatientVisitsAdapter adapter = new DocPatientVisitsAdapter(getApplication(),visitsLists);
-                    listView.setAdapter(adapter);
+                    DocPatientVisitsAdapter adapter = new DocPatientVisitsAdapter(visitsLists, ViewPatientVisits.this);
+                    lvVisits.setAdapter(adapter);
 
                     searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
                         @Override
@@ -161,13 +150,13 @@ public class ViewPatientVisits extends AppCompatActivity {
 
                         @Override
                         public void onSearchViewClosed() {
-                            DocPatientVisitsAdapter adapter = new DocPatientVisitsAdapter(getApplication(),visitsLists);
-                            listView.setAdapter(adapter);
+                            DocPatientVisitsAdapter adapter = new DocPatientVisitsAdapter(visitsLists, ViewPatientVisits.this);
+                            lvVisits.setAdapter(adapter);
                         }
                     });
 
 
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    lvVisits.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             //String appt = String.valueOf(parent.getItemIdAtPosition(position));
@@ -191,7 +180,7 @@ public class ViewPatientVisits extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(ViewPatientVisits.this,"There are no appointments.",Toast.LENGTH_LONG).show();
+                    Toast.makeText(ViewPatientVisits.this,"There are no patients yet.",Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -203,6 +192,15 @@ public class ViewPatientVisits extends AppCompatActivity {
         });
         Singleton.getInstance(ViewPatientVisits.this).addToRequestQue(stringRequest);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        searchView.setMenuItem(item);
+        return true;
+        //return super.onCreateOptionsMenu(menu);
     }
 
     @Override

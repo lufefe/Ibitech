@@ -6,25 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".ViewPatientVisits">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            app.popupTheme="@style/AppTheme.PopupOverlay"
-            android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            android:background="#309BE0"
-            android:theme="@style/Theme.ToolbarBack"/>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        app.popupTheme="@style/AppTheme.PopupOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:background="#309BE0"
+        android:theme="@style/Theme.ToolbarBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.miguelcatalan.materialsearchview.MaterialSearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:searchBackground="@color/search_back"
-        app:searchSuggestionBackground="@color/search_back"
-        app:searchCloseIcon="@drawable/ic_action_navigation_close_inverted"
-        app:searchBackIcon="@drawable/ic_action_navigation_arrow_back_inverted"
-        app:searchSuggestionIcon="@drawable/ic_suggestion"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
         android:textColor="@color/White"
-        android:textColorHint="@color/White"/>
+        android:textColorHint="@color/White"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:searchBackIcon="@drawable/ic_action_navigation_arrow_back_inverted"
+        app:searchBackground="@color/search_back"
+        app:searchCloseIcon="@drawable/ic_action_navigation_close_inverted"
+        app:searchSuggestionBackground="@color/search_back"
+        app:searchSuggestionIcon="@drawable/ic_suggestion" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/search_view">
 
         <ListView
-            android:id="@+id/lv_ViewAppointments"
+            android:id="@+id/lv_Patients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

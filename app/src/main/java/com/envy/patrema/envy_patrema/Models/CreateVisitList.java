@@ -1,24 +1,25 @@
 package com.envy.patrema.envy_patrema.Models;
 
-public class AppointmentsList {
+public class CreateVisitList {
 
-    String name, surname, cellNo;
+    private String name, surname, idNo;
 
-    public AppointmentsList(String name, String surname, String cellNo) {
+    public CreateVisitList(String name, String surname, String idNo) {
         this.name = name;
         this.surname = surname;
-        this.cellNo = cellNo;
+        this.idNo = idNo;
     }
 
     public String getSurname() {
         return surname;
     }
 
+    public String getIdNo() {
+        return idNo;
+    }
+
     public String getName() {
         return name;
     }
 
-    public String getCellNo() {
-        return cellNo;
-    }
 }

@@ -7,7 +7,7 @@
 
 
     <ImageView
-        android:id="@+id/imgProfilePic"
+        android:id="@+id/imgPatientPic"
         android:layout_width="62dp"
         android:layout_height="60dp"
         android:layout_margin="8dp"
@@ -35,19 +35,19 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:gravity="end"
-        android:text="Name"
+        android:text="Patient Name"
         android:textAlignment="viewEnd"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintStart_toEndOf="@+id/imgProfilePic"
+        app:layout_constraintStart_toEndOf="@+id/imgPatientPic"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.012" />
 
     <TextView
-        android:id="@+id/txtCellNo"
+        android:id="@+id/txtIDNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -56,13 +56,13 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Cell No"
+        android:text="ID Number"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.073"
-        app:layout_constraintStart_toEndOf="@+id/imgProfilePic"
+        app:layout_constraintStart_toEndOf="@+id/imgPatientPic"
         app:layout_constraintTop_toBottomOf="@+id/txtName"
         app:layout_constraintVertical_bias="0.0" />
 
