@@ -72,9 +72,9 @@ public class ViewPatientVisits extends AppCompatActivity {
                     final JSONArray jsonArray = jsonObject.getJSONArray("server_response");
 
                     //Parallel arrays
-                    final String [] patientID = new String[jsonArray.length()];
                     final String [] patientName = new String[jsonArray.length()];
                     final String [] patientSurname = new String[jsonArray.length()];
+                    final String [] patientEmail = new String[jsonArray.length()];
 
                     //for searching
 
@@ -129,11 +129,9 @@ public class ViewPatientVisits extends AppCompatActivity {
 
                         JSONObject object = jsonArray.getJSONObject(i);
 
-                        patientID[i] = object.getString("id_number");
                         patientName[i] = object.getString("first_name");
                         patientSurname[i] = object.getString("surname");
-
-
+                        patientEmail[i] = object.getString("patient_email_address");
 
                         CreateVisitList appts = new CreateVisitList(object.getString("first_name"),object.getString("surname"), object.getString("id_number"));
                         visitsLists.add(appts);
@@ -161,14 +159,14 @@ public class ViewPatientVisits extends AppCompatActivity {
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             //String appt = String.valueOf(parent.getItemIdAtPosition(position));
 
-                            for (int i =0; i < patientID.length; i++){
+                            for (int i =0; i < patientEmail.length; i++){
                                 if (parent.getItemIdAtPosition(position) == i)
                                 {
                                     //Toast.makeText(ViewPatientVisits.this, patientName[i], Toast.LENGTH_SHORT).show();
                                     SharedPreferences preferences = getSharedPreferences("DIAGNOSIS",MODE_PRIVATE);
                                     SharedPreferences.Editor editor = preferences.edit();
 
-                                    editor.putString("pID", patientID[i]);
+                                    editor.putString("pEmail", patientEmail[i]);
                                     editor.putString("pName", patientName[i] + " " + patientSurname[i]);
                                     editor.apply();
                                     startActivity(new Intent(ViewPatientVisits.this, Diagnosis.class));
