@@ -1,7 +1,5 @@
 package com.envy.patrema.envy_patrema.Models;
-/**
- * Created by s216100801
- */
+
 public class MySymptomsList {
 
     private String symptom ,date_added, severity;

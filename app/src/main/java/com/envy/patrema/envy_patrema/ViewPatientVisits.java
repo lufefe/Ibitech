@@ -3,10 +3,8 @@ package com.envy.patrema.envy_patrema;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +16,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.envy.patrema.envy_patrema.Adapter.DocPatientVisitsAdapter;
+import com.envy.patrema.envy_patrema.Adapter.CreatePatientVisitsAdapter;
 import com.envy.patrema.envy_patrema.Models.CreateVisitList;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
@@ -28,7 +26,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ViewPatientVisits extends AppCompatActivity {
 
@@ -39,7 +36,6 @@ public class ViewPatientVisits extends AppCompatActivity {
     //String URL_GETAPPTS = "http://sict-iis.nmmu.ac.za/ibitech/app/getpatientvisits.php";
     String URL_GETPATIENTS = "http://10.0.2.2/app/getpatients.php";
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +49,7 @@ public class ViewPatientVisits extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
         setSupportActionBar(toolbar);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         searchView = findViewById(R.id.search_view);
@@ -113,12 +109,12 @@ public class ViewPatientVisits extends AppCompatActivity {
                                         lstFound.add(patients);
                                     }
                                 }
-                                DocPatientVisitsAdapter adapter = new DocPatientVisitsAdapter(lstFound, ViewPatientVisits.this);
+                                CreatePatientVisitsAdapter adapter = new CreatePatientVisitsAdapter(lstFound, ViewPatientVisits.this);
                                 lvVisits.setAdapter(adapter);
 
                             }
                             else {
-                                DocPatientVisitsAdapter adapter = new DocPatientVisitsAdapter(visitsLists, ViewPatientVisits.this);
+                                CreatePatientVisitsAdapter adapter = new CreatePatientVisitsAdapter(visitsLists, ViewPatientVisits.this);
                                 lvVisits.setAdapter(adapter);
                             }
                             return true;
@@ -137,7 +133,7 @@ public class ViewPatientVisits extends AppCompatActivity {
                         visitsLists.add(appts);
                     }
 
-                    DocPatientVisitsAdapter adapter = new DocPatientVisitsAdapter(visitsLists, ViewPatientVisits.this);
+                    CreatePatientVisitsAdapter adapter = new CreatePatientVisitsAdapter(visitsLists, ViewPatientVisits.this);
                     lvVisits.setAdapter(adapter);
 
                     searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
@@ -148,7 +144,7 @@ public class ViewPatientVisits extends AppCompatActivity {
 
                         @Override
                         public void onSearchViewClosed() {
-                            DocPatientVisitsAdapter adapter = new DocPatientVisitsAdapter(visitsLists, ViewPatientVisits.this);
+                            CreatePatientVisitsAdapter adapter = new CreatePatientVisitsAdapter(visitsLists, ViewPatientVisits.this);
                             lvVisits.setAdapter(adapter);
                         }
                     });

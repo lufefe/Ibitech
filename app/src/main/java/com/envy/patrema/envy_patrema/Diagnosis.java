@@ -37,13 +37,14 @@ public class Diagnosis extends AppCompatActivity {
     TextView tvLatestSymptoms;
     Button btnViewAllSymptoms, btnSaveDiagnosis;
 
+    SessionManager sessionManager;
+
     String patientEmail = "", patientName = "", symptom = "", date_added = "", severity = "";
-    String docEmail = "", medRegNo =  "", diagnosisDate = "";
+    String docEmail = "";
 
     String URL_GETLSTSYMPTMS = "http://10.0.2.2/app/getpatientlastsymptomfordiagnosis.php";
     String URL_GETALLSYMPTMS = "http://10.0.2.2/app/getallpatientsymptomsfordiagnosis.php";
-    String URL_ADDVISIT = "http://sict-iis.nmmu.ac.za/ibitech/app/insertvisit.php";
-    String URL_ADD = "http://sict-iis.nmmu.ac.za/ibitech/app/addsymptom.php";
+    String URL_CRTVST = "http://10.0.2.2/app/createvisit.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,11 @@ public class Diagnosis extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("DIAGNOSIS",MODE_PRIVATE);
         patientEmail = prefs.getString("pEmail", "");
         patientName = prefs.getString("pName", "");
+
+        sessionManager = new SessionManager(this);
+        HashMap<String,String> doc = sessionManager.getDocDetails();
+        docEmail = doc.get(SessionManager.EMAIL);
+
 
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(patientName);
@@ -88,7 +94,8 @@ public class Diagnosis extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final String medicine = act_Medication.getText().toString();
-                //addVisit(addDate, doctorID, medRegNo, symptomID, patientID, condition, medicine);
+                final  String diagnosis = etDiagnosis.getText().toString();
+                createVisit(patientEmail, docEmail, diagnosis, medicine);
             }
         });
 
@@ -204,21 +211,21 @@ public class Diagnosis extends AppCompatActivity {
         Singleton.getInstance(Diagnosis.this).addToRequestQue(stringRequest);
     }
 
-    public void addVisit(final String date, final String docID, final String medRegNo, final String symptomID, final String patientID,  final String condition, final String medicine){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ADDVISIT, new Response.Listener<String>() {
+    public void createVisit(final String patientEmail, final String docEmail, final String diagnosis, final String medicine){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_CRTVST, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
                     if (success.equals("1")) {
-                        Toast.makeText(Diagnosis.this, "Diagnosis added successfully.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Diagnosis.this, "Visit created successfully.", Toast.LENGTH_LONG).show();
                         finish();
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(Diagnosis.this, "Error : There was an internal error in adding the diagnosis, try again later", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Diagnosis.this, "Error : There was an internal error in creating the visit, try again later", Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -234,14 +241,11 @@ public class Diagnosis extends AppCompatActivity {
                 Map<String,String> params = new HashMap<>();
 
 
-                params.put("date",date);
-                params.put("docID",docID);
-                params.put("medRegNo",medRegNo);
-                params.put("symptomID",symptomID);
-                params.put("patID",patientID);
+                params.put("patientEmail",patientEmail);
+                params.put("doctorEmail",docEmail);
+                params.put("diagnosis",diagnosis);
+                params.put("medicine",medicine);
 
-                params.put("condition", condition);
-                params.put("medicine", medicine);
                 return params;
             }
         };

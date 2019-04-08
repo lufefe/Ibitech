@@ -1,10 +1,10 @@
 package com.envy.patrema.envy_patrema.Models;
 
-public class PatientsList {
+public class AllPatientsList {
 
-    String name, surname, dob, cellNo;
+    private String name, surname, dob, cellNo;
 
-    public PatientsList(String name, String surname, String dob, String cellNo) {
+    public AllPatientsList(String name, String surname, String dob, String cellNo) {
         this.name = name;
         this.surname = surname;
         this.dob = dob;

@@ -2,9 +2,7 @@ package com.envy.patrema.envy_patrema;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,17 +13,14 @@ import android.widget.TextView;
 
 import com.envy.patrema.envy_patrema.Adapter.MedInfoAdapter;
 
-import java.util.Objects;
-
 public class PatientMedicalRecord extends AppCompatActivity {
 
     TextView tvPatientID, tvPatientName, tvPatientGender, tvPatientStatus, tvPatientCell, tvPatientBlood, tvPatientWeight, tvPatientHeight;
 
-    String patientID = "", patientName = "", patientDOB="", patientGender ="", patientStatus="", patientCell="", patientBlood="", patientWeight="", patientHeight="", patientMedAid="";
+    String patientID = "", patientName = "", patientDOB="", patientGender ="", patientStatus="", patientCell="", patientBlood="", patientWeight="", patientHeight="", patientAddress="", patientSuburbNo="";
 
 
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,14 +38,13 @@ public class PatientMedicalRecord extends AppCompatActivity {
         patientBlood = prefs.getString("pBloodType","");
         patientWeight = prefs.getString("pWeight","");
         patientHeight = prefs.getString("pHeight","");
-        patientMedAid = prefs.getString("pMedicalAid","");
 
 
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(patientName + "\'s Medical Record" );
         setSupportActionBar(toolbar);
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         String cats []= new String[]{"Last Visit","Allergies","Medication", "Diagnoses","Test Results", "Medical Devices", "Miscellaneous"};
@@ -131,7 +125,7 @@ public class PatientMedicalRecord extends AppCompatActivity {
 
     @Override
     public void finish() {
-        startActivity(new Intent(PatientMedicalRecord.this,ViewPatients.class));
+        startActivity(new Intent(PatientMedicalRecord.this, ViewAllPatients.class));
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }

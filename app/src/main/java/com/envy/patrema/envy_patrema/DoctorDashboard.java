@@ -108,7 +108,7 @@ public class DoctorDashboard extends AppCompatActivity {
        cv_Patients.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               startActivity(new Intent(DoctorDashboard.this, ViewPatients.class));
+               startActivity(new Intent(DoctorDashboard.this, ViewAllPatients.class));
            }
        });
 

@@ -14,12 +14,14 @@ import com.envy.patrema.envy_patrema.R;
 
 import java.util.List;
 
-public class DocPatientVisitsAdapter extends ArrayAdapter<CreateVisitList> {
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class CreatePatientVisitsAdapter extends ArrayAdapter<CreateVisitList> {
 
     private List<CreateVisitList> visitList;
     private Activity context;
 
-    public DocPatientVisitsAdapter(List<CreateVisitList> visitList, Activity context) {
+    public CreatePatientVisitsAdapter(List<CreateVisitList> visitList, Activity context) {
         super(context, R.layout.custom_create_visit_row, visitList);
 
         this.visitList = visitList;
@@ -44,13 +46,14 @@ public class DocPatientVisitsAdapter extends ArrayAdapter<CreateVisitList> {
 
         viewHolder.txtName.setText(String.format("%s %s", visitList.get(position).getName(), visitList.get(position).getSurname()));
         viewHolder.txtID.setText(visitList.get(position).getIdNo());
-        //viewHolder.imgPatientPic.set
+        //viewHolder.imgPatientPic.
 
         return r;
     }
 
     class ViewHolder {
-        TextView txtName, txtID, imgPatientPic;
+        TextView txtName, txtID;
+        CircleImageView imgPatientPic;
 
         ViewHolder(View v) {
             txtName = v.findViewById(R.id.txtName);

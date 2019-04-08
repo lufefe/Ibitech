@@ -1,7 +1,7 @@
 package com.envy.patrema.envy_patrema.Models;
 
 public class ConditionList {
-    String condition_name,date_added, doctorName, doctorSurname;
+    private String condition_name,date_added, doctorName, doctorSurname;
 
     public ConditionList(String condition_name, String date_added, String doctorName, String doctorSurname) {
         this.condition_name = condition_name;

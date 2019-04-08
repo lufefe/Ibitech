@@ -6,21 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".PatientMedicalRecord">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout3"
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        app.popupTheme="@style/AppTheme.PopupOverlay"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            app.popupTheme="@style/AppTheme.PopupOverlay"
-            android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            android:background="#309BE0"
-            android:theme="@style/Theme.ToolbarBack"/>
-
-    </android.support.design.widget.AppBarLayout>
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="#309BE0"
+        android:theme="@style/Theme.ToolbarBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/cv_BasicInfo"
@@ -38,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_weight="1">
 

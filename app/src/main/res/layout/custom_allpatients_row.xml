@@ -7,7 +7,7 @@
 
 
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgProfilePic"
         android:layout_width="62dp"
         android:layout_height="62dp"
@@ -24,7 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.013"
-        app:srcCompat="@drawable/profilepic" />
+        android:src="@drawable/profilepic" />
 
     <TextView
         android:id="@+id/tvFullname"
